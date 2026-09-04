@@ -2,6 +2,7 @@
   "schemaVersion": "motif-library-build-card/1.0",
   "artifactId": "landometer-motif-library-web-v1",
   "artifactName": "Landometer Motif Library",
+  "artifactRelease": "1.1.0",
   "experienceProfile": "methodology_learning",
   "formatProfile": "web_public",
   "pageKind": "utility",
@@ -23,7 +24,11 @@
   "machineContract": {
     "manifest": "assets/motif-library.json",
     "schema": "motif-library-agent-contract/1.0",
-    "selection": "one exact generated_vector record as a static baseline; optional web-only motion resolves through an exact matching-family extension"
+    "selection": "one exact generated_vector record as a static baseline; optional web-only motion resolves through an exact matching-family extension",
+    "productionLandometerMotionMode": "finite_once"
+  },
+  "decisionRecords": {
+    "showcaseMotion": "governance/showcase-motion-decision.json"
   },
   "rightsBoundary": {
     "publicAccess": ["view", "download"],
@@ -43,7 +48,9 @@
   "capabilities": {
     "assetSearch": true,
     "brandFilter": true,
-    "finiteLandometerPreview": true,
+    "finiteLandometerProductionRuntime": true,
+    "pairedLandometerModalShowcase": true,
+    "ownerSelectedModalAutoreplayWithPause": true,
     "boundedIjjiPendingStatePreview": true,
     "clientSidePngExport": true,
     "themeSwitch": true,
@@ -54,6 +61,7 @@
     "designSystem": "LDS 0.9.1 / 0.9.1-r8 / v0.9.1-mp7",
     "ijji": "ijji DS 0.5.0 / Add-on 0.5.3 boundary",
     "motifAssets": "owner-approved artifact overlay on 2026-09-05",
+    "showcaseMotion": "owner-selected component-local instructional behavior on 2026-09-05; see governance/showcase-motion-decision.json",
     "productTruth": "No product capability or business evidence claims are made"
   }
 }

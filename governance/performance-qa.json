@@ -1,28 +1,28 @@
 {
   "schemaVersion": "motif-library-performance-qa/1.0",
-  "executedAt": "2026-09-04T18:16:49.526Z",
+  "executedAt": "2026-09-04T19:14:15.656Z",
   "artifactRoot": ".",
   "browser": "152.0.7977.82",
   "route": "/motif/",
   "evidenceBoundary": "Local synthetic timing is diagnostic evidence only. It is not field p75 Core Web Vitals and does not predict GitHub Pages or end-user network performance.",
-  "paintRisk": "bounded gradients and finite/state-bound motion; no external runtime, analytics, video, blur-heavy full-screen animation, or permanent polling",
+  "paintRisk": "bounded gradients, finite/state-bound production motion, and one user-opened dialog-local 3000 ms inspection replay with pause/visibility cleanup; no external runtime, analytics, video, blur-heavy full-screen animation, or page-level permanent polling",
   "cold": {
     "label": "cold_visit",
     "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
     "requestCount": 36,
     "resourceCount": 35,
-    "transferBytes": 330753,
-    "decodedBodyBytes": 319953,
+    "transferBytes": 337818,
+    "decodedBodyBytes": 327018,
     "cacheEligibleResourceCount": 35,
     "zeroTransferResourceCount": 0,
     "duplicateUrls": [],
     "timing": {
-      "responseEndMs": 5,
-      "domContentLoadedMs": 74,
-      "loadMs": 91,
-      "firstContentfulPaintMs": 96,
-      "largestContentfulPaintMs": 96,
-      "cumulativeLayoutShift": 0.0268,
+      "responseEndMs": 6,
+      "domContentLoadedMs": 18,
+      "loadMs": 80,
+      "firstContentfulPaintMs": 108,
+      "largestContentfulPaintMs": 108,
+      "cumulativeLayoutShift": 0.003,
       "longTaskMs": 0
     }
   },
@@ -31,17 +31,17 @@
     "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
     "requestCount": 36,
     "resourceCount": 35,
-    "transferBytes": 58740,
-    "decodedBodyBytes": 319953,
+    "transferBytes": 59283,
+    "decodedBodyBytes": 327018,
     "cacheEligibleResourceCount": 35,
     "zeroTransferResourceCount": 35,
     "duplicateUrls": [],
     "timing": {
-      "responseEndMs": 2,
-      "domContentLoadedMs": 15,
-      "loadMs": 23,
-      "firstContentfulPaintMs": 44,
-      "largestContentfulPaintMs": 44,
+      "responseEndMs": 3,
+      "domContentLoadedMs": 17,
+      "loadMs": 28,
+      "firstContentfulPaintMs": 48,
+      "largestContentfulPaintMs": 48,
       "cumulativeLayoutShift": 0,
       "longTaskMs": 0
     }
@@ -65,12 +65,12 @@
     {
       "name": "local CLS at or below 0.1",
       "passed": true,
-      "detail": 0.0268
+      "detail": 0.003
     },
     {
       "name": "local LCP observer returned a value",
       "passed": true,
-      "detail": 96
+      "detail": 108
     },
     {
       "name": "repeat visit reuses at least one cache-eligible response",

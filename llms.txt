@@ -5,6 +5,7 @@ English route: https://montri-th.github.io/motif/en/
 Repository: https://github.com/montri-th/motif
 Asset manifest: https://montri-th.github.io/motif/assets/motif-library.json
 Owner approval: https://montri-th.github.io/motif/governance/owner-approval.json
+Showcase motion decision: https://montri-th.github.io/motif/governance/showcase-motion-decision.json
 Checksums: https://montri-th.github.io/motif/governance/SHA256SUMS.txt
 Human guide: https://montri-th.github.io/motif/docs/usage-guide.md
 
@@ -24,7 +25,8 @@ Agent rules:
 5. A motif is not an official logo, data, evidence, score, confidence, completion, or product capability.
 6. Do not redraw, recolor, crop geometry, distort, trace screenshots, or reconstruct from model memory.
 7. Default to static. For web_public motion only, resolve the matching family in agentContract.motionExtensions and copy its exact runtime IDs and lifecycle while keeping selectedRecord.path as fallback. Landometer motion is finite once. ijji motion is allowed only while a real pending operation exists and must stop on success, failure, cancel, or timeout.
-8. Verify the final rendered or exported output and report unverified gates.
+8. The library's user-opened Landometer preview dialog auto-replays full + quiet as an inspection aid. Do not copy or infer that loop for downstream work; it does not alter the finite_once production contract.
+9. Verify the final rendered or exported output and report unverified gates.
 
 Rights: public availability is not an unrestricted third-party or open-source license. Follow LICENSE.md and governance/owner-approval.json.
 

@@ -166,6 +166,7 @@ ijjiAssets.push(
 const manifest = {
   schemaVersion: "landometer-motif-library/1.0",
   libraryId: "landometer-motif-library-v1",
+  artifactRelease: "1.1.0",
   releaseDate: "2026-09-05",
   status: "owner_approved_publication",
   canonicalUrl: "https://montri-th.github.io/motif/",
@@ -204,6 +205,18 @@ const manifest = {
     ijjiOriginalManifestStatus: "The bundled assets/ijji/manifest.json preserves historical source metadata that says candidate/exploration. It is reference-only; this main manifest plus the dated owner approval is the current artifact authority.",
     explorations: "decision_history_only_not_distributed",
   },
+  showcaseExperience: {
+    classification: "component_local_instructional_showcase",
+    authorityRef: "governance/showcase-motion-decision.json",
+    scope: "landometer_preview_dialog_only",
+    variants: ["full", "quiet"],
+    revealTrigger: "user_opens_preview_dialog",
+    autoplay: "immediate",
+    replayIntervalMs: 3000,
+    activeConditions: ["dialog_open", "document_visible", "reduced_motion_off", "not_manually_paused"],
+    controls: ["pause_auto_replay", "replay_now"],
+    boundary: "The repeating pair is an inspection aid in this library UI. It is not a reusable motion extension and does not change the finite_once production lifecycle.",
+  },
   agentContract: {
     schemaVersion: "motif-library-agent-contract/1.0",
     selectionRule: "Choose one exact generated_vector record from families[].assets as the static baseline. Copy its scalar fields without translating enum values, then choose allowedJob and allowedFormat from that same record only, using fieldDerivation. The baseline record always has motionMode static.",
@@ -213,6 +226,7 @@ const manifest = {
       allowedFormat: "Choose one exact value from selectedRecord.allowedFormats.",
     },
     baselineMotionMode: "static",
+    showcaseBoundary: "Do not copy or infer the library preview dialog's auto-replay behavior. Downstream Landometer web motion remains finite_once unless a separately authorized artifact-level decision says otherwise.",
     motionExtensionRule: "Default to no extension. Only for allowedFormat web_public, choose the one extension whose familyId equals selectedRecord.familyId; copy its exact runtimeAssetIds and lifecycle. Keep selectedRecord.path as the static fallback. Do not infer a motion runtime for deck, social, document, or video outputs.",
     motionExtensionRequiredFields: ["motionMode", "runtimeAssetIds", "runtimeAllowedJob", "runtimeAllowedFormat", "staticFallback"],
     motionExtensions: {

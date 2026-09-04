@@ -2,6 +2,8 @@
 
 A bilingual learning site and exact-byte asset library for Landometer shared motifs and ijji product-specific motifs.
 
+Artifact release: **1.1.0** · 5 September 2026
+
 Live target: <https://montri-th.github.io/motif/>
 
 ## Start here
@@ -29,7 +31,13 @@ The site has no dependency install or build step. Serve the repository root with
 python3 -m http.server 4173
 ```
 
-Then open <http://localhost:4173/>. Core content and static motif previews remain available without JavaScript. JavaScript adds search, filters, finite motion previews, bounded ijji state previews, theme switching, copy actions, and local PNG export.
+Then open <http://localhost:4173/>. Core content and static motif previews remain available without JavaScript. JavaScript adds search, filters, an owner-selected full + quiet inspection showcase, bounded ijji state previews, theme switching, copy actions, and local PNG export.
+
+## Showcase inspection versus production motion
+
+In release 1.1.0, opening a Landometer Preview dialog reveals the full and quiet variants side by side, starts both immediately, and replays them together every 3000 ms while the dialog stays open and visible. The viewer can pause auto-replay or replay immediately. Reduced-motion users receive both stable final states without the replay timer.
+
+This loop is a component-local instructional aid for this library—not a new production motion contract. The governed runtime bytes, implementation snippets, and machine manifest remain `finite_once`; the hero remains one-shot and asset-card thumbnails remain static. ijji is excluded and remains `state_bound_only`. The exact decision and stopping rules are recorded in [`governance/showcase-motion-decision.json`](governance/showcase-motion-decision.json).
 
 ## File map
 
@@ -53,13 +61,18 @@ Run these scripts after changing source assets:
 ```sh
 node scripts/build-static-assets.mjs
 node scripts/build-manifest.mjs
+shasum -a 256 assets/motif-library.json
 NODE_PATH=/path/to/node_modules node scripts/build-downloads.mjs
 node scripts/build-checksums.mjs
 node scripts/verify-site.mjs
 ```
+
+After `build-manifest.mjs`, inspect the contract diff and confirm that the change is within current owner authority. Then bind the reviewed digest to `assetManifestSha256` in `governance/owner-approval.json` before rebuilding downloads and repository checksums. Never re-bind a changed manifest mechanically when its scope lacks owner approval.
 
 The selected Landometer runtime is the copy from `Landometer Brand Motifs Assets and Prompt.zip`, SHA-256 `605129c765a3e1da91313467aeac46f5bd60223f1359b78d62b4b2e0a0325702`. The other supplied Landometer HTML archive contains a divergent same-version runtime; the resolution is documented in `governance/source-ledger.json`.
 
 ## ภาษาไทยแบบสั้น
 
 คลังนี้ช่วยให้ทีมเลือก motif ตาม brand layer, งาน, channel และ motion mode จากไฟล์จริงที่มี version/hash ชัดเจน ห้ามใช้ motif เป็นโลโก้ ข้อมูล หลักฐาน หรือ claim และห้ามนำ ijji ไปเหมารวมเป็น Landometer ทุกงานควรตรวจ static fallback, reduced motion, accessibility และไฟล์ส่งจริงก่อนเผยแพร่
+
+ใน release 1.1.0 หน้าต่าง Preview ของ Landometer จะแสดง full + quiet พร้อมกันและวนซ้ำทุก 3 วินาทีเพื่อให้ตรวจ animation ได้ง่าย พฤติกรรมนี้เป็นโหมดสาธิตเฉพาะคลัง ไม่ใช่ค่า production: runtime, ตัวอย่างโค้ด และ manifest ยังใช้ `finite_once`; hero ยังเล่นครั้งเดียว, card ยังเป็นภาพนิ่ง และ ijji ยังคง `state_bound_only`

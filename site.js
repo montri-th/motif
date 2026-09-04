@@ -13,7 +13,13 @@
       downloadReady: "สร้างไฟล์ PNG แล้ว",
       downloadFailed: "สร้างไฟล์ PNG ไม่สำเร็จ",
       result: (count) => `พบ ${count} assets`,
-      lmStatus: "แอนิเมชัน finite เล่นหนึ่งครั้ง · ภาพนิ่งคือสถานะสุดท้าย",
+      lmStatus: "ตัวอย่าง full + quiet เล่นทันทีและวนซ้ำขณะเปิด · งานจริงยังเล่นแบบ finite once",
+      lmPaused: "หยุด auto replay แล้ว · ภาพอยู่ที่สถานะสุดท้าย",
+      lmReduced: "แสดงสถานะสุดท้ายของ full + quiet · ปิด auto replay ตามการตั้งค่า reduced motion",
+      replayNow: "เล่นซ้ำตอนนี้",
+      pauseAutoplay: "หยุด auto replay",
+      fullVariant: "full",
+      quietVariant: "quiet",
       ijjiWorking: "ijji กำลังประมวลผล",
       ijjiElapsed: (seconds) => `${seconds.toFixed(1)} วินาที`,
       ijjiDone: "ตัวอย่างจบแล้ว · motif หยุดพร้อมสถานะ",
@@ -30,7 +36,13 @@
       downloadReady: "PNG created",
       downloadFailed: "Could not create the PNG",
       result: (count) => `${count} assets shown`,
-      lmStatus: "Finite animation, played once · the still is the final state",
+      lmStatus: "Full + quiet play immediately and auto-replay while open · production use remains finite once",
+      lmPaused: "Auto-replay paused · both motifs are at their final state",
+      lmReduced: "Full + quiet final states · auto-replay is off for reduced motion",
+      replayNow: "Replay now",
+      pauseAutoplay: "Pause auto-replay",
+      fullVariant: "full",
+      quietVariant: "quiet",
       ijjiWorking: "ijji is processing",
       ijjiElapsed: (seconds) => `${seconds.toFixed(1)} seconds`,
       ijjiDone: "Specimen complete · the motif stopped with the state",
@@ -190,12 +202,48 @@
   let previewInterval = 0;
   let previewTimeout = 0;
   let ijjiModulePromise = null;
+  let previewRenderGeneration = 0;
+  let landometerPreviewPaused = false;
+  let landometerReplayGeneration = 0;
+  const reducedMotionPreference = window.matchMedia?.("(prefers-reduced-motion: reduce)") || null;
+  const landometerReplayMs = 3000;
 
   function clearPreviewTimers() {
     clearInterval(previewInterval);
     clearTimeout(previewTimeout);
     previewInterval = 0;
     previewTimeout = 0;
+  }
+
+  function landometerPreviewMotifs() {
+    return [...(dialogStage?.querySelectorAll("lm-motif") || [])];
+  }
+
+  function stopLandometerAutoreplay() {
+    landometerReplayGeneration += 1;
+    clearTimeout(previewTimeout);
+    previewTimeout = 0;
+    landometerPreviewMotifs().forEach((motif) => motif.removeAttribute("data-play"));
+  }
+
+  function playLandometerPreviewCycle() {
+    stopLandometerAutoreplay();
+    if (
+      landometerPreviewPaused
+      || previewConfig?.brand !== "landometer"
+      || !dialog?.open
+      || document.visibilityState !== "visible"
+      || reducedMotionPreference?.matches
+    ) return;
+    const motifs = landometerPreviewMotifs();
+    if (motifs.length !== 2) return;
+    motifs.forEach((motif) => motif.removeAttribute("data-play"));
+    void dialogStage.offsetWidth;
+    motifs.forEach((motif) => motif.setAttribute("data-play", ""));
+    const generation = landometerReplayGeneration;
+    previewTimeout = window.setTimeout(() => {
+      if (generation === landometerReplayGeneration) playLandometerPreviewCycle();
+    }, landometerReplayMs);
   }
 
   function setPreviewStatus(message, elapsed = null) {
@@ -217,26 +265,74 @@
   }
 
   async function renderPreview() {
-    if (!previewConfig || !dialogStage) return;
+    const config = previewConfig ? { ...previewConfig } : null;
+    if (!config || !dialogStage) return;
+    const generation = ++previewRenderGeneration;
     clearPreviewTimers();
     dialogStage.replaceChildren();
-    dialogStage.classList.toggle("is-dark", previewConfig.brand === "ijji");
+    dialogStage.classList.toggle("is-dark", config.brand === "ijji");
 
-    if (previewConfig.brand === "landometer") {
-      const motif = document.createElement("lm-motif");
-      motif.setAttribute("kind", previewConfig.id);
-      motif.setAttribute("autoplay", "false");
-      dialogStage.append(motif);
-      requestAnimationFrame(() => motif.play?.());
-      setPreviewStatus(copy.lmStatus);
+    if (config.brand === "landometer") {
+      const pair = document.createElement("div");
+      pair.className = "dialog-motif-pair";
+      [
+        { quiet: false, label: copy.fullVariant },
+        { quiet: true, label: copy.quietVariant },
+      ].forEach((variant) => {
+        const figure = document.createElement("figure");
+        figure.className = "dialog-motif-variant";
+        const motif = document.createElement("lm-motif");
+        motif.setAttribute("kind", config.id);
+        motif.setAttribute("autoplay", "false");
+        if (variant.quiet) motif.setAttribute("quiet", "");
+        const caption = document.createElement("figcaption");
+        caption.textContent = variant.label;
+        figure.append(motif, caption);
+        pair.append(figure);
+      });
+      dialogStage.append(pair);
+      landometerPreviewPaused = false;
+      if (replayButton) {
+        replayButton.hidden = Boolean(reducedMotionPreference?.matches);
+        replayButton.disabled = false;
+        replayButton.textContent = copy.replayNow;
+      }
+      if (cancelButton) {
+        cancelButton.hidden = Boolean(reducedMotionPreference?.matches);
+        cancelButton.disabled = false;
+        cancelButton.textContent = copy.pauseAutoplay;
+      }
+      if (reducedMotionPreference?.matches) {
+        setPreviewStatus(copy.lmReduced);
+      } else {
+        playLandometerPreviewCycle();
+        setPreviewStatus(copy.lmStatus);
+      }
       return;
+    }
+
+    if (replayButton) {
+      replayButton.hidden = false;
+      replayButton.disabled = false;
+      replayButton.textContent = copy.replay;
+    }
+    if (cancelButton) {
+      cancelButton.hidden = false;
+      cancelButton.disabled = false;
+      cancelButton.textContent = copy.stop;
     }
 
     try {
       const moduleUrl = new URL(`${base}/assets/ijji/ijji-motifs.js`, document.baseURI).href;
       ijjiModulePromise ||= import(moduleUrl);
       const module = await ijjiModulePromise;
-      const markup = module.IJJI_MOTIFS?.[`${previewConfig.id}-transparent-mint`];
+      if (
+        generation !== previewRenderGeneration
+        || !dialog?.open
+        || previewConfig?.brand !== config.brand
+        || previewConfig?.id !== config.id
+      ) return;
+      const markup = module.IJJI_MOTIFS?.[`${config.id}-transparent-mint`];
       if (!markup) throw new Error("missing asset");
       const slot = document.createElement("span");
       slot.className = "ijji-slot";
@@ -248,9 +344,16 @@
       previewInterval = window.setInterval(() => {
         if (dialogTimer) dialogTimer.textContent = ` · ${copy.ijjiElapsed((performance.now() - started) / 1000)}`;
       }, 250);
-      previewTimeout = window.setTimeout(() => finishIjjiPreview("done"), previewConfig.duration * 1000);
+      previewTimeout = window.setTimeout(() => {
+        if (generation === previewRenderGeneration && dialog?.open) finishIjjiPreview("done");
+      }, config.duration * 1000);
     } catch (_) {
-      setPreviewStatus(copy.unavailable);
+      if (
+        generation === previewRenderGeneration
+        && dialog?.open
+        && previewConfig?.brand === config.brand
+        && previewConfig?.id === config.id
+      ) setPreviewStatus(copy.unavailable);
     }
   }
 
@@ -261,30 +364,68 @@
         id: button.dataset.previewId,
         duration: Number(button.dataset.duration || 4),
       };
-      if (dialogTitle) dialogTitle.textContent = `${previewConfig.brand === "ijji" ? "ijji" : "Landometer"} · ${previewConfig.id}`;
-      if (replayButton) replayButton.textContent = copy.replay;
-      if (cancelButton) cancelButton.textContent = copy.stop;
+      if (dialogTitle) dialogTitle.textContent = `${previewConfig.brand === "ijji" ? "ijji" : "Landometer"} · ${previewConfig.id}${previewConfig.brand === "landometer" ? " · full + quiet" : ""}`;
       if (!dialog?.open) dialog?.showModal();
       renderPreview();
     });
   });
 
-  replayButton?.addEventListener("click", renderPreview);
+  replayButton?.addEventListener("click", () => {
+    landometerPreviewPaused = false;
+    renderPreview();
+  });
   cancelButton?.addEventListener("click", () => {
-    if (previewConfig?.brand === "ijji") finishIjjiPreview("stopped");
+    if (previewConfig?.brand === "ijji") {
+      previewRenderGeneration += 1;
+      finishIjjiPreview("stopped");
+    }
     else {
-      clearPreviewTimers();
-      dialogStage?.querySelector("lm-motif")?.removeAttribute("data-play");
-      setPreviewStatus(copy.stopped);
+      landometerPreviewPaused = true;
+      stopLandometerAutoreplay();
+      if (cancelButton) cancelButton.disabled = true;
+      setPreviewStatus(copy.lmPaused);
     }
   });
   document.querySelector("[data-dialog-close]")?.addEventListener("click", () => dialog?.close());
   dialog?.addEventListener("close", () => {
+    previewRenderGeneration += 1;
     clearPreviewTimers();
+    landometerPreviewPaused = false;
     dialogStage?.replaceChildren();
+    previewConfig = null;
   });
   dialog?.addEventListener("click", (event) => {
     if (event.target === dialog) dialog.close();
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (previewConfig?.brand !== "landometer" || !dialog?.open) return;
+    if (document.visibilityState === "visible") playLandometerPreviewCycle();
+    else stopLandometerAutoreplay();
+  });
+
+  reducedMotionPreference?.addEventListener?.("change", () => {
+    if (previewConfig?.brand !== "landometer" || !dialog?.open) return;
+    stopLandometerAutoreplay();
+    const isReduced = reducedMotionPreference.matches;
+    if (replayButton) replayButton.hidden = isReduced;
+    if (cancelButton) cancelButton.hidden = isReduced;
+    if (isReduced) setPreviewStatus(copy.lmReduced);
+    else if (!landometerPreviewPaused) {
+      if (cancelButton) cancelButton.disabled = false;
+      playLandometerPreviewCycle();
+      setPreviewStatus(copy.lmStatus);
+    } else setPreviewStatus(copy.lmPaused);
+  });
+
+  window.addEventListener("pagehide", () => {
+    previewRenderGeneration += 1;
+    if (previewConfig?.brand === "ijji" && dialog?.open) finishIjjiPreview("stopped");
+    else stopLandometerAutoreplay();
+    clearPreviewTimers();
+  });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted && previewConfig?.brand === "landometer" && dialog?.open) playLandometerPreviewCycle();
   });
 
   document.querySelectorAll("[data-download-png]").forEach((button) => {

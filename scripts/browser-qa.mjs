@@ -7,7 +7,7 @@ import path from "node:path";
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 const root = path.resolve(import.meta.dirname, "..");
-const qaOutput = path.join(root, "governance/browser-qa.json");
+const qaOutput = process.env.MOTIF_BROWSER_QA_OUTPUT || path.join(root, "governance/browser-qa.json");
 const screenshotDir = "/private/tmp/motif-browser-qa";
 const failures = [];
 const checks = [];
@@ -71,6 +71,7 @@ const viewports = [
   { width: 600, height: 900 },
   { width: 713, height: 823 },
   { width: 768, height: 1024 },
+  { width: 844, height: 390 },
   { width: 900, height: 900 },
   { width: 1080, height: 900 },
   { width: 1200, height: 900 },
@@ -183,17 +184,121 @@ for (const viewport of viewports) {
   await page.locator("[data-asset-search]").fill("");
 
   const landometerPreview = page.locator('[data-preview-brand="landometer"]').first();
+  const selectedLandometerKind = await landometerPreview.getAttribute("data-preview-id");
   await landometerPreview.click();
-  await page.waitForTimeout(100);
   record(await page.locator("#preview-dialog").evaluate((dialog) => dialog.open), "Landometer preview opens as modal dialog");
-  record(await page.locator("#preview-stage lm-motif svg").count() === 1, "Landometer preview renders exact runtime motif");
+  const initialLandometerPreview = await page.locator("#preview-stage").evaluate((stage) => ({
+    motifs: [...stage.querySelectorAll("lm-motif")].map((motif) => ({
+      kind: motif.getAttribute("kind"),
+      quiet: motif.hasAttribute("quiet"),
+      playing: motif.hasAttribute("data-play"),
+      svgCount: motif.querySelectorAll("svg").length,
+      ariaHidden: motif.getAttribute("aria-hidden"),
+    })),
+    captions: [...stage.querySelectorAll("figcaption")].map((caption) => caption.textContent?.trim()),
+  }));
+  record(
+    initialLandometerPreview.motifs.length === 2
+      && initialLandometerPreview.motifs.every((motif) => motif.kind === selectedLandometerKind && motif.playing && motif.svgCount === 1 && motif.ariaHidden === "true")
+      && initialLandometerPreview.motifs.filter((motif) => motif.quiet).length === 1
+      && initialLandometerPreview.captions.join(",") === "full,quiet",
+    "Landometer preview immediately autoplays paired full and quiet exact-runtime motifs",
+    JSON.stringify(initialLandometerPreview),
+  );
+
+  await page.evaluate(() => {
+    const motifs = [...document.querySelectorAll("#preview-stage lm-motif")];
+    window.__lmReplayAttributeMutations = motifs.map(() => 0);
+    window.__lmReplayObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        const index = motifs.indexOf(mutation.target);
+        if (index >= 0 && mutation.attributeName === "data-play") window.__lmReplayAttributeMutations[index] += 1;
+      });
+    });
+    motifs.forEach((motif) => window.__lmReplayObserver.observe(motif, { attributes: true, attributeFilter: ["data-play"] }));
+  });
+  await page.waitForTimeout(3300);
+  const replayCycle = await page.evaluate(() => ({
+    mutations: [...window.__lmReplayAttributeMutations],
+    playing: [...document.querySelectorAll("#preview-stage lm-motif")].map((motif) => motif.hasAttribute("data-play")),
+  }));
+  record(
+    replayCycle.mutations.length === 2
+      && replayCycle.mutations.every((count) => count >= 2)
+      && replayCycle.playing.every(Boolean),
+    "Landometer full and quiet motifs auto-replay together after about three seconds",
+    JSON.stringify(replayCycle),
+  );
+
+  await page.locator("#preview-cancel").click();
+  const pausedBeforeWait = await page.evaluate(() => ({
+    mutations: [...window.__lmReplayAttributeMutations],
+    playing: [...document.querySelectorAll("#preview-stage lm-motif")].map((motif) => motif.hasAttribute("data-play")),
+    pauseDisabled: document.querySelector("#preview-cancel")?.disabled,
+    status: document.querySelector("#preview-status")?.textContent?.trim(),
+  }));
+  await page.waitForTimeout(3200);
+  const pausedAfterWait = await page.evaluate(() => ({
+    mutations: [...window.__lmReplayAttributeMutations],
+    playing: [...document.querySelectorAll("#preview-stage lm-motif")].map((motif) => motif.hasAttribute("data-play")),
+  }));
+  record(
+    pausedBeforeWait.playing.every((playing) => !playing)
+      && pausedBeforeWait.pauseDisabled
+      && pausedBeforeWait.status.includes("หยุด auto replay")
+      && pausedAfterWait.playing.every((playing) => !playing)
+      && pausedAfterWait.mutations.join(",") === pausedBeforeWait.mutations.join(","),
+    "Pause stops Landometer auto-replay and leaves both motifs at their final states",
+    JSON.stringify({ pausedBeforeWait, pausedAfterWait }),
+  );
+
+  await page.evaluate(() => window.__lmReplayObserver?.disconnect());
+  await page.locator("#preview-replay").click();
+  const resumedPreview = await page.evaluate(() => ({
+    count: document.querySelectorAll("#preview-stage lm-motif").length,
+    playing: [...document.querySelectorAll("#preview-stage lm-motif")].map((motif) => motif.hasAttribute("data-play")),
+    pauseDisabled: document.querySelector("#preview-cancel")?.disabled,
+  }));
+  record(
+    resumedPreview.count === 2 && resumedPreview.playing.every(Boolean) && !resumedPreview.pauseDisabled,
+    "Replay now resumes the paired Landometer autoplay loop",
+    JSON.stringify(resumedPreview),
+  );
+  await page.locator("[data-dialog-close]").click();
+
+  const expectedKinds = ["dial", "rings", "layers", "slice", "cultivate", "logo"];
+  for (const kind of expectedKinds) {
+    const trigger = page.locator(`[data-preview-brand="landometer"][data-preview-id="${kind}"]`).first();
+    await trigger.click();
+    const kindSnapshot = await page.locator("#preview-stage").evaluate((stage) => ({
+      kinds: [...stage.querySelectorAll("lm-motif")].map((motif) => motif.getAttribute("kind")),
+      quietCount: stage.querySelectorAll("lm-motif[quiet]").length,
+      playingCount: stage.querySelectorAll("lm-motif[data-play]").length,
+    }));
+    record(
+      kindSnapshot.kinds.length === 2
+        && kindSnapshot.kinds.every((value) => value === kind)
+        && kindSnapshot.quietCount === 1
+        && kindSnapshot.playingCount === 2,
+      `Landometer ${kind} preview provides autoplaying full and quiet variants`,
+      JSON.stringify(kindSnapshot),
+    );
+    await page.locator("[data-dialog-close]").click();
+  }
+
+  await landometerPreview.focus();
+  await landometerPreview.click();
   await page.keyboard.press("Escape");
   record(!(await page.locator("#preview-dialog").evaluate((dialog) => dialog.open)), "Escape closes preview dialog");
+  record(await landometerPreview.evaluate((button) => document.activeElement === button), "Escape restores focus to the Landometer preview trigger");
 
   const ijjiPreview = page.locator('[data-preview-brand="ijji"][data-preview-id="rotate-b"]').last();
   await ijjiPreview.click();
   await page.waitForTimeout(150);
-  record(await page.locator("#preview-stage .ijji-motif").count() === 1, "ijji pending-state preview starts inline");
+  record(
+    await page.locator("#preview-stage .ijji-motif").count() === 1 && await page.locator("#preview-stage lm-motif").count() === 0,
+    "ijji pending-state preview remains a single state-bound motif",
+  );
   record(await page.locator("[data-preview-timer]").getAttribute("aria-hidden") === "true", "Frequently changing ijji elapsed time is excluded from the live announcement");
   await page.locator("#preview-cancel").click();
   record(await page.locator("#preview-stage .ijji-motif").count() === 0 && await page.locator("#preview-stage img").count() === 1, "ijji cancel removes motion and leaves static fallback");
@@ -211,6 +316,135 @@ for (const viewport of viewports) {
   const pngBytes = fs.readFileSync(pngPath);
   record(download.suggestedFilename() === "landometer-dial-full.png", "PNG export keeps deterministic filename", download.suggestedFilename());
   record(pngBytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), "PNG export produces a valid PNG signature", `${pngBytes.length} bytes`);
+  await context.close();
+}
+
+// A delayed ijji module must not overwrite a newer Landometer preview after the first dialog is closed.
+{
+  const context = await browser.newContext({ viewport: { width: 900, height: 900 } });
+  const page = await context.newPage();
+  await page.route("**/assets/ijji/ijji-motifs.js", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    await route.continue();
+  });
+  await page.goto(`${siteBase}/`, { waitUntil: "networkidle" });
+  await page.locator('[data-preview-brand="ijji"][data-preview-id="rotate-b"]').last().click();
+  await page.locator("[data-dialog-close]").click();
+  await page.locator('[data-preview-brand="landometer"]').first().click();
+  await page.waitForTimeout(750);
+  const raceSnapshot = await page.evaluate(() => ({
+    open: Boolean(document.querySelector("#preview-dialog")?.open),
+    landometerCount: document.querySelectorAll("#preview-stage lm-motif").length,
+    quietCount: document.querySelectorAll("#preview-stage lm-motif[quiet]").length,
+    ijjiCount: document.querySelectorAll("#preview-stage .ijji-motif").length,
+    status: document.querySelector("#preview-status")?.textContent?.trim(),
+  }));
+  record(
+    raceSnapshot.open
+      && raceSnapshot.landometerCount === 2
+      && raceSnapshot.quietCount === 1
+      && raceSnapshot.ijjiCount === 0
+      && raceSnapshot.status.includes("finite once"),
+    "A stale delayed ijji import cannot overwrite a newer paired Landometer preview",
+    JSON.stringify(raceSnapshot),
+  );
+  await context.close();
+}
+
+// Dynamic motion preferences, visibility, and BFCache-style lifecycle events stop and resume only when allowed.
+{
+  const context = await browser.newContext({ viewport: { width: 900, height: 900 } });
+  const page = await context.newPage();
+  await page.goto(`${siteBase}/`, { waitUntil: "networkidle" });
+  await page.locator('[data-preview-brand="landometer"]').first().click();
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.waitForTimeout(50);
+  const dynamicallyReduced = await page.evaluate(() => ({
+    playingCount: document.querySelectorAll("#preview-stage lm-motif[data-play]").length,
+    replayHidden: document.querySelector("#preview-replay")?.hidden,
+    pauseHidden: document.querySelector("#preview-cancel")?.hidden,
+  }));
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.waitForTimeout(50);
+  const dynamicallyRestored = await page.locator("#preview-stage lm-motif[data-play]").count();
+  record(
+    dynamicallyReduced.playingCount === 0
+      && dynamicallyReduced.replayHidden
+      && dynamicallyReduced.pauseHidden
+      && dynamicallyRestored === 2,
+    "A live reduced-motion preference change stops replay and resumes only when motion is allowed again",
+    JSON.stringify({ dynamicallyReduced, dynamicallyRestored }),
+  );
+
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await page.waitForTimeout(3150);
+  const hiddenPlayingCount = await page.locator("#preview-stage lm-motif[data-play]").count();
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", { configurable: true, value: "visible" });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  const visiblePlayingCount = await page.locator("#preview-stage lm-motif[data-play]").count();
+  record(
+    hiddenPlayingCount === 0 && visiblePlayingCount === 2,
+    "Document visibility stops hidden replay without catch-up and restarts the pair when visible",
+    JSON.stringify({ hiddenPlayingCount, visiblePlayingCount }),
+  );
+
+  await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: true })));
+  const pagehidePlayingCount = await page.locator("#preview-stage lm-motif[data-play]").count();
+  await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pageshow", { persisted: true })));
+  const pageshowPlayingCount = await page.locator("#preview-stage lm-motif[data-play]").count();
+  record(
+    pagehidePlayingCount === 0 && pageshowPlayingCount === 2,
+    "Synthetic pagehide/pageshow lifecycle events stop replay and restore an eligible open preview",
+    JSON.stringify({ pagehidePlayingCount, pageshowPlayingCount }),
+  );
+  await context.close();
+}
+
+// The paired Landometer modal must remain horizontally contained at the narrowest portrait and short landscape breakpoints.
+for (const fixture of [
+  { route: "/", locale: "th", viewport: { width: 320, height: 800 } },
+  { route: "/en/", locale: "en", viewport: { width: 844, height: 390 } },
+]) {
+  const context = await browser.newContext({ viewport: fixture.viewport });
+  const page = await context.newPage();
+  await page.goto(`${siteBase}${fixture.route}`, { waitUntil: "networkidle" });
+  await page.locator('[data-preview-brand="landometer"]').first().click();
+  const modalLayout = await page.evaluate(() => {
+    const dialog = document.querySelector("#preview-dialog");
+    const body = dialog?.querySelector(".dialog-body");
+    const stage = dialog?.querySelector(".dialog-stage");
+    const pair = dialog?.querySelector(".dialog-motif-pair");
+    const rect = dialog?.getBoundingClientRect();
+    const overflows = [dialog, body, stage, pair].map((element) => ({
+      className: element?.className || element?.id,
+      delta: element ? element.scrollWidth - element.clientWidth : Number.POSITIVE_INFINITY,
+    }));
+    return {
+      open: Boolean(dialog?.open),
+      motifCount: pair?.querySelectorAll("lm-motif").length || 0,
+      quietCount: pair?.querySelectorAll("lm-motif[quiet]").length || 0,
+      overflows,
+      withinViewport: Boolean(rect && rect.left >= -1 && rect.right <= window.innerWidth + 1),
+      pageOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    };
+  });
+  const label = `${fixture.locale} paired modal ${fixture.viewport.width}x${fixture.viewport.height}`;
+  record(
+    modalLayout.open
+      && modalLayout.motifCount === 2
+      && modalLayout.quietCount === 1
+      && modalLayout.overflows.every(({ delta }) => delta <= 1)
+      && modalLayout.withinViewport
+      && modalLayout.pageOverflow <= 1,
+    `${label} has no horizontal overflow`,
+    JSON.stringify(modalLayout),
+  );
   await context.close();
 }
 
@@ -233,8 +467,31 @@ for (const viewport of viewports) {
   await page.goto(`${siteBase}/`, { waitUntil: "networkidle" });
   await page.locator('[data-preview-brand="landometer"]').first().click();
   await page.waitForTimeout(50);
-  const lmAnimations = await page.locator("#preview-stage lm-motif *").evaluateAll((elements) => elements.map((element) => getComputedStyle(element).animationName));
-  record(lmAnimations.every((name) => name === "none"), "Reduced motion disables Landometer animation", [...new Set(lmAnimations)].join(", "));
+  const reducedLandometer = await page.evaluate(() => {
+    const motifs = [...document.querySelectorAll("#preview-stage lm-motif")];
+    return {
+      motifCount: motifs.length,
+      quietCount: motifs.filter((motif) => motif.hasAttribute("quiet")).length,
+      svgCount: motifs.reduce((count, motif) => count + motif.querySelectorAll("svg").length, 0),
+      playingCount: motifs.filter((motif) => motif.hasAttribute("data-play")).length,
+      animations: [...document.querySelectorAll("#preview-stage lm-motif *")].map((element) => getComputedStyle(element).animationName),
+      replayHidden: document.querySelector("#preview-replay")?.hidden,
+      pauseHidden: document.querySelector("#preview-cancel")?.hidden,
+      status: document.querySelector("#preview-status")?.textContent?.trim(),
+    };
+  });
+  record(
+    reducedLandometer.motifCount === 2
+      && reducedLandometer.quietCount === 1
+      && reducedLandometer.svgCount === 2
+      && reducedLandometer.playingCount === 0
+      && reducedLandometer.animations.every((name) => name === "none")
+      && reducedLandometer.replayHidden
+      && reducedLandometer.pauseHidden
+      && reducedLandometer.status.includes("reduced motion"),
+    "Reduced motion shows stable Landometer full and quiet final states with replay controls hidden",
+    JSON.stringify({ ...reducedLandometer, animations: [...new Set(reducedLandometer.animations)] }),
+  );
   await page.locator("[data-dialog-close]").click();
   await page.locator('[data-preview-brand="ijji"][data-preview-id="rotate-b"]').last().click();
   await page.waitForTimeout(100);
@@ -308,8 +565,9 @@ const report = {
   routes: ["/motif/", "/motif/en/"],
   browser: browserVersion,
   emulationNote: "Viewport checks are desktop Chrome emulation, not native iPhone, iPad, Safari, or screen-reader evidence.",
+  lifecycleEmulationNote: "Visibility and pagehide/pageshow handlers are exercised with standards-shaped in-page events; this is not a full operating-system tab suspension or cross-navigation BFCache observation.",
   viewports,
-  states: ["light", "dark", "keyboard", "dialog", "filter", "search", "copy", "PNG export", "bounded timeout", "cancel", "reduced motion", "no JavaScript", "Thai 130% text", "200% text"],
+  states: ["light", "dark", "keyboard", "paired full/quiet dialog", "immediate autoplay", "three-second auto-replay", "pause", "replay now", "Escape focus restoration", "stale async-preview isolation", "dynamic reduced motion", "synthetic document visibility lifecycle", "synthetic pagehide/pageshow lifecycle", "filter", "search", "copy", "PNG export", "ijji bounded timeout", "ijji cancel", "reduced motion final states", "no JavaScript", "Thai 130% text", "200% text"],
   screenshotsCaptured: {
     storage: "ephemeral local QA output; intentionally not published",
     names: ["th-mobile-360.png", "th-desktop-1440.png", "en-mobile-390.png"],
@@ -344,4 +602,4 @@ if (failures.length) {
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
-console.log(`PASS: ${checks.length} browser checks across ${viewports.length * 2} responsive route renders plus interaction, reduced-motion, no-JS, and text-scale states.`);
+console.log(`PASS: ${checks.length} browser checks across ${viewports.length * 2} responsive route renders plus paired-motion interaction, critical modal layout, reduced-motion, no-JS, and text-scale states.`);

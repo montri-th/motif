@@ -1,6 +1,6 @@
 {
   "schemaVersion": "motif-library-browser-qa/1.0",
-  "executedAt": "2026-09-04T18:16:37.908Z",
+  "executedAt": "2026-09-04T19:15:42.077Z",
   "artifactRoot": ".",
   "routes": [
     "/motif/",
@@ -8,6 +8,7 @@
   ],
   "browser": "152.0.7977.82",
   "emulationNote": "Viewport checks are desktop Chrome emulation, not native iPhone, iPad, Safari, or screen-reader evidence.",
+  "lifecycleEmulationNote": "Visibility and pagehide/pageshow handlers are exercised with standards-shaped in-page events; this is not a full operating-system tab suspension or cross-navigation BFCache observation.",
   "viewports": [
     {
       "width": 320,
@@ -34,6 +35,10 @@
       "height": 1024
     },
     {
+      "width": 844,
+      "height": 390
+    },
+    {
       "width": 900,
       "height": 900
     },
@@ -58,14 +63,23 @@
     "light",
     "dark",
     "keyboard",
-    "dialog",
+    "paired full/quiet dialog",
+    "immediate autoplay",
+    "three-second auto-replay",
+    "pause",
+    "replay now",
+    "Escape focus restoration",
+    "stale async-preview isolation",
+    "dynamic reduced motion",
+    "synthetic document visibility lifecycle",
+    "synthetic pagehide/pageshow lifecycle",
     "filter",
     "search",
     "copy",
     "PNG export",
-    "bounded timeout",
-    "cancel",
-    "reduced motion",
+    "ijji bounded timeout",
+    "ijji cancel",
+    "reduced motion final states",
     "no JavaScript",
     "Thai 130% text",
     "200% text"
@@ -88,8 +102,8 @@
     "visualReview": "inspected at intrinsic size; title, motif, safe area, and thumbnail composition passed"
   },
   "totals": {
-    "checks": 331,
-    "passed": 331,
+    "checks": 375,
+    "passed": 375,
     "failed": 0
   },
   "status": "candidate_ready_for_release_handoff",
@@ -929,6 +943,144 @@
       "detail": "none"
     },
     {
+      "name": "th 844x390 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 844x390 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 844x390 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 844x390 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 844x390 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "844/844"
+    },
+    {
+      "name": "th 844x390 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 844x390 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 844x390 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 844x390 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 844x390 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 844x390 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 844x390 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 844x390 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 844x390 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 844x390 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 844x390 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 844x390 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 844x390 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 844x390 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "844/844"
+    },
+    {
+      "name": "en 844x390 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 844x390 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 844x390 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 844x390 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 844x390 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 844x390 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 844x390 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 844x390 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 844x390 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
       "name": "th 900x900 route returns 200",
       "status": "passed",
       "detail": "200"
@@ -1649,15 +1801,65 @@
       "status": "passed"
     },
     {
-      "name": "Landometer preview renders exact runtime motif",
-      "status": "passed"
+      "name": "Landometer preview immediately autoplays paired full and quiet exact-runtime motifs",
+      "status": "passed",
+      "detail": "{\"motifs\":[{\"kind\":\"dial\",\"quiet\":false,\"playing\":true,\"svgCount\":1,\"ariaHidden\":\"true\"},{\"kind\":\"dial\",\"quiet\":true,\"playing\":true,\"svgCount\":1,\"ariaHidden\":\"true\"}],\"captions\":[\"full\",\"quiet\"]}"
+    },
+    {
+      "name": "Landometer full and quiet motifs auto-replay together after about three seconds",
+      "status": "passed",
+      "detail": "{\"mutations\":[2,2],\"playing\":[true,true]}"
+    },
+    {
+      "name": "Pause stops Landometer auto-replay and leaves both motifs at their final states",
+      "status": "passed",
+      "detail": "{\"pausedBeforeWait\":{\"mutations\":[3,3],\"playing\":[false,false],\"pauseDisabled\":true,\"status\":\"หยุด auto replay แล้ว · ภาพอยู่ที่สถานะสุดท้าย\"},\"pausedAfterWait\":{\"mutations\":[3,3],\"playing\":[false,false]}}"
+    },
+    {
+      "name": "Replay now resumes the paired Landometer autoplay loop",
+      "status": "passed",
+      "detail": "{\"count\":2,\"playing\":[true,true],\"pauseDisabled\":false}"
+    },
+    {
+      "name": "Landometer dial preview provides autoplaying full and quiet variants",
+      "status": "passed",
+      "detail": "{\"kinds\":[\"dial\",\"dial\"],\"quietCount\":1,\"playingCount\":2}"
+    },
+    {
+      "name": "Landometer rings preview provides autoplaying full and quiet variants",
+      "status": "passed",
+      "detail": "{\"kinds\":[\"rings\",\"rings\"],\"quietCount\":1,\"playingCount\":2}"
+    },
+    {
+      "name": "Landometer layers preview provides autoplaying full and quiet variants",
+      "status": "passed",
+      "detail": "{\"kinds\":[\"layers\",\"layers\"],\"quietCount\":1,\"playingCount\":2}"
+    },
+    {
+      "name": "Landometer slice preview provides autoplaying full and quiet variants",
+      "status": "passed",
+      "detail": "{\"kinds\":[\"slice\",\"slice\"],\"quietCount\":1,\"playingCount\":2}"
+    },
+    {
+      "name": "Landometer cultivate preview provides autoplaying full and quiet variants",
+      "status": "passed",
+      "detail": "{\"kinds\":[\"cultivate\",\"cultivate\"],\"quietCount\":1,\"playingCount\":2}"
+    },
+    {
+      "name": "Landometer logo preview provides autoplaying full and quiet variants",
+      "status": "passed",
+      "detail": "{\"kinds\":[\"logo\",\"logo\"],\"quietCount\":1,\"playingCount\":2}"
     },
     {
       "name": "Escape closes preview dialog",
       "status": "passed"
     },
     {
-      "name": "ijji pending-state preview starts inline",
+      "name": "Escape restores focus to the Landometer preview trigger",
+      "status": "passed"
+    },
+    {
+      "name": "ijji pending-state preview remains a single state-bound motif",
       "status": "passed"
     },
     {
@@ -1683,6 +1885,36 @@
       "detail": "22740 bytes"
     },
     {
+      "name": "A stale delayed ijji import cannot overwrite a newer paired Landometer preview",
+      "status": "passed",
+      "detail": "{\"open\":true,\"landometerCount\":2,\"quietCount\":1,\"ijjiCount\":0,\"status\":\"ตัวอย่าง full + quiet เล่นทันทีและวนซ้ำขณะเปิด · งานจริงยังเล่นแบบ finite once\"}"
+    },
+    {
+      "name": "A live reduced-motion preference change stops replay and resumes only when motion is allowed again",
+      "status": "passed",
+      "detail": "{\"dynamicallyReduced\":{\"playingCount\":0,\"replayHidden\":true,\"pauseHidden\":true},\"dynamicallyRestored\":2}"
+    },
+    {
+      "name": "Document visibility stops hidden replay without catch-up and restarts the pair when visible",
+      "status": "passed",
+      "detail": "{\"hiddenPlayingCount\":0,\"visiblePlayingCount\":2}"
+    },
+    {
+      "name": "Synthetic pagehide/pageshow lifecycle events stop replay and restore an eligible open preview",
+      "status": "passed",
+      "detail": "{\"pagehidePlayingCount\":0,\"pageshowPlayingCount\":2}"
+    },
+    {
+      "name": "th paired modal 320x800 has no horizontal overflow",
+      "status": "passed",
+      "detail": "{\"open\":true,\"motifCount\":2,\"quietCount\":1,\"overflows\":[{\"className\":\"preview-dialog\",\"delta\":0},{\"className\":\"dialog-body\",\"delta\":0},{\"className\":\"dialog-stage\",\"delta\":0},{\"className\":\"dialog-motif-pair\",\"delta\":0}],\"withinViewport\":true,\"pageOverflow\":0}"
+    },
+    {
+      "name": "en paired modal 844x390 has no horizontal overflow",
+      "status": "passed",
+      "detail": "{\"open\":true,\"motifCount\":2,\"quietCount\":1,\"overflows\":[{\"className\":\"preview-dialog\",\"delta\":0},{\"className\":\"dialog-body\",\"delta\":0},{\"className\":\"dialog-stage\",\"delta\":0},{\"className\":\"dialog-motif-pair\",\"delta\":0}],\"withinViewport\":true,\"pageOverflow\":0}"
+    },
+    {
       "name": "ijji preview stops automatically at state timeout",
       "status": "passed"
     },
@@ -1691,9 +1923,9 @@
       "status": "passed"
     },
     {
-      "name": "Reduced motion disables Landometer animation",
+      "name": "Reduced motion shows stable Landometer full and quiet final states with replay controls hidden",
       "status": "passed",
-      "detail": "none"
+      "detail": "{\"motifCount\":2,\"quietCount\":1,\"svgCount\":2,\"playingCount\":0,\"animations\":[\"none\"],\"replayHidden\":true,\"pauseHidden\":true,\"status\":\"แสดงสถานะสุดท้ายของ full + quiet · ปิด auto replay ตามการตั้งค่า reduced motion\"}"
     },
     {
       "name": "Reduced motion disables ijji animation",

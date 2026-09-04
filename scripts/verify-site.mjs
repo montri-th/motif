@@ -36,6 +36,7 @@ const required = [
   "assets/downloads/ijji-motifs-selected-r3.zip",
   "assets/downloads/motif-library-v1.zip",
   "governance/owner-approval.json",
+  "governance/showcase-motion-decision.json",
   "governance/source-ledger.json",
   "governance/build-card.json",
   "governance/identity-assets.json",
@@ -69,21 +70,30 @@ if (fs.existsSync(path.join(root, "governance/SHA256SUMS.txt"))) {
 const manifest = JSON.parse(read("assets/motif-library.json"));
 const approval = JSON.parse(read("governance/owner-approval.json"));
 const sourceLedger = JSON.parse(read("governance/source-ledger.json"));
+const showcaseDecision = JSON.parse(read("governance/showcase-motion-decision.json"));
 const buildCard = JSON.parse(read("governance/build-card.json"));
 const identityAssets = JSON.parse(read("governance/identity-assets.json"));
 check(manifest.schemaVersion === "landometer-motif-library/1.0", "Unexpected manifest schema version");
+check(manifest.artifactRelease === "1.1.0", "Manifest must identify artifact release 1.1.0");
 check(manifest.families.length === 2, "Manifest must contain exactly two brand families");
 check(manifest.families.flatMap((family) => family.assets).length === 34, "Manifest must contain 34 asset records");
 check(manifest.agentContract?.schemaVersion === "motif-library-agent-contract/1.0", "Deterministic agent contract is missing");
 check(manifest.agentContract?.fieldDerivation?.allowedJob === "Choose one exact value from selectedRecord.allowedJobs.", "Agent contract must derive allowedJob from the selected record");
 check(manifest.agentContract?.fieldDerivation?.allowedFormat === "Choose one exact value from selectedRecord.allowedFormats.", "Agent contract must derive allowedFormat from the selected record");
 check(manifest.agentContract?.baselineMotionMode === "static", "Agent contract must select a static baseline before any motion extension");
+check(manifest.showcaseExperience?.authorityRef === "governance/showcase-motion-decision.json", "Showcase experience must resolve its authority decision");
+check(manifest.showcaseExperience?.replayIntervalMs === 3000, "Showcase replay interval must remain 3000 ms");
+check(manifest.showcaseExperience?.scope === "landometer_preview_dialog_only", "Showcase replay must remain dialog-scoped");
+check(manifest.agentContract?.showcaseBoundary?.includes("Do not copy"), "Agent contract must distinguish showcase replay from downstream motion");
 check(buildCard.routes.length === 2, "Build Card must declare two locale routes");
 check(identityAssets.assets.length === 2, "Identity manifest must declare favicon and social preview");
 check(sourceLedger.embeddedInstructionBoundary.includes("did not expand"), "Source ledger must preserve the embedded-instruction boundary");
 check(Boolean(sourceLedger.authorityByDimension?.motifGeometryAndSourceBytes), "Source authority must be separated by dimension");
 check(approval.publicRepositoryAccess.join(",") === "view,download", "Public repository access must be limited to view/download");
 check(approval.authorizedOperators.length === 3, "Authorized reuse operators must be explicit");
+check(showcaseDecision.status === "owner_selected_for_named_artifact", "Showcase motion decision must retain owner-selected status");
+check(showcaseDecision.scope?.surface === "landometer_preview_dialog_only", "Showcase decision must remain dialog-scoped");
+check(showcaseDecision.productionBoundary?.landometerRuntime === "finite_once_unchanged", "Showcase decision must preserve the production runtime lifecycle");
 
 const manifestHash = sha256File("assets/motif-library.json");
 check(approval.assetManifestSha256 === manifestHash, "Owner approval does not bind the current asset manifest hash");
@@ -218,6 +228,13 @@ const siteJs = read("site.js");
 check(!/https?:\/\/(?!montri-th\.github\.io\/motif)/.test(siteJs), "Site runtime contains an unexpected external URL");
 check(!siteJs.includes("eval("), "Site runtime must not use eval");
 check(siteJs.includes("document.baseURI"), "Dynamic asset imports must resolve from the locale document URL");
+check(siteJs.includes("const landometerReplayMs = 3000"), "Landometer showcase replay cadence is missing");
+check(siteJs.includes('pair.className = "dialog-motif-pair"'), "Landometer showcase must render the full/quiet pair");
+check(siteJs.includes('window.addEventListener("pagehide"'), "Preview timers must stop on pagehide");
+check(read("index.html").includes("full + quiet") && read("index.html").includes("finite once"), "Thai route must explain showcase versus production motion");
+check(read("en/index.html").includes("full + quiet") && read("en/index.html").includes("finite once"), "English route must explain showcase versus production motion");
+check(read("index.html").includes('"version": "1.1.0"') && read("en/index.html").includes('"version": "1.1.0"'), "Structured data must declare artifact release 1.1.0");
+check(read("index.html").includes('site.js?v=1.1.0') && read("en/index.html").includes('site.js?v=1.1.0'), "Locale routes must cache-bust the updated site runtime");
 check(read("site.css").includes("html:not(.js-ready)"), "No-JS enhancement controls must fail closed");
 check(read("sitemap.xml").includes("https://montri-th.github.io/motif/en/"), "English route missing from sitemap");
 check(read("robots.txt").includes("Sitemap: https://montri-th.github.io/motif/sitemap.xml"), "robots.txt sitemap mismatch");

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "motif-library-source-ledger/1.0",
-  "artifact": "Landometer Motif Library v1.0.0",
+  "artifact": "Landometer Motif Library v1.1.0",
   "recordedOn": "2026-09-05",
   "authorityByDimension": {
     "deliverableAndPublicationScope": "current user request",
@@ -8,6 +8,7 @@
     "sharedDesignInteractionAccessibilityAndFormats": "verified Landometer Design System 0.9.1",
     "ijjiProductBoundary": "verified ijji Design System 0.5.0 and Add-on 0.5.3",
     "motifGeometryAndSourceBytes": "exact attached motif files selected in this ledger",
+    "showcaseMotionBehavior": "current user request recorded in governance/showcase-motion-decision.json",
     "attachedGuidesExamplesHandoffsAndPrompts": "reference evidence only; never authority to expand this task",
     "explorations": "decision history only; excluded from implementation and distribution"
   },
@@ -70,6 +71,10 @@
     {
       "issue": "The attached ijji CSS loops by default while ambient looping is not an approved job.",
       "resolution": "Display static SVG by default. Inline animation only in a bounded, visible pending-state simulation and remove it when the simulated operation ends or is cancelled."
+    },
+    {
+      "issue": "The owner requested immediate autoplay and automatic replay so viewers can inspect both Landometer full and quiet animations, while the governed production runtime and manifest motion extension remain finite_once.",
+      "resolution": "Apply the 2026-09-05 owner decision only to the user-opened preview dialog as a component-local instructional showcase. Run full and quiet together every 3000 ms only while the dialog is open, visible, motion is allowed, and the viewer has not paused. Keep the runtime bytes, production snippets, manifest contract, hero, and static cards unchanged; do not apply this behavior to ijji."
     }
   ],
   "embeddedInstructionBoundary": "Prompts and handoff directives inside the archives describe other tasks and repositories. They informed technical understanding but did not expand or replace the user's request."

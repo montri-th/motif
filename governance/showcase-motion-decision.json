@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "motif-library-showcase-motion-decision/1.0",
+  "decisionId": "landometer-modal-showcase-motion-v1",
+  "artifactId": "landometer-motif-library-web-v1",
+  "artifactRelease": "1.1.0",
+  "status": "owner_selected_for_named_artifact",
+  "recordedOn": "2026-09-05",
+  "authority": {
+    "source": "current user request",
+    "scope": "Landometer preview dialog in this motif-library website only",
+    "intent": "Let dev, design, product, and sales viewers inspect the full and quiet animation variants without manually restarting each cycle."
+  },
+  "scope": {
+    "surface": "landometer_preview_dialog_only",
+    "brandLayer": "landometer.shared",
+    "locality": "this_artifact_only"
+  },
+  "classification": "component_local_instructional_showcase",
+  "showcaseBehavior": {
+    "surface": "preview_dialog",
+    "variants": ["full", "quiet"],
+    "presentation": "simultaneous_side_by_side",
+    "trigger": "user_opened_reveal",
+    "initialPlayback": "immediate_autoplay",
+    "replayIntervalMs": 3000,
+    "runConditions": [
+      "dialog_is_open",
+      "document_is_visible",
+      "prefers_reduced_motion_is_not_reduce",
+      "viewer_has_not_manually_paused"
+    ],
+    "controls": {
+      "pause": "Pause auto-replay and leave both motifs at their stable final state.",
+      "replayNow": "Restart both variants together and resume auto-replay."
+    },
+    "cleanup": [
+      "stop_and_clear_replay_on_dialog_close",
+      "stop_and_clear_replay_when_document_is_hidden",
+      "stop_and_clear_replay_on_pagehide"
+    ]
+  },
+  "accessibility": {
+    "motifs": "decorative_and_aria_hidden",
+    "variantLabels": "visible_text",
+    "cycleAnnouncements": "none",
+    "reducedMotion": "show_stable_full_and_quiet_final_states_without_a_replay_timer",
+    "viewerControl": "pause_and_replay_now_controls_are_available_when_motion_is_allowed"
+  },
+  "productionBoundary": {
+    "landometerRuntime": "finite_once_unchanged",
+    "implementationSnippets": "finite_once_unchanged",
+    "machineManifestMotionContract": "finite_once_unchanged"
+  },
+  "contractBoundary": {
+    "productionLandometerMotionMode": "finite_once",
+    "runtimeAssets": "unchanged_exact_governed_bytes",
+    "implementationSnippets": "finite_once",
+    "machineManifestMotionContract": "finite_once",
+    "hero": "unchanged_one_shot_progressive_enhancement",
+    "assetCards": "unchanged_static_final_state",
+    "normativeDesignSystemChange": false,
+    "portableLoopPermission": false
+  },
+  "excluded": {
+    "ijji": "Ijji is excluded from this decision and remains product-specific with state_bound_only motion.",
+    "ambientPageMotion": "No always-running page, hero, or card animation is authorized.",
+    "productClaims": "This inspection behavior creates no product, evidence, score, confidence, completion, or business claim."
+  }
+}

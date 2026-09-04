@@ -1,6 +1,6 @@
 {
   "schemaVersion": "motif-library-runtime-parity/1.0",
-  "executedAt": "2026-09-04T18:14:14.429Z",
+  "executedAt": "2026-09-04T19:06:08.130Z",
   "artifactRoot": ".",
   "browser": "system Google Chrome through Playwright",
   "evidenceBoundary": "Geometry is sourced from the exact runtime; reduced motion exposes the authored final CSS state. The LCH logo wedge is converted through the browser canvas to an 8-bit sRGB static color.",

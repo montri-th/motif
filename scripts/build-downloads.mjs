@@ -29,6 +29,7 @@ const common = [
   "assets/motif-library.json",
   "docs/usage-guide.md",
   "governance/owner-approval.json",
+  "governance/showcase-motion-decision.json",
   "governance/source-ledger.json",
 ];
 const landometer = walk("assets/landometer");

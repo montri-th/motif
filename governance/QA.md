@@ -4,6 +4,8 @@ Status: `candidate_ready_for_release_handoff`
 
 Candidate date: 2026-09-05 (Asia/Bangkok)
 
+Artifact release: `1.1.0`
+
 Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site at `/motif/`
 
 ## Scope and authority
@@ -20,7 +22,8 @@ Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site a
 | --- | --- | --- | --- |
 | Thai and English learning routes | Meaningful HTML, text, links, downloads, and static SVGs | Search, filters, theme, copy, previews, and local PNG export | Core guidance and direct assets remain usable without JavaScript |
 | Hero motif | Generated final-state SVG | Exact selected Landometer runtime | Same motif intent; motion is finite and final-state preserving |
-| Landometer asset cards | Static full/quiet SVG pairs | Dialog preview using exact CSS+JS runtime | Static fallback remains the selected vector path |
+| Landometer asset cards | Static full/quiet SVG pairs | None | Thumbnails stay still and the static fallback remains the selected vector path |
+| Landometer preview dialog | User-opened modal with visible full/quiet labels | Exact CSS+JS runtime orchestrated by site-local replay controls | Both variants start together and replay every 3000 ms only while open, visible, motion-allowed, and not paused; production motion remains `finite_once` |
 | ijji asset cards | Static selected SVGs | Dialog-only simulated pending state using exact CSS+JS pair | Motion exists only during a bounded real-state pattern and stops on completion, failure, cancel, or timeout |
 | Error route | Project-scoped static HTML and CSS | None | `noindex`, favicon, and both recovery links remain valid under `/motif/` |
 
@@ -28,16 +31,16 @@ Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site a
 
 | Check | Result | Evidence boundary |
 | --- | --- | --- |
-| Responsive browser matrix | 331/331 passed across Thai and English at 11 viewports each (320–1600 px) | Desktop Chrome emulation; not native Safari or device chrome |
-| Interaction and accessibility states | Passed: light/dark, keyboard, dialogs, filter, search, copy, PNG export, cancel, bounded timeout, reduced motion, no-JS, Thai 130%, and text 200% | Automated DOM and computed-style evidence; not a screen-reader pass |
-| Loading and performance | 6/6 local synthetic checks; cold 36 requests / 330,753 transfer bytes; repeat 35 zero-transfer cache hits; no duplicate resource URLs | Loopback Chrome without network throttling; not field p75 Core Web Vitals |
+| Responsive browser matrix | 375/375 passed across Thai and English at 12 viewports each (320–1600 px), including 844×390 short landscape | Desktop Chrome emulation; not native Safari or device chrome |
+| Interaction and accessibility states | Passed: paired full/quiet autoplay for all 6 motifs, synchronized 3000 ms replay, Pause, Replay Now, Escape focus restoration, stale async-preview isolation, live reduced-motion changes, hidden/pagehide lifecycle, modal containment, light/dark, keyboard, filter, search, copy, PNG export, ijji cancel/timeout, no-JS, Thai 130%, and text 200% | Automated DOM and computed-style evidence; not a screen-reader pass |
+| Loading and performance | 6/6 local synthetic checks; cold 36 requests / 337,818 transfer bytes; repeat 35 zero-transfer cache hits; no duplicate resource URLs | Loopback Chrome without network throttling; not field p75 Core Web Vitals |
 | Runtime/static parity | 3/3 scripted checks; logo wedge resolves to `#1F87CE`; slice full/quiet final transforms are baked | Browser-computed parity for known divergent CSS final states |
 | Independent motif parity review | Landometer 12/12 vector pairs and ijji 18/18 static/module outputs matched after normalizing serialization and motion-only metadata | Geometry and computed paint comparison; LCH and 8-bit sRGB serializations differ but render equivalently |
 | Governed raster verification | 2/2 records passed for favicon and social preview | Byte, dimensions, role, and governance fields; rights rely on the recorded owner statement |
-| Download kits | Three deterministic ZIPs rebuilt twice byte-identically; internal hashes and README links passed | Each ZIP contains package-specific checksums for every other enclosed file |
-| Source/route/asset authority verifier | Must pass immediately before commit after the repository checksum is generated | Local release tree only |
+| Download kits | Three deterministic ZIPs rebuilt twice byte-identically; 22/29/45 files respectively; internal hashes and README links passed | Each ZIP includes the showcase decision and package-specific checksums for every other enclosed file |
+| Source/route/asset authority verifier | 1,285/1,285 passed immediately before commit after the repository checksum was generated | Local release tree only |
 
-Machine-readable detail is in `browser-qa.json`, `performance-qa.json`, `runtime-parity.json`, `identity-assets.json`, `source-ledger.json`, and `owner-approval.json`.
+Machine-readable detail is in `browser-qa.json`, `performance-qa.json`, `runtime-parity.json`, `identity-assets.json`, `source-ledger.json`, `showcase-motion-decision.json`, and `owner-approval.json`.
 
 ## Identity and discovery
 
@@ -59,5 +62,6 @@ These do not block this static release but must not be reported as already verif
 
 - native iPhone/iPad Safari elastic-scroll and browser-chrome review;
 - VoiceOver or equivalent screen-reader pass;
+- operating-system tab suspension and cross-navigation BFCache observation;
 - third-party social-platform card-cache observation after deployment; and
 - field Core Web Vitals after sufficient real traffic.
