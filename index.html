@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="th" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Landometer Motif Library — เลือก ใช้ และส่งต่อ Brand Motif</title>
+  <meta name="description" content="คู่มือและคลัง asset สำหรับใช้ Landometer และ ijji brand motif บนเว็บ วิดีโอ โซเชียล สไลด์ และงานของ AI/agents พร้อมไฟล์ ตัวอย่าง และขอบเขตการใช้งาน">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://montri-th.github.io/motif/">
+  <link rel="alternate" hreflang="th" href="https://montri-th.github.io/motif/">
+  <link rel="alternate" hreflang="en" href="https://montri-th.github.io/motif/en/">
+  <link rel="alternate" hreflang="x-default" href="https://montri-th.github.io/motif/">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/identity/landometer-favicon-64-v1.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Landometer">
+  <meta property="og:title" content="Landometer Motif Library">
+  <meta property="og:description" content="เห็นบทบาท เลือกให้ถูก ใช้ asset ที่ตรวจสอบได้ — สำหรับทีมและ AI agents">
+  <meta property="og:url" content="https://montri-th.github.io/motif/">
+  <meta property="og:image" content="https://montri-th.github.io/motif/assets/social/motif-library-1200x630.png?v=2157be06fad9">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Landometer Motif Library — purposeful motion, reusable assets">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Landometer Motif Library">
+  <meta name="twitter:description" content="คู่มือและคลัง asset สำหรับ Landometer และ ijji motif">
+  <meta name="twitter:image" content="https://montri-th.github.io/motif/assets/social/motif-library-1200x630.png?v=2157be06fad9">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("motif-theme");
+      const dark = matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.dataset.theme = savedTheme || (dark ? "dark" : "light");
+    } catch (_) {}
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="assets/landometer/landometer-motifs.css">
+  <link rel="stylesheet" href="assets/ijji/ijji-motion.css">
+  <script src="assets/landometer/landometer-motifs.js" defer></script>
+  <script src="site.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Landometer Motif Library",
+    "url": "https://montri-th.github.io/motif/",
+    "inLanguage": ["th", "en"],
+    "isAccessibleForFree": true,
+    "description": "A governed learning guide and asset library for Landometer shared motifs and ijji product-specific motifs.",
+    "creator": { "@type": "Organization", "name": "Landometer" },
+    "version": "1.0.0",
+    "dateModified": "2026-09-05"
+  }
+  </script>
+</head>
+<body data-base="." data-locale="th">
+  <a class="skip-link" href="#main">ข้ามไปเนื้อหาหลัก</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="identity" href="#top" aria-label="Landometer Motif Library หน้าแรก">
+        <strong>Landometer</strong>
+        <span>Motif Library</span>
+      </a>
+      <nav class="desktop-nav" aria-label="เมนูหลัก">
+        <a href="#choose">เลือกให้ถูก</a>
+        <a href="#examples">ดูตัวอย่าง</a>
+        <a href="#library">คลัง Asset</a>
+        <a href="#workflows">วิธีใช้</a>
+        <a href="#verify">เช็กก่อนส่ง</a>
+      </nav>
+      <div class="header-actions">
+        <a class="language-link" href="en/" lang="en" hreflang="en" aria-label="Read in English">EN</a>
+        <button class="icon-button" type="button" data-theme-toggle aria-label="เปลี่ยนธีมสี" title="เปลี่ยนธีมสี">◐</button>
+        <details class="mobile-nav">
+          <summary aria-label="เปิดเมนู">☰</summary>
+          <nav class="mobile-nav-panel" aria-label="เมนูมือถือ">
+            <a href="#choose">เลือกให้ถูก</a>
+            <a href="#examples">ดูตัวอย่าง</a>
+            <a href="#library">คลัง Asset</a>
+            <a href="#workflows">วิธีใช้</a>
+            <a href="#verify">เช็กก่อนส่ง</a>
+            <a href="#source">ที่มาและเวอร์ชัน</a>
+          </nav>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <noscript><div class="no-js-note"><p class="wrap">JavaScript ปิดอยู่: เนื้อหาและลิงก์ดาวน์โหลด SVG/ZIP ยังใช้ได้ตามปกติ ส่วน preview, filter, copy และ PNG export ถูกซ่อนไว้เพราะต้องใช้ JavaScript</p></div></noscript>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Brand motif · manual + AI-ready</p>
+          <h1>เห็นบทบาท เลือกให้ถูก ใช้ได้ทันที</h1>
+          <p class="hero-lede">ที่เดียวสำหรับเรียนรู้ ทดลอง ดาวน์โหลด และส่งต่อ Landometer กับ ijji motif ให้ทีม dev, designer, product และ sales ใช้ภาษาภาพเดียวกัน—โดยไม่ทำให้ลายกลายเป็นโลโก้ ข้อมูล หรือคำกล่าวอ้าง</p>
+          <div class="cluster">
+            <a class="button button-primary" href="#library">เลือก Asset</a>
+            <button class="button" type="button" data-copy-template="#agent-prompt">คัดลอก Agent Brief</button>
+            <a class="button button-ghost" href="assets/downloads/motif-library-v1.zip" download>ดาวน์โหลดทั้งชุด</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="ตัวอย่าง Landometer dial motif ที่เคลื่อนไหวหนึ่งครั้ง">
+          <div class="hero-card">
+            <div class="hero-stage" data-lm-live data-kind="dial" data-static="assets/landometer/svg/dial-full.svg">
+              <img src="assets/landometer/svg/dial-full.svg" alt="Dial motif: หน้าปัดสี่จังหวะของ Landometer">
+            </div>
+            <div class="hero-note">
+              <strong>Motif ช่วยจัดจังหวะ</strong>
+              <span>ไม่ใช่ข้อมูล · ไม่ใช่โลโก้</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="สถานะของคลัง">
+      <div class="wrap trust-grid">
+        <div class="trust-item"><b>Owner-approved</b><span>เจ้าของอนุมัติไฟล์และการเผยแพร่</span></div>
+        <div class="trust-item"><b>Exact bytes</b><span>มี path, version และ SHA-256 ตรวจย้อนหลัง</span></div>
+        <div class="trust-item"><b>Two clear layers</b><span>Landometer shared · ijji product-specific</span></div>
+        <div class="trust-item"><b>Static first</b><span>มีภาพนิ่งรองรับ no-JS, print และ reduced motion</span></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="role-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Start with your job</p>
+            <h2 id="role-title">เริ่มจากสิ่งที่คุณต้องส่ง</h2>
+          </div>
+          <p class="subtle">ทุกคนใช้ asset ชุดเดียวกัน แต่ตัดสินใจคนละจุด เลือกทางเข้าที่ใกล้งานของคุณที่สุด แล้วกลับมาดู version และข้อจำกัดก่อนส่งจริง</p>
+        </div>
+        <div class="role-grid">
+          <a class="role-card" href="#workflows"><span class="role-number">01</span><h3>Dev</h3><p class="subtle">component, static fallback, reduced motion, accessibility และ hash</p></a>
+          <a class="role-card" href="#examples"><span class="role-number">02</span><h3>Designer</h3><p class="subtle">บทบาทของลาย พื้นที่ว่าง ขนาด พื้นสี และการส่งออก</p></a>
+          <a class="role-card" href="#choose"><span class="role-number">03</span><h3>Product</h3><p class="subtle">ความหมาย สถานะจริง evidence boundary และ product scope</p></a>
+          <a class="role-card" href="#formats"><span class="role-number">04</span><h3>Sales</h3><p class="subtle">สไลด์ โซเชียล วิดีโอ และ copy ที่ยังมีแหล่งอ้างอิงครบ</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="choose" aria-labelledby="choose-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Choose the brand layer</p>
+            <h2 id="choose-title">แยกสองชั้นก่อนเลือกลาย</h2>
+          </div>
+          <p class="subtle">Locale Insight ในชั้น portfolio, methodology และ product architecture ต้องเป็นกลางต่อผลิตภัณฑ์ ครอบคลุม Land, Location และ Living ส่วนตัวอย่างของ ijji อยู่เฉพาะในขอบเขต ijji เท่านั้น</p>
+        </div>
+        <div class="lane-grid">
+          <article class="lane lane-landometer">
+            <div class="badge-row">
+              <span class="badge badge-approved">เจ้าของอนุมัติให้เผยแพร่</span>
+              <span class="badge badge-overlay">Owner-approved overlay</span>
+              <span class="badge">Landometer shared</span>
+            </div>
+            <h3>Landometer</h3>
+            <p class="subtle">ลายชั้นร่วมสำหรับจัดจังหวะ เปิดเรื่อง เปลี่ยนผ่าน และปิดเรื่อง โดยไม่ผูกกับสมมติฐานของผลิตภัณฑ์ เมือง หรืออุตสาหกรรมใดอุตสาหกรรมหนึ่ง</p>
+            <ul class="lane-list">
+              <li>ใช้ประกอบเนื้อหา ไม่แทนหลักฐานหรือกราฟ</li>
+              <li>motion แบบ finite และมีภาพนิ่งสุดท้าย</li>
+              <li>อ้าง token จาก LDS 0.9.1 แต่เป็น asset overlay แยก</li>
+            </ul>
+          </article>
+          <article class="lane lane-ijji">
+            <div class="badge-row">
+              <span class="badge badge-approved">เลือกแล้ว + เจ้าของอนุมัติแล้ว</span>
+              <span class="badge badge-overlay">ijji product-specific</span>
+              <span class="badge badge-warning">ไม่อยู่ใน canonical Add-on 0.5.3</span>
+            </div>
+            <h3>ijji</h3>
+            <p class="subtle">ลายสี่หน่วยของ ijji สำหรับบริบทของ ijji เท่านั้น ทั้ง asset, ความหมาย และการใช้เป็นสถานะ ห้ามเหมารวมไปเป็น capability หรือข้อเท็จจริงของ Landometer</p>
+            <ul class="lane-list">
+              <li>ใช้ selected 3: graph-b, rings-c, rotate-b</li>
+              <li>ถ้าเคลื่อนไหว ต้องผูกกับงานที่กำลังรอจริง</li>
+              <li>ห้ามใช้เป็นโลโก้ ตัวเลขยอดขาย หรือ data cue</li>
+            </ul>
+          </article>
+        </div>
+        <div class="boundary-callout">
+          <p><strong>กติกาข้ามชั้น:</strong> motif ไม่ข้ามผลิตภัณฑ์โดยอัตโนมัติ การนำ ijji ไปใช้เป็นลายกลางต้องมี owner decision, revision และ asset record ใหม่ แม้ไฟล์จะดาวน์โหลดได้จากที่เดียวกัน</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="decision-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Four decisions</p>
+            <h2 id="decision-title">ตอบสี่ข้อ แล้วไฟล์ที่ควรใช้จะชัดเอง</h2>
+          </div>
+          <p class="subtle">อย่าเริ่มจาก “ลายไหนสวย” ให้เริ่มจากเจ้าของลาย งานที่ลายต้องทำ ช่องทาง และเหตุผลที่ motion จำเป็น</p>
+        </div>
+        <div class="decision-flow" aria-label="ลำดับเลือก motif สี่ขั้น">
+          <article class="decision-step"><b>01 · LAYER</b><h3>ของใคร?</h3><p>Landometer shared หรือ ijji product-specific</p></article>
+          <article class="decision-step"><b>02 · JOB</b><h3>ช่วยอะไร?</h3><p>orientation, transition, closure หรือ real pending state</p></article>
+          <article class="decision-step"><b>03 · FORMAT</b><h3>ส่งที่ไหน?</h3><p>web, deck, 1080 social, document/PDF หรือ owner extension</p></article>
+          <article class="decision-step"><b>04 · MODE</b><h3>ต้องขยับไหม?</h3><p>ถ้าภาพนิ่งสื่อครบ ให้ใช้ภาพนิ่ง; ถ้าขยับต้องมี fallback</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="examples" aria-labelledby="examples-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Intent → AHA → next action</p>
+            <h2 id="examples-title">เห็นก่อนว่าใช้แล้วงานดีขึ้นตรงไหน</h2>
+          </div>
+          <p class="subtle">ตัวอย่างทั้งหมดเป็น fixture เพื่อสอนวิธีใช้ ไม่ใช่หน้าจอผลิตภัณฑ์จริง ข้อมูลจริง หรือหลักฐานผลลัพธ์</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card">
+            <div class="case-visual">
+              <div class="mini-web">
+                <div><span class="badge">Section intro</span><div class="fake-line"></div><div class="fake-line"></div><div class="fake-line short"></div></div>
+                <img src="assets/landometer/svg/rings-full.svg" alt="Rings motif วางข้างเนื้อหาส่วนเปิดเรื่อง">
+              </div>
+            </div>
+            <div class="case-copy">
+              <div class="badge-row"><span class="badge badge-approved">01 · ใช้ได้</span><span class="badge">Landometer shared</span></div>
+              <h3>จัดจังหวะหน้าเว็บ</h3>
+              <p class="subtle">วาง full motif ข้างข้อความในจังหวะสำคัญ และใช้ quiet motif กับหัวข้อรอง ผู้อ่านเห็นลำดับโดยลายไม่ทับเนื้อหา ไม่แย่ง CTA และไม่กลายเป็นข้อมูล</p>
+            </div>
+          </article>
+
+          <article class="case-card" id="formats">
+            <div class="case-visual">
+              <div class="format-triptych" aria-label="ตัวอย่าง motif ในสไลด์ โซเชียล และวิดีโอ">
+                <div class="format-frame slide" data-label="16:9 DECK"><img src="assets/landometer/svg/layers-quiet.svg" alt="Layers quiet motif ในสไลด์"></div>
+                <div class="format-frame social" data-label="1080 SOCIAL"><img src="assets/landometer/svg/rings-quiet.svg" alt="Rings quiet motif ในโพสต์สี่เหลี่ยม"></div>
+                <div class="format-frame video" data-label="VIDEO EXT."><img src="assets/landometer/svg/cultivate-quiet.svg" alt="Cultivate quiet motif ในเฟรมวิดีโอ"></div>
+              </div>
+            </div>
+            <div class="case-copy">
+              <div class="badge-row"><span class="badge badge-approved">02 · ใช้ได้</span><span class="badge">Static first</span></div>
+              <h3>เล่าเรื่องเดียวข้ามสื่อ</h3>
+              <p class="subtle">ใช้ภาพนิ่งเพื่อรักษาจังหวะเดียวกันใน deck, PDF และ social ส่วน video เป็น owner-approved extension ที่ยังไม่มี LDS 0.9.1 format-conformance claim ข้อความและแหล่งอ้างอิงยังเป็นผู้แบก claim เสมอ</p>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-visual">
+              <div class="working-demo">
+                <div class="working-row">
+                  <img src="assets/ijji/svg/ijji-rotate-b-transparent-mint.svg" alt="ijji rotate-b motif สำหรับตัวอย่างสถานะกำลังทำงาน">
+                  <div><p><strong>ijji กำลังเตรียมคำตอบ</strong></p><p class="small" style="color:rgba(255,255,255,.8)">ตัวอย่างสถานะ · ยังไม่ได้เริ่ม</p></div>
+                </div>
+                <button class="button button-small" type="button" data-preview-brand="ijji" data-preview-id="rotate-b" data-duration="4">ลองสถานะ 4 วินาที</button>
+              </div>
+            </div>
+            <div class="case-copy">
+              <div class="badge-row"><span class="badge badge-approved">03 · ใช้ได้</span><span class="badge">ijji only</span><span class="badge">Real state only</span></div>
+              <h3>แสดงงานที่กำลังรอจริง</h3>
+              <p class="subtle">เริ่มเมื่อ request เริ่ม แสดงข้อความกับเวลาจริง มีปุ่มยกเลิก และหยุดเมื่อสำเร็จ ล้มเหลว ยกเลิก หรือ timeout ตัว motif ถูกซ่อนจาก assistive technology เพราะข้อความเป็นผู้บอกสถานะ</p>
+            </div>
+          </article>
+
+          <article class="case-card case-card-rejected">
+            <div class="case-visual">
+              <div class="bad-proof">
+                <div class="bad-proof-head"><div><span class="badge badge-rejected">Rejected</span><p class="small">ยอดขายเติบโต</p><strong>+42%</strong></div><img src="assets/ijji/svg/ijji-graph-b-transparent-mint.svg" alt="ตัวอย่างที่ไม่ผ่าน: graph-b ถูกใช้แทนหลักฐานยอดขาย"></div>
+                <p class="strike-note">Motif ไม่ได้พิสูจน์ตัวเลขนี้</p>
+              </div>
+            </div>
+            <div class="case-copy">
+              <div class="badge-row"><span class="badge badge-rejected">04 · ไม่ผ่าน</span><span class="badge">Cross-layer misuse</span></div>
+              <h3>อย่าใช้ ijji เป็นโลโก้กลางหรือหลักฐานการเติบโต</h3>
+              <p class="subtle"><strong>วิธีแก้:</strong> คืน identity ที่ถูกต้อง แสดง metric พร้อม source, date และ schema/release ที่เทียบกันได้ แล้วใช้ Landometer motif เป็นเพียงกรอบประกอบ—หรือเก็บ ijji motif ไว้ในสถานะจริงของ ijji เท่านั้น</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="workflows" aria-labelledby="workflow-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">One contract · two workflows</p>
+            <h2 id="workflow-title">ทำเองหรือให้ agent ทำ ก็เริ่มจากไฟล์จริงชุดเดียวกัน</h2>
+          </div>
+          <p class="subtle">Screenshot และความจำของโมเดลใช้ยืนยัน geometry ไม่ได้ ให้ส่ง asset ID, path, revision และ hash ไปพร้อมโจทย์ทุกครั้ง</p>
+        </div>
+        <div class="workflow-grid">
+          <article class="workflow-card">
+            <div class="badge-row"><span class="badge badge-approved">Manual</span></div>
+            <h3>ทีมลงมือเอง</h3>
+            <ol>
+              <li><span><strong>Frame</strong> — ระบุ brand layer, งาน และ channel</span></li>
+              <li><span><strong>Choose</strong> — เลือก ID, variant และ surface จาก manifest</span></li>
+              <li><span><strong>Place</strong> — resize ตามสัดส่วน ไม่ recolor, crop หรือ stretch</span></li>
+              <li><span><strong>Pair</strong> — ใส่ข้อความ, fallback และ accessibility ที่แบกความหมายจริง</span></li>
+              <li><span><strong>Verify</strong> — เช็ก hash, responsive, reduced motion และไฟล์ส่งจริง</span></li>
+              <li><span><strong>Ship</strong> — ส่งพร้อม source/version และข้อจำกัดของ format</span></li>
+            </ol>
+            <a class="button" href="docs/usage-guide.md">เปิดคู่มือฉบับไฟล์</a>
+          </article>
+          <article class="workflow-card">
+            <div class="badge-row"><span class="badge badge-overlay">AI &amp; Agents</span></div>
+            <h3>ส่งสัญญาให้ agent ก่อนส่งภาพ</h3>
+            <p class="subtle">พรอมป์ด้านล่างบังคับให้ agent เลือกจาก manifest ไม่ redraw, ไม่ข้าม product boundary และรายงานสิ่งที่ยังไม่ได้ตรวจ</p>
+            <div class="prompt-box">
+              <pre id="agent-prompt">ใช้ไฟล์จาก Landometer Motif Library manifest เท่านั้น
+
+งาน: [ระบุสิ่งที่จะสร้าง]
+familyId: [landometer.motif.v1 | ijji.four-beat.selected-3.r3]
+productScope: [shared_landometer | ijji_product_specific]
+motif: [คัดลอกค่าจาก record]
+assetId: [คัดลอก exact ID จาก generated_vector record]
+allowedJob: [คัดลอกหนึ่งค่าจาก allowedJobs]
+allowedFormat: [web_public | deck_16x9 | social_square_1080 | document_pdf | video_owner_extension]
+variant: [full | quiet | not_applicable]
+surface: [transparent | canvas | brand-blue | ground-mist | dark | transparent-mint | transparent-ink]
+motionMode: static [คัดลอกจาก baseline record]
+path + sha256 + staticFallback + approvalRef: [คัดลอกจาก record เดียวกัน]
+motionExtension: [none โดยปริยาย | finite_once | state_bound_only]
+ถ้าใช้ motionExtension: allowedFormat ต้องเป็น web_public และต้องคัดลอก runtimeAssetIds + runtimeAllowedJob + runtimeAllowedFormat + lifecycle จาก agentContract.motionExtensions ที่ familyId ตรงกัน โดยใช้ path ของ baseline เป็น static fallback
+
+ห้าม redraw จาก screenshot/ความจำ ห้ามเปลี่ยนสีหรือสัดส่วน ห้ามใช้ motif เป็นโลโก้ ข้อมูล หลักฐาน หรือ claim และห้ามนำ ijji ไปเหมารวมเป็น Landometer
+
+ก่อนส่ง ให้ยืนยัน familyId + assetId + path + SHA-256 จาก record เดียวกัน ใส่ static/reduced-motion fallback ตรวจ output จริง และรายงานทุกข้อที่ยังไม่ได้ตรวจ</pre>
+              <div class="cluster">
+                <button class="button button-small button-primary" type="button" data-copy-template="#agent-prompt">คัดลอกพรอมป์ AI</button>
+                <a class="button button-small" href="assets/motif-library.json">เปิด JSON Manifest</a>
+                <a class="button button-small" href="llms.txt">เปิด llms.txt</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="library" aria-labelledby="library-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Verified asset paths</p>
+            <h2 id="library-title">คลัง Asset พร้อม preview, code และไฟล์ภาพนิ่ง</h2>
+          </div>
+          <p class="subtle">Landometer และ ijji แยกกลุ่มอย่างชัดเจน ทุกการ์ดมี deep link และปุ่มสร้าง PNG จาก SVG ใน browser โดยไม่อัปโหลดไฟล์ออกจากเครื่อง</p>
+        </div>
+
+        <div class="boundary-callout"><p><strong>สิทธิ์การใช้:</strong> ทุกคนเปิดดูและดาวน์โหลดไฟล์ได้ การนำ asset ไปใช้ต่อสงวนสำหรับทีม ผู้ร่วมงาน และ AI/agent workflows ที่ได้รับอนุญาตจากเจ้าของ เว้นแต่มี license หรือ owner decision แยกต่างหาก</p></div>
+
+        <div class="library-tools" aria-label="ตัวกรองคลัง asset">
+          <div class="filter-row">
+            <div class="filter-buttons" role="group" aria-label="กรองตามแบรนด์">
+              <button class="filter-button" type="button" data-filter="all" aria-pressed="true">ทั้งหมด</button>
+              <button class="filter-button" type="button" data-filter="landometer" aria-pressed="false">Landometer</button>
+              <button class="filter-button" type="button" data-filter="ijji" aria-pressed="false">ijji</button>
+            </div>
+            <label class="search-wrap"><span class="visually-hidden">ค้นหา asset</span><input type="search" data-asset-search placeholder="ค้นหา ID, งาน หรือ channel…" autocomplete="off"></label>
+          </div>
+          <p class="visually-hidden" data-filter-status aria-live="polite"></p>
+        </div>
+
+        <div class="family-head" data-family="landometer">
+          <div><p class="eyebrow">Landometer · shared layer</p><h3>6 kinds · full + quiet</h3></div>
+          <div class="cluster"><span class="badge badge-approved">Owner-approved overlay</span><a class="button button-small" href="assets/downloads/landometer-motifs-v1.zip" download>ดาวน์โหลด Landometer kit</a></div>
+        </div>
+        <div class="asset-grid" data-family-grid="landometer">
+          <article class="asset-card" id="landometer-dial" data-brand="landometer" data-search="dial orientation opening web video social deck หน้าปัด เปิดเรื่อง">
+            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/dial-full.svg" alt="Landometer dial full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/dial-quiet.svg" alt="Landometer dial quiet"><span>quiet</span></div></div>
+            <div class="asset-body"><h3>Dial · หน้าปัด</h3><p class="asset-id">motifId: landometer.dial<br>assetIds: landometer.dial.full / landometer.dial.quiet</p><p class="asset-summary">จังหวะเปิดและ orientation เมื่อคนต้องเห็นว่าเรื่องนี้กำลัง “วัดและอ่าน” โดยไม่ใช้แทนค่าที่วัด</p><dl class="asset-meta"><div><dt>Job</dt><dd>Orientation</dd></div><div><dt>Mode</dt><dd>Finite once / static</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="dial">Preview motion</button><a class="button button-small" href="assets/landometer/svg/dial-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/dial-full.svg" data-filename="landometer-dial-full.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="dial">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>วางข้างเนื้อหา ไม่ทับ copy, CTA, photo หรือ evidence; quiet ใช้เป็นจังหวะรอง และภาพนิ่งใช้กับ deck/PDF/social ได้</p><a href="assets/landometer/svg/dial-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
+          </article>
+
+          <article class="asset-card" id="landometer-rings" data-brand="landometer" data-search="rings spatial transition location web map ring วง เปลี่ยนผ่าน พื้นที่">
+            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/rings-full.svg" alt="Landometer rings full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/rings-quiet.svg" alt="Landometer rings quiet"><span>quiet</span></div></div>
+            <div class="asset-body"><h3>Rings · วงพื้นที่</h3><p class="asset-id">motifId: landometer.rings<br>assetIds: landometer.rings.full / landometer.rings.quiet</p><p class="asset-summary">ใช้เปลี่ยนผ่านเข้าสู่ความสัมพันธ์เชิงพื้นที่หรือหลายระยะ โดยไม่ทำหน้าที่เป็นแผนที่ legend หรือค่ารัศมีจริง</p><dl class="asset-meta"><div><dt>Job</dt><dd>Spatial transition</dd></div><div><dt>Mode</dt><dd>Finite once / static</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="rings">Preview motion</button><a class="button button-small" href="assets/landometer/svg/rings-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/rings-full.svg" data-filename="landometer-rings-full.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="rings">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>เหมาะกับ section intro และจังหวะข้าม scale; ห้ามอ่านวงเป็นระยะทาง, catchment หรือความครอบคลุมที่วัดได้</p><a href="assets/landometer/svg/rings-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
+          </article>
+
+          <article class="asset-card" id="landometer-layers" data-brand="landometer" data-search="layers multi layer divider section quiet web slide ชั้น ซ้อน คั่นหัวข้อ">
+            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/layers-full.svg" alt="Landometer layers full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/layers-quiet.svg" alt="Landometer layers quiet"><span>quiet</span></div></div>
+            <div class="asset-body"><h3>Layers · ชั้นซ้อน</h3><p class="asset-id">motifId: landometer.layers<br>assetIds: landometer.layers.full / landometer.layers.quiet</p><p class="asset-summary">บอกว่ามีหลายมุมหรือหลายชั้นของเรื่องเดียวกัน เหมาะเป็น divider ที่เบากว่า motif แบบเต็ม</p><dl class="asset-meta"><div><dt>Job</dt><dd>Layering / divider</dd></div><div><dt>Mode</dt><dd>Quiet preferred</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="layers">Preview motion</button><a class="button button-small" href="assets/landometer/svg/layers-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/layers-quiet.svg" data-filename="landometer-layers-quiet.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="layers" data-quiet="true">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>ลายสื่อ “หลายชั้น” ในเชิง editorial เท่านั้น ไม่ใช่จำนวน data layers หรือระดับคุณภาพของข้อมูล</p><a href="assets/landometer/svg/layers-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
+          </article>
+
+          <article class="asset-card" id="landometer-slice" data-brand="landometer" data-search="slice action next priority closure pie progress ชิ้น ก้าวถัดไป ปิดเรื่อง">
+            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/slice-full.svg" alt="Landometer slice full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/slice-quiet.svg" alt="Landometer slice quiet"><span>quiet</span></div></div>
+            <div class="asset-body"><h3>Slice · ชิ้นที่ก้าวออกมา</h3><p class="asset-id">motifId: landometer.slice<br>assetIds: landometer.slice.full / landometer.slice.quiet</p><p class="asset-summary">จังหวะปิดฝั่ง action: ช่วยชี้ว่ามีขั้นถัดไป โดยปุ่มหรือข้อความยังเป็นผู้บอก action จริง</p><dl class="asset-meta"><div><dt>Job</dt><dd>Action closure</dd></div><div><dt>Mode</dt><dd>Finite once / static</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="slice">Preview motion</button><a class="button button-small" href="assets/landometer/svg/slice-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/slice-full.svg" data-filename="landometer-slice-full.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="slice">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>ห้ามใช้เหมือน pie chart, progress ring หรือเปอร์เซ็นต์ที่ไม่มีข้อมูลจริง; อย่าวางแทน CTA</p><a href="assets/landometer/svg/slice-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
+          </article>
+
+          <article class="asset-card" id="landometer-cultivate" data-brand="landometer" data-search="cultivate culture closure community growth sprout ปลูก เติบโต วัฒนธรรม ปิดเรื่อง">
+            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/cultivate-full.svg" alt="Landometer cultivate full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/cultivate-quiet.svg" alt="Landometer cultivate quiet"><span>quiet</span></div></div>
+            <div class="asset-body"><h3>Cultivate · เพาะให้เติบโต</h3><p class="asset-id">motifId: landometer.cultivate<br>assetIds: landometer.cultivate.full / landometer.cultivate.quiet</p><p class="asset-summary">ปิดเรื่องฝั่งวัฒนธรรม การลงมือร่วมกัน หรือ handoff ที่มี next action ชัดเจน</p><dl class="asset-meta"><div><dt>Job</dt><dd>Cultural closure</dd></div><div><dt>Mode</dt><dd>Finite once / static</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="cultivate">Preview motion</button><a class="button button-small" href="assets/landometer/svg/cultivate-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/cultivate-full.svg" data-filename="landometer-cultivate-full.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="cultivate">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>เป็น metaphor ของการร่วมลงมือ ไม่ใช่หลักฐานว่า KPI, รายได้ หรือพื้นที่ “เติบโต” แล้ว</p><a href="assets/landometer/svg/cultivate-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
+          </article>
+
+          <article class="asset-card" id="landometer-logo-assembly" data-brand="landometer" data-search="logo assembly exception one time identity mark ประกอบร่างโลโก้ ข้อยกเว้น">
+            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/logo-full.svg" alt="Landometer logo-assembly motif full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/logo-quiet.svg" alt="Landometer logo-assembly motif quiet"><span>quiet</span></div></div>
+            <div class="asset-body"><h3>Logo assembly · จังหวะประกอบร่าง</h3><p class="asset-id">motifId: landometer.logo<br>assetIds: landometer.logo.full / landometer.logo.quiet</p><p class="asset-summary">ข้อยกเว้น owner-approved สำหรับจังหวะเปิดหนึ่งครั้ง ท่าสุดท้ายยังเป็น motif และไม่ใช่ไฟล์โลโก้ทางการ</p><dl class="asset-meta"><div><dt>Job</dt><dd>Exceptional opening</dd></div><div><dt>Mode</dt><dd>Once per page</dd></div><div><dt>Identity</dt><dd>None</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="logo">Preview motion</button><a class="button button-small" href="assets/landometer/svg/logo-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/logo-full.svg" data-filename="landometer-logo-assembly.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="logo">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>ใช้ได้หนึ่งตำแหน่งต่อหน้า ไม่ใช้ใน navbar, favicon, social preview หรือแทน official identity และไม่ใช่สมาชิกของ LDS 0.9.1</p><a href="assets/landometer/svg/logo-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
+          </article>
+        </div>
+
+        <div class="family-head" data-family="ijji">
+          <div><p class="eyebrow">ijji · product-specific</p><h3>Selected 3 · 6 surfaces each</h3></div>
+          <div class="cluster"><span class="badge badge-approved">Selected + owner-approved</span><a class="button button-small" href="assets/downloads/ijji-motifs-selected-r3.zip" download>ดาวน์โหลด ijji kit</a></div>
+        </div>
+        <div class="asset-grid" data-family-grid="ijji">
+          <article class="asset-card" id="ijji-graph-b" data-brand="ijji" data-search="graph-b climb calculation trajectory ijji growth progress คำนวณ แนวโน้ม ไต่ขึ้น">
+            <div class="asset-preview"><div class="variant"><img src="assets/ijji/svg/ijji-graph-b-transparent-ink.svg" alt="ijji graph-b แบบเส้นหมึกบนพื้นอ่อน"><span>transparent ink</span></div><div class="variant" style="padding:8px;border-radius:12px;background:#1D4497"><img src="assets/ijji/svg/ijji-graph-b-transparent-mint.svg" alt="ijji graph-b สีมินต์บนพื้น brand blue"><span style="color:white">transparent mint</span></div></div>
+            <div class="asset-body"><h3>Graph B · ไต่ขึ้น</h3><p class="asset-id">motifId: ijji.graph-b<br>shown assetIds: ijji.graph-b-transparent-ink / ijji.graph-b-transparent-mint</p><p class="asset-summary">ใช้ใน ijji เมื่อระบบกำลังคำนวณผลลัพธ์หรือแนวโน้มจริง โดยข้อความเป็นผู้บอกงาน ไม่ใช่รูปทรง</p><dl class="asset-meta"><div><dt>Job</dt><dd>Real calculation state</dd></div><div><dt>Motion</dt><dd>State-bound · 4.4 s</dd></div><div><dt>Min size</dt><dd>72 px</dd></div><div><dt>Scope</dt><dd>ijji only</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="ijji" data-preview-id="graph-b" data-duration="4.4">Preview state</button><a class="button button-small" href="assets/ijji/svg/ijji-graph-b-transparent-ink.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/ijji/svg/ijji-graph-b-brand-blue.svg" data-filename="ijji-graph-b-brand-blue.png" data-width="1080" data-height="1080">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="ijji" data-id="graph-b">คัดลอกโค้ด</button></div><details class="asset-more"><summary>พื้นและข้อห้าม</summary><div class="detail-box"><p>เว็บเลือก transparent ก่อน; boxed surfaces ใช้เมื่อคุมพื้นไม่ได้ ห้ามใช้รูปนี้เป็นหลักฐานยอดขาย การเติบโต ความมั่นใจ หรือ completion</p><a href="assets/motif-library.json">ดู 6 surfaces ใน manifest</a></div></details></div>
+          </article>
+
+          <article class="asset-card" id="ijji-rings-c" data-brand="ijji" data-search="rings-c area gather location neighbourhood ijji ring ร้าน ย่าน พื้นที่ วาดวง">
+            <div class="asset-preview"><div class="variant"><img src="assets/ijji/svg/ijji-rings-c-transparent-ink.svg" alt="ijji rings-c แบบเส้นหมึกบนพื้นอ่อน"><span>transparent ink</span></div><div class="variant" style="padding:8px;border-radius:12px;background:#1D4497"><img src="assets/ijji/svg/ijji-rings-c-transparent-mint.svg" alt="ijji rings-c สีมินต์บนพื้น brand blue"><span style="color:white">transparent mint</span></div></div>
+            <div class="asset-body"><h3>Rings C · วาดวง</h3><p class="asset-id">motifId: ijji.rings-c<br>shown assetIds: ijji.rings-c-transparent-ink / ijji.rings-c-transparent-mint</p><p class="asset-summary">ใช้ใน ijji เมื่องานกำลังรวบรวมบริบทรอบพื้นที่จริง จุดกลางมาก่อน แล้ววงขยายตามลำดับ</p><dl class="asset-meta"><div><dt>Job</dt><dd>Real area-gathering state</dd></div><div><dt>Motion</dt><dd>State-bound · 5 s</dd></div><div><dt>Min size</dt><dd>40 px</dd></div><div><dt>Scope</dt><dd>ijji only</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="ijji" data-preview-id="rings-c" data-duration="5">Preview state</button><a class="button button-small" href="assets/ijji/svg/ijji-rings-c-transparent-ink.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/ijji/svg/ijji-rings-c-brand-blue.svg" data-filename="ijji-rings-c-brand-blue.png" data-width="1080" data-height="1080">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="ijji" data-id="rings-c">คัดลอกโค้ด</button></div><details class="asset-more"><summary>พื้นและข้อห้าม</summary><div class="detail-box"><p>วงเป็น narrative cue ไม่ใช่ catchment, buffer, coverage หรือระยะทางจริง ห้ามวางใน map legend</p><a href="assets/motif-library.json">ดู 6 surfaces ใน manifest</a></div></details></div>
+          </article>
+
+          <article class="asset-card" id="ijji-rotate-b" data-brand="ijji" data-search="rotate-b processing iteration ijji spinner pending เดินหน้า ประมวลผล รอ">
+            <div class="asset-preview"><div class="variant"><img src="assets/ijji/svg/ijji-rotate-b-transparent-ink.svg" alt="ijji rotate-b แบบเส้นหมึกบนพื้นอ่อน"><span>transparent ink</span></div><div class="variant" style="padding:8px;border-radius:12px;background:#1D4497"><img src="assets/ijji/svg/ijji-rotate-b-transparent-mint.svg" alt="ijji rotate-b สีมินต์บนพื้น brand blue"><span style="color:white">transparent mint</span></div></div>
+            <div class="asset-body"><h3>Rotate B · เดินหน้า</h3><p class="asset-id">motifId: ijji.rotate-b<br>shown assetIds: ijji.rotate-b-transparent-ink / ijji.rotate-b-transparent-mint</p><p class="asset-summary">เหมาะกับงานคิดหรือประมวลผลหลายรอบของ ijji โดยต้องเริ่มและหยุดตาม lifecycle ของ request จริง</p><dl class="asset-meta"><div><dt>Job</dt><dd>Real iterative state</dd></div><div><dt>Motion</dt><dd>State-bound · 4 s</dd></div><div><dt>Min size</dt><dd>24 px</dd></div><div><dt>Scope</dt><dd>ijji only</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="ijji" data-preview-id="rotate-b" data-duration="4">Preview state</button><a class="button button-small" href="assets/ijji/svg/ijji-rotate-b-transparent-ink.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/ijji/svg/ijji-rotate-b-brand-blue.svg" data-filename="ijji-rotate-b-brand-blue.png" data-width="1080" data-height="1080">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="ijji" data-id="rotate-b">คัดลอกโค้ด</button></div><details class="asset-more"><summary>พื้นและข้อห้าม</summary><div class="detail-box"><p>ไม่ใช้เป็น ambient spinner ใน header/hero และไม่ปล่อยให้หมุนหลัง success, failure, cancel หรือ timeout</p><a href="assets/motif-library.json">ดู 6 surfaces ใน manifest</a></div></details></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="verify" aria-labelledby="verify-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Before you ship</p>
+            <h2 id="verify-title">เช็กความจริงก่อนเช็กความสวย</h2>
+          </div>
+          <p class="subtle">Owner approval ทำให้ใช้ asset ได้ แต่แต่ละชิ้นงานยังต้องพิสูจน์ว่าบริบท ขนาด contrast fallback และ claim ถูกต้องใน output ที่ส่งจริง</p>
+        </div>
+        <div class="check-grid">
+          <article class="check-card"><h3>1 · Boundary</h3><ul><li>เลือก Landometer หรือ ijji ถูกชั้น</li><li>ไม่เหมารวม F&amp;B, retail, municipality หรือ CityWiki</li><li>ข้ามเมือง/ผลิตภัณฑ์ใช้ schema/release เดียวกันหรือบอก incompatibility</li></ul></article>
+          <article class="check-card"><h3>2 · Meaning</h3><ul><li>motif ไม่เป็น logo, data หรือ evidence ไม่ว่ากรณีใด</li><li>สถานะจริงต้องมีข้อความที่มองเห็นได้ ไม่ใช้ motif แบกความหมาย</li><li>claim มี source, date และข้อจำกัด; ลบ motif แล้วความจริงไม่เปลี่ยน</li></ul></article>
+          <article class="check-card"><h3>3 · Asset</h3><ul><li>path, revision และ SHA-256 ตรง manifest</li><li>ไม่ redraw, recolor, crop หรือยืดสัดส่วน</li><li>ใช้ selected ไม่ใช้ explorations</li></ul></article>
+          <article class="check-card"><h3>4 · Access</h3><ul><li>decorative mark ใช้ alt="" / aria-hidden</li><li>meaningful preview มี text alternative</li><li>pending state มีข้อความ เวลา และ cancel</li></ul></article>
+          <article class="check-card"><h3>5 · Fallback</h3><ul><li>no-JS และ reduced motion เห็น final static state</li><li>print/email ใช้ภาพนิ่ง</li><li>motion ไม่ทำให้ layout shift หรือบัง action</li></ul></article>
+          <article class="check-card"><h3>6 · Output</h3><ul><li>ทดสอบ viewport และไฟล์ export จริง</li><li>Social conformance claim จำกัดที่ 1080×1080</li><li>Video/ratio อื่นระบุเป็น owner extension</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-blue" id="source" aria-labelledby="source-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" style="color:#59D2FE">Provenance &amp; versions</p>
+            <h2 id="source-title">ทุกไฟล์มีที่มา ทุกข้อยกเว้นมีขอบเขต</h2>
+          </div>
+          <p style="color:rgba(255,255,255,.82)">เจ้าของยืนยันว่าเป็นผู้สร้าง ถือสิทธิ์เต็ม และอนุมัติการเผยแพร่กับดาวน์โหลดต่อสาธารณะเมื่อ 5 ก.ย. 2026 การนำไปใช้ต่อสงวนสำหรับทีม ผู้ร่วมงาน และ AI/agent workflows ที่ได้รับอนุญาต การอนุมัตินี้ไม่แก้ release เดิมย้อนหลังและไม่ใช่ open-source license สำหรับบุคคลภายนอก</p>
+        </div>
+        <div class="source-panel">
+          <div class="source-row"><strong>Design authority</strong><span>LDS 0.9.1 · 0.9.1-r8 · v0.9.1-mp7</span><span>Verified: 5,394 checks + 103 package hashes</span></div>
+          <div class="source-row"><strong>Landometer motif</strong><span>Owner-approved overlay · v1 · 5 Sep 2026</span><span>Selected runtime SHA-256 <code>605129c7…5702</code>; newer archive timestamp, no logo-fill extension</span></div>
+          <div class="source-row"><strong>ijji motif</strong><span>Selected 3 · revision 3 · 4 Sep 2026</span><span>Owner-approved overlay; product-specific; not retroactively bundled in ijji Add-on 0.5.3</span></div>
+          <div class="source-row"><strong>Format boundary</strong><span>Web 360–1600 · deck 16:9 · social 1080 square · A4 document/PDF</span><span>Video and other ratios are owner extensions without LDS 0.9.1 conformance claim</span></div>
+          <div class="source-row"><strong>Machine access</strong><span><a href="assets/motif-library.json">motif-library.json</a> · <a href="governance/owner-approval.json">owner-approval.json</a></span><span><a href="governance/SHA256SUMS.txt">SHA256SUMS.txt</a> · <a href="llms.txt">llms.txt</a></span></div>
+        </div>
+        <div class="cluster" style="margin-top:24px">
+          <a class="button" href="https://github.com/montri-th/motif">เปิด GitHub repository</a>
+          <a class="button" href="docs/usage-guide.md">อ่านคู่มือแบบ Markdown</a>
+          <a class="button" href="governance/source-ledger.json">ดู source ledger</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p><strong style="font-family:Arvo,Georgia,serif;color:var(--ink)">Landometer</strong> · Motif Library v1.0.0</p>
+      <p>Purposeful motion · exact assets · clear product boundaries</p>
+    </div>
+  </footer>
+
+  <dialog id="preview-dialog" aria-labelledby="preview-title">
+    <div class="dialog-head">
+      <h2 id="preview-title">Motif preview</h2>
+      <button class="dialog-close" type="button" data-dialog-close aria-label="ปิด preview">×</button>
+    </div>
+    <div class="dialog-body">
+      <div class="dialog-stage" id="preview-stage"></div>
+      <p class="dialog-status" id="preview-status" role="status" aria-live="polite"><span data-preview-message></span><span class="dialog-timer" data-preview-timer aria-hidden="true"></span></p>
+      <div class="cluster"><button class="button button-small" type="button" id="preview-replay">เล่นอีกครั้ง</button><button class="button button-small" type="button" id="preview-cancel">หยุด</button></div>
+    </div>
+  </dialog>
+
+  <div class="toast" data-toast role="status" aria-live="polite">คัดลอกแล้ว</div>
+</body>
+</html>

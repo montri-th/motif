@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "motif-library-owner-approval/1.0",
+  "recordId": "MOTIF-LIBRARY-OWNER-APPROVAL-20260905-01",
+  "status": "approved_for_named_publication",
+  "approvedByRole": "owner",
+  "approvedOn": "2026-09-05",
+  "approvedAt": null,
+  "timestampNote": "The task context exposes the calendar date but not the message clock time; no time was invented.",
+  "authorityEvidenceRef": "current-task:user-message:2026-09-05:owner-created-full-rights-and-approves-all-pending-publication-gates",
+  "repository": "https://github.com/montri-th/motif",
+  "publicationUrl": "https://montri-th.github.io/motif/",
+  "assetManifestRef": "assets/motif-library.json",
+  "assetManifestSha256": "378fdc58b4f72de8dec3cdb8831cb58b0af7b2d6f5c0fd016bb1bad34416b707",
+  "rightsStatement": "The owner states that they created the supplied motif assets, hold full rights, and approve all pending matters required for this publication.",
+  "rightsEvidenceClass": "owner_stated_not_independently_verified",
+  "publicationActions": [
+    "public_display",
+    "direct_download",
+    "authorized_team_reuse",
+    "authorized_ai_agent_reuse"
+  ],
+  "publicRepositoryAccess": [
+    "view",
+    "download"
+  ],
+  "authorizedOperators": [
+    "Landometer team members",
+    "collaborators with owner authorization",
+    "AI or agent workflows acting for an authorized operator"
+  ],
+  "reuseGrantBoundary": "Public viewing and downloading do not grant unrestricted reuse. Reuse is authorized only for the listed operators and workflows unless the owner provides a separate written license or decision.",
+  "approvedDerivatives": [
+    "deterministic_static_svg_final_states_generated_from_the_selected_landometer_runtime",
+    "proportional_raster_exports_that_preserve_exact_geometry_and_color",
+    "site_specific_favicon_crop_from_the_owner_approved_landometer_lockup_source",
+    "deterministic_social_preview_composition_from_approved_motif_and_visible_page_copy"
+  ],
+  "approvedOutputAudiences": [
+    "internal_preview",
+    "internal_operational",
+    "client",
+    "public"
+  ],
+  "expiresAt": null,
+  "releaseMembership": {
+    "lds_0_9_1": false,
+    "ijji_design_system_0_5_0": false,
+    "ijji_addon_0_5_3": false
+  },
+  "historicalReleasesRemainImmutable": true,
+  "claimBoundary": [
+    "A motif is not an official logo or identity asset.",
+    "A motif is not data, evidence, a score, confidence, completion, or product truth.",
+    "ijji assets remain product-specific and do not become shared Landometer assets.",
+    "Landometer portfolio, methodology, and product-architecture language remains product-neutral across Land, Location, and Living.",
+    "Public availability is not an unrestricted third-party or open-source license."
+  ],
+  "technicalConditions": [
+    "Every delivered asset resolves the path, MIME type, bytes, SHA-256, role, scope, and fallback in the manifest.",
+    "Downstream work must still verify accessibility, contrast, motion, sizing, context, claims, and final rendered or exported output.",
+    "Only the listed transformations are approved; redraw, recolor, crop, distortion, or reconstruction from screenshots or model memory remain prohibited."
+  ]
+}

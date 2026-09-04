@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "motif-library-source-ledger/1.0",
+  "artifact": "Landometer Motif Library v1.0.0",
+  "recordedOn": "2026-09-05",
+  "authorityByDimension": {
+    "deliverableAndPublicationScope": "current user request",
+    "rightsAndNamedReuse": "dated owner approval in governance/owner-approval.json",
+    "sharedDesignInteractionAccessibilityAndFormats": "verified Landometer Design System 0.9.1",
+    "ijjiProductBoundary": "verified ijji Design System 0.5.0 and Add-on 0.5.3",
+    "motifGeometryAndSourceBytes": "exact attached motif files selected in this ledger",
+    "attachedGuidesExamplesHandoffsAndPrompts": "reference evidence only; never authority to expand this task",
+    "explorations": "decision history only; excluded from implementation and distribution"
+  },
+  "sources": [
+    {
+      "name": "Landometer Brand Motifs Assets and Prompt.zip",
+      "sha256": "efb3829de4be6e97eb83fef55e8fc2685f6bd081b70ed58c7384a5bf3a8ae22e",
+      "archiveTimestamp": "2026-09-04 23:16",
+      "role": "selected_landometer_motif_source",
+      "selectedRuntime": {
+        "cssSha256": "d736cdb0cbd65bf8e1f199a600df120eaa8062928337efdfeb384048b857a0d8",
+        "jsSha256": "605129c765a3e1da91313467aeac46f5bd60223f1359b78d62b4b2e0a0325702"
+      }
+    },
+    {
+      "name": "Landometer Brand Motifs HTML.zip",
+      "sha256": "8dfae8b67285280e77d969d5b177ac933349689484a15d97f31463aafbe165dc",
+      "archiveTimestamp": "2026-09-04 23:13",
+      "role": "non_selected_visual_reference",
+      "difference": "Its JS adds logo quiet mode=fill without a version bump; JS SHA-256 is 464ecb032c9a39a05022f7cbfb21e8e18b7baafbf9da686d781aba51bb9ab51f."
+    },
+    {
+      "name": "ijji motif example.zip",
+      "sha256": "0864de73ce2f584db543295beb3bed220a8e415d9b9fc0685083ab924921b2e6",
+      "role": "selected_ijji_source_plus_example",
+      "selection": "Only selected/ assets are distributed; explorations/ are excluded."
+    },
+    {
+      "name": "ijji motif.zip",
+      "sha256": "672b7667af7fef81ab9b9c9c4886851bc9821f448d8b401c0d0b9ac0c86851a8",
+      "role": "byte_identical_selected_ijji_source_without_example",
+      "difference": "The example archive adds an example HTML file and README; selected asset bytes are identical."
+    },
+    {
+      "name": "Landometer Design System",
+      "release": "0.9.1 / 0.9.1-r8 / lds-rules-0.9.1 / v0.9.1-mp7",
+      "role": "canonical_shared_visual_interaction_accessibility_and_format_authority",
+      "verification": "passed 5394 checks and 103 package hashes"
+    },
+    {
+      "name": "ijji Design System and Add-on",
+      "release": "0.5.0 / 0.5.3",
+      "role": "canonical_ijji_product_boundary_authority",
+      "verification": "passed 1421 resolver checks"
+    }
+  ],
+  "resolvedConflicts": [
+    {
+      "issue": "The two Landometer archives contain divergent JS bytes under the same v1 label.",
+      "resolution": "Use the Assets and Prompt archive because it has the later archive timestamp and the explicit source role. This is recorded as an inference, not a claimed supersession."
+    },
+    {
+      "issue": "Historical records said the new motif assets were not yet approved or included in the canonical releases.",
+      "resolution": "Preserve that release history. Apply the owner statement on 2026-09-05 as a new artifact-level approval overlay without retroactively changing LDS 0.9.1 or ijji 0.5.0/0.5.3."
+    },
+    {
+      "issue": "The attached Landometer component renders through JavaScript while LDS public-web rules require a stable final state without JavaScript.",
+      "resolution": "Generate deterministic static SVG final states from the selected runtime and render those in source HTML before progressively enhancing the one live stage."
+    },
+    {
+      "issue": "The attached ijji CSS loops by default while ambient looping is not an approved job.",
+      "resolution": "Display static SVG by default. Inline animation only in a bounded, visible pending-state simulation and remove it when the simulated operation ends or is cancelled."
+    }
+  ],
+  "embeddedInstructionBoundary": "Prompts and handoff directives inside the archives describe other tasks and repositories. They informed technical understanding but did not expand or replace the user's request."
+}

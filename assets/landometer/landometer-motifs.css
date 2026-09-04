@@ -1,0 +1,57 @@
+/* Landometer motion motifs — v1 · 4 September 2026
+   Pair with landometer-motifs.js. Colours resolve from the site's lds-tokens.css
+   (color-srgb-05); the fallbacks are the same atomic values. Do not edit values. */
+
+lm-motif { display: block; color: var(--brand-blue, #1D4497); }
+/* the mark’s priority wedge is not a solid token; it is derived from two tokens, never a sampled hex */
+lm-motif { --lm-wedge: color-mix(in lch, var(--energy-sky, #59D2FE) 48%, var(--brand-blue, #1D4497)); }
+lm-motif svg { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; }
+/* quiet variants are a single ink — sky by default (the logo's priority slice), never faded Brand Blue */
+lm-motif[quiet] { color: var(--energy-sky, #59D2FE); }
+lm-motif[ink="sky"] { color: var(--energy-sky, #59D2FE); }
+lm-motif[ink="mint"] { color: var(--energy-mint, #0AD69C); }
+lm-motif[ink="yellow"] { color: var(--energy-yellow, #FFBC1F); }
+lm-motif[ink="blue"] { color: var(--brand-blue, #1D4497); }
+[data-theme="dark"] lm-motif:not([quiet]):not([ink]), lm-motif[ink="beige"] { color: var(--brand-beige, #D8CFB2); }
+
+/* keyframes (motion-riddim-approach-02 durations and curves) */
+@keyframes lm-draw90 { from { stroke-dashoffset: 90; } to { stroke-dashoffset: 0; } }
+@keyframes lm-draw420 { from { stroke-dashoffset: 420; } to { stroke-dashoffset: 0; } }
+@keyframes lm-draw700 { from { stroke-dashoffset: 700; } to { stroke-dashoffset: 0; } }
+@keyframes lm-step-in { from { transform: translate(12px, -12px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes lm-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lm-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes lm-grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes lm-unfold { from { transform: translateX(var(--lm-dx, -40px)); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes lm-radiate { from { transform: scale(.9); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes lm-approach { from { transform: scale(.985); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes lm-step-out { from { transform: translate(0, 0); } to { transform: translate(12px, -12px); } }
+@keyframes lm-drop { from { transform: translateY(-32px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes lm-settle-down { from { transform: translateY(-24px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* final states live in the markup; animations only run while the host carries data-play */
+.lm-step { transform: translate(12px, -12px); }
+.lm-growx { transform-box: fill-box; transform-origin: left center; }
+.lm-growx-c { transform-box: fill-box; transform-origin: center; }
+.lm-growy { transform-box: fill-box; transform-origin: center bottom; }
+.lm-radial { transform-box: view-box; transform-origin: 80px 260px; }
+
+lm-motif[data-play] .lm-draw     { animation: lm-draw90 360ms var(--motion-ease-enter, cubic-bezier(.16,1,.3,1)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-draw420  { animation: lm-draw420 760ms var(--motion-ease-enter, cubic-bezier(.16,1,.3,1)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-draw700  { animation: lm-draw700 760ms var(--motion-ease-enter, cubic-bezier(.16,1,.3,1)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-step-in  { animation: lm-step-in 360ms var(--motion-ease-settle, cubic-bezier(.2,.9,.25,1.08)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-fade     { animation: lm-fade 760ms var(--motion-ease-enter, cubic-bezier(.16,1,.3,1)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-growx    { animation: lm-grow-x var(--lm-dur, 360ms) var(--lm-ease, cubic-bezier(.16,1,.3,1)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-growx-c  { animation: lm-grow-x 360ms var(--motion-ease-settle, cubic-bezier(.2,.9,.25,1.08)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-growy    { animation: lm-grow-y 360ms var(--motion-ease-enter, cubic-bezier(.16,1,.3,1)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-unfold   { animation: lm-unfold 920ms var(--motion-ease-settle, cubic-bezier(.2,.9,.25,1.08)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-radiate  { animation: lm-radiate 920ms var(--motion-ease-settle, cubic-bezier(.2,.9,.25,1.08)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-approach { animation: lm-approach 920ms var(--motion-ease-settle, cubic-bezier(.2,.9,.25,1.08)) var(--lm-delay, 0ms) both; }
+lm-motif[data-play] .lm-step     { animation: lm-fade 760ms var(--motion-ease-enter, cubic-bezier(.16,1,.3,1)) both, lm-step-out 360ms var(--motion-ease-settle, cubic-bezier(.2,.9,.25,1.08)) 600ms both; }
+lm-motif[data-play] .lm-drop     { animation: lm-drop 920ms var(--motion-ease-settle, cubic-bezier(.2,.9,.25,1.08)) 120ms both; }
+lm-motif[data-play] .lm-settle   { animation: lm-settle-down 760ms var(--motion-ease-enter, cubic-bezier(.16,1,.3,1)) 700ms both; }
+
+/* one kill switch — reduced motion lands the final state immediately */
+@media (prefers-reduced-motion: reduce) {
+  lm-motif * { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,25 @@
+/* ijji motif motion — selected set, round 3 (rings-c draws inner → outer: the shop first, then the neighbourhood, then the wider read).
+   Pair with the inline markup in ijji-motifs.js. Geometry is identical across surfaces,
+   so one rule set covers every file. Loop speed: --ijji-speed (1 = authored, 1.5 = slower). */
+.ijji-motif{display:block}
+.ijji-motif [class^="im-d"]{transform-box:fill-box;transform-origin:center}
+.ijji-motif [class^="im-r"],.ijji-motif [class^="im-o"]{transform-box:view-box;transform-origin:100px 100px}
+@keyframes igb-c0{0%,7.955%{transform:translate(0,5px) scale(1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}30.682%,70.455%{transform:none;animation-timing-function:cubic-bezier(.65,0,.35,1)}84.091%,100%{transform:translate(0,5px) scale(1)}}
+.ijji-graph-b .im-d0{animation:igb-c0 calc(4.4s * var(--ijji-speed,1)) infinite}
+@keyframes igb-c1{0%,11.136%{transform:translate(0,24px) scale(0.632);animation-timing-function:cubic-bezier(.215,.61,.355,1)}33.864%,72.045%{transform:none;animation-timing-function:cubic-bezier(.65,0,.35,1)}85.682%,100%{transform:translate(0,24px) scale(0.632)}}
+.ijji-graph-b .im-d1{animation:igb-c1 calc(4.4s * var(--ijji-speed,1)) infinite}
+@keyframes igb-c2{0%,14.318%{transform:translate(0,59px) scale(0.462);animation-timing-function:cubic-bezier(.215,.61,.355,1)}37.045%,73.636%{transform:none;animation-timing-function:cubic-bezier(.65,0,.35,1)}87.273%,100%{transform:translate(0,59px) scale(0.462)}}
+.ijji-graph-b .im-d2{animation:igb-c2 calc(4.4s * var(--ijji-speed,1)) infinite}
+@keyframes igb-c3{0%,17.5%{transform:translate(0,121px) scale(0.316);animation-timing-function:cubic-bezier(.215,.61,.355,1)}40.227%,75.227%{transform:none;animation-timing-function:cubic-bezier(.65,0,.35,1)}88.864%,100%{transform:translate(0,121px) scale(0.316)}}
+.ijji-graph-b .im-d3{animation:igb-c3 calc(4.4s * var(--ijji-speed,1)) infinite}
+@keyframes irc-d0{0%,6%{stroke-dashoffset:1;opacity:1;animation-timing-function:cubic-bezier(.65,0,.35,1)}17%{stroke-dashoffset:0}84%{opacity:1}94%,100%{opacity:0}}
+.ijji-rings-c .im-r0{transform:rotate(-90deg);stroke-dashoffset:0;animation:irc-d0 calc(5s * var(--ijji-speed,1)) infinite}
+@keyframes irc-d1{0%,21%{stroke-dashoffset:1;opacity:1;animation-timing-function:cubic-bezier(.65,0,.35,1)}34%{stroke-dashoffset:0}84%{opacity:1}94%,100%{opacity:0}}
+.ijji-rings-c .im-r1{transform:rotate(-90deg);stroke-dashoffset:0;animation:irc-d1 calc(5s * var(--ijji-speed,1)) infinite}
+@keyframes irc-d2{0%,38%{stroke-dashoffset:1;opacity:1;animation-timing-function:cubic-bezier(.65,0,.35,1)}55%{stroke-dashoffset:0}84%{opacity:1}94%,100%{opacity:0}}
+.ijji-rings-c .im-r2{transform:rotate(-90deg);stroke-dashoffset:0;animation:irc-d2 calc(5s * var(--ijji-speed,1)) infinite}
+@keyframes irc-hub{0%,1%{transform:scale(0);animation-timing-function:cubic-bezier(.34,1.56,.64,1)}8%{transform:scale(1)}84%{opacity:1}94%,100%{opacity:0}}
+.ijji-rings-c .im-hub{transform-box:fill-box;transform-origin:center;animation:irc-hub calc(5s * var(--ijji-speed,1)) infinite}
+@keyframes iro-march{0%,8.75%{transform:rotate(0);animation-timing-function:cubic-bezier(.215,.61,.355,1)}20%,33.75%{transform:rotate(90deg);animation-timing-function:cubic-bezier(.215,.61,.355,1)}52.5%,100%{transform:rotate(360deg)}}
+.ijji-rotate-b .im-o1{animation:iro-march calc(4s * var(--ijji-speed,1)) infinite}
+@media (prefers-reduced-motion:reduce){.ijji-motif *{animation:none!important}.ijji-motif [class^="im-d"],.ijji-motif .im-hub{transform:none;opacity:1}.ijji-motif [class^="im-r"]{stroke-dashoffset:0;opacity:1}.ijji-motif [class^="im-o"]{transform:none}}

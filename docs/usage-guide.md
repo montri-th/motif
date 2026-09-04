@@ -1,0 +1,175 @@
+# Landometer + ijji Motif Usage Guide
+
+Version 1.0.0 · 5 September 2026
+
+## คำตอบสั้นที่สุด
+
+1. เลือกชั้นให้ถูก: `landometer.shared` หรือ `ijji.product`.
+2. เลือกจาก [`../assets/motif-library.json`](../assets/motif-library.json) โดยใช้ `assetId`, path และ SHA-256 จริง.
+3. ให้ motif ทำหน้าที่ orientation, transition, closure หรือ real pending state เท่านั้น.
+4. อย่าใช้ motif เป็นโลโก้ ข้อมูล หลักฐาน score, confidence, completion หรือ product claim.
+5. ใช้ภาพนิ่งเป็นพื้นฐาน; motion ต้องมี final-state fallback และหยุดตามงาน.
+6. ตรวจไฟล์หรือหน้าเว็บที่ส่งจริง—not only the source.
+
+## The shortest useful answer
+
+1. Choose the correct layer: `landometer.shared` or `ijji.product`.
+2. Select an exact `assetId`, path, and SHA-256 from the [manifest](../assets/motif-library.json).
+3. Give the motif one job: orientation, transition, closure, or a genuine pending state.
+4. Never use a motif as a logo, data, evidence, score, confidence, completion, or a product claim.
+5. Start with a still. Motion needs a stable final-state fallback and a clear stopping rule.
+6. Inspect the real delivered page or export—not only its source.
+
+## คู่มือรายละเอียดภาษาไทย
+
+### เลือกชั้นแบรนด์
+
+- **Landometer shared:** ใช้ภาษาที่เป็นกลางต่อผลิตภัณฑ์ในระดับ portfolio, methodology และ product architecture ครอบคลุม Land, Location และ Living ลายทำหน้าที่จัดจังหวะโดยไม่กล่าวอ้างข้อเท็จจริงของผลิตภัณฑ์ เมือง ตลาด หรือกลุ่มผู้ใช้ใด
+- **ijji product-specific:** ใช้ `graph-b`, `rings-c` และ `rotate-b` ภายใน ijji เท่านั้น ตัวอย่างร้านอาหาร ย่าน หรือสถานะจำลองไม่ใช่หลักฐานของ Landometer ผลิตภัณฑ์อื่น หรือเมืองอื่น การเปรียบเทียบข้ามผลิตภัณฑ์/เมืองต้องใช้ schema และ release ที่เข้ากัน หรือระบุ incompatibility
+
+### ขั้นตอนทำเอง
+
+1. **Frame** — ระบุ product scope, งานของ motif, output format, audience และ claim boundary
+2. **Choose** — เลือก generated-vector record หนึ่งรายการจาก manifest แล้วคัดลอก `familyId`, `motif`, `assetId`, `variant`, `surface`, path และ SHA-256 ให้ตรง
+3. **Place** — รักษา geometry, clear space, aspect ratio และสี ห้าม redraw, recolor, crop geometry หรือยืดสัดส่วน
+4. **Pair** — ให้ข้อความ หลักฐาน สถานะ และ action จริงอยู่นอก motif
+5. **Fallback** — ใช้ภาพนิ่งสุดท้ายสำหรับ no-JS, reduced motion, print, email และ playback ที่ถูกขัดจังหวะ
+6. **Verify** — ตรวจ hash, contrast, accessibility, responsive/format fixture และไฟล์ที่ส่งจริง
+7. **Ship** — ส่งพร้อม source, version, permission boundary และข้อจำกัดของ format
+
+### ขั้นตอนสำหรับ AI และ agents
+
+ใช้ `agentContract` ใน [`../assets/motif-library.json`](../assets/motif-library.json) เป็น schema หลัก ค่าที่ส่งต้องตรง enum และ record จริง: `familyId`, `productScope`, `motif`, `assetId`, `allowedJob`, `allowedFormat`, `variant`, `surface`, `motionMode`, `path`, `sha256`, `staticFallback` และ `approvalRef` อย่าแปลหรือเดาค่า enum เอง ทุกครั้งต้องเริ่มจาก `generated_vector` เป็น baseline ภาพนิ่งซึ่งมี `motionMode: static`
+
+ถ้าต้องใช้ motion บนเว็บ ให้เพิ่ม `motionExtension` จาก `agentContract.motionExtensions` เท่านั้น: Landometer ใช้ `finite_once`; ijji ใช้ `state_bound_only` คัดลอก `runtimeAssetIds`, `runtimeAllowedJob`, `runtimeAllowedFormat` และ `lifecycle` ให้ตรง และใช้ `selectedRecord.path` เป็น static fallback ห้ามเดา runtime สำหรับ deck, social, document หรือ video
+
+กำชับ agent ให้ใช้ไฟล์ที่ให้มาแทน screenshot/ความจำ, รักษาขอบเขตผลิตภัณฑ์, แสดง preview ก่อนใช้ composition ที่มี judgment, ทดสอบ static/reduced-motion fallback, ตรวจ output ที่ส่งจริง และรายงาน gate ที่ยังไม่ได้ตรวจ
+
+### การใช้บนเว็บ
+
+- Landometer: ใช้ SVG ภาพนิ่งเป็น baseline; โหลด `landometer-motifs.css` + `landometer-motifs.js` และ `<lm-motif kind="…">` เมื่อต้องการ finite motion หนึ่งครั้ง เนื้อหาสำคัญห้ามพึ่ง custom element
+- ijji: ใช้ SVG ภาพนิ่งโดยปริยาย ถ้าต้องใช้ motion ให้ inline markup จาก `ijji-motifs.js` เฉพาะช่วงที่ request จริงกำลังรอ แสดงข้อความสถานะ/เวลา มี cancel ที่ทำงาน และลบ animation เมื่อ success, failure, cancel หรือ timeout
+
+### เส้นทางตาม format
+
+| Output | วิธีใช้ | สถานะ |
+| --- | --- | --- |
+| Web | SVG still หรือ motion ตาม lifecycle | เป้าหมาย LDS 360–1600 px |
+| Deck | Static SVG/PNG | เป้าหมาย LDS 16:9, 1920×1080 |
+| Social | Static SVG/PNG ใน creative ที่เสร็จแล้ว | อ้าง conformance LDS 0.9.1 ได้เฉพาะ 1080×1080 |
+| Document/PDF | Static SVG/PNG | เป้าหมาย A4 portrait; ตรวจ PDF ที่ render แล้ว |
+| Email | Static PNG | ไม่พึ่ง animation |
+| Video | Static หรือ finite sequence ที่เจ้าของกำหนด | owner-approved extension; ไม่อ้าง LDS 0.9.1 video conformance |
+
+### Accessibility และสิทธิ์
+
+ลายตกแต่งใช้ `alt=""` และ `aria-hidden="true"`; ตัวอย่างในคลังอธิบายภาพด้วยข้อความ; pending state ให้ข้อความที่มองเห็นได้เป็นผู้แบกความหมายและไม่ประกาศ timer ถี่ผ่าน live region; reduced motion ต้องเห็น final state ทันที
+
+ทุกคนเปิดดูและดาวน์โหลด repository สาธารณะได้ แต่การนำ asset ไปใช้ต่อสงวนสำหรับทีม ผู้ร่วมงาน และ AI/agent workflows ที่ได้รับอนุญาต เว้นแต่เจ้าของออก license หรือ decision แยก การอนุมัติวันที่ 5 ก.ย. 2026 เป็น artifact overlay และไม่ได้เพิ่มไฟล์ย้อนหลังเข้า LDS 0.9.1 หรือ ijji DS/Add-on 0.5.0/0.5.3
+
+## English detailed guide
+
+## Choose the brand layer
+
+### Landometer shared
+
+Use product-neutral language at the portfolio, methodology, and product-architecture level across Land, Location, and Living. The six motif kinds can frame a story without asserting anything about a named product, city, market, or audience.
+
+### ijji product-specific
+
+Use `graph-b`, `rings-c`, and `rotate-b` only inside ijji. An ijji/F&B or neighbourhood fixture is not evidence for Landometer, another product, or another city. A cross-product or cross-city comparison needs one compatible schema and release—or an explicit incompatibility note.
+
+## Manual workflow
+
+1. **Frame** — brand layer, motif job, output channel, audience, and claim boundary.
+2. **Choose** — exact asset ID, static or motion route, surface, and minimum size.
+3. **Place** — preserve geometry, clear space, aspect ratio, and palette.
+4. **Pair** — keep real content, evidence, state copy, and actions outside the motif.
+5. **Fallback** — final still for no-JS, reduced motion, print, email, and interrupted playback.
+6. **Verify** — manifest hash, contrast, accessibility, responsive or format fixture, and final bytes.
+7. **Ship** — include the source, version, and any format limitation in the handoff.
+
+## AI and agent workflow
+
+Give the agent these fields before asking it to compose:
+
+```yaml
+familyId: landometer.motif.v1 | ijji.four-beat.selected-3.r3
+productScope: shared_landometer | ijji_product_specific
+motif: exact value from the selected record
+assetId: exact generated_vector record ID
+allowedJob: one exact value from the record's allowedJobs
+allowedFormat: web_public | deck_16x9 | social_square_1080 | document_pdf | video_owner_extension
+variant: full | quiet | not_applicable
+surface: transparent | canvas | brand-blue | ground-mist | dark | transparent-mint | transparent-ink
+motionMode: static
+path: exact path from the same record
+sha256: exact SHA-256 from the same record
+staticFallback: exact fallback from the same record
+approvalRef: governance/owner-approval.json
+motionExtension: none | finite_once | state_bound_only
+```
+
+Default `motionExtension` to `none`. A non-static extension is valid only for `web_public`: resolve the matching `familyId` entry in `agentContract.motionExtensions`, copy its exact `runtimeAssetIds`, `runtimeAllowedJob`, `runtimeAllowedFormat`, and `lifecycle`, and keep the selected baseline record's `path` as the fallback. Never infer a runtime for deck, social, document, or video output.
+
+Require the agent to:
+
+- use supplied files rather than screenshots or model memory;
+- preserve geometry, color, aspect ratio, and product scope;
+- keep motifs separate from identity, data, evidence, and claims;
+- show a preview before applying a non-trivial composition;
+- test reduced motion and a static fallback;
+- inspect the delivered artifact; and
+- report every unverified gate.
+
+## Web routes
+
+### Landometer motion component
+
+```html
+<link rel="stylesheet" href="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css">
+<script src="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js" defer></script>
+
+<lm-motif kind="dial"></lm-motif>
+```
+
+The component plays once when it becomes visible. Do not make it essential content. Put a generated final-state SVG in source HTML when a meaningful visual must survive without JavaScript.
+
+### ijji static asset
+
+```html
+<img
+  src="https://montri-th.github.io/motif/assets/ijji/svg/ijji-rings-c-transparent-ink.svg"
+  width="120"
+  height="120"
+  alt=""
+  aria-hidden="true"
+>
+```
+
+### ijji state-bound motion
+
+The supplied motion CSS loops while inline markup exists. Insert it only when a real request begins, keep the motif `aria-hidden`, announce visible status and elapsed time, provide a working cancel action, and remove the animated markup on success, failure, cancel, or timeout. Never leave it as ambient motion.
+
+## Format routes
+
+| Output | Route | Status |
+| --- | --- | --- |
+| Web | SVG still or governed component/state motion | LDS web target: 360–1600 px |
+| Deck | Static SVG/PNG | LDS 16:9 target: 1920×1080 |
+| Social | Static SVG/PNG placed in the complete creative | LDS 0.9.1 conformance claim only for 1080×1080 |
+| Document/PDF | Static SVG/PNG | A4 portrait target; verify the rendered PDF |
+| Email | Static PNG | No animation dependency |
+| Video | Static or finite owner-directed sequence | Owner-approved extension; no LDS 0.9.1 video format-conformance claim |
+
+## Accessibility
+
+- Decorative or redundant mark: `alt=""` and `aria-hidden="true"`.
+- Learning or asset-catalog specimen: describe the visual plainly.
+- Pending state: the visible status text and elapsed time carry meaning; the motif stays hidden from assistive technology.
+- Reduced motion: land on the final complete still immediately.
+- Keyboard and zoom: preview, copy, filter, cancel, and download controls remain reachable and readable.
+
+## Approval and release status
+
+The owner states that they created the supplied assets, hold full rights, and authorize public display and downloads. Reuse is reserved for the Landometer team, owner-authorized collaborators, and AI/agent workflows acting for an authorized operator unless a separate written license or owner decision says otherwise. That approval is recorded as a 2026-09-05 artifact overlay. It does not retroactively add the motif bytes to LDS 0.9.1 or ijji Design System/Add-on 0.5.0/0.5.3, and it does not turn a public repository into an unrestricted third-party license.

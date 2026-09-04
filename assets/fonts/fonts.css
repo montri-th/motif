@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Arvo";
+  src: url("arvo-latin-700-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans Thai Looped";
+  src: url("ibm-plex-sans-thai-looped-latin-700-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+0000-024F;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans Thai Looped";
+  src: url("ibm-plex-sans-thai-looped-thai-700-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+0E00-0E7F;
+}
+
+@font-face {
+  font-family: "Bai Jamjuree";
+  src: url("bai-jamjuree-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-024F;
+}
+
+@font-face {
+  font-family: "Bai Jamjuree";
+  src: url("bai-jamjuree-thai-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0E00-0E7F;
+}
+
+@font-face {
+  font-family: "Bai Jamjuree";
+  src: url("bai-jamjuree-latin-600-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  unicode-range: U+0000-024F;
+}
+
+@font-face {
+  font-family: "Bai Jamjuree";
+  src: url("bai-jamjuree-thai-600-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  unicode-range: U+0E00-0E7F;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("jetbrains-mono-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans Thai";
+  src: url("ibm-plex-sans-thai-thai-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0E00-0E7F;
+}

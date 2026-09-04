@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "motif-library-performance-qa/1.0",
+  "executedAt": "2026-09-04T18:16:49.526Z",
+  "artifactRoot": ".",
+  "browser": "152.0.7977.82",
+  "route": "/motif/",
+  "evidenceBoundary": "Local synthetic timing is diagnostic evidence only. It is not field p75 Core Web Vitals and does not predict GitHub Pages or end-user network performance.",
+  "paintRisk": "bounded gradients and finite/state-bound motion; no external runtime, analytics, video, blur-heavy full-screen animation, or permanent polling",
+  "cold": {
+    "label": "cold_visit",
+    "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
+    "requestCount": 36,
+    "resourceCount": 35,
+    "transferBytes": 330753,
+    "decodedBodyBytes": 319953,
+    "cacheEligibleResourceCount": 35,
+    "zeroTransferResourceCount": 0,
+    "duplicateUrls": [],
+    "timing": {
+      "responseEndMs": 5,
+      "domContentLoadedMs": 74,
+      "loadMs": 91,
+      "firstContentfulPaintMs": 96,
+      "largestContentfulPaintMs": 96,
+      "cumulativeLayoutShift": 0.0268,
+      "longTaskMs": 0
+    }
+  },
+  "repeat": {
+    "label": "repeat_visit",
+    "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
+    "requestCount": 36,
+    "resourceCount": 35,
+    "transferBytes": 58740,
+    "decodedBodyBytes": 319953,
+    "cacheEligibleResourceCount": 35,
+    "zeroTransferResourceCount": 35,
+    "duplicateUrls": [],
+    "timing": {
+      "responseEndMs": 2,
+      "domContentLoadedMs": 15,
+      "loadMs": 23,
+      "firstContentfulPaintMs": 44,
+      "largestContentfulPaintMs": 44,
+      "cumulativeLayoutShift": 0,
+      "longTaskMs": 0
+    }
+  },
+  "checks": [
+    {
+      "name": "zero failed HTTP responses",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no duplicate resource URLs on cold visit",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no duplicate resource URLs on repeat visit",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "local CLS at or below 0.1",
+      "passed": true,
+      "detail": 0.0268
+    },
+    {
+      "name": "local LCP observer returned a value",
+      "passed": true,
+      "detail": 96
+    },
+    {
+      "name": "repeat visit reuses at least one cache-eligible response",
+      "passed": true,
+      "detail": 35
+    }
+  ],
+  "status": "passed_local_synthetic_profile"
+}

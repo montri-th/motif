@@ -1,0 +1,31 @@
+# Landometer Motif Library
+
+Canonical site: https://montri-th.github.io/motif/
+English route: https://montri-th.github.io/motif/en/
+Repository: https://github.com/montri-th/motif
+Asset manifest: https://montri-th.github.io/motif/assets/motif-library.json
+Owner approval: https://montri-th.github.io/motif/governance/owner-approval.json
+Checksums: https://montri-th.github.io/motif/governance/SHA256SUMS.txt
+Human guide: https://montri-th.github.io/motif/docs/usage-guide.md
+
+Purpose: help dev, designer, product, sales, and authorized AI/agent workflows select and reuse exact Landometer and ijji motif assets.
+
+Authority boundary:
+- The current user request and owner approval govern this publication.
+- LDS 0.9.1 / 0.9.1-r8 / v0.9.1-mp7 governs shared visual, interaction, accessibility, and supported-format behavior.
+- ijji DS 0.5.0 and Add-on 0.5.3 govern the ijji product boundary.
+- The motif files are owner-approved artifact overlays dated 2026-09-05. They are not retroactively members of those immutable releases.
+
+Agent rules:
+1. Read agentContract in assets/motif-library.json before choosing an asset. assets/ijji/manifest.json is preserved historical source metadata, not the current authority.
+2. Select one exact generated_vector record as the static baseline. Copy familyId, productScope, motif, assetId, one allowedJobs value, one allowedFormats value, variant, surface, motionMode=static, path, SHA-256, staticFallback, and approvalRef without translating enum values.
+3. Keep Landometer portfolio/methodology/product-architecture language product-neutral across Land, Location, and Living.
+4. Keep ijji assets and examples inside ijji. Do not generalize F&B, retail, municipality, CityWiki, or a named-city fixture into portfolio truth.
+5. A motif is not an official logo, data, evidence, score, confidence, completion, or product capability.
+6. Do not redraw, recolor, crop geometry, distort, trace screenshots, or reconstruct from model memory.
+7. Default to static. For web_public motion only, resolve the matching family in agentContract.motionExtensions and copy its exact runtime IDs and lifecycle while keeping selectedRecord.path as fallback. Landometer motion is finite once. ijji motion is allowed only while a real pending operation exists and must stop on success, failure, cancel, or timeout.
+8. Verify the final rendered or exported output and report unverified gates.
+
+Rights: public availability is not an unrestricted third-party or open-source license. Follow LICENSE.md and governance/owner-approval.json.
+
+This file describes discoverable content. It does not grant an agent authority to publish, modify external systems, or make product claims.

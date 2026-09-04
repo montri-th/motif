@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "motif-library-identity-assets/1.0",
+  "artifactId": "landometer-motif-library-web-v1",
+  "approvalRef": "governance/owner-approval.json",
+  "identityBoundary": "The favicon is a site-specific owner-approved crop from the supplied Landometer lockup. It does not turn any distributed motif asset into a general-purpose logo or identity asset.",
+  "assets": [
+    {
+      "assetId": "landometer.motif-library.favicon.v1",
+      "path": "assets/identity/landometer-favicon-64-v1.png",
+      "variant": "compact_lockup_mark_crop",
+      "owner": "Landometer owner",
+      "sourceRef": "sources/Landometer-Logo-TransparentBG.png",
+      "sourceSha256": "8d706f8021bc4b4fdc0e89117244b54868687b74045be54002321de7aaa7ef92",
+      "approvalStatus": "approved",
+      "publicationBasis": "current task: owner requested the favicon and approved all publication gates on 2026-09-05",
+      "ownerApproval": {
+        "status": "approved",
+        "approvedAt": "2026-09-05",
+        "scope": "favicon for https://montri-th.github.io/motif/ and its locale/error routes",
+        "sourceRef": "current-task:user-messages:2026-09-05"
+      },
+      "approvedRoles": ["favicon"],
+      "prohibitedRoles": ["distributed_motif", "data_encoding", "evidence", "product_capability_claim"],
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "bytes": 3940,
+      "sha256": "f7e7cd845cbdb8fecdacd5ab975024b8c952762b7cc483dfdb65cc3f4942ef86",
+      "transparentCanvas": true,
+      "themeStrategy": "transparent original colors on browser-owned tab surface",
+      "cacheRevision": "f7e7cd845cbd",
+      "transformation": {
+        "sourceSize": "23324x6402",
+        "crop": "1200,1200,4000,4000",
+        "outputSize": "64x64",
+        "resampling": "LANCZOS",
+        "format": "PNG",
+        "compressionLevel": 9,
+        "colorHandling": "assumed_srgb",
+        "pillowVersion": "12.3.0"
+      },
+      "metadataStripped": true,
+      "exifPresent": false,
+      "xmpPresent": false,
+      "iccProfilePresent": false,
+      "visualReview": "inspected at 64x64; compact mark remains recognizable with intact transparent padding",
+      "creditRequirement": "none stated"
+    },
+    {
+      "assetId": "landometer.motif-library.social-preview.v1",
+      "path": "assets/social/motif-library-1200x630.png",
+      "variant": "bilingual_neutral_library_card",
+      "creator": "Landometer Motif Library implementation under the owner's approved brief",
+      "sourceRef": "scripts/social-card.html",
+      "sourceSha256": "fb8303856f2cc0f289d958fd333d812a9360ae85f95059578b8a6731fdc3996a",
+      "approvalStatus": "approved",
+      "publicationBasis": "owner approved all derivatives and publication gates required for the named repository on 2026-09-05",
+      "ownerApproval": {
+        "status": "approved",
+        "approvedAt": "2026-09-05",
+        "scope": "social preview for the Motif Library canonical Thai and English routes",
+        "sourceRef": "current-task:user-message:2026-09-05"
+      },
+      "approvedRoles": ["social_preview"],
+      "prohibitedRoles": ["favicon", "official_logo", "data_encoding", "evidence", "product_capability_claim"],
+      "mediaType": "image/png",
+      "width": 1200,
+      "height": 630,
+      "bytes": 56063,
+      "sha256": "2157be06fad9c94149e7e15a96a31886d763e8a55e5969305349245512bcc50e",
+      "transparentCanvas": false,
+      "themeStrategy": "fixed approved light composition",
+      "cacheRevision": "2157be06fad9",
+      "transformation": {
+        "source": "scripts/social-card.html",
+        "renderer": "system Google Chrome through Playwright",
+        "viewport": "1200x630",
+        "deviceScaleFactor": 1,
+        "format": "PNG"
+      },
+      "metadataStripped": true,
+      "exifPresent": false,
+      "xmpPresent": false,
+      "iccProfilePresent": false,
+      "altText": {
+        "th": "Landometer Motif Library พร้อมภาพ dial motif และข้อความ Purposeful motion, Exact assets, Clear product boundaries",
+        "en": "Landometer Motif Library with a dial motif and the line Purposeful motion, Exact assets, Clear product boundaries"
+      },
+      "visualReview": "inspected at 1200x630; title, motif, safe area, and thumbnail composition passed",
+      "creditRequirement": "none stated"
+    }
+  ]
+}

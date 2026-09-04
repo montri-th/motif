@@ -1,0 +1,1055 @@
+{
+  "schemaVersion": "motif-library-runtime-parity/1.0",
+  "executedAt": "2026-09-04T18:14:14.429Z",
+  "artifactRoot": ".",
+  "browser": "system Google Chrome through Playwright",
+  "evidenceBoundary": "Geometry is sourced from the exact runtime; reduced motion exposes the authored final CSS state. The LCH logo wedge is converted through the browser canvas to an 8-bit sRGB static color.",
+  "checks": [
+    {
+      "name": "logo full static wedge matches the runtime's computed sRGB color",
+      "passed": true,
+      "detail": {
+        "staticWedge": "#1F87CE",
+        "runtime": {
+          "cssFill": "lch(53.4545 46.5873 258.5)",
+          "srgbHex": "#1F87CE"
+        }
+      }
+    },
+    {
+      "name": "slice full static file bakes the runtime final transform",
+      "passed": true
+    },
+    {
+      "name": "slice quiet static file bakes the runtime final transform",
+      "passed": true
+    }
+  ],
+  "computed": {
+    "dial-full": {
+      "elementCount": 5,
+      "geometry": [
+        {
+          "tag": "path",
+          "d": "M187 200 A113 113 0 0 1 220.10 120.10",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M220.10 120.10 A113 113 0 0 1 300 87",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 87 A113 113 0 0 1 379.90 120.10",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M379.90 120.10 A113 113 0 0 1 413 200",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "170",
+          "y": "210",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "260",
+          "height": "8",
+          "transform": "none"
+        }
+      ]
+    },
+    "dial-quiet": {
+      "elementCount": 5,
+      "geometry": [
+        {
+          "tag": "path",
+          "d": "M187 200 A113 113 0 0 1 220.10 120.10",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M220.10 120.10 A113 113 0 0 1 300 87",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 87 A113 113 0 0 1 379.90 120.10",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M379.90 120.10 A113 113 0 0 1 413 200",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "170",
+          "y": "210",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "260",
+          "height": "2",
+          "transform": "none"
+        }
+      ]
+    },
+    "slice-full": {
+      "elementCount": 2,
+      "geometry": [
+        {
+          "tag": "path",
+          "d": "M300 150 L396 150 A96 96 0 1 1 300 54 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 150 L396 150 A96 96 0 0 0 300 54 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "matrix(1, 0, 0, 1, 12, -12)"
+        }
+      ]
+    },
+    "slice-quiet": {
+      "elementCount": 2,
+      "geometry": [
+        {
+          "tag": "path",
+          "d": "M300 150 L396 150 A96 96 0 1 1 300 54 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 150 L396 150 A96 96 0 0 0 300 54 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "matrix(1, 0, 0, 1, 12, -12)"
+        }
+      ]
+    },
+    "rings-full": {
+      "elementCount": 5,
+      "geometry": [
+        {
+          "tag": "path",
+          "d": "M80 30 A230 230 0 0 1 310 260 L270 260 A190 190 0 0 0 80 70 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M80 80 A180 180 0 0 1 260 260 L220 260 A140 140 0 0 0 80 120 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M80 130 A130 130 0 0 1 210 260 L170 260 A90 90 0 0 0 80 170 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M80 180 A80 80 0 0 1 160 260 L120 260 A40 40 0 0 0 80 220 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M80 230 A30 30 0 0 1 110 260 L80 260 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        }
+      ]
+    },
+    "rings-quiet": {
+      "elementCount": 5,
+      "geometry": [
+        {
+          "tag": "path",
+          "d": "M80 30 A230 230 0 0 1 310 260 L270 260 A190 190 0 0 0 80 70 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M80 80 A180 180 0 0 1 260 260 L220 260 A140 140 0 0 0 80 120 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M80 130 A130 130 0 0 1 210 260 L170 260 A90 90 0 0 0 80 170 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M80 180 A80 80 0 0 1 160 260 L120 260 A40 40 0 0 0 80 220 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M80 230 A30 30 0 0 1 110 260 L80 260 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        }
+      ]
+    },
+    "layers-full": {
+      "elementCount": 10,
+      "geometry": [
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "60",
+          "y": "120",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "480",
+          "height": "64",
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "60",
+          "y": "100",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "120",
+          "height": "20",
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "180",
+          "y": "100",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "120",
+          "height": "20",
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "300",
+          "y": "100",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "120",
+          "height": "20",
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "420",
+          "y": "100",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "120",
+          "height": "20",
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "84",
+          "y": "148",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "108",
+          "height": "36",
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "192",
+          "y": "148",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "108",
+          "height": "36",
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "300",
+          "y": "148",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "108",
+          "height": "36",
+          "transform": "none"
+        },
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "408",
+          "y": "148",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "108",
+          "height": "36",
+          "transform": "none"
+        }
+      ]
+    },
+    "layers-quiet": {
+      "elementCount": 9,
+      "geometry": [
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "300",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "250.5",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "349.5",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "201",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "399",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "151.5",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "448.5",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "102",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "498",
+          "cy": "142",
+          "r": "42",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        }
+      ]
+    },
+    "cultivate-full": {
+      "elementCount": 8,
+      "geometry": [
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "120",
+          "y": "149",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "360",
+          "height": "2",
+          "transform": "none"
+        },
+        {
+          "tag": "circle",
+          "d": null,
+          "x": null,
+          "y": null,
+          "cx": "300",
+          "cy": "140",
+          "r": "9",
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 131 L288 106",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 131 L312 106",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M200 150 A100 100 0 0 0 229.29 220.71",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M229.29 220.71 A100 100 0 0 0 300 250",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 250 A100 100 0 0 0 370.71 220.71",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M370.71 220.71 A100 100 0 0 0 400 150",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        }
+      ]
+    },
+    "cultivate-quiet": {
+      "elementCount": 16,
+      "geometry": [
+        {
+          "tag": "rect",
+          "d": null,
+          "x": "120",
+          "y": "199",
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": "360",
+          "height": "2",
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M180 200 V172",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M180 172 L170 154 M180 172 L190 154",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M240 200 V160",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M240 160 L230 142 M240 160 L250 142",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 200 V148",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 148 L290 130 M300 148 L310 130",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M360 200 V136",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M360 136 L350 118 M360 136 L370 118",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M420 200 V124",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M420 124 L410 106 M420 124 L430 106",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        }
+      ]
+    },
+    "logo-full": {
+      "elementCount": 10,
+      "geometry": [
+        {
+          "tag": "path",
+          "d": "M201 143 A99 99 0 0 1 399 143 A99 99 0 0 1 388.21 187.95 C367.78 228.04 328.12 265.17 300 286 C271.88 265.17 232.22 228.04 211.79 187.95 A99 99 0 0 1 201 143 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M186.5 143 A113.5 113.5 0 0 1 219.74 62.74",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M219.74 62.74 A113.5 113.5 0 0 1 300 29.5",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 29.5 A113.5 113.5 0 0 1 380.26 62.74",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M380.26 62.74 A113.5 113.5 0 0 1 413.5 143",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M215 143 A85 85 0 0 1 239.9 82.9",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M239.9 82.9 A85 85 0 0 1 300 58",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 58 A85 85 0 0 1 360.1 82.9",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M360.1 82.9 A85 85 0 0 1 385 143",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 143 L371 143 A71 71 0 0 0 350.2 92.8 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        }
+      ],
+      "wedge": {
+        "cssFill": "lch(53.4545 46.5873 258.5)",
+        "srgbHex": "#1F87CE"
+      }
+    },
+    "logo-quiet": {
+      "elementCount": 9,
+      "geometry": [
+        {
+          "tag": "path",
+          "d": "M201 143 A99 99 0 0 1 399 143 A99 99 0 0 1 388.21 187.95 C367.78 228.04 328.12 265.17 300 286 C271.88 265.17 232.22 228.04 211.79 187.95 A99 99 0 0 1 201 143 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M172 143 A128 128 0 0 1 428 143",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M201 143 A99 99 0 0 1 399 143",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M229 143 A71 71 0 0 1 371 143",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M172 143 H428",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M249.8 92.8 L209.49 52.49",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 72 V15",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 143 L390.51 52.49",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        },
+        {
+          "tag": "path",
+          "d": "M300 143 L371 143 A71 71 0 0 0 350.2 92.8 Z",
+          "x": null,
+          "y": null,
+          "cx": null,
+          "cy": null,
+          "r": null,
+          "width": null,
+          "height": null,
+          "transform": "none"
+        }
+      ]
+    }
+  },
+  "status": "passed"
+}

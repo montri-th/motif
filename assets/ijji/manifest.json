@@ -1,0 +1,231 @@
+{
+  "family": "ijji.four-beat",
+  "round": "selected 3",
+  "date": "2026-09-04",
+  "status": "candidate — exploration; looping motion needs a design-system amendment before live use (see DEV-GUIDE.md)",
+  "headProportions": {
+    "source": "measured off ijji-logo-full-square.reference.png",
+    "radiusRatio": "1 : 1.583 : 2.167 : 3.167",
+    "radii": [
+      6.69,
+      10.593,
+      14.496,
+      21.186
+    ],
+    "centresX": [
+      30,
+      64.566,
+      104.708,
+      156
+    ]
+  },
+  "routes": {
+    "still": "svg/ — static SVG for <img> and background-image",
+    "motion": "ijji-motifs.js + ijji-motion.css — inline the markup, link the stylesheet"
+  },
+  "viewBox": "-20 -20 240 240",
+  "speedVariable": "--ijji-speed",
+  "files": [
+    {
+      "id": "graph-b-canvas",
+      "file": "svg/ijji-graph-b-canvas.svg",
+      "motif": "graph-b",
+      "surface": "canvas",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 4.4,
+      "nameTh": "ไต่ขึ้น",
+      "nameEn": "Climb from the base"
+    },
+    {
+      "id": "graph-b-brand-blue",
+      "file": "svg/ijji-graph-b-brand-blue.svg",
+      "motif": "graph-b",
+      "surface": "brand-blue",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 4.4,
+      "nameTh": "ไต่ขึ้น",
+      "nameEn": "Climb from the base"
+    },
+    {
+      "id": "graph-b-ground-mist",
+      "file": "svg/ijji-graph-b-ground-mist.svg",
+      "motif": "graph-b",
+      "surface": "ground-mist",
+      "transparent": false,
+      "ink": "outline #182327",
+      "loopSeconds": 4.4,
+      "nameTh": "ไต่ขึ้น",
+      "nameEn": "Climb from the base"
+    },
+    {
+      "id": "graph-b-dark",
+      "file": "svg/ijji-graph-b-dark.svg",
+      "motif": "graph-b",
+      "surface": "dark",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 4.4,
+      "nameTh": "ไต่ขึ้น",
+      "nameEn": "Climb from the base"
+    },
+    {
+      "id": "graph-b-transparent-mint",
+      "file": "svg/ijji-graph-b-transparent-mint.svg",
+      "motif": "graph-b",
+      "surface": "transparent-mint",
+      "transparent": true,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 4.4,
+      "nameTh": "ไต่ขึ้น",
+      "nameEn": "Climb from the base"
+    },
+    {
+      "id": "graph-b-transparent-ink",
+      "file": "svg/ijji-graph-b-transparent-ink.svg",
+      "motif": "graph-b",
+      "surface": "transparent-ink",
+      "transparent": true,
+      "ink": "outline #182327",
+      "loopSeconds": 4.4,
+      "nameTh": "ไต่ขึ้น",
+      "nameEn": "Climb from the base"
+    },
+    {
+      "id": "rings-c-canvas",
+      "file": "svg/ijji-rings-c-canvas.svg",
+      "motif": "rings-c",
+      "surface": "canvas",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 5,
+      "nameTh": "วาดวง",
+      "nameEn": "Draw on the phrase"
+    },
+    {
+      "id": "rings-c-brand-blue",
+      "file": "svg/ijji-rings-c-brand-blue.svg",
+      "motif": "rings-c",
+      "surface": "brand-blue",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 5,
+      "nameTh": "วาดวง",
+      "nameEn": "Draw on the phrase"
+    },
+    {
+      "id": "rings-c-ground-mist",
+      "file": "svg/ijji-rings-c-ground-mist.svg",
+      "motif": "rings-c",
+      "surface": "ground-mist",
+      "transparent": false,
+      "ink": "outline #182327",
+      "loopSeconds": 5,
+      "nameTh": "วาดวง",
+      "nameEn": "Draw on the phrase"
+    },
+    {
+      "id": "rings-c-dark",
+      "file": "svg/ijji-rings-c-dark.svg",
+      "motif": "rings-c",
+      "surface": "dark",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 5,
+      "nameTh": "วาดวง",
+      "nameEn": "Draw on the phrase"
+    },
+    {
+      "id": "rings-c-transparent-mint",
+      "file": "svg/ijji-rings-c-transparent-mint.svg",
+      "motif": "rings-c",
+      "surface": "transparent-mint",
+      "transparent": true,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 5,
+      "nameTh": "วาดวง",
+      "nameEn": "Draw on the phrase"
+    },
+    {
+      "id": "rings-c-transparent-ink",
+      "file": "svg/ijji-rings-c-transparent-ink.svg",
+      "motif": "rings-c",
+      "surface": "transparent-ink",
+      "transparent": true,
+      "ink": "outline #182327",
+      "loopSeconds": 5,
+      "nameTh": "วาดวง",
+      "nameEn": "Draw on the phrase"
+    },
+    {
+      "id": "rotate-b-canvas",
+      "file": "svg/ijji-rotate-b-canvas.svg",
+      "motif": "rotate-b",
+      "surface": "canvas",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 4,
+      "nameTh": "เดินหน้า",
+      "nameEn": "March forward"
+    },
+    {
+      "id": "rotate-b-brand-blue",
+      "file": "svg/ijji-rotate-b-brand-blue.svg",
+      "motif": "rotate-b",
+      "surface": "brand-blue",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 4,
+      "nameTh": "เดินหน้า",
+      "nameEn": "March forward"
+    },
+    {
+      "id": "rotate-b-ground-mist",
+      "file": "svg/ijji-rotate-b-ground-mist.svg",
+      "motif": "rotate-b",
+      "surface": "ground-mist",
+      "transparent": false,
+      "ink": "outline #182327",
+      "loopSeconds": 4,
+      "nameTh": "เดินหน้า",
+      "nameEn": "March forward"
+    },
+    {
+      "id": "rotate-b-dark",
+      "file": "svg/ijji-rotate-b-dark.svg",
+      "motif": "rotate-b",
+      "surface": "dark",
+      "transparent": false,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 4,
+      "nameTh": "เดินหน้า",
+      "nameEn": "March forward"
+    },
+    {
+      "id": "rotate-b-transparent-mint",
+      "file": "svg/ijji-rotate-b-transparent-mint.svg",
+      "motif": "rotate-b",
+      "surface": "transparent-mint",
+      "transparent": true,
+      "ink": "fill #0AD69C",
+      "loopSeconds": 4,
+      "nameTh": "เดินหน้า",
+      "nameEn": "March forward"
+    },
+    {
+      "id": "rotate-b-transparent-ink",
+      "file": "svg/ijji-rotate-b-transparent-ink.svg",
+      "motif": "rotate-b",
+      "surface": "transparent-ink",
+      "transparent": true,
+      "ink": "outline #182327",
+      "loopSeconds": 4,
+      "nameTh": "เดินหน้า",
+      "nameEn": "March forward"
+    }
+  ],
+  "notes": {
+    "rings-c": "draw order is inner → outer: the hub (your shop) lands first, then each ring expands outward on the three words of the phrase"
+  }
+}

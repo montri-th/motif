@@ -1,0 +1,1724 @@
+{
+  "schemaVersion": "motif-library-browser-qa/1.0",
+  "executedAt": "2026-09-04T18:16:37.908Z",
+  "artifactRoot": ".",
+  "routes": [
+    "/motif/",
+    "/motif/en/"
+  ],
+  "browser": "152.0.7977.82",
+  "emulationNote": "Viewport checks are desktop Chrome emulation, not native iPhone, iPad, Safari, or screen-reader evidence.",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 800
+    },
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 600,
+      "height": 900
+    },
+    {
+      "width": 713,
+      "height": 823
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 900,
+      "height": 900
+    },
+    {
+      "width": 1080,
+      "height": 900
+    },
+    {
+      "width": 1200,
+      "height": 900
+    },
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 1600,
+      "height": 1000
+    }
+  ],
+  "states": [
+    "light",
+    "dark",
+    "keyboard",
+    "dialog",
+    "filter",
+    "search",
+    "copy",
+    "PNG export",
+    "bounded timeout",
+    "cancel",
+    "reduced motion",
+    "no JavaScript",
+    "Thai 130% text",
+    "200% text"
+  ],
+  "screenshotsCaptured": {
+    "storage": "ephemeral local QA output; intentionally not published",
+    "names": [
+      "th-mobile-360.png",
+      "th-desktop-1440.png",
+      "en-mobile-390.png"
+    ]
+  },
+  "socialPreview": {
+    "path": "assets/social/motif-library-1200x630.png",
+    "mime": "image/png",
+    "width": 1200,
+    "height": 630,
+    "bytes": 56063,
+    "sha256": "2157be06fad9c94149e7e15a96a31886d763e8a55e5969305349245512bcc50e",
+    "visualReview": "inspected at intrinsic size; title, motif, safe area, and thumbnail composition passed"
+  },
+  "totals": {
+    "checks": 331,
+    "passed": 331,
+    "failed": 0
+  },
+  "status": "candidate_ready_for_release_handoff",
+  "openManualGates": [
+    "native iPhone/iPad Safari elastic-scroll and browser-chrome review",
+    "screen-reader pass in VoiceOver or equivalent",
+    "third-party social-platform card cache observation after deployment",
+    "field Core Web Vitals after sufficient real traffic"
+  ],
+  "checks": [
+    {
+      "name": "th 320x800 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 320x800 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 320x800 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 320x800 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 320x800 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "320/320"
+    },
+    {
+      "name": "th 320x800 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 320x800 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 320x800 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 320x800 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 320x800 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 320x800 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 320x800 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 320x800 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 320x800 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 320x800 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 320x800 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 320x800 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 320x800 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 320x800 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "320/320"
+    },
+    {
+      "name": "en 320x800 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 320x800 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 320x800 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 320x800 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 320x800 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 320x800 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 320x800 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 320x800 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 320x800 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 360x800 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 360x800 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 360x800 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 360x800 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 360x800 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "360/360"
+    },
+    {
+      "name": "th 360x800 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 360x800 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 360x800 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 360x800 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 360x800 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 360x800 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 360x800 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 360x800 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 360x800 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 360x800 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 360x800 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 360x800 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 360x800 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 360x800 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "360/360"
+    },
+    {
+      "name": "en 360x800 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 360x800 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 360x800 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 360x800 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 360x800 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 360x800 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 360x800 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 360x800 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 360x800 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 390x844 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 390x844 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 390x844 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 390x844 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 390x844 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "390/390"
+    },
+    {
+      "name": "th 390x844 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 390x844 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 390x844 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 390x844 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 390x844 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 390x844 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 390x844 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 390x844 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 390x844 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 390x844 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 390x844 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 390x844 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 390x844 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 390x844 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "390/390"
+    },
+    {
+      "name": "en 390x844 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 390x844 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 390x844 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 390x844 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 390x844 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 390x844 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 390x844 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 390x844 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 390x844 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 600x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 600x900 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 600x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 600x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 600x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "600/600"
+    },
+    {
+      "name": "th 600x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 600x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 600x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 600x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 600x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 600x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 600x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 600x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 600x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 600x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 600x900 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 600x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 600x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 600x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "600/600"
+    },
+    {
+      "name": "en 600x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 600x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 600x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 600x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 600x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 600x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 600x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 600x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 600x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 713x823 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 713x823 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 713x823 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 713x823 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 713x823 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "713/713"
+    },
+    {
+      "name": "th 713x823 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 713x823 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 713x823 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 713x823 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 713x823 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 713x823 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 713x823 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 713x823 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 713x823 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 713x823 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 713x823 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 713x823 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 713x823 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 713x823 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "713/713"
+    },
+    {
+      "name": "en 713x823 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 713x823 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 713x823 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 713x823 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 713x823 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 713x823 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 713x823 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 713x823 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 713x823 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 768x1024 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 768x1024 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 768x1024 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 768x1024 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 768x1024 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "768/768"
+    },
+    {
+      "name": "th 768x1024 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 768x1024 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 768x1024 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 768x1024 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 768x1024 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 768x1024 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 768x1024 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 768x1024 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 768x1024 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 768x1024 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 768x1024 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 768x1024 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 768x1024 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 768x1024 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "768/768"
+    },
+    {
+      "name": "en 768x1024 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 768x1024 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 768x1024 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 768x1024 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 768x1024 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 768x1024 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 768x1024 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 768x1024 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 768x1024 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 900x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 900x900 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 900x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 900x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 900x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "900/900"
+    },
+    {
+      "name": "th 900x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 900x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 900x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 900x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 900x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 900x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 900x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 900x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 900x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 900x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 900x900 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 900x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 900x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 900x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "900/900"
+    },
+    {
+      "name": "en 900x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 900x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 900x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 900x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 900x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 900x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 900x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 900x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 900x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1080x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 1080x900 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 1080x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 1080x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 1080x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "1080/1080"
+    },
+    {
+      "name": "th 1080x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 1080x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 1080x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 1080x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 1080x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 1080x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 1080x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1080x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1080x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1080x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 1080x900 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 1080x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 1080x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 1080x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "1080/1080"
+    },
+    {
+      "name": "en 1080x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 1080x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 1080x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 1080x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 1080x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 1080x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 1080x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1080x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1080x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1200x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 1200x900 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 1200x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 1200x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 1200x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "1200/1200"
+    },
+    {
+      "name": "th 1200x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 1200x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 1200x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 1200x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 1200x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 1200x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 1200x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1200x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1200x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1200x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 1200x900 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 1200x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 1200x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 1200x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "1200/1200"
+    },
+    {
+      "name": "en 1200x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 1200x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 1200x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 1200x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 1200x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 1200x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 1200x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1200x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1200x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1440x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 1440x900 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 1440x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 1440x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 1440x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "1440/1440"
+    },
+    {
+      "name": "th 1440x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 1440x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 1440x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 1440x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 1440x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 1440x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 1440x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1440x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1440x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1440x900 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 1440x900 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 1440x900 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 1440x900 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 1440x900 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "1440/1440"
+    },
+    {
+      "name": "en 1440x900 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 1440x900 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 1440x900 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 1440x900 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 1440x900 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 1440x900 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 1440x900 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1440x900 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1440x900 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1600x1000 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "th 1600x1000 initial locale",
+      "status": "passed",
+      "detail": "th"
+    },
+    {
+      "name": "th 1600x1000 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "th 1600x1000 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "th 1600x1000 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "1600/1600"
+    },
+    {
+      "name": "th 1600x1000 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "th 1600x1000 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "th 1600x1000 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "th 1600x1000 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "th 1600x1000 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "th 1600x1000 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "th 1600x1000 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1600x1000 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "th 1600x1000 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1600x1000 route returns 200",
+      "status": "passed",
+      "detail": "200"
+    },
+    {
+      "name": "en 1600x1000 initial locale",
+      "status": "passed",
+      "detail": "en"
+    },
+    {
+      "name": "en 1600x1000 landmark contract",
+      "status": "passed",
+      "detail": "h1=1, main=1"
+    },
+    {
+      "name": "en 1600x1000 static asset inventory",
+      "status": "passed",
+      "detail": "total=9, visible=9"
+    },
+    {
+      "name": "en 1600x1000 no page-level horizontal overflow",
+      "status": "passed",
+      "detail": "1600/1600"
+    },
+    {
+      "name": "en 1600x1000 images load",
+      "status": "passed",
+      "detail": "all loaded"
+    },
+    {
+      "name": "en 1600x1000 image alt contract",
+      "status": "passed",
+      "detail": "missing=0"
+    },
+    {
+      "name": "en 1600x1000 heading order has no skipped levels",
+      "status": "passed"
+    },
+    {
+      "name": "en 1600x1000 controls have text or labels",
+      "status": "passed",
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "en 1600x1000 progressive hero parity",
+      "status": "passed",
+      "detail": "static=true, enhanced=true"
+    },
+    {
+      "name": "en 1600x1000 local fonts loaded",
+      "status": "passed",
+      "detail": "loaded"
+    },
+    {
+      "name": "en 1600x1000 zero console errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1600x1000 zero page errors",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "en 1600x1000 zero failed HTTP responses",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "Keyboard focus starts on skip link",
+      "status": "passed"
+    },
+    {
+      "name": "Skip link becomes visible on focus",
+      "status": "passed"
+    },
+    {
+      "name": "Theme toggle changes theme",
+      "status": "passed",
+      "detail": "light -> dark"
+    },
+    {
+      "name": "Dark theme keeps exact ink/Brand Blue assets on an explicit light preview surface",
+      "status": "passed",
+      "detail": "rgb(229, 233, 230)"
+    },
+    {
+      "name": "Brand filter shows three ijji cards",
+      "status": "passed"
+    },
+    {
+      "name": "Search finds cross-family rings examples",
+      "status": "passed"
+    },
+    {
+      "name": "Landometer preview opens as modal dialog",
+      "status": "passed"
+    },
+    {
+      "name": "Landometer preview renders exact runtime motif",
+      "status": "passed"
+    },
+    {
+      "name": "Escape closes preview dialog",
+      "status": "passed"
+    },
+    {
+      "name": "ijji pending-state preview starts inline",
+      "status": "passed"
+    },
+    {
+      "name": "Frequently changing ijji elapsed time is excluded from the live announcement",
+      "status": "passed"
+    },
+    {
+      "name": "ijji cancel removes motion and leaves static fallback",
+      "status": "passed"
+    },
+    {
+      "name": "Copy-code action writes canonical Landometer snippet",
+      "status": "passed"
+    },
+    {
+      "name": "PNG export keeps deterministic filename",
+      "status": "passed",
+      "detail": "landometer-dial-full.png"
+    },
+    {
+      "name": "PNG export produces a valid PNG signature",
+      "status": "passed",
+      "detail": "22740 bytes"
+    },
+    {
+      "name": "ijji preview stops automatically at state timeout",
+      "status": "passed"
+    },
+    {
+      "name": "ijji timeout exposes visible completion status",
+      "status": "passed"
+    },
+    {
+      "name": "Reduced motion disables Landometer animation",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "Reduced motion disables ijji animation",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "name": "No-JS baseline keeps learning content and direct downloads without dead enhancement controls",
+      "status": "passed",
+      "detail": "{\"h1\":1,\"cards\":9,\"downloads\":18,\"hero\":true,\"overflow\":0,\"visibleEnhancedControls\":0,\"notice\":true,\"noticeBackground\":\"rgb(255, 241, 209)\",\"noticeColor\":\"rgb(166, 74, 0)\"}"
+    },
+    {
+      "name": "No-JS mobile baseline has no horizontal overflow",
+      "status": "passed",
+      "detail": "0"
+    },
+    {
+      "name": "Thai text scale 130% preserves page contract",
+      "status": "passed",
+      "detail": "{\"overflow\":0,\"h1Visible\":true,\"cards\":9,\"offenders\":[]}"
+    },
+    {
+      "name": "Thai text scale 200% preserves page contract",
+      "status": "passed",
+      "detail": "{\"overflow\":0,\"h1Visible\":true,\"cards\":9,\"offenders\":[]}"
+    }
+  ]
+}
