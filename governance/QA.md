@@ -1,8 +1,8 @@
 # Landometer Motif Library · release QA
 
-Status: `candidate_local_passed_awaiting_live_verification`
+Status: `passed_release_1.1.2`
 
-Candidate date: 2026-09-05 (Asia/Bangkok)
+Release date: 2026-09-05 (Asia/Bangkok)
 
 Artifact release: `1.1.2`
 
@@ -39,22 +39,22 @@ Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site a
 | Loading and performance | Passed: 6 local synthetic checks | Cold: 36 requests / 341,200 transfer bytes; repeat: 35 zero-transfer cache hits. Diagnostic local profile, not field Core Web Vitals |
 | Runtime/static parity | Passed: 11 checks | Exact JS `d4e5c636…12fb`, CSS `e7028286…1794`, generated static output, geometry, computed paint, and optional API disclosure |
 | Logo-full visual fixtures | Passed: 12 fixtures | DPR 1/2/3; complete final/static parity and expected-colour seam probes, including outer Energy Sky; no master-PNG pixel-identity claim |
-| Independent motif parity review | Passed within the 11 runtime/static checks and 1,364 release-verifier checks | Delivered static and runtime variants are compared after normalizing serialization and motion-only metadata |
+| Independent motif parity review | Carried forward: Landometer 12/12 and ijji 18/18 normalized parity; release 1.1.2 additionally passed 11 runtime/static and 1,364 release-verifier checks | ijji and non-target Landometer static bytes are unchanged; the selected v2 runtime and current logo are covered by current-release checks |
 | Governed raster verification | Passed unchanged-byte release verification | Byte, dimensions, role, and governance fields verified; rights rely on the recorded owner statement |
-| Download kits | Passed deterministic candidate build | Three ZIPs contain 26, 33, and 49 files including the required decisions, sync guidance, and package-specific checksums; they will be rebuilt after final live evidence settles |
+| Download kits | Passed deterministic final rebuild | Three ZIPs contain 26, 33, and 49 files including the required decisions, live-gate result, sync guidance, and package-specific checksums |
 | Source/route/asset authority verifier | Passed: 1,364 checks | Local release tree and repository checksum set only; live attestation remains separate |
+| GitHub Pages byte attestation | Passed: 12 endpoints on provider run `33961608596`, source `fb7ef0d8…` | Thai/English HTML, cache-busted site/runtime CSS+JS, static logo, manifest, settle decision, three ZIPs, and repository checksums returned expected final 2xx URL, MIME, byte length, and SHA-256 |
+| GitHub Pages rendered logo preview | Passed: 7/7 checks at 1871×1312 | Full + quiet start together; settle to 10/9 paths; outer Energy Sky is `rgb(89, 210, 254)`, right edge 413.5, pixel `[89,210,254,255]`; final holds and both replay at 5000 ms; zero console/page/network errors |
 
-Machine-readable local evidence is refreshed in `browser-qa.json`, `performance-qa.json`, `runtime-parity.json`, `logo-full-visual-qa.json`, `identity-assets.json`, `source-ledger.json`, `showcase-motion-decision.json`, `logo-full-geometry-decision.json`, `logo-preview-final-settle-decision.json`, and `owner-approval.json`.
+Machine-readable evidence is refreshed in `browser-qa.json`, `performance-qa.json`, `runtime-parity.json`, `logo-full-visual-qa.json`, `identity-assets.json`, `source-ledger.json`, `showcase-motion-decision.json`, `logo-full-geometry-decision.json`, `logo-preview-final-settle-decision.json`, and `owner-approval.json`.
 
-## Release 1.1.2 preflight
+## Release 1.1.2 verification
 
-Before final approval, Drive synchronization, or a completion claim:
-
-1. Local rendered, parity, performance, package, and source-authority checks have passed against the candidate bytes.
-2. Publish the exact candidate commit without changing the validated runtime or timing.
-3. Wait for the GitHub Pages deployment to finish, then attest live HTML, v1.1.2 cache-busted runtime URLs, runtime hashes, and critical governance/download bytes against that commit.
-4. Open the deployed logo Preview and observe the full + quiet immediate start, complete final settle at about 2050 ms, held frame with the outer Energy Sky path present, and paired replay at about 5000 ms.
-5. Replace the live-pending candidate status in this file and `logo-preview-final-settle-decision.json` with the actual passed evidence before final approval or Drive synchronization.
+1. Local rendered, parity, performance, package, and source-authority checks passed against the candidate bytes.
+2. GitHub Pages deployed the exact candidate source successfully on provider run `33961608596`.
+3. Twelve live endpoints passed URL, 2xx status, MIME, byte-length, and SHA-256 attestation.
+4. The deployed logo Preview passed immediate paired start, complete final settle at about 2050 ms, held outer Energy Sky path, and paired replay at about 5000 ms.
+5. Release evidence and downloadable packages were rebuilt after the live gate closed; final live bytes are re-attested before completion handoff and Drive synchronization.
 
 ## Identity and discovery
 

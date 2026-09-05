@@ -42,7 +42,7 @@ This loop is a component-local instructional aid for this library—not a new pr
 
 Release 1.1.1 changes only the Landometer `logo-full` assembly geometry and the minimal CSS declaration it requires. Controlled radial and 0.25° angular overlaps close the visible anti-alias gaps in the held final frame. `logo-quiet`, the other five motif kinds, ijji, and the production motion lifecycles are unchanged. The scoped decision and claim boundary are recorded in [`governance/logo-full-geometry-decision.json`](governance/logo-full-geometry-decision.json).
 
-Release 1.1.2 selects the new owner-supplied v2 CSS and JavaScript as exact bytes. It also fixes the mixed library preview state seen in the owner's screenshot: the dialog removes `data-play` at 2050 ms so authored markup supplies the complete final frame, then holds it until the 5000 ms replay. The repair has passed local rendered QA and remains gated on verification of the deployed GitHub Pages bytes and animation before Drive synchronization.
+Release 1.1.2 selects the new owner-supplied v2 CSS and JavaScript as exact bytes. It also fixes the mixed library preview state seen in the owner's screenshot: the dialog removes `data-play` at 2050 ms so authored markup supplies the complete final frame, then holds it until the 5000 ms replay. Both local rendered QA and deployed GitHub Pages verification passed, including an exact outer Energy Sky pixel probe in the held final frame.
 
 ## Shared Google Drive mirror
 

@@ -2,7 +2,7 @@
   "schemaVersion": "motif-library-logo-preview-final-settle-decision/1.0",
   "decisionId": "landometer-logo-preview-final-settle-20260905",
   "artifactRelease": "1.1.2",
-  "status": "local_qa_passed_pending_live_qa",
+  "status": "owner_selected_for_named_artifact",
   "recordedOn": "2026-09-05",
   "evidence": {
     "source": "user-supplied screenshot in the current task",
@@ -56,7 +56,7 @@
     "normativeDesignSystemChange": false
   },
   "releaseGate": {
-    "status": "local_passed_live_pending",
+    "status": "passed",
     "localRenderedQa": {
       "status": "passed",
       "browserChecks": 379,
@@ -70,6 +70,31 @@
       ]
     },
     "liveRenderedQaRequiredBeforeApprovalOrSync": true,
+    "requirementSatisfied": true,
+    "liveRenderedQa": {
+      "status": "passed",
+      "checkedAt": "2026-09-05T10:52:23.957Z",
+      "url": "https://montri-th.github.io/motif/?release=1.1.2",
+      "candidateSourceSha": "fb7ef0d8b8194c160ca79670ab56692ffec45c8b",
+      "providerRun": "33961608596",
+      "byteAttestation": {
+        "checkedAt": "2026-09-05T10:51:07.770Z",
+        "passedEndpoints": 12,
+        "runtimeJsSha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
+        "runtimeCssSha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794"
+      },
+      "renderedChecks": {
+        "passed": 7,
+        "fullPathCount": 10,
+        "quietPathCount": 9,
+        "outerSkyStroke": "rgb(89, 210, 254)",
+        "outerSkyRight": 413.5,
+        "outerSkyPixel": [89, 210, 254, 255],
+        "heldBeforeReplay": true,
+        "pairedReplayAtMs": 5000,
+        "consolePageOrNetworkErrors": 0
+      }
+    },
     "requiredObservation": "On the deployed route, confirm that logo full and quiet start together, both settle to complete final states at about 2050 ms, remain held, and restart together at about 5000 ms without a missing outer path."
   }
 }

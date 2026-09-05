@@ -89,7 +89,7 @@
     },
     {
       "issue": "The user's screenshot showed the logo-full priority wedge and quiet variant at their final states while the outer Energy Sky path remained absent, which is not the authored final state.",
-      "resolution": "Keep the exact supplied runtime and apply a site-local preview settle rule: start both variants immediately, remove data-play at 2050 ms so authored static markup owns the complete final state, hold it for inspection, and replay both at 5000 ms. Keep the other five motif previews at 3000 ms. This repair is recorded in governance/logo-preview-final-settle-decision.json, has passed local rendered QA, and remains pending deployed GitHub Pages verification before Drive synchronization."
+      "resolution": "Keep the exact supplied runtime and apply a site-local preview settle rule: start both variants immediately, remove data-play at 2050 ms so authored static markup owns the complete final state, hold it for inspection, and replay both at 5000 ms. Keep the other five motif previews at 3000 ms. This repair is recorded in governance/logo-preview-final-settle-decision.json and passed both local rendered QA and deployed GitHub Pages byte/animation verification."
     },
     {
       "issue": "The user asked for the final motif to look 100% like the logo, while the governed motif colors intentionally differ slightly from the official lockup source and controlled overlaps are not pixel-identical to master artwork.",

@@ -58,7 +58,7 @@ Version 1.1.2 · 5 September 2026
 
 Release 1.1.1 แก้เฉพาะ geometry ตอนจบของ `landometer.logo.full`: inner band ซ้อนใต้ outer ring, segment ถัดไปซ้อน 0.25° และ wedge ซ้อนขอบ band เพื่อปิดรอยแหว่งจาก anti-aliasing ภาพสุดท้ายจึงประกอบครบตาม silhouette/ตำแหน่งสีของ mark ทางการ แต่ยังเป็น motif ไม่ใช่ official logo และไม่ได้อ้างว่า pixel-identical กับไฟล์ master ดูขอบเขตที่ [`../governance/logo-full-geometry-decision.json`](../governance/logo-full-geometry-decision.json)
 
-Release 1.1.2 เปลี่ยนจาก scoped derivative ของ release 1.1.1 มาใช้ไฟล์ v2 ของเจ้าของตรง byte (`JS d4e5c636…12fb`, `CSS e7028286…1794`) และเพิ่ม settle/hold เฉพาะ preview เพื่อแก้ mixed frame ที่พบใน screenshot ของผู้ใช้: wedge และ quiet อยู่ปลายทางแล้วแต่ outer Energy Sky path ของ full ยังไม่ปรากฏ การแก้นี้ไม่เปลี่ยน authored runtime timeline ผ่าน local rendered QA แล้ว และยังต้องยืนยันจาก GitHub Pages ที่ deploy จริงก่อน sync release ไป Drive
+Release 1.1.2 เปลี่ยนจาก scoped derivative ของ release 1.1.1 มาใช้ไฟล์ v2 ของเจ้าของตรง byte (`JS d4e5c636…12fb`, `CSS e7028286…1794`) และเพิ่ม settle/hold เฉพาะ preview เพื่อแก้ mixed frame ที่พบใน screenshot ของผู้ใช้: wedge และ quiet อยู่ปลายทางแล้วแต่ outer Energy Sky path ของ full ยังไม่ปรากฏ การแก้นี้ไม่เปลี่ยน authored runtime timeline และผ่านทั้ง local rendered QA กับการตรวจ animation/bytes บน GitHub Pages จริงแล้ว
 
 สำหรับ Claude/ChatGPT ให้ใช้ [`ai-sync.md`](ai-sync.md) และ Drive `release-index.json` เป็นขั้นตอนค้น release ก่อนอ่าน manifest/hash ทุกครั้ง ไม่มี background sync อัตโนมัติระหว่างบริการ
 
@@ -155,7 +155,7 @@ That loop is a component-local instructional showcase, not a portable production
 
 Release 1.1.1 patches only the held final geometry of `landometer.logo.full`. Controlled radial, 0.25° angular, and wedge overlaps remove visible anti-alias gaps while preserving the official mark-aligned silhouette and colour-region layout. It remains a motif rather than the official identity file, and no literal pixel-identity claim is made. See [`../governance/logo-full-geometry-decision.json`](../governance/logo-full-geometry-decision.json). Claude and ChatGPT retrieval/update rules are in [`ai-sync.md`](ai-sync.md).
 
-Release 1.1.2 selects the owner-supplied v2 runtime as exact bytes (`JS d4e5c636…12fb`, `CSS e7028286…1794`) and adds only the library-level logo settle/hold described above. The user's screenshot is evidence of a mixed preview frame—priority wedge and quiet final present while the full outer Energy Sky path remained absent—not authority to alter the authored animation or broaden downstream use. Local rendered QA has passed; the deployed GitHub Pages bytes and animation must still be verified before Drive synchronization. Claude and ChatGPT retrieval/update rules remain in [`ai-sync.md`](ai-sync.md).
+Release 1.1.2 selects the owner-supplied v2 runtime as exact bytes (`JS d4e5c636…12fb`, `CSS e7028286…1794`) and adds only the library-level logo settle/hold described above. The user's screenshot is evidence of a mixed preview frame—priority wedge and quiet final present while the full outer Energy Sky path remained absent—not authority to alter the authored animation or broaden downstream use. Both local rendered QA and deployed GitHub Pages byte/animation verification passed. Claude and ChatGPT retrieval/update rules remain in [`ai-sync.md`](ai-sync.md).
 
 ### ijji static asset
 
