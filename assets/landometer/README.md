@@ -4,16 +4,16 @@ Status: owner-approved artifact overlay dated 2026-09-05; not retroactively part
 
 ## Files
 
-- `landometer-motifs.css` + `landometer-motifs.js`: exact selected web runtime.
+- `landometer-motifs.css` + `landometer-motifs.js`: governed finite-once runtime with the owner-scoped logo-full geometry patch.
 - `svg/`: deterministic final-state SVGs generated from that runtime for static, reduced-motion, print, email, deck, social, and fallback use.
 
-Selected runtime hashes:
+Release runtime hashes:
 
-- CSS: `d736cdb0cbd65bf8e1f199a600df120eaa8062928337efdfeb384048b857a0d8`
-- JS: `605129c765a3e1da91313467aeac46f5bd60223f1359b78d62b4b2e0a0325702`
+- CSS: `d2b32686ea49c9fa0b55ae3cd29953365f826833fa0021bdaba7f7d8be41e0af`
+- JS: `985b3a163bcdfb78098de52aaa0a7f5fc809f52fe08a53ecfcbe55850dac1cac`
 
 Use full motifs for one major orientation, transition, or closure beat. Use quiet motifs for secondary rhythm. Motion plays once; essential content must not depend on it.
 
-The `logo` kind is an exceptional assembly motif, not the official logo. Never use it as navigation identity, favicon, social identity, or a replacement logo.
+The `logo` kind is an exceptional assembly motif, not the official logo. Release 1.1.1 closes visible final-frame seams in `logo-full` through controlled subpixel overlaps; `logo-quiet` and every other static motif remain byte-identical to 1.1.0. Never use it as navigation identity, favicon, social identity, or a replacement logo.
 
 See `../../docs/usage-guide.md`, `../motif-library.json`, `../../governance/owner-approval.json`, and `../../LICENSE.md` for the complete contract. These files are included in the downloadable kit.

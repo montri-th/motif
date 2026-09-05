@@ -2,7 +2,8 @@
   "schemaVersion": "motif-library-showcase-motion-decision/1.0",
   "decisionId": "landometer-modal-showcase-motion-v1",
   "artifactId": "landometer-motif-library-web-v1",
-  "artifactRelease": "1.1.0",
+  "artifactRelease": "1.1.1",
+  "carriedForwardFromRelease": "1.1.0",
   "status": "owner_selected_for_named_artifact",
   "recordedOn": "2026-09-05",
   "authority": {
@@ -47,13 +48,13 @@
     "viewerControl": "pause_and_replay_now_controls_are_available_when_motion_is_allowed"
   },
   "productionBoundary": {
-    "landometerRuntime": "finite_once_unchanged",
+    "landometerRuntime": "finite_once_lifecycle_unchanged_logo_full_geometry_patched",
     "implementationSnippets": "finite_once_unchanged",
     "machineManifestMotionContract": "finite_once_unchanged"
   },
   "contractBoundary": {
     "productionLandometerMotionMode": "finite_once",
-    "runtimeAssets": "unchanged_exact_governed_bytes",
+    "runtimeAssets": "versioned_logo_full_geometry_patch_only; finite_once API and lifecycle unchanged",
     "implementationSnippets": "finite_once",
     "machineManifestMotionContract": "finite_once",
     "hero": "unchanged_one_shot_progressive_enhancement",

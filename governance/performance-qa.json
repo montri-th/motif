@@ -1,6 +1,6 @@
 {
   "schemaVersion": "motif-library-performance-qa/1.0",
-  "executedAt": "2026-09-04T19:14:15.656Z",
+  "executedAt": "2026-09-05T09:38:25.698Z",
   "artifactRoot": ".",
   "browser": "152.0.7977.82",
   "route": "/motif/",
@@ -11,18 +11,18 @@
     "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
     "requestCount": 36,
     "resourceCount": 35,
-    "transferBytes": 337818,
-    "decodedBodyBytes": 327018,
+    "transferBytes": 338703,
+    "decodedBodyBytes": 327903,
     "cacheEligibleResourceCount": 35,
     "zeroTransferResourceCount": 0,
     "duplicateUrls": [],
     "timing": {
-      "responseEndMs": 6,
-      "domContentLoadedMs": 18,
-      "loadMs": 80,
-      "firstContentfulPaintMs": 108,
-      "largestContentfulPaintMs": 108,
-      "cumulativeLayoutShift": 0.003,
+      "responseEndMs": 3,
+      "domContentLoadedMs": 70,
+      "loadMs": 87,
+      "firstContentfulPaintMs": 92,
+      "largestContentfulPaintMs": 92,
+      "cumulativeLayoutShift": 0.0268,
       "longTaskMs": 0
     }
   },
@@ -31,15 +31,15 @@
     "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
     "requestCount": 36,
     "resourceCount": 35,
-    "transferBytes": 59283,
-    "decodedBodyBytes": 327018,
+    "transferBytes": 59447,
+    "decodedBodyBytes": 327903,
     "cacheEligibleResourceCount": 35,
     "zeroTransferResourceCount": 35,
     "duplicateUrls": [],
     "timing": {
       "responseEndMs": 3,
-      "domContentLoadedMs": 17,
-      "loadMs": 28,
+      "domContentLoadedMs": 18,
+      "loadMs": 27,
       "firstContentfulPaintMs": 48,
       "largestContentfulPaintMs": 48,
       "cumulativeLayoutShift": 0,
@@ -65,12 +65,12 @@
     {
       "name": "local CLS at or below 0.1",
       "passed": true,
-      "detail": 0.003
+      "detail": 0.0268
     },
     {
       "name": "local LCP observer returned a value",
       "passed": true,
-      "detail": 108
+      "detail": 92
     },
     {
       "name": "repeat visit reuses at least one cache-eligible response",

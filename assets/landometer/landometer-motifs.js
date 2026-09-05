@@ -1,4 +1,4 @@
-/* Landometer motion motifs — v1 · 4 September 2026
+/* Landometer motion motifs — v1.1.1 · 5 September 2026
    <lm-motif kind="dial|slice|rings|layers|cultivate|logo" [quiet] [ink="beige"] [autoplay="false"] [run="n"]></lm-motif>
    Renders an inline SVG in its FINAL state (fail-open). When the element scrolls into view it plays once;
    change the `run` attribute (or call el.play()) to replay. Requires landometer-motifs.css.
@@ -93,9 +93,9 @@
        the mark's PARTS assemble once; the official artwork file itself is never animated,
        and the assembled state never replaces the official logo in nav, favicon or OG images. */
     logo: function (q) {
-      /* geometry measured from the official mark (6402px master, centre (3202,3049), outer r 2600 → 128 units):
+      /* Normalized final silhouette aligned to the owner-supplied official lockup:
          centre (300,143) · outer ring r 99–128 · band r 71–99 at .8 over the pin · head r 71 · body = r 99 disc to 27°
-         below the baseline, then a fitted cubic to the tip (300,286) · priority wedge = sector 0°–45° r 71 */
+         below the baseline, then a fitted cubic to the tip (300,286) · priority wedge = sector 0°–45° r 71. */
       var pin = 'M201 143 A99 99 0 0 1 399 143 A99 99 0 0 1 388.21 187.95 C367.78 228.04 328.12 265.17 300 286 C271.88 265.17 232.22 228.04 211.79 187.95 A99 99 0 0 1 201 143 Z';
       var wedge = 'M300 143 L371 143 A71 71 0 0 0 350.2 92.8 Z';
       if (q) {
@@ -111,14 +111,24 @@
           line('M300 143 L390.51 52.49', 'lm-draw420', 900, 420) +
           '<path d="' + wedge + '" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="420" class="lm-draw420" style="--lm-delay:1200ms"></path></svg>';
       }
-      var arc = function (d, color, w, delay, op) { return '<path d="' + d + '" fill="none" stroke="' + color + '" stroke-width="' + w + '"' + (op ? ' stroke-opacity="' + op + '"' : '') + ' stroke-dasharray="90" class="lm-draw" style="--lm-delay:' + delay + 'ms"></path>'; };
-      return SVG_OPEN +
-        '<path d="' + pin + '" fill="currentColor" class="lm-drop"></path>' +
-        arc('M186.5 143 A113.5 113.5 0 0 1 219.74 62.74', C.coral, 29, 300) + arc('M219.74 62.74 A113.5 113.5 0 0 1 300 29.5', C.yellow, 29, 450) +
-        arc('M300 29.5 A113.5 113.5 0 0 1 380.26 62.74', C.mint, 29, 600) + arc('M380.26 62.74 A113.5 113.5 0 0 1 413.5 143', C.sky, 29, 750) +
-        arc('M215 143 A85 85 0 0 1 239.9 82.9', C.coral, 28, 450, .8) + arc('M239.9 82.9 A85 85 0 0 1 300 58', C.yellow, 28, 600, .8) +
-        arc('M300 58 A85 85 0 0 1 360.1 82.9', C.mint, 28, 750, .8) + arc('M360.1 82.9 A85 85 0 0 1 385 143', C.sky, 28, 900, .8) +
-        '<path d="' + wedge + '" fill="var(--lm-wedge, #3F93D1)" class="lm-step-in" style="--lm-delay:1200ms"></path></svg>';
+      /* The owner-supplied seam fix extends the inner band one unit beneath the outer ring. Each later
+         colour begins .25deg early, and the wedge extends
+         .6 units over the inner band. Those controlled overlaps prevent anti-alias seams or missing
+         slivers while preserving the same assembled silhouette. Only this full variant is patched. */
+      var point = function (r, a) {
+        var t = a * Math.PI / 180;
+        return (300 + r * Math.cos(t)).toFixed(2) + ' ' + (143 - r * Math.sin(t)).toFixed(2);
+      };
+      var segment = function (r, a1, a2, paint, dash, delay) {
+        return '<path d="M' + point(r, a1) + ' A' + r + ' ' + r + ' 0 0 1 ' + point(r, a2) + '" fill="none" stroke-width="29" stroke-dasharray="' + dash + '" class="lm-drawv" style="' + paint + ';--lm-dash:' + dash + ';--lm-delay:' + delay + 'ms"></path>';
+      };
+      var colors = [C.coral, C.yellow, C.mint, C.sky];
+      var output = '<path d="' + pin + '" fill="currentColor" class="lm-drop"></path>';
+      var i;
+      for (i = 0; i < 4; i++) output += segment(85.5, 180 - 45 * i + (i ? .25 : 0), 135 - 45 * i, 'stroke:color-mix(in srgb, ' + colors[i] + ' 80%, currentColor)', 69, 450 + 150 * i);
+      for (i = 0; i < 4; i++) output += segment(113.5, 180 - 45 * i + (i ? .25 : 0), 135 - 45 * i, 'stroke:' + colors[i], 91, 300 + 150 * i);
+      output += '<path d="M300 143 L371.6 143 A71.6 71.6 0 0 0 350.63 92.37 Z" fill="var(--lm-wedge, #3F93D1)" class="lm-step-in" style="--lm-delay:1200ms"></path>';
+      return SVG_OPEN + output + '</svg>';
     }
   };
 

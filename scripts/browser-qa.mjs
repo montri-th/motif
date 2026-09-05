@@ -283,6 +283,10 @@ for (const viewport of viewports) {
       `Landometer ${kind} preview provides autoplaying full and quiet variants`,
       JSON.stringify(kindSnapshot),
     );
+    if (kind === "logo") {
+      await page.waitForTimeout(1700);
+      await page.locator("#preview-dialog").screenshot({ path: path.join(screenshotDir, "logo-full-quiet-final.png") });
+    }
     await page.locator("[data-dialog-close]").click();
   }
 
@@ -570,7 +574,7 @@ const report = {
   states: ["light", "dark", "keyboard", "paired full/quiet dialog", "immediate autoplay", "three-second auto-replay", "pause", "replay now", "Escape focus restoration", "stale async-preview isolation", "dynamic reduced motion", "synthetic document visibility lifecycle", "synthetic pagehide/pageshow lifecycle", "filter", "search", "copy", "PNG export", "ijji bounded timeout", "ijji cancel", "reduced motion final states", "no JavaScript", "Thai 130% text", "200% text"],
   screenshotsCaptured: {
     storage: "ephemeral local QA output; intentionally not published",
-    names: ["th-mobile-360.png", "th-desktop-1440.png", "en-mobile-390.png"],
+    names: ["th-mobile-360.png", "th-desktop-1440.png", "en-mobile-390.png", "logo-full-quiet-final.png"],
   },
   socialPreview: {
     path: "assets/social/motif-library-1200x630.png",

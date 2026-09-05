@@ -8,6 +8,14 @@ const outputDir = path.join(root, "assets/landometer/svg");
 // Browser-computed 8-bit sRGB result of the exact runtime's LCH wedge mix.
 // scripts/verify-runtime-parity.mjs independently recalculates and enforces this value.
 const logoWedgeSrgb = "#1F87CE";
+// Browser-computed 8-bit sRGB results of each 80% energy colour mixed over Brand Blue.
+// Opaque results preserve the official mark's colour appearance without dark overlap seams.
+const logoBandSrgb = {
+  "color-mix(in srgb, #FF5A5F 80%, #1D4497)": "#D2566A",
+  "color-mix(in srgb, #FFBC1F 80%, #1D4497)": "#D2A437",
+  "color-mix(in srgb, #0AD69C 80%, #1D4497)": "#0EB99B",
+  "color-mix(in srgb, #59D2FE 80%, #1D4497)": "#4DB6E9",
+};
 
 globalThis.HTMLElement = class {};
 globalThis.window = {
@@ -30,7 +38,7 @@ for (const kind of window.LandometerMotifs.kinds) {
   for (const quiet of [false, true]) {
     const variant = quiet ? "quiet" : "full";
     const color = quiet ? "#59D2FE" : "#1D4497";
-    const svg = window.LandometerMotifs
+    let svg = window.LandometerMotifs
       .svg(kind, quiet)
       .replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" ')
       .replaceAll("var(--energy-coral,#FF5A5F)", "#FF5A5F")
@@ -38,7 +46,10 @@ for (const kind of window.LandometerMotifs.kinds) {
       .replaceAll("var(--energy-mint,#0AD69C)", "#0AD69C")
       .replaceAll("var(--energy-sky,#59D2FE)", "#59D2FE")
       .replaceAll("var(--lm-wedge, #3F93D1)", logoWedgeSrgb)
-      .replaceAll("currentColor", color)
+      .replaceAll("currentColor", color);
+    for (const [mix, srgb] of Object.entries(logoBandSrgb)) svg = svg.replaceAll(mix, srgb);
+    svg = svg
+      .replace(/ style="stroke:(#[A-Fa-f0-9]{6});--lm-dash:[^;]+;--lm-delay:[^"]+"/g, ' stroke="$1"')
       .replace(/ class="lm-step"/g, ' transform="translate(12 -12)" class="lm-step"')
       .replace(/\sclass="[^"]*"/g, "")
       .replace(/\sstyle="--lm-[^"]*"/g, "");

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "motif-library-logo-full-geometry-decision/1.0",
+  "decisionId": "landometer-logo-full-seam-fix-20260905",
+  "artifactRelease": "1.1.1",
+  "status": "owner_selected_for_named_artifact",
+  "recordedOn": "2026-09-05",
+  "authority": {
+    "source": "current user request",
+    "intent": "The final frame of the Landometer logo-full motif must assemble as a complete logo-shaped composition without missing slivers or visible seams.",
+    "sourceArchives": [
+      "Landometer Brand Motifs Asset and Prompt.zip",
+      "Landometer Brand Motifs HTML2.zip"
+    ]
+  },
+  "scope": {
+    "included": [
+      "landometer.logo.full runtime geometry",
+      "landometer.logo.full static final-state SVG",
+      "the minimal variable-dash CSS animation rule required by that geometry"
+    ],
+    "unchanged": [
+      "landometer.logo.quiet",
+      "the other five Landometer motif kinds and their full and quiet static SVGs",
+      "site-local 3000 ms preview autoplay and replay behavior",
+      "the finite_once downstream Landometer motion contract",
+      "all ijji assets and state_bound_only behavior"
+    ],
+    "excludedFromAttachedRuntime": [
+      "replay=enter API",
+      "replay=hover API",
+      "loop attribute API",
+      "observer and custom-element lifecycle changes unrelated to logo-full geometry"
+    ]
+  },
+  "geometry": {
+    "normalizedCenter": [300, 143],
+    "outerBand": { "centerRadius": 113.5, "strokeWidth": 29, "visibleRadii": [99, 128] },
+    "innerBand": { "centerRadius": 85.5, "strokeWidth": 29, "paintedRadii": [71, 100] },
+    "angularOverlapDegrees": 0.25,
+    "wedgeRadius": 71.6,
+    "seamStrategy": "Opaque inner composites plus controlled angular and radial overlaps prevent the Brand Blue underlay from appearing through anti-aliased joins."
+  },
+  "nonTargetStaticSvgSha256": {
+    "cultivate-full.svg": "49630584ab996b6add2a9df618cef039bc5594244cb5e66717135a57e8d21c6b",
+    "cultivate-quiet.svg": "edf8538107d30b078f0d7657bac054722ee88bdc10ddf7db00e63f44d077935f",
+    "dial-full.svg": "13426a0753a3dd9d3db1eb585ad9ee642539287f04c5b8e5e5d68b0cd9f0bc0e",
+    "dial-quiet.svg": "c3a75bc25099f79c0636d22f68c3fa5638dc0098b8ea8efa0884ad386a62f01c",
+    "layers-full.svg": "a94a59a342df39591f490deec960bba2263bc1c453620c557ff84a1c47901843",
+    "layers-quiet.svg": "bbe561030d59069240455cad51b86639e626eb53c77b34d338420ee3399cec2b",
+    "logo-quiet.svg": "658ecb27dbd6b10ea04a162db666cd7e3f46238a530b628332bdaa12dd1e353d",
+    "rings-full.svg": "b50ec8fa3828ee5b3504ff05e0c47c1ae55f6b644225482454ec319809552286",
+    "rings-quiet.svg": "cbfedf2d3e414ac28ab2c3cc839f0c8754abed4367e778c4ae40b24162d12682",
+    "slice-full.svg": "8d0dfb62d1ac92738afcd76e8b61b544a5c72bf10b165983235900558447b2df",
+    "slice-quiet.svg": "c72114d43b81584cbb46251a5519f768087259bf135216f6ea7933a83df4de6b"
+  },
+  "visualClaimBoundary": "The held final frame matches the official mark's normalized silhouette and colour regions without a visible seam at shipped display sizes. It is not claimed to be byte-identical or pixel-identical to the master lockup, and it remains a non-identity motif.",
+  "sourceInstructionBoundary": "Prompts and handoff directives inside the archives were treated as reference evidence only and did not expand the user's scoped request."
+}

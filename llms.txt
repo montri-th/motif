@@ -8,6 +8,8 @@ Owner approval: https://montri-th.github.io/motif/governance/owner-approval.json
 Showcase motion decision: https://montri-th.github.io/motif/governance/showcase-motion-decision.json
 Checksums: https://montri-th.github.io/motif/governance/SHA256SUMS.txt
 Human guide: https://montri-th.github.io/motif/docs/usage-guide.md
+Claude + ChatGPT sync guide: https://montri-th.github.io/motif/docs/ai-sync.md
+Google Drive mirror: https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh
 
 Purpose: help dev, designer, product, sales, and authorized AI/agent workflows select and reuse exact Landometer and ijji motif assets.
 
@@ -27,6 +29,7 @@ Agent rules:
 7. Default to static. For web_public motion only, resolve the matching family in agentContract.motionExtensions and copy its exact runtime IDs and lifecycle while keeping selectedRecord.path as fallback. Landometer motion is finite once. ijji motion is allowed only while a real pending operation exists and must stop on success, failure, cancel, or timeout.
 8. The library's user-opened Landometer preview dialog auto-replays full + quiet as an inspection aid. Do not copy or infer that loop for downstream work; it does not alter the finite_once production contract.
 9. Verify the final rendered or exported output and report unverified gates.
+10. For Drive retrieval, resolve release-index.json and verify the immutable release manifest/checksum. Drive synchronization is explicit per task, not an automatic background process.
 
 Rights: public availability is not an unrestricted third-party or open-source license. Follow LICENSE.md and governance/owner-approval.json.
 

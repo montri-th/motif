@@ -166,7 +166,7 @@ ijjiAssets.push(
 const manifest = {
   schemaVersion: "landometer-motif-library/1.0",
   libraryId: "landometer-motif-library-v1",
-  artifactRelease: "1.1.0",
+  artifactRelease: "1.1.1",
   releaseDate: "2026-09-05",
   status: "owner_approved_publication",
   canonicalUrl: "https://montri-th.github.io/motif/",
@@ -191,16 +191,22 @@ const manifest = {
     motifOverlay: {
       approvedOn: "2026-09-05",
       approvalRef: "governance/owner-approval.json",
+      logoFullGeometryDecisionRef: "governance/logo-full-geometry-decision.json",
       historicalReleasesRemainImmutable: true,
       releaseMembership: { lds_0_9_1: false, ijji_ds_0_5_0: false, ijji_addon_0_5_3: false },
     },
   },
   sourceResolution: {
-    landometerSelectedArchive: "Landometer Brand Motifs Assets and Prompt.zip",
-    selectionBasis: "newer archive timestamp and explicit Assets and Prompt role; recorded as an inference because both divergent runtimes are labelled v1",
-    selectedRuntimeSha256: "605129c765a3e1da91313467aeac46f5bd60223f1359b78d62b4b2e0a0325702",
+    landometerBaseRuntimeArchive: "Landometer Brand Motifs Assets and Prompt.zip",
+    logoFullGeometryPatchArchives: ["Landometer Brand Motifs Asset and Prompt.zip", "Landometer Brand Motifs HTML2.zip"],
+    selectionBasis: "The 2026-09-05 owner request explicitly scopes the new source to the logo-full final-frame repair. The shipped runtime retains the existing finite-once API and applies only the corroborated logo-full geometry plus its required variable-dash CSS rule.",
+    selectedRuntimeSha256: "985b3a163bcdfb78098de52aaa0a7f5fc809f52fe08a53ecfcbe55850dac1cac",
+    selectedRuntimeCssSha256: "d2b32686ea49c9fa0b55ae3cd29953365f826833fa0021bdaba7f7d8be41e0af",
+    ownerSuppliedV2RuntimeSha256: "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
+    ownerSuppliedV2CssSha256: "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
+    excludedV2RuntimeChanges: ["replay=enter", "replay=hover", "loop attribute", "unrelated observer and custom-element lifecycle changes"],
     nonSelectedHtmlRuntimeSha256: "464ecb032c9a39a05022f7cbfb21e8e18b7baafbf9da686d781aba51bb9ab51f",
-    divergence: "The non-selected HTML package adds logo quiet mode=fill without a version bump.",
+    divergence: "The earlier non-selected HTML package adds logo quiet mode=fill without a version bump. The two new 2026-09-05 packages corroborate each other byte-for-byte but include replay and loop APIs outside this request; those APIs are excluded.",
     ijjiSelectedSource: "selected/ from ijji motif example.zip; selected bytes match ijji motif.zip",
     ijjiOriginalManifestStatus: "The bundled assets/ijji/manifest.json preserves historical source metadata that says candidate/exploration. It is reference-only; this main manifest plus the dated owner approval is the current artifact authority.",
     explorations: "decision_history_only_not_distributed",
@@ -216,6 +222,15 @@ const manifest = {
     activeConditions: ["dialog_open", "document_visible", "reduced_motion_off", "not_manually_paused"],
     controls: ["pause_auto_replay", "replay_now"],
     boundary: "The repeating pair is an inspection aid in this library UI. It is not a reusable motion extension and does not change the finite_once production lifecycle.",
+  },
+  distributionMirrors: {
+    googleDrive: {
+      role: "governed_asset_mirror_for_authorized_human_and_agent_retrieval",
+      rootUrl: "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
+      immutableReleaseUrl: "https://drive.google.com/drive/folders/1wVC9UB8t57bLdQNeNrCbYapj2FlixgBg",
+      syncGuide: "docs/ai-sync.md",
+      releaseIdentityRule: "Resolve release-index.json, then verify the exact manifest and checksum before use."
+    }
   },
   agentContract: {
     schemaVersion: "motif-library-agent-contract/1.0",

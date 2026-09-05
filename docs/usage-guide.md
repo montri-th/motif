@@ -1,6 +1,6 @@
 # Landometer + ijji Motif Usage Guide
 
-Version 1.1.0 · 5 September 2026
+Version 1.1.1 · 5 September 2026
 
 ## คำตอบสั้นที่สุด
 
@@ -52,9 +52,13 @@ Version 1.1.0 · 5 September 2026
 
 ### โหมดสาธิตในคลัง เทียบกับ motion สำหรับงานจริง
 
-เมื่อผู้ใช้เปิดหน้าต่าง Preview ของ Landometer ในคลัง release 1.1.0 ระบบจะแสดง full และ quiet พร้อมกัน เริ่มเล่นทันที และเริ่มรอบใหม่พร้อมกันทุก 3000 ms เฉพาะตอนที่ dialog เปิดอยู่, หน้าเว็บมองเห็นได้, ผู้ใช้ไม่ได้เลือก reduced motion และยังไม่ได้กดหยุด ผู้ใช้กด **หยุด auto-replay** หรือ **เล่นใหม่ตอนนี้** ได้ การปิด dialog, ซ่อนหน้า หรือ `pagehide` ต้องยกเลิก timer และ animation; reduced motion แสดงภาพสุดท้ายของทั้งสองแบบโดยไม่ตั้ง timer ลายทั้งคู่เป็น decorative, มีป้ายชื่อที่มองเห็นได้ และไม่มี live-region announcement ทุกรอบ
+ตั้งแต่ release 1.1.0 เมื่อผู้ใช้เปิดหน้าต่าง Preview ของ Landometer ระบบจะแสดง full และ quiet พร้อมกัน เริ่มเล่นทันที และเริ่มรอบใหม่พร้อมกันทุก 3000 ms เฉพาะตอนที่ dialog เปิดอยู่, หน้าเว็บมองเห็นได้, ผู้ใช้ไม่ได้เลือก reduced motion และยังไม่ได้กดหยุด ผู้ใช้กด **หยุด auto-replay** หรือ **เล่นใหม่ตอนนี้** ได้ การปิด dialog, ซ่อนหน้า หรือ `pagehide` ต้องยกเลิก timer และ animation; reduced motion แสดงภาพสุดท้ายของทั้งสองแบบโดยไม่ตั้ง timer ลายทั้งคู่เป็น decorative, มีป้ายชื่อที่มองเห็นได้ และไม่มี live-region announcement ทุกรอบ
 
 นี่คือ instructional showcase เฉพาะ dialog ตามคำขอของเจ้าของ ไม่ใช่สิทธิ์ให้ทำ ambient loop และไม่แก้ contract สำหรับ production: runtime เดิม, code snippet และ manifest ยังคง `finite_once`; hero เล่นครั้งเดียวและ card เป็นภาพนิ่ง ส่วน ijji ไม่อยู่ใน decision นี้และยังใช้ `state_bound_only` เท่านั้น ดูบันทึกที่ [`../governance/showcase-motion-decision.json`](../governance/showcase-motion-decision.json)
+
+Release 1.1.1 แก้เฉพาะ geometry ตอนจบของ `landometer.logo.full`: inner band ซ้อนใต้ outer ring, segment ถัดไปซ้อน 0.25° และ wedge ซ้อนขอบ band เพื่อปิดรอยแหว่งจาก anti-aliasing ภาพสุดท้ายจึงประกอบครบตาม silhouette/ตำแหน่งสีของ mark ทางการ แต่ยังเป็น motif ไม่ใช่ official logo และไม่ได้อ้างว่า pixel-identical กับไฟล์ master ดูขอบเขตที่ [`../governance/logo-full-geometry-decision.json`](../governance/logo-full-geometry-decision.json)
+
+สำหรับ Claude/ChatGPT ให้ใช้ [`ai-sync.md`](ai-sync.md) และ Drive `release-index.json` เป็นขั้นตอนค้น release ก่อนอ่าน manifest/hash ทุกครั้ง ไม่มี background sync อัตโนมัติระหว่างบริการ
 
 ### เส้นทางตาม format
 
@@ -133,8 +137,8 @@ Require the agent to:
 ### Landometer motion component
 
 ```html
-<link rel="stylesheet" href="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css">
-<script src="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js" defer></script>
+<link rel="stylesheet" href="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.1.1">
+<script src="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.1.1" defer></script>
 
 <lm-motif kind="dial"></lm-motif>
 ```
@@ -143,9 +147,11 @@ The component plays once when it becomes visible. Do not make it essential conte
 
 ### Library showcase behavior versus production behavior
 
-Release 1.1.0 adds an owner-selected inspection mode to this library's Landometer Preview dialog. A user-opened reveal shows full and quiet side by side, starts both immediately, and restarts them together every 3000 ms only while the dialog is open, the document is visible, reduced motion is not requested, and the viewer has not paused. **Pause auto-replay** leaves stable final states; **Replay now** restarts both and resumes the timer. Closing the dialog, hiding the document, or `pagehide` clears playback. The motifs remain decorative, their variant labels are visible, and no per-cycle live announcement is made. Reduced motion shows both final states without a timer.
+Since release 1.1.0, the library has an owner-selected inspection mode in its Landometer Preview dialog. A user-opened reveal shows full and quiet side by side, starts both immediately, and restarts them together every 3000 ms only while the dialog is open, the document is visible, reduced motion is not requested, and the viewer has not paused. **Pause auto-replay** leaves stable final states; **Replay now** restarts both and resumes the timer. Closing the dialog, hiding the document, or `pagehide` clears playback. The motifs remain decorative, their variant labels are visible, and no per-cycle live announcement is made. Reduced motion shows both final states without a timer.
 
 That loop is a component-local instructional showcase, not a portable production pattern. The exact governed runtime, implementation snippets, and manifest motion extension remain `finite_once`; the hero is still one-shot and asset-card thumbnails stay static. ijji is outside this decision and remains `state_bound_only`. See [`../governance/showcase-motion-decision.json`](../governance/showcase-motion-decision.json).
+
+Release 1.1.1 patches only the held final geometry of `landometer.logo.full`. Controlled radial, 0.25° angular, and wedge overlaps remove visible anti-alias gaps while preserving the official mark-aligned silhouette and colour-region layout. It remains a motif rather than the official identity file, and no literal pixel-identity claim is made. See [`../governance/logo-full-geometry-decision.json`](../governance/logo-full-geometry-decision.json). Claude and ChatGPT retrieval/update rules are in [`ai-sync.md`](ai-sync.md).
 
 ### ijji static asset
 

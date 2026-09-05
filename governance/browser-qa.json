@@ -1,6 +1,6 @@
 {
   "schemaVersion": "motif-library-browser-qa/1.0",
-  "executedAt": "2026-09-04T19:15:42.077Z",
+  "executedAt": "2026-09-05T09:38:11.691Z",
   "artifactRoot": ".",
   "routes": [
     "/motif/",
@@ -89,7 +89,8 @@
     "names": [
       "th-mobile-360.png",
       "th-desktop-1440.png",
-      "en-mobile-390.png"
+      "en-mobile-390.png",
+      "logo-full-quiet-final.png"
     ]
   },
   "socialPreview": {

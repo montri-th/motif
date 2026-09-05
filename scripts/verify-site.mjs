@@ -20,6 +20,7 @@ function sha256File(relativePath) {
 }
 
 const required = [
+  "CLAUDE.md",
   "index.html",
   "en/index.html",
   "404.html",
@@ -35,6 +36,9 @@ const required = [
   "assets/downloads/landometer-motifs-v1.zip",
   "assets/downloads/ijji-motifs-selected-r3.zip",
   "assets/downloads/motif-library-v1.zip",
+  "docs/ai-sync.md",
+  "governance/logo-full-geometry-decision.json",
+  "governance/logo-full-visual-qa.json",
   "governance/owner-approval.json",
   "governance/showcase-motion-decision.json",
   "governance/source-ledger.json",
@@ -73,8 +77,10 @@ const sourceLedger = JSON.parse(read("governance/source-ledger.json"));
 const showcaseDecision = JSON.parse(read("governance/showcase-motion-decision.json"));
 const buildCard = JSON.parse(read("governance/build-card.json"));
 const identityAssets = JSON.parse(read("governance/identity-assets.json"));
+const logoGeometryDecision = JSON.parse(read("governance/logo-full-geometry-decision.json"));
+const logoVisualQa = JSON.parse(read("governance/logo-full-visual-qa.json"));
 check(manifest.schemaVersion === "landometer-motif-library/1.0", "Unexpected manifest schema version");
-check(manifest.artifactRelease === "1.1.0", "Manifest must identify artifact release 1.1.0");
+check(manifest.artifactRelease === "1.1.1", "Manifest must identify artifact release 1.1.1");
 check(manifest.families.length === 2, "Manifest must contain exactly two brand families");
 check(manifest.families.flatMap((family) => family.assets).length === 34, "Manifest must contain 34 asset records");
 check(manifest.agentContract?.schemaVersion === "motif-library-agent-contract/1.0", "Deterministic agent contract is missing");
@@ -87,13 +93,20 @@ check(manifest.showcaseExperience?.scope === "landometer_preview_dialog_only", "
 check(manifest.agentContract?.showcaseBoundary?.includes("Do not copy"), "Agent contract must distinguish showcase replay from downstream motion");
 check(buildCard.routes.length === 2, "Build Card must declare two locale routes");
 check(identityAssets.assets.length === 2, "Identity manifest must declare favicon and social preview");
+check(buildCard.decisionRecords?.logoFullGeometry === "governance/logo-full-geometry-decision.json", "Build Card must resolve the logo-full geometry decision");
 check(sourceLedger.embeddedInstructionBoundary.includes("did not expand"), "Source ledger must preserve the embedded-instruction boundary");
 check(Boolean(sourceLedger.authorityByDimension?.motifGeometryAndSourceBytes), "Source authority must be separated by dimension");
 check(approval.publicRepositoryAccess.join(",") === "view,download", "Public repository access must be limited to view/download");
 check(approval.authorizedOperators.length === 3, "Authorized reuse operators must be explicit");
 check(showcaseDecision.status === "owner_selected_for_named_artifact", "Showcase motion decision must retain owner-selected status");
 check(showcaseDecision.scope?.surface === "landometer_preview_dialog_only", "Showcase decision must remain dialog-scoped");
-check(showcaseDecision.productionBoundary?.landometerRuntime === "finite_once_unchanged", "Showcase decision must preserve the production runtime lifecycle");
+check(showcaseDecision.productionBoundary?.landometerRuntime === "finite_once_lifecycle_unchanged_logo_full_geometry_patched", "Showcase decision must preserve the finite-once lifecycle while recording the logo geometry patch");
+check(logoGeometryDecision.status === "owner_selected_for_named_artifact", "Logo-full geometry decision must retain owner-selected status");
+check(logoGeometryDecision.scope?.excludedFromAttachedRuntime?.includes("loop attribute API"), "Logo-full decision must exclude the source runtime loop API");
+check(logoGeometryDecision.visualClaimBoundary.includes("not claimed to be byte-identical or pixel-identical"), "Logo-full decision must preserve the visual claim boundary");
+check(logoVisualQa.status === "passed" && logoVisualQa.cases.length === 9, "Logo-full visual QA must pass nine DPR/size fixtures");
+check(manifest.authority?.motifOverlay?.logoFullGeometryDecisionRef === "governance/logo-full-geometry-decision.json", "Manifest must resolve the logo-full geometry decision");
+check(manifest.distributionMirrors?.googleDrive?.rootUrl === "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh", "Manifest must resolve the governed Drive mirror");
 
 const manifestHash = sha256File("assets/motif-library.json");
 check(approval.assetManifestSha256 === manifestHash, "Owner approval does not bind the current asset manifest hash");
@@ -140,11 +153,11 @@ for (const [extensionId, extension] of Object.entries(manifest.agentContract.mot
 }
 
 check(
-  sha256File("assets/landometer/landometer-motifs.css") === "d736cdb0cbd65bf8e1f199a600df120eaa8062928337efdfeb384048b857a0d8",
+  sha256File("assets/landometer/landometer-motifs.css") === "d2b32686ea49c9fa0b55ae3cd29953365f826833fa0021bdaba7f7d8be41e0af",
   "Selected Landometer CSS hash changed",
 );
 check(
-  sha256File("assets/landometer/landometer-motifs.js") === "605129c765a3e1da91313467aeac46f5bd60223f1359b78d62b4b2e0a0325702",
+  sha256File("assets/landometer/landometer-motifs.js") === "985b3a163bcdfb78098de52aaa0a7f5fc809f52fe08a53ecfcbe55850dac1cac",
   "Selected Landometer JS hash changed",
 );
 
@@ -156,6 +169,11 @@ for (const name of staticLandometer) {
   check(!svg.includes("currentColor"), `Portable Landometer SVG retains currentColor: ${name}`);
   check(svg.includes('xmlns="http://www.w3.org/2000/svg"'), `SVG namespace missing: ${name}`);
 }
+for (const [name, expected] of Object.entries(logoGeometryDecision.nonTargetStaticSvgSha256 || {})) {
+  check(sha256File(`assets/landometer/svg/${name}`) === expected, `Non-target Landometer SVG changed: ${name}`);
+}
+check(sha256File("assets/landometer/svg/logo-full.svg") === "1b81df17093a4eac1a1459a03e13c6fb194169b32f74ebe5fc5e0ea539ef23d8", "Corrected logo-full static SVG hash changed");
+check(!/(?:color-mix|currentColor|var\(|style=)/.test(read("assets/landometer/svg/logo-full.svg")), "Corrected logo-full static SVG is not portable");
 check(read("assets/landometer/svg/slice-full.svg").includes('transform="translate(12 -12)"'), "Static full slice must bake the runtime final transform");
 check(read("assets/landometer/svg/slice-quiet.svg").includes('transform="translate(12 -12)"'), "Static quiet slice must bake the runtime final transform");
 
@@ -233,8 +251,11 @@ check(siteJs.includes('pair.className = "dialog-motif-pair"'), "Landometer showc
 check(siteJs.includes('window.addEventListener("pagehide"'), "Preview timers must stop on pagehide");
 check(read("index.html").includes("full + quiet") && read("index.html").includes("finite once"), "Thai route must explain showcase versus production motion");
 check(read("en/index.html").includes("full + quiet") && read("en/index.html").includes("finite once"), "English route must explain showcase versus production motion");
-check(read("index.html").includes('"version": "1.1.0"') && read("en/index.html").includes('"version": "1.1.0"'), "Structured data must declare artifact release 1.1.0");
-check(read("index.html").includes('site.js?v=1.1.0') && read("en/index.html").includes('site.js?v=1.1.0'), "Locale routes must cache-bust the updated site runtime");
+check(read("index.html").includes('"version": "1.1.1"') && read("en/index.html").includes('"version": "1.1.1"'), "Structured data must declare artifact release 1.1.1");
+check(read("index.html").includes('site.js?v=1.1.1') && read("en/index.html").includes('site.js?v=1.1.1'), "Locale routes must cache-bust the updated site runtime");
+check(read("index.html").includes('landometer-motifs.js?v=1.1.1') && read("en/index.html").includes('landometer-motifs.js?v=1.1.1'), "Locale routes must cache-bust the corrected motif runtime");
+check(read("index.html").includes('logo-full.svg?v=1.1.1') && read("en/index.html").includes('logo-full.svg?v=1.1.1'), "Locale routes must cache-bust the corrected logo-full static asset");
+check(siteJs.includes("landometer-motifs.js?v=1.1.1"), "Copied Landometer implementation snippet must pin the corrected runtime release");
 check(read("site.css").includes("html:not(.js-ready)"), "No-JS enhancement controls must fail closed");
 check(read("sitemap.xml").includes("https://montri-th.github.io/motif/en/"), "English route missing from sitemap");
 check(read("robots.txt").includes("Sitemap: https://montri-th.github.io/motif/sitemap.xml"), "robots.txt sitemap mismatch");

@@ -25,9 +25,12 @@ function walk(relativeDirectory) {
 }
 
 const common = [
+  "CLAUDE.md",
   "LICENSE.md",
   "assets/motif-library.json",
+  "docs/ai-sync.md",
   "docs/usage-guide.md",
+  "governance/logo-full-geometry-decision.json",
   "governance/owner-approval.json",
   "governance/showcase-motion-decision.json",
   "governance/source-ledger.json",

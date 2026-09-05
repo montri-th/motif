@@ -7,17 +7,19 @@
   "approvedAt": null,
   "timestampNote": "The task context exposes the calendar date but not the message clock time; no time was invented.",
   "authorityEvidenceRef": "current-task:user-message:2026-09-05:owner-created-full-rights-and-approves-all-pending-publication-gates",
+  "supplementalAuthorityEvidenceRef": "current-task:user-message:2026-09-05:fix-only-logo-full-final-composition-and-mirror-all-assets-to-google-drive-for-claude-chatgpt-sync",
   "repository": "https://github.com/montri-th/motif",
   "publicationUrl": "https://montri-th.github.io/motif/",
   "assetManifestRef": "assets/motif-library.json",
-  "assetManifestSha256": "fcbbef839e2f58d0145f8c9ee84d3bf6ba00f8024a0bb2938ebc8b2eeed39f17",
+  "assetManifestSha256": "0e8f361e1922329debe254b8434d2ca126db9004d1b25dc382a795e1743f352a",
   "rightsStatement": "The owner states that they created the supplied motif assets, hold full rights, and approve all pending matters required for this publication.",
   "rightsEvidenceClass": "owner_stated_not_independently_verified",
   "publicationActions": [
     "public_display",
     "direct_download",
     "authorized_team_reuse",
-    "authorized_ai_agent_reuse"
+    "authorized_ai_agent_reuse",
+    "google_drive_versioned_distribution_mirror"
   ],
   "publicRepositoryAccess": [
     "view",
@@ -33,8 +35,16 @@
     "deterministic_static_svg_final_states_generated_from_the_selected_landometer_runtime",
     "proportional_raster_exports_that_preserve_exact_geometry_and_color",
     "site_specific_favicon_crop_from_the_owner_approved_landometer_lockup_source",
-    "deterministic_social_preview_composition_from_approved_motif_and_visible_page_copy"
+    "deterministic_social_preview_composition_from_approved_motif_and_visible_page_copy",
+    "owner_scoped_logo_full_anti_seam_geometry_patch_with_opaque_token_composites"
   ],
+  "distributionMirror": {
+    "provider": "Google Drive",
+    "rootUrl": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
+    "immutableReleaseUrl": "https://drive.google.com/drive/folders/1wVC9UB8t57bLdQNeNrCbYapj2FlixgBg",
+    "purpose": "Easy exact-asset retrieval by the team and authorized Claude, ChatGPT, and agent workflows.",
+    "accessBoundary": "Drive access remains account-dependent; no automatic cross-service background synchronization is claimed."
+  },
   "approvedOutputAudiences": [
     "internal_preview",
     "internal_operational",
@@ -53,7 +63,8 @@
     "A motif is not data, evidence, a score, confidence, completion, or product truth.",
     "ijji assets remain product-specific and do not become shared Landometer assets.",
     "Landometer portfolio, methodology, and product-architecture language remains product-neutral across Land, Location, and Living.",
-    "Public availability is not an unrestricted third-party or open-source license."
+    "Public availability is not an unrestricted third-party or open-source license.",
+    "The corrected logo-full motif matches the official-mark silhouette and colour-region layout without visible seams; it remains a motif and is not claimed to be byte- or pixel-identical to the official master."
   ],
   "technicalConditions": [
     "Every delivered asset resolves the path, MIME type, bytes, SHA-256, role, scope, and fallback in the manifest.",

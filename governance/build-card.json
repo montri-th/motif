@@ -2,7 +2,7 @@
   "schemaVersion": "motif-library-build-card/1.0",
   "artifactId": "landometer-motif-library-web-v1",
   "artifactName": "Landometer Motif Library",
-  "artifactRelease": "1.1.0",
+  "artifactRelease": "1.1.1",
   "experienceProfile": "methodology_learning",
   "formatProfile": "web_public",
   "pageKind": "utility",
@@ -28,7 +28,12 @@
     "productionLandometerMotionMode": "finite_once"
   },
   "decisionRecords": {
-    "showcaseMotion": "governance/showcase-motion-decision.json"
+    "showcaseMotion": "governance/showcase-motion-decision.json",
+    "logoFullGeometry": "governance/logo-full-geometry-decision.json"
+  },
+  "distributionMirrors": {
+    "googleDrive": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
+    "syncGuide": "docs/ai-sync.md"
   },
   "rightsBoundary": {
     "publicAccess": ["view", "download"],

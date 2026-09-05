@@ -144,7 +144,7 @@
       let snippet = "";
       if (brand === "landometer") {
         const quiet = button.dataset.quiet === "true" ? " quiet" : "";
-        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css">\n<script src="${origin}/assets/landometer/landometer-motifs.js" defer><\/script>\n<lm-motif kind="${id}"${quiet}></lm-motif>`;
+        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.1.1">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.1.1" defer><\/script>\n<lm-motif kind="${id}"${quiet}></lm-motif>`;
       } else {
         snippet = `<img src="${origin}/assets/ijji/svg/ijji-${id}-transparent-ink.svg" width="120" height="120" alt="" aria-hidden="true">`;
       }
