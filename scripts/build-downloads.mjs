@@ -31,6 +31,7 @@ const common = [
   "docs/ai-sync.md",
   "docs/usage-guide.md",
   "governance/logo-full-geometry-decision.json",
+  "governance/logo-preview-final-settle-decision.json",
   "governance/owner-approval.json",
   "governance/showcase-motion-decision.json",
   "governance/source-ledger.json",

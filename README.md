@@ -2,7 +2,7 @@
 
 A bilingual learning site and exact-byte asset library for Landometer shared motifs and ijji product-specific motifs.
 
-Artifact release: **1.1.1** · 5 September 2026
+Artifact release: **1.1.2** · 5 September 2026
 
 Live target: <https://montri-th.github.io/motif/>
 
@@ -36,11 +36,13 @@ Then open <http://localhost:4173/>. Core content and static motif previews remai
 
 ## Showcase inspection versus production motion
 
-Since release 1.1.0, opening a Landometer Preview dialog reveals the full and quiet variants side by side, starts both immediately, and replays them together every 3000 ms while the dialog stays open and visible. The viewer can pause auto-replay or replay immediately. Reduced-motion users receive both stable final states without the replay timer.
+Since release 1.1.0, opening a Landometer Preview dialog reveals the full and quiet variants side by side and starts both immediately. Dial, rings, layers, slice, and cultivate replay together every 3000 ms. In release 1.1.2, logo settles to its complete authored static state at 2050 ms, holds for inspection, and replays both variants at 5000 ms. The viewer can pause auto-replay or replay immediately. Reduced-motion users receive both stable final states without a replay timer.
 
-This loop is a component-local instructional aid for this library—not a new production motion contract. The governed runtime bytes, implementation snippets, and machine manifest remain `finite_once`; the hero remains one-shot and asset-card thumbnails remain static. ijji is excluded and remains `state_bound_only`. The exact decision and stopping rules are recorded in [`governance/showcase-motion-decision.json`](governance/showcase-motion-decision.json).
+This loop is a component-local instructional aid for this library—not a new production motion contract. The exact v2 runtime includes optional replay and loop APIs, but their presence does not authorize downstream use. Implementation snippets, the machine manifest, and the default production recommendation remain `finite_once`; the hero remains one-shot and asset-card thumbnails remain static. ijji is excluded and remains `state_bound_only`. The decisions and stopping rules are recorded in [`governance/showcase-motion-decision.json`](governance/showcase-motion-decision.json) and [`governance/logo-preview-final-settle-decision.json`](governance/logo-preview-final-settle-decision.json).
 
 Release 1.1.1 changes only the Landometer `logo-full` assembly geometry and the minimal CSS declaration it requires. Controlled radial and 0.25° angular overlaps close the visible anti-alias gaps in the held final frame. `logo-quiet`, the other five motif kinds, ijji, and the production motion lifecycles are unchanged. The scoped decision and claim boundary are recorded in [`governance/logo-full-geometry-decision.json`](governance/logo-full-geometry-decision.json).
+
+Release 1.1.2 selects the new owner-supplied v2 CSS and JavaScript as exact bytes. It also fixes the mixed library preview state seen in the owner's screenshot: the dialog removes `data-play` at 2050 ms so authored markup supplies the complete final frame, then holds it until the 5000 ms replay. The repair has passed local rendered QA and remains gated on verification of the deployed GitHub Pages bytes and animation before Drive synchronization.
 
 ## Shared Google Drive mirror
 
@@ -77,10 +79,10 @@ node scripts/verify-site.mjs
 
 After `build-manifest.mjs`, inspect the contract diff and confirm that the change is within current owner authority. Then bind the reviewed digest to `assetManifestSha256` in `governance/owner-approval.json` before rebuilding downloads and repository checksums. Never re-bind a changed manifest mechanically when its scope lacks owner approval.
 
-The release runtime is a scoped derivative: the finite-once base from `Landometer Brand Motifs Assets and Prompt.zip` plus only the corroborated logo-full anti-seam geometry from `Landometer Brand Motifs Asset and Prompt.zip` / `Landometer Brand Motifs HTML2.zip`. The new source's replay/loop APIs are intentionally excluded. Exact source and artifact hashes are recorded in `governance/source-ledger.json`.
+Release 1.1.2 uses the exact v2 runtime bytes from `Landometer Brand Motifs Asset and Prompt.zip`: JavaScript `d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb` and CSS `e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794`. Optional replay/loop APIs are present in those bytes, but remain outside the default `finite_once` production recommendation unless a job receives its own explicit owner decision. Exact source and artifact boundaries are recorded in `governance/source-ledger.json`.
 
 ## ภาษาไทยแบบสั้น
 
 คลังนี้ช่วยให้ทีมเลือก motif ตาม brand layer, งาน, channel และ motion mode จากไฟล์จริงที่มี version/hash ชัดเจน ห้ามใช้ motif เป็นโลโก้ ข้อมูล หลักฐาน หรือ claim และห้ามนำ ijji ไปเหมารวมเป็น Landometer ทุกงานควรตรวจ static fallback, reduced motion, accessibility และไฟล์ส่งจริงก่อนเผยแพร่
 
-ตั้งแต่ release 1.1.0 หน้าต่าง Preview ของ Landometer จะแสดง full + quiet พร้อมกันและวนซ้ำทุก 3 วินาทีเพื่อให้ตรวจ animation ได้ง่าย พฤติกรรมนี้เป็นโหมดสาธิตเฉพาะคลัง ไม่ใช่ค่า production: runtime, ตัวอย่างโค้ด และ manifest ยังใช้ `finite_once`; hero ยังเล่นครั้งเดียว, card ยังเป็นภาพนิ่ง และ ijji ยังคง `state_bound_only` ส่วน release 1.1.1 แก้เฉพาะปลายทางของ `logo-full` ให้ประกอบครบ ไม่มีรอยแหว่ง โดยไม่เปลี่ยน quiet หรือ motif อื่น
+ตั้งแต่ release 1.1.0 หน้าต่าง Preview ของ Landometer จะแสดง full + quiet พร้อมกัน โดย motif ห้าแบบวนทุก 3 วินาที ส่วน release 1.1.2 ให้ logo เล่นทันที, ลง final state ที่ 2050 ms, ค้างให้ตรวจ และวนใหม่ที่ 5000 ms พฤติกรรมนี้เป็นโหมดสาธิตเฉพาะคลัง ไม่ใช่ค่า production: code snippet, manifest และคำแนะนำเริ่มต้นยังเป็น `finite_once`; hero ยังเล่นครั้งเดียว, card ยังเป็นภาพนิ่ง และ ijji ยังคง `state_bound_only` แม้ runtime v2 จะมี API replay/loop ก็ต้องมี owner decision เฉพาะงานก่อนใช้

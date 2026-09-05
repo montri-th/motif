@@ -1,6 +1,6 @@
 # Claude + ChatGPT asset sync
 
-Version 1.1.1 · 5 September 2026
+Version 1.1.2 · 5 September 2026
 
 This is the shared retrieval and update contract for Claude, ChatGPT, Codex, and other owner-authorized agents using the Landometer Motif Library.
 
@@ -9,7 +9,7 @@ This is the shared retrieval and update contract for Claude, ChatGPT, Codex, and
 - Public documentation and web runtime: <https://montri-th.github.io/motif/>
 - Public source repository: <https://github.com/montri-th/motif>
 - Shared Drive library root: <https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh>
-- Immutable Drive release 1.1.1: <https://drive.google.com/drive/folders/1wVC9UB8t57bLdQNeNrCbYapj2FlixgBg>
+- Immutable Drive release 1.1.2: <https://drive.google.com/drive/folders/1ivOhP0g8vMxgUoNCHmyGsCpEaYjBrRzF>
 
 The Google Drive folder is a governed mirror for easy agent retrieval. It does not replace the public repository, and it is deliberately outside the immutable LDS 0.9.1 and ijji DS/Add-on release folders.
 
@@ -26,7 +26,7 @@ The Google Drive folder is a governed mirror for easy agent retrieval. It does n
 ## Motion and identity boundaries
 
 - Default to a static SVG.
-- Landometer web motion is `finite_once` and must hold the complete final state. The library dialog's 3000 ms auto-replay is an inspection aid only.
+- Landometer web motion defaults to `finite_once` and must hold the complete final state. The exact v2 bytes expose optional replay/loop APIs, but their presence is not downstream authorization. The library dialog's 3000 ms default replay—and its logo-specific 2050 ms final settle followed by a 5000 ms replay—is an inspection aid only.
 - ijji motion is `state_bound_only`: run it only during a genuine pending operation and stop on success, failure, cancel, or timeout.
 - The corrected `landometer.logo.full` ends as a complete, seam-free composition aligned to the official mark silhouette and colour regions. It remains a motif and must not replace the official logo asset.
 - Never redraw, recolor, crop geometry, distort, trace from a screenshot, or reconstruct from model memory.

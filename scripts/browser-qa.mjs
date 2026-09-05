@@ -6,6 +6,7 @@ import path from "node:path";
 
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
+const { PNG } = require("pngjs");
 const root = path.resolve(import.meta.dirname, "..");
 const qaOutput = process.env.MOTIF_BROWSER_QA_OUTPUT || path.join(root, "governance/browser-qa.json");
 const screenshotDir = "/private/tmp/motif-browser-qa";
@@ -284,8 +285,57 @@ for (const viewport of viewports) {
       JSON.stringify(kindSnapshot),
     );
     if (kind === "logo") {
-      await page.waitForTimeout(1700);
-      await page.locator("#preview-dialog").screenshot({ path: path.join(screenshotDir, "logo-full-quiet-final.png") });
+      await page.waitForTimeout(2250);
+      const settledLogo = await page.evaluate(() => ({
+        playingCount: document.querySelectorAll("#preview-stage lm-motif[data-play]").length,
+        status: document.querySelector("#preview-status")?.textContent?.trim(),
+        fullPathCount: document.querySelectorAll("#preview-stage lm-motif:not([quiet]) path").length,
+        outerSkyStroke: getComputedStyle(document.querySelectorAll("#preview-stage lm-motif:not([quiet]) path")[8]).stroke,
+        outerSkyRight: (() => {
+          const box = document.querySelectorAll("#preview-stage lm-motif:not([quiet]) path")[8].getBBox();
+          return box.x + box.width;
+        })(),
+      }));
+      record(
+        settledLogo.playingCount === 0
+          && settledLogo.status.includes("ประกอบครบแล้ว")
+          && settledLogo.fullPathCount === 10
+          && settledLogo.outerSkyStroke === "rgb(89, 210, 254)"
+          && settledLogo.outerSkyRight >= 413.4,
+        "Landometer logo preview settles to the exact static final state after both variants finish",
+        JSON.stringify(settledLogo),
+      );
+      await page.locator("html").evaluate((element) => { element.dataset.theme = "light"; });
+      const dialogBox = await page.locator("#preview-dialog").boundingBox();
+      const fullSvgBox = await page.locator("#preview-stage lm-motif:not([quiet]) svg").boundingBox();
+      const logoFinalBuffer = await page.locator("#preview-dialog").screenshot({ path: path.join(screenshotDir, "logo-full-quiet-final.png") });
+      const logoFinalPng = PNG.sync.read(logoFinalBuffer);
+      const angle = 22.5 * Math.PI / 180;
+      const probeX = Math.round((fullSvgBox.x - dialogBox.x) + ((300 + 113.5 * Math.cos(angle)) / 600) * fullSvgBox.width);
+      const probeY = Math.round((fullSvgBox.y - dialogBox.y) + ((143 - 113.5 * Math.sin(angle)) / 300) * fullSvgBox.height);
+      const pixelOffset = (probeY * logoFinalPng.width + probeX) * 4;
+      const outerSkyPixel = [...logoFinalPng.data.slice(pixelOffset, pixelOffset + 4)];
+      const outerSkyDistance = Math.hypot(outerSkyPixel[0] - 89, outerSkyPixel[1] - 210, outerSkyPixel[2] - 254);
+      record(
+        outerSkyPixel[3] === 255 && outerSkyDistance <= 12,
+        "Landometer logo settled screenshot visibly paints the outer-sky quadrant",
+        JSON.stringify({ probeX, probeY, outerSkyPixel, outerSkyDistance }),
+      );
+      await page.waitForTimeout(2450);
+      record(
+        await page.locator("#preview-stage lm-motif[data-play]").count() === 0,
+        "Landometer logo preview holds the complete final state long enough to inspect",
+      );
+      await page.waitForTimeout(500);
+      const logoReplay = await page.evaluate(() => ({
+        playingCount: document.querySelectorAll("#preview-stage lm-motif[data-play]").length,
+        status: document.querySelector("#preview-status")?.textContent?.trim(),
+      }));
+      record(
+        logoReplay.playingCount === 2 && logoReplay.status.includes("กำลังประกอบ"),
+        "Landometer logo full and quiet auto-replay together after the final-state hold",
+        JSON.stringify(logoReplay),
+      );
     }
     await page.locator("[data-dialog-close]").click();
   }
@@ -348,7 +398,7 @@ for (const viewport of viewports) {
       && raceSnapshot.landometerCount === 2
       && raceSnapshot.quietCount === 1
       && raceSnapshot.ijjiCount === 0
-      && raceSnapshot.status.includes("finite once"),
+      && raceSnapshot.status.includes("กำลังประกอบ"),
     "A stale delayed ijji import cannot overwrite a newer paired Landometer preview",
     JSON.stringify(raceSnapshot),
   );
@@ -571,7 +621,7 @@ const report = {
   emulationNote: "Viewport checks are desktop Chrome emulation, not native iPhone, iPad, Safari, or screen-reader evidence.",
   lifecycleEmulationNote: "Visibility and pagehide/pageshow handlers are exercised with standards-shaped in-page events; this is not a full operating-system tab suspension or cross-navigation BFCache observation.",
   viewports,
-  states: ["light", "dark", "keyboard", "paired full/quiet dialog", "immediate autoplay", "three-second auto-replay", "pause", "replay now", "Escape focus restoration", "stale async-preview isolation", "dynamic reduced motion", "synthetic document visibility lifecycle", "synthetic pagehide/pageshow lifecycle", "filter", "search", "copy", "PNG export", "ijji bounded timeout", "ijji cancel", "reduced motion final states", "no JavaScript", "Thai 130% text", "200% text"],
+  states: ["light", "dark", "keyboard", "paired full/quiet dialog", "immediate autoplay", "three-second default auto-replay", "logo exact-final settle and five-second replay", "pause", "replay now", "Escape focus restoration", "stale async-preview isolation", "dynamic reduced motion", "synthetic document visibility lifecycle", "synthetic pagehide/pageshow lifecycle", "filter", "search", "copy", "PNG export", "ijji bounded timeout", "ijji cancel", "reduced motion final states", "no JavaScript", "Thai 130% text", "200% text"],
   screenshotsCaptured: {
     storage: "ephemeral local QA output; intentionally not published",
     names: ["th-mobile-360.png", "th-desktop-1440.png", "en-mobile-390.png", "logo-full-quiet-final.png"],

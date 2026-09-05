@@ -14,6 +14,8 @@
       downloadFailed: "สร้างไฟล์ PNG ไม่สำเร็จ",
       result: (count) => `พบ ${count} assets`,
       lmStatus: "ตัวอย่าง full + quiet เล่นทันทีและวนซ้ำขณะเปิด · งานจริงยังเล่นแบบ finite once",
+      lmAssembling: "กำลังประกอบ full + quiet · เมื่อครบแล้วจะค้างท่าสุดท้ายให้ตรวจ",
+      lmFinal: "ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป",
       lmPaused: "หยุด auto replay แล้ว · ภาพอยู่ที่สถานะสุดท้าย",
       lmReduced: "แสดงสถานะสุดท้ายของ full + quiet · ปิด auto replay ตามการตั้งค่า reduced motion",
       replayNow: "เล่นซ้ำตอนนี้",
@@ -37,6 +39,8 @@
       downloadFailed: "Could not create the PNG",
       result: (count) => `${count} assets shown`,
       lmStatus: "Full + quiet play immediately and auto-replay while open · production use remains finite once",
+      lmAssembling: "Assembling full + quiet · the complete final state will hold for inspection",
+      lmFinal: "Assembly complete · holding the exact final state before the next replay",
       lmPaused: "Auto-replay paused · both motifs are at their final state",
       lmReduced: "Full + quiet final states · auto-replay is off for reduced motion",
       replayNow: "Replay now",
@@ -144,7 +148,7 @@
       let snippet = "";
       if (brand === "landometer") {
         const quiet = button.dataset.quiet === "true" ? " quiet" : "";
-        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.1.1">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.1.1" defer><\/script>\n<lm-motif kind="${id}"${quiet}></lm-motif>`;
+        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.1.2">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.1.2" defer><\/script>\n<lm-motif kind="${id}"${quiet}></lm-motif>`;
       } else {
         snippet = `<img src="${origin}/assets/ijji/svg/ijji-${id}-transparent-ink.svg" width="120" height="120" alt="" aria-hidden="true">`;
       }
@@ -201,18 +205,23 @@
   let previewConfig = null;
   let previewInterval = 0;
   let previewTimeout = 0;
+  let landometerSettleTimeout = 0;
   let ijjiModulePromise = null;
   let previewRenderGeneration = 0;
   let landometerPreviewPaused = false;
   let landometerReplayGeneration = 0;
   const reducedMotionPreference = window.matchMedia?.("(prefers-reduced-motion: reduce)") || null;
-  const landometerReplayMs = 3000;
+  const landometerDefaultReplayMs = 3000;
+  const landometerLogoReplayMs = 5000;
+  const landometerLogoSettleMs = 2050;
 
   function clearPreviewTimers() {
     clearInterval(previewInterval);
     clearTimeout(previewTimeout);
+    clearTimeout(landometerSettleTimeout);
     previewInterval = 0;
     previewTimeout = 0;
+    landometerSettleTimeout = 0;
   }
 
   function landometerPreviewMotifs() {
@@ -222,7 +231,9 @@
   function stopLandometerAutoreplay() {
     landometerReplayGeneration += 1;
     clearTimeout(previewTimeout);
+    clearTimeout(landometerSettleTimeout);
     previewTimeout = 0;
+    landometerSettleTimeout = 0;
     landometerPreviewMotifs().forEach((motif) => motif.removeAttribute("data-play"));
   }
 
@@ -240,10 +251,20 @@
     motifs.forEach((motif) => motif.removeAttribute("data-play"));
     void dialogStage.offsetWidth;
     motifs.forEach((motif) => motif.setAttribute("data-play", ""));
+    setPreviewStatus(copy.lmAssembling);
     const generation = landometerReplayGeneration;
+    if (previewConfig.id === "logo") {
+      landometerSettleTimeout = window.setTimeout(() => {
+        if (generation !== landometerReplayGeneration) return;
+        motifs.forEach((motif) => motif.removeAttribute("data-play"));
+        setPreviewStatus(copy.lmFinal);
+        landometerSettleTimeout = 0;
+      }, landometerLogoSettleMs);
+    }
+    const replayMs = previewConfig.id === "logo" ? landometerLogoReplayMs : landometerDefaultReplayMs;
     previewTimeout = window.setTimeout(() => {
       if (generation === landometerReplayGeneration) playLandometerPreviewCycle();
-    }, landometerReplayMs);
+    }, replayMs);
   }
 
   function setPreviewStatus(message, elapsed = null) {
@@ -306,7 +327,6 @@
         setPreviewStatus(copy.lmReduced);
       } else {
         playLandometerPreviewCycle();
-        setPreviewStatus(copy.lmStatus);
       }
       return;
     }
@@ -414,7 +434,6 @@
     else if (!landometerPreviewPaused) {
       if (cancelButton) cancelButton.disabled = false;
       playLandometerPreviewCycle();
-      setPreviewStatus(copy.lmStatus);
     } else setPreviewStatus(copy.lmPaused);
   });
 

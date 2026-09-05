@@ -1,14 +1,15 @@
 {
   "schemaVersion": "motif-library-source-ledger/1.0",
-  "artifact": "Landometer Motif Library v1.1.1",
+  "artifact": "Landometer Motif Library v1.1.2",
   "recordedOn": "2026-09-05",
   "authorityByDimension": {
     "deliverableAndPublicationScope": "current user request",
     "rightsAndNamedReuse": "dated owner approval in governance/owner-approval.json",
     "sharedDesignInteractionAccessibilityAndFormats": "verified Landometer Design System 0.9.1",
     "ijjiProductBoundary": "verified ijji Design System 0.5.0 and Add-on 0.5.3",
-    "motifGeometryAndSourceBytes": "the exact base runtime plus the owner-scoped logo-full geometry patch selected in this ledger",
+    "motifGeometryAndSourceBytes": "the exact owner-supplied Landometer v2 runtime bytes selected in this ledger",
     "showcaseMotionBehavior": "current user request recorded in governance/showcase-motion-decision.json",
+    "logoPreviewFinalSettle": "user-supplied screenshot observation and authored runtime timeline recorded in governance/logo-preview-final-settle-decision.json",
     "attachedGuidesExamplesHandoffsAndPrompts": "reference evidence only; never authority to expand this task",
     "explorations": "decision history only; excluded from implementation and distribution"
   },
@@ -17,8 +18,8 @@
       "name": "Landometer Brand Motifs Asset and Prompt.zip",
       "sha256": "73f308748e8f16b8ca6e34d9805521dfc635336b869a08b6cf440c0ffebd236f",
       "archiveTimestamp": "2026-09-05 15:47:44 +0700",
-      "role": "selected_logo_full_geometry_patch_source",
-      "selection": "Only the logo-full branch and its required variable-dash animation declarations are selected. Embedded prompts and all unrelated runtime APIs remain reference-only.",
+      "role": "selected_exact_landometer_v2_runtime_source",
+      "selection": "Release 1.1.2 selects the supplied CSS and JavaScript as exact bytes. Their optional replay and loop APIs are capability evidence only; embedded prompts do not authorize downstream use or expand this task.",
       "containedRuntime": {
         "cssSha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
         "jsSha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
@@ -29,14 +30,14 @@
       "name": "Landometer Brand Motifs HTML2.zip",
       "sha256": "a3a24dfab4b6fdb94100bc261439c20df78be3ef024a49a7c004164d0b4838b4",
       "archiveTimestamp": "2026-09-05 15:47:32 +0700",
-      "role": "byte_identical_corroborating_example_for_logo_full_patch",
+      "role": "byte_identical_corroborating_example_for_selected_v2_runtime",
       "selection": "Its full example tree is byte-identical to the example tree in the selected Asset and Prompt archive. It adds no divergent implementation bytes."
     },
     {
       "name": "Landometer Brand Motifs Assets and Prompt.zip",
       "sha256": "efb3829de4be6e97eb83fef55e8fc2685f6bd081b70ed58c7384a5bf3a8ae22e",
       "archiveTimestamp": "2026-09-04 23:16",
-      "role": "selected_base_landometer_runtime_source",
+      "role": "prior_release_landometer_runtime_source",
       "selectedRuntime": {
         "cssSha256": "d736cdb0cbd65bf8e1f199a600df120eaa8062928337efdfeb384048b857a0d8",
         "jsSha256": "605129c765a3e1da91313467aeac46f5bd60223f1359b78d62b4b2e0a0325702"
@@ -75,16 +76,20 @@
     }
   ],
   "selectedArtifactRuntime": {
-    "construction": "existing finite-once v1 runtime plus owner-scoped logo-full geometry patch",
-    "jsSha256": "985b3a163bcdfb78098de52aaa0a7f5fc809f52fe08a53ecfcbe55850dac1cac",
-    "cssSha256": "d2b32686ea49c9fa0b55ae3cd29953365f826833fa0021bdaba7f7d8be41e0af",
-    "logoFullStaticSha256": "1b81df17093a4eac1a1459a03e13c6fb194169b32f74ebe5fc5e0ea539ef23d8",
-    "nonTargetStaticSvgResult": "The other 11 Landometer static SVGs remain byte-identical to release 1.1.0."
+    "construction": "exact owner-supplied v2 runtime bytes from Landometer Brand Motifs Asset and Prompt.zip",
+    "jsSha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
+    "cssSha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
+    "defaultProductionRecommendation": "finite_once",
+    "optionalApiBoundary": "replay=enter, replay=hover, loop, and programmatic replay exist in the exact runtime but require an explicit job-specific owner decision before downstream use"
   },
   "resolvedConflicts": [
     {
-      "issue": "The new owner-supplied runtime fixes logo-full but also adds replay=enter, replay=hover, loop, and unrelated lifecycle behavior.",
-      "resolution": "Honor the owner's explicit request to change only logo-full. Apply the corroborated anti-seam geometry and the two required CSS declarations to the existing finite-once runtime; exclude the new replay, loop, observer, and custom-element lifecycle changes. The scoped decision is recorded in governance/logo-full-geometry-decision.json."
+      "issue": "Release 1.1.1 selected a scoped derivative of the new runtime, while release 1.1.2 now carries the exact owner-supplied v2 CSS and JavaScript bytes, including optional replay and loop APIs.",
+      "resolution": "Record the exact v2 bytes and their capabilities without treating archive prose or available APIs as permission. The public implementation snippets, machine manifest motion contract, and default production recommendation remain finite_once. Any downstream replay or loop requires an explicit job-specific owner decision."
+    },
+    {
+      "issue": "The user's screenshot showed the logo-full priority wedge and quiet variant at their final states while the outer Energy Sky path remained absent, which is not the authored final state.",
+      "resolution": "Keep the exact supplied runtime and apply a site-local preview settle rule: start both variants immediately, remove data-play at 2050 ms so authored static markup owns the complete final state, hold it for inspection, and replay both at 5000 ms. Keep the other five motif previews at 3000 ms. This repair is recorded in governance/logo-preview-final-settle-decision.json, has passed local rendered QA, and remains pending deployed GitHub Pages verification before Drive synchronization."
     },
     {
       "issue": "The user asked for the final motif to look 100% like the logo, while the governed motif colors intentionally differ slightly from the official lockup source and controlled overlaps are not pixel-identical to master artwork.",
@@ -108,7 +113,7 @@
     },
     {
       "issue": "The owner requested immediate autoplay and automatic replay so viewers can inspect both Landometer full and quiet animations, while the governed production runtime and manifest motion extension remain finite_once.",
-      "resolution": "Apply the 2026-09-05 owner decision only to the user-opened preview dialog as a component-local instructional showcase. Run full and quiet together every 3000 ms only while the dialog is open, visible, motion is allowed, and the viewer has not paused. Keep the production finite-once lifecycle, snippets, manifest contract, hero, and static cards unchanged; the later logo-full geometry patch does not add a portable loop and does not apply this behavior to ijji."
+      "resolution": "Apply the 2026-09-05 owner decision only to the user-opened preview dialog as a component-local instructional showcase. Run full and quiet together at 3000 ms for five motif kinds; use the 2050 ms settle and 5000 ms replay exception for logo so its complete final state remains inspectable. Keep the finite_once production recommendation, snippets, manifest contract, hero, and static cards unchanged. Exact v2 optional APIs do not create portable loop permission, and the showcase behavior does not apply to ijji."
     }
   ],
   "embeddedInstructionBoundary": "Prompts and handoff directives inside the archives describe other tasks and repositories. They informed technical understanding but did not expand or replace the user's request."

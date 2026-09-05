@@ -1,9 +1,9 @@
 {
   "schemaVersion": "motif-library-runtime-parity/1.0",
-  "executedAt": "2026-09-05T09:38:51.890Z",
+  "executedAt": "2026-09-05T10:43:55.293Z",
   "artifactRoot": ".",
   "browser": "system Google Chrome through Playwright",
-  "evidenceBoundary": "Geometry is sourced from the exact scoped runtime; reduced motion exposes the authored final CSS state. The LCH logo wedge and sRGB inner composites are converted through the browser canvas to 8-bit sRGB static colors. Exact normalized overlap paths and non-target static hashes are verified; this does not claim master-PNG pixel identity.",
+  "evidenceBoundary": "Geometry is sourced from the exact owner-supplied v2 runtime; reduced motion exposes the authored final CSS state. The LCH logo wedge and sRGB inner composites are converted through the browser canvas to 8-bit sRGB static colors. Exact normalized overlap paths and non-target static hashes are verified; optional replay/loop API presence is byte-parity evidence, not downstream authorization, and this does not claim master-PNG pixel identity.",
   "checks": [
     {
       "name": "logo full static wedge matches the runtime's computed sRGB color",
@@ -223,7 +223,7 @@
       "passed": true
     },
     {
-      "name": "logo full variable-dash animation is present without adding replay or loop APIs",
+      "name": "logo full variable-dash animation and the exact supplied v2 lifecycle APIs are present",
       "passed": true
     },
     {

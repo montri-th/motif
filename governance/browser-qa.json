@@ -1,6 +1,6 @@
 {
   "schemaVersion": "motif-library-browser-qa/1.0",
-  "executedAt": "2026-09-05T09:38:11.691Z",
+  "executedAt": "2026-09-05T10:43:10.331Z",
   "artifactRoot": ".",
   "routes": [
     "/motif/",
@@ -65,7 +65,8 @@
     "keyboard",
     "paired full/quiet dialog",
     "immediate autoplay",
-    "three-second auto-replay",
+    "three-second default auto-replay",
+    "logo exact-final settle and five-second replay",
     "pause",
     "replay now",
     "Escape focus restoration",
@@ -103,8 +104,8 @@
     "visualReview": "inspected at intrinsic size; title, motif, safe area, and thumbnail composition passed"
   },
   "totals": {
-    "checks": 375,
-    "passed": 375,
+    "checks": 379,
+    "passed": 379,
     "failed": 0
   },
   "status": "candidate_ready_for_release_handoff",
@@ -1852,6 +1853,25 @@
       "detail": "{\"kinds\":[\"logo\",\"logo\"],\"quietCount\":1,\"playingCount\":2}"
     },
     {
+      "name": "Landometer logo preview settles to the exact static final state after both variants finish",
+      "status": "passed",
+      "detail": "{\"playingCount\":0,\"status\":\"ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป\",\"fullPathCount\":10,\"outerSkyStroke\":\"rgb(89, 210, 254)\",\"outerSkyRight\":413.5}"
+    },
+    {
+      "name": "Landometer logo settled screenshot visibly paints the outer-sky quadrant",
+      "status": "passed",
+      "detail": "{\"probeX\":254,\"probeY\":348,\"outerSkyPixel\":[89,210,254,255],\"outerSkyDistance\":0}"
+    },
+    {
+      "name": "Landometer logo preview holds the complete final state long enough to inspect",
+      "status": "passed"
+    },
+    {
+      "name": "Landometer logo full and quiet auto-replay together after the final-state hold",
+      "status": "passed",
+      "detail": "{\"playingCount\":2,\"status\":\"กำลังประกอบ full + quiet · เมื่อครบแล้วจะค้างท่าสุดท้ายให้ตรวจ\"}"
+    },
+    {
       "name": "Escape closes preview dialog",
       "status": "passed"
     },
@@ -1888,7 +1908,7 @@
     {
       "name": "A stale delayed ijji import cannot overwrite a newer paired Landometer preview",
       "status": "passed",
-      "detail": "{\"open\":true,\"landometerCount\":2,\"quietCount\":1,\"ijjiCount\":0,\"status\":\"ตัวอย่าง full + quiet เล่นทันทีและวนซ้ำขณะเปิด · งานจริงยังเล่นแบบ finite once\"}"
+      "detail": "{\"open\":true,\"landometerCount\":2,\"quietCount\":1,\"ijjiCount\":0,\"status\":\"กำลังประกอบ full + quiet · เมื่อครบแล้วจะค้างท่าสุดท้ายให้ตรวจ\"}"
     },
     {
       "name": "A live reduced-motion preference change stops replay and resumes only when motion is allowed again",

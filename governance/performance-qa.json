@@ -1,27 +1,27 @@
 {
   "schemaVersion": "motif-library-performance-qa/1.0",
-  "executedAt": "2026-09-05T09:38:25.698Z",
+  "executedAt": "2026-09-05T10:43:46.140Z",
   "artifactRoot": ".",
   "browser": "152.0.7977.82",
   "route": "/motif/",
   "evidenceBoundary": "Local synthetic timing is diagnostic evidence only. It is not field p75 Core Web Vitals and does not predict GitHub Pages or end-user network performance.",
-  "paintRisk": "bounded gradients, finite/state-bound production motion, and one user-opened dialog-local 3000 ms inspection replay with pause/visibility cleanup; no external runtime, analytics, video, blur-heavy full-screen animation, or page-level permanent polling",
+  "paintRisk": "bounded gradients, finite/state-bound production recommendations, and one user-opened dialog-local inspection replay: 3000 ms by default, with logo settled at 2050 ms and held until 5000 ms; pause/visibility cleanup remains active, with no external runtime, analytics, video, blur-heavy full-screen animation, or page-level permanent polling",
   "cold": {
     "label": "cold_visit",
     "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
     "requestCount": 36,
     "resourceCount": 35,
-    "transferBytes": 338703,
-    "decodedBodyBytes": 327903,
+    "transferBytes": 341200,
+    "decodedBodyBytes": 330400,
     "cacheEligibleResourceCount": 35,
     "zeroTransferResourceCount": 0,
     "duplicateUrls": [],
     "timing": {
-      "responseEndMs": 3,
-      "domContentLoadedMs": 70,
-      "loadMs": 87,
-      "firstContentfulPaintMs": 92,
-      "largestContentfulPaintMs": 92,
+      "responseEndMs": 5,
+      "domContentLoadedMs": 84,
+      "loadMs": 100,
+      "firstContentfulPaintMs": 112,
+      "largestContentfulPaintMs": 112,
       "cumulativeLayoutShift": 0.0268,
       "longTaskMs": 0
     }
@@ -31,17 +31,17 @@
     "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
     "requestCount": 36,
     "resourceCount": 35,
-    "transferBytes": 59447,
-    "decodedBodyBytes": 327903,
+    "transferBytes": 60023,
+    "decodedBodyBytes": 330400,
     "cacheEligibleResourceCount": 35,
     "zeroTransferResourceCount": 35,
     "duplicateUrls": [],
     "timing": {
-      "responseEndMs": 3,
-      "domContentLoadedMs": 18,
-      "loadMs": 27,
-      "firstContentfulPaintMs": 48,
-      "largestContentfulPaintMs": 48,
+      "responseEndMs": 2,
+      "domContentLoadedMs": 12,
+      "loadMs": 20,
+      "firstContentfulPaintMs": 32,
+      "largestContentfulPaintMs": 32,
       "cumulativeLayoutShift": 0,
       "longTaskMs": 0
     }
@@ -70,7 +70,7 @@
     {
       "name": "local LCP observer returned a value",
       "passed": true,
-      "detail": 92
+      "detail": 112
     },
     {
       "name": "repeat visit reuses at least one cache-eligible response",

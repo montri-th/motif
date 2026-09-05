@@ -2,7 +2,7 @@
   "schemaVersion": "motif-library-showcase-motion-decision/1.0",
   "decisionId": "landometer-modal-showcase-motion-v1",
   "artifactId": "landometer-motif-library-web-v1",
-  "artifactRelease": "1.1.1",
+  "artifactRelease": "1.1.2",
   "carriedForwardFromRelease": "1.1.0",
   "status": "owner_selected_for_named_artifact",
   "recordedOn": "2026-09-05",
@@ -24,6 +24,15 @@
     "trigger": "user_opened_reveal",
     "initialPlayback": "immediate_autoplay",
     "replayIntervalMs": 3000,
+    "replayExceptions": {
+      "logo": {
+        "settleAtMs": 2050,
+        "settleAction": "remove_data_play_to_show_authored_final_state",
+        "finalStateHoldMs": 2950,
+        "replayIntervalMs": 5000,
+        "decisionRef": "governance/logo-preview-final-settle-decision.json"
+      }
+    },
     "runConditions": [
       "dialog_is_open",
       "document_is_visible",
@@ -48,13 +57,15 @@
     "viewerControl": "pause_and_replay_now_controls_are_available_when_motion_is_allowed"
   },
   "productionBoundary": {
-    "landometerRuntime": "finite_once_lifecycle_unchanged_logo_full_geometry_patched",
+    "landometerRuntime": "exact_v2_bytes_with_optional_replay_and_loop_apis",
+    "defaultRecommendation": "finite_once_unchanged",
     "implementationSnippets": "finite_once_unchanged",
-    "machineManifestMotionContract": "finite_once_unchanged"
+    "machineManifestMotionContract": "finite_once_unchanged",
+    "optionalApiPermission": "requires_explicit_job_specific_owner_decision"
   },
   "contractBoundary": {
     "productionLandometerMotionMode": "finite_once",
-    "runtimeAssets": "versioned_logo_full_geometry_patch_only; finite_once API and lifecycle unchanged",
+    "runtimeAssets": "exact owner-supplied v2 bytes; optional replay and loop APIs are disclosed capabilities, not blanket production approval",
     "implementationSnippets": "finite_once",
     "machineManifestMotionContract": "finite_once",
     "hero": "unchanged_one_shot_progressive_enhancement",

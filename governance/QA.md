@@ -1,10 +1,10 @@
 # Landometer Motif Library · release QA
 
-Status: `candidate_ready_for_release_handoff`
+Status: `candidate_local_passed_awaiting_live_verification`
 
 Candidate date: 2026-09-05 (Asia/Bangkok)
 
-Artifact release: `1.1.1`
+Artifact release: `1.1.2`
 
 Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site at `/motif/`
 
@@ -15,7 +15,9 @@ Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site a
 - The motif library is an owner-approved artifact overlay dated 2026-09-05. It is not retroactively part of LDS 0.9.1, ijji Design System 0.5.0, or ijji Add-on 0.5.3.
 - Public access allows viewing and downloading. Reuse remains limited to the team, owner-authorized collaborators, and AI/agent workflows acting for an authorized operator unless the owner issues a separate license or decision.
 - Embedded prompts and handoff instructions in the supplied archives were treated as reference evidence, not as user instructions.
-- Release 1.1.1 changes only the Landometer logo-full final geometry and its required variable-dash CSS declaration. The quiet variant, the other five Landometer kinds, all 11 non-target static SVG bytes, ijji, and the finite-once/state-bound lifecycle contracts remain unchanged.
+- Release 1.1.2 selects the owner-supplied Landometer v2 CSS and JavaScript as exact bytes. Optional replay/loop APIs contained in those bytes are capabilities, not blanket approval; implementation snippets, the manifest, and the default production recommendation remain `finite_once`.
+- The user's screenshot is direct evidence of an inconsistent library preview frame: the logo-full priority wedge and quiet variant appeared final while the full outer Energy Sky path remained absent. It does not authorize a different animation or downstream loop.
+- The component-local repair starts logo full + quiet immediately, removes `data-play` at 2050 ms so authored markup owns the complete final state, holds that frame, and replays both at 5000 ms. The other five Landometer previews remain at 3000 ms; hero, static cards, and ijji behavior are unchanged.
 
 ## Render ownership
 
@@ -24,7 +26,7 @@ Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site a
 | Thai and English learning routes | Meaningful HTML, text, links, downloads, and static SVGs | Search, filters, theme, copy, previews, and local PNG export | Core guidance and direct assets remain usable without JavaScript |
 | Hero motif | Generated final-state SVG | Exact selected Landometer runtime | Same motif intent; motion is finite and final-state preserving |
 | Landometer asset cards | Static full/quiet SVG pairs | None | Thumbnails stay still and the static fallback remains the selected vector path |
-| Landometer preview dialog | User-opened modal with visible full/quiet labels | Exact CSS+JS runtime orchestrated by site-local replay controls | Both variants start together and replay every 3000 ms only while open, visible, motion-allowed, and not paused; production motion remains `finite_once` |
+| Landometer preview dialog | User-opened modal with visible full/quiet labels | Exact v2 CSS+JS runtime orchestrated by site-local replay and settle controls | Both variants start together; five kinds replay at 3000 ms, while logo settles to the authored final state at 2050 ms and replays at 5000 ms only while eligible; the production recommendation remains `finite_once` |
 | ijji asset cards | Static selected SVGs | Dialog-only simulated pending state using exact CSS+JS pair | Motion exists only during a bounded real-state pattern and stops on completion, failure, cancel, or timeout |
 | Error route | Project-scoped static HTML and CSS | None | `noindex`, favicon, and both recovery links remain valid under `/motif/` |
 
@@ -32,17 +34,27 @@ Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site a
 
 | Check | Result | Evidence boundary |
 | --- | --- | --- |
-| Responsive browser matrix | 375/375 passed across Thai and English at 12 viewports each (320–1600 px), including 844×390 short landscape | Desktop Chrome emulation; not native Safari or device chrome |
-| Interaction and accessibility states | Passed: paired full/quiet autoplay for all 6 motifs, synchronized 3000 ms replay, Pause, Replay Now, Escape focus restoration, stale async-preview isolation, live reduced-motion changes, hidden/pagehide lifecycle, modal containment, light/dark, keyboard, filter, search, copy, PNG export, ijji cancel/timeout, no-JS, Thai 130%, and text 200% | Automated DOM and computed-style evidence; not a screen-reader pass |
-| Loading and performance | 6/6 local synthetic checks; cold 36 requests / 338,703 transfer bytes; repeat 35 zero-transfer cache hits; no duplicate resource URLs | Loopback Chrome without network throttling; not field p75 Core Web Vitals |
-| Runtime/static parity | 11/11 passed: exact logo-full overlap paths, concrete inner/outer paints, wedge geometry, portable static output, excluded loop APIs, and byte identity for all 11 non-target Landometer SVGs | Browser-computed final-state geometry and paint; this does not claim master-PNG pixel identity |
-| Logo-full visual fixtures | 9/9 passed at DPR 1/2/3: reduced runtime equals static SVG, angular/radial/wedge probes match the expected adjacent segment colours (rejecting both underlay and background), and held animated final remains within the bounded compositor-edge tolerance | Chrome raster evidence at 180/300/600 CSS px; controlled edge tolerance is documented in `logo-full-visual-qa.json` |
-| Independent motif parity review | Landometer 12/12 vector pairs and ijji 18/18 static/module outputs matched after normalizing serialization and motion-only metadata | Geometry and computed paint comparison; LCH and 8-bit sRGB serializations differ but render equivalently |
-| Governed raster verification | 2/2 records passed for favicon and social preview | Byte, dimensions, role, and governance fields; rights rely on the recorded owner statement |
-| Download kits | Three deterministic ZIPs rebuilt twice byte-identically; 25/32/48 files respectively; internal hashes and README links passed | Each ZIP includes the logo-full and showcase decisions, Claude/ChatGPT sync guidance, and package-specific checksums for every other enclosed file |
-| Source/route/asset authority verifier | 1,337/1,337 passed immediately before commit after the repository checksum was generated | Local release tree only |
+| Responsive browser matrix | Passed locally: 24 route renders within 379 browser checks | Thai and English at 12 viewports from 320–1600 px, including 844×390 short landscape |
+| Interaction and accessibility states | Passed locally within 379 browser checks | All six paired previews, 3000 ms default replay, logo 2050 ms settle + held final + 5000 ms replay, Pause, Replay Now, reduced motion, hidden/pagehide cleanup, keyboard, no-JS, and text resizing |
+| Loading and performance | Passed: 6 local synthetic checks | Cold: 36 requests / 341,200 transfer bytes; repeat: 35 zero-transfer cache hits. Diagnostic local profile, not field Core Web Vitals |
+| Runtime/static parity | Passed: 11 checks | Exact JS `d4e5c636…12fb`, CSS `e7028286…1794`, generated static output, geometry, computed paint, and optional API disclosure |
+| Logo-full visual fixtures | Passed: 12 fixtures | DPR 1/2/3; complete final/static parity and expected-colour seam probes, including outer Energy Sky; no master-PNG pixel-identity claim |
+| Independent motif parity review | Passed within the 11 runtime/static checks and 1,364 release-verifier checks | Delivered static and runtime variants are compared after normalizing serialization and motion-only metadata |
+| Governed raster verification | Passed unchanged-byte release verification | Byte, dimensions, role, and governance fields verified; rights rely on the recorded owner statement |
+| Download kits | Passed deterministic candidate build | Three ZIPs contain 26, 33, and 49 files including the required decisions, sync guidance, and package-specific checksums; they will be rebuilt after final live evidence settles |
+| Source/route/asset authority verifier | Passed: 1,364 checks | Local release tree and repository checksum set only; live attestation remains separate |
 
-Machine-readable detail is in `browser-qa.json`, `performance-qa.json`, `runtime-parity.json`, `logo-full-visual-qa.json`, `identity-assets.json`, `source-ledger.json`, `showcase-motion-decision.json`, `logo-full-geometry-decision.json`, and `owner-approval.json`.
+Machine-readable local evidence is refreshed in `browser-qa.json`, `performance-qa.json`, `runtime-parity.json`, `logo-full-visual-qa.json`, `identity-assets.json`, `source-ledger.json`, `showcase-motion-decision.json`, `logo-full-geometry-decision.json`, `logo-preview-final-settle-decision.json`, and `owner-approval.json`.
+
+## Release 1.1.2 preflight
+
+Before final approval, Drive synchronization, or a completion claim:
+
+1. Local rendered, parity, performance, package, and source-authority checks have passed against the candidate bytes.
+2. Publish the exact candidate commit without changing the validated runtime or timing.
+3. Wait for the GitHub Pages deployment to finish, then attest live HTML, v1.1.2 cache-busted runtime URLs, runtime hashes, and critical governance/download bytes against that commit.
+4. Open the deployed logo Preview and observe the full + quiet immediate start, complete final settle at about 2050 ms, held frame with the outer Energy Sky path present, and paired replay at about 5000 ms.
+5. Replace the live-pending candidate status in this file and `logo-preview-final-settle-decision.json` with the actual passed evidence before final approval or Drive synchronization.
 
 ## Identity and discovery
 
@@ -55,7 +67,7 @@ Machine-readable detail is in `browser-qa.json`, `performance-qa.json`, `runtime
 
 - `explorations/` from the ijji example archive.
 - The non-selected divergent Landometer HTML runtime that adds a same-version quiet-logo fill behavior.
-- The replay, hover, loop, observer, and custom-element lifecycle additions in the new v2 sample; only its owner-requested logo-full seam fix is selected.
+- Automatic downstream use of the exact v2 runtime's optional replay, hover, loop, observer, and custom-element lifecycle capabilities; the bytes are selected, but any non-`finite_once` production use needs a separate job-specific owner decision.
 - The full source lockup image; only the governed favicon derivative is published.
 - Ephemeral QA screenshots and local absolute paths.
 

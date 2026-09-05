@@ -2,7 +2,7 @@
   "schemaVersion": "motif-library-build-card/1.0",
   "artifactId": "landometer-motif-library-web-v1",
   "artifactName": "Landometer Motif Library",
-  "artifactRelease": "1.1.1",
+  "artifactRelease": "1.1.2",
   "experienceProfile": "methodology_learning",
   "formatProfile": "web_public",
   "pageKind": "utility",
@@ -25,11 +25,13 @@
     "manifest": "assets/motif-library.json",
     "schema": "motif-library-agent-contract/1.0",
     "selection": "one exact generated_vector record as a static baseline; optional web-only motion resolves through an exact matching-family extension",
-    "productionLandometerMotionMode": "finite_once"
+    "productionLandometerMotionMode": "finite_once",
+    "runtimeCapabilityBoundary": "The exact v2 runtime contains optional replay and loop APIs; downstream use requires a separate explicit job-specific owner decision."
   },
   "decisionRecords": {
     "showcaseMotion": "governance/showcase-motion-decision.json",
-    "logoFullGeometry": "governance/logo-full-geometry-decision.json"
+    "logoFullGeometry": "governance/logo-full-geometry-decision.json",
+    "logoPreviewFinalSettle": "governance/logo-preview-final-settle-decision.json"
   },
   "distributionMirrors": {
     "googleDrive": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
@@ -53,9 +55,11 @@
   "capabilities": {
     "assetSearch": true,
     "brandFilter": true,
-    "finiteLandometerProductionRuntime": true,
+    "finiteLandometerProductionRecommendation": true,
+    "exactLandometerV2Runtime": true,
     "pairedLandometerModalShowcase": true,
     "ownerSelectedModalAutoreplayWithPause": true,
+    "logoPreviewFinalSettleAndHold": true,
     "boundedIjjiPendingStatePreview": true,
     "clientSidePngExport": true,
     "themeSwitch": true,
@@ -67,6 +71,7 @@
     "ijji": "ijji DS 0.5.0 / Add-on 0.5.3 boundary",
     "motifAssets": "owner-approved artifact overlay on 2026-09-05",
     "showcaseMotion": "owner-selected component-local instructional behavior on 2026-09-05; see governance/showcase-motion-decision.json",
+    "logoPreviewFinalSettle": "artifact-level repair prompted by the owner's screenshot observation; see governance/logo-preview-final-settle-decision.json",
     "productTruth": "No product capability or business evidence claims are made"
   }
 }

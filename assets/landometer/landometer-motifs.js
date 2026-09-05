@@ -1,7 +1,8 @@
-/* Landometer motion motifs — v1.1.1 · 5 September 2026
-   <lm-motif kind="dial|slice|rings|layers|cultivate|logo" [quiet] [ink="beige"] [autoplay="false"] [run="n"]></lm-motif>
-   Renders an inline SVG in its FINAL state (fail-open). When the element scrolls into view it plays once;
-   change the `run` attribute (or call el.play()) to replay. Requires landometer-motifs.css.
+/* Landometer motion motifs — v2 · 5 September 2026
+   <lm-motif kind="dial|slice|rings|layers|cultivate|logo" [quiet] [ink="sky|mint|yellow|beige|blue"] [replay="once|enter|hover"] [loop="ms"] [autoplay="false"] [run="n"]></lm-motif>
+   Renders an inline SVG in its FINAL state (fail-open). When the element scrolls into view it plays once by default;
+   replay="enter" replays on every re-entry, replay="hover" on pointerenter, loop="ms" repeats while in view;
+   change the `run` attribute (or call el.play()) to replay programmatically. Requires landometer-motifs.css.
    The motifs are decoration: the element is aria-hidden and never carries data, copy or a control. */
 (function () {
   'use strict';
@@ -93,9 +94,9 @@
        the mark's PARTS assemble once; the official artwork file itself is never animated,
        and the assembled state never replaces the official logo in nav, favicon or OG images. */
     logo: function (q) {
-      /* Normalized final silhouette aligned to the owner-supplied official lockup:
+      /* geometry measured from the official mark (6402px master, centre (3202,3049), outer r 2600 → 128 units):
          centre (300,143) · outer ring r 99–128 · band r 71–99 at .8 over the pin · head r 71 · body = r 99 disc to 27°
-         below the baseline, then a fitted cubic to the tip (300,286) · priority wedge = sector 0°–45° r 71. */
+         below the baseline, then a fitted cubic to the tip (300,286) · priority wedge = sector 0°–45° r 71 */
       var pin = 'M201 143 A99 99 0 0 1 399 143 A99 99 0 0 1 388.21 187.95 C367.78 228.04 328.12 265.17 300 286 C271.88 265.17 232.22 228.04 211.79 187.95 A99 99 0 0 1 201 143 Z';
       var wedge = 'M300 143 L371 143 A71 71 0 0 0 350.2 92.8 Z';
       if (q) {
@@ -111,25 +112,18 @@
           line('M300 143 L390.51 52.49', 'lm-draw420', 900, 420) +
           '<path d="' + wedge + '" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="420" class="lm-draw420" style="--lm-delay:1200ms"></path></svg>';
       }
-      /* The owner-supplied seam fix extends the inner band one unit beneath the outer ring. Each later
-         colour begins .25deg early, and the wedge extends
-         .6 units over the inner band. Those controlled overlaps prevent anti-alias seams or missing
-         slivers while preserving the same assembled silhouette. Only this full variant is patched. */
-      var point = function (r, a) {
-        var t = a * Math.PI / 180;
-        return (300 + r * Math.cos(t)).toFixed(2) + ' ' + (143 - r * Math.sin(t)).toFixed(2);
+      // full: the pin drops, then the dial sweeps in as OPAQUE annular strokes. Each later segment starts .25° early
+      // over the previous one, the band runs to r 100 under the outer ring and the wedge to r 71.6 over the band,
+      // so no anti-aliasing seam can open in the final state. Band colour = energy 80% over the ink (measured on the mark).
+      var P = function (r, a) { var t = a * Math.PI / 180; return (300 + r * Math.cos(t)).toFixed(2) + ' ' + (143 - r * Math.sin(t)).toFixed(2); };
+      var seg = function (r, a1, a2, paint, dash, delay) {
+        return '<path d="M' + P(r, a1) + ' A' + r + ' ' + r + ' 0 0 1 ' + P(r, a2) + '" fill="none" stroke-width="29" stroke-dasharray="' + dash + '" class="lm-drawv" style="' + paint + ';--lm-dash:' + dash + ';--lm-delay:' + delay + 'ms"></path>';
       };
-      var segment = function (r, a1, a2, paint, dash, delay) {
-        return '<path d="M' + point(r, a1) + ' A' + r + ' ' + r + ' 0 0 1 ' + point(r, a2) + '" fill="none" stroke-width="29" stroke-dasharray="' + dash + '" class="lm-drawv" style="' + paint + ';--lm-dash:' + dash + ';--lm-delay:' + delay + 'ms"></path>';
-      };
-      var colors = [C.coral, C.yellow, C.mint, C.sky];
-      var output = '<path d="' + pin + '" fill="currentColor" class="lm-drop"></path>';
-      var i;
-      for (i = 0; i < 4; i++) output += segment(85.5, 180 - 45 * i + (i ? .25 : 0), 135 - 45 * i, 'stroke:color-mix(in srgb, ' + colors[i] + ' 80%, currentColor)', 69, 450 + 150 * i);
-      for (i = 0; i < 4; i++) output += segment(113.5, 180 - 45 * i + (i ? .25 : 0), 135 - 45 * i, 'stroke:' + colors[i], 91, 300 + 150 * i);
-      output += '<path d="M300 143 L371.6 143 A71.6 71.6 0 0 0 350.63 92.37 Z" fill="var(--lm-wedge, #3F93D1)" class="lm-step-in" style="--lm-delay:1200ms"></path>';
-      return SVG_OPEN + output + '</svg>';
-    }
+      var cols = [C.coral, C.yellow, C.mint, C.sky], out = '<path d="' + pin + '" fill="currentColor" class="lm-drop"></path>', i;
+      for (i = 0; i < 4; i++) out += seg(85.5, 180 - 45 * i + (i ? .25 : 0), 135 - 45 * i, 'stroke:color-mix(in srgb, ' + cols[i] + ' 80%, currentColor)', 69, 450 + 150 * i);
+      for (i = 0; i < 4; i++) out += seg(113.5, 180 - 45 * i + (i ? .25 : 0), 135 - 45 * i, 'stroke:' + cols[i], 91, 300 + 150 * i);
+      out += '<path d="M300 143 L371.6 143 A71.6 71.6 0 0 0 350.63 92.37 Z" fill="var(--lm-wedge, #3F93D1)" class="lm-step-in" style="--lm-delay:1200ms"></path>';
+      return SVG_OPEN + out + '</svg>';    }
   };
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -138,9 +132,11 @@
     if (io || !('IntersectionObserver' in window)) return io;
     io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        io.unobserve(e.target);
-        e.target.play();
+        var el = e.target;
+        el._inView = e.isIntersecting;
+        if (!e.isIntersecting) { clearTimeout(el._loop); return; }
+        if (el.getAttribute('replay') !== 'enter' && !el.hasAttribute('loop')) io.unobserve(el);
+        el.play();
       });
     }, { threshold: 0.14, rootMargin: '0px 0px -12% 0px' });
     return io;
@@ -151,11 +147,12 @@
     connectedCallback() {
       this.setAttribute('aria-hidden', 'true');
       this.render();
+      if (this.getAttribute('replay') === 'hover' && !this._hover) { this._hover = this.play.bind(this); this.addEventListener('pointerenter', this._hover); }
       if (reduced || this.getAttribute('autoplay') === 'false') return;
       var o = observer();
       if (o) o.observe(this);
     }
-    disconnectedCallback() { if (io) io.unobserve(this); }
+    disconnectedCallback() { if (io) io.unobserve(this); clearTimeout(this._loop); }
     attributeChangedCallback(name, oldValue, newValue) {
       if (!this.isConnected || oldValue === newValue) return;
       if (name === 'run') { this.play(); return; }
@@ -171,6 +168,11 @@
       this.removeAttribute('data-play');
       void this.offsetWidth; // restart CSS animations
       this.setAttribute('data-play', '');
+      clearTimeout(this._loop);
+      if (this.hasAttribute('loop') && this._inView !== false) {
+        var self = this, ms = Math.max(2000, parseInt(this.getAttribute('loop'), 10) || 4000);
+        this._loop = setTimeout(function () { self.play(); }, ms);
+      }
     }
   }
   window.customElements.define('lm-motif', LmMotif);

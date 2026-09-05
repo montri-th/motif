@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "motif-library-logo-preview-final-settle-decision/1.0",
+  "decisionId": "landometer-logo-preview-final-settle-20260905",
+  "artifactRelease": "1.1.2",
+  "status": "local_qa_passed_pending_live_qa",
+  "recordedOn": "2026-09-05",
+  "evidence": {
+    "source": "user-supplied screenshot in the current task",
+    "observation": "The logo-full preview showed the priority wedge and the quiet variant at their final states while the outer Energy Sky path was still absent.",
+    "interpretation": "That mixed frame is not the authored final state of the selected runtime. The observation is evidence about the library preview, not authority to rewrite the supplied motif timeline or expand its production use."
+  },
+  "selectedRuntime": {
+    "source": "Landometer Brand Motifs Asset and Prompt.zip",
+    "jsSha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
+    "cssSha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
+    "selection": "exact_owner_supplied_v2_bytes"
+  },
+  "scope": {
+    "surface": "landometer_logo_preview_dialog_only",
+    "variants": ["full", "quiet"],
+    "classification": "component_local_instructional_showcase_repair",
+    "unchanged": [
+      "hero finite-once behavior",
+      "static asset cards",
+      "the 3000 ms showcase cadence for dial, rings, layers, slice, and cultivate",
+      "ijji state_bound_only behavior"
+    ]
+  },
+  "previewTimeline": {
+    "start": "play full and quiet immediately when the user opens or replays the logo preview",
+    "settleAtMs": 2050,
+    "settleAction": "remove data-play from both hosts so the authored markup supplies the complete static final state",
+    "hold": "keep that complete final state visible after settle",
+    "holdDurationMs": 2950,
+    "replayAtMs": 5000,
+    "replayAction": "start the next full and quiet cycle together when the existing showcase run conditions still pass"
+  },
+  "runConditions": [
+    "dialog_is_open",
+    "document_is_visible",
+    "prefers_reduced_motion_is_not_reduce",
+    "viewer_has_not_manually_paused"
+  ],
+  "cleanup": [
+    "clear_settle_and_replay_timers_on_pause",
+    "clear_settle_and_replay_timers_on_dialog_close",
+    "clear_settle_and_replay_timers_when_document_is_hidden",
+    "clear_settle_and_replay_timers_on_pagehide"
+  ],
+  "productionBoundary": {
+    "defaultRecommendation": "finite_once",
+    "implementationSnippets": "finite_once",
+    "machineManifestMotionContract": "finite_once",
+    "runtimeCapabilityDisclosure": "The exact v2 runtime contains optional replay=enter, replay=hover, loop, and programmatic play APIs.",
+    "permissionBoundary": "The presence of optional APIs in supplied bytes is not approval to use them. Any downstream replay or loop requires an explicit job-specific owner decision.",
+    "normativeDesignSystemChange": false
+  },
+  "releaseGate": {
+    "status": "local_passed_live_pending",
+    "localRenderedQa": {
+      "status": "passed",
+      "browserChecks": 379,
+      "logoVisualFixtures": 12,
+      "runtimeStaticParityChecks": 11,
+      "outerSkyFinalPixel": [89, 210, 254, 255],
+      "evidenceRefs": [
+        "governance/browser-qa.json",
+        "governance/logo-full-visual-qa.json",
+        "governance/runtime-parity.json"
+      ]
+    },
+    "liveRenderedQaRequiredBeforeApprovalOrSync": true,
+    "requiredObservation": "On the deployed route, confirm that logo full and quiet start together, both settle to complete final states at about 2050 ms, remain held, and restart together at about 5000 ms without a missing outer path."
+  }
+}

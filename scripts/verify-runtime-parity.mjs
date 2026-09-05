@@ -149,12 +149,14 @@ const checks = [
       && !/(?:color-mix|currentColor|var\(|style=)/.test(staticLogo),
   },
   {
-    name: "logo full variable-dash animation is present without adding replay or loop APIs",
+    name: "logo full variable-dash animation and the exact supplied v2 lifecycle APIs are present",
     passed: runtime.includes('class="lm-drawv"')
       && css.includes("@keyframes lm-drawv")
       && css.includes("lm-motif[data-play] .lm-drawv")
-      && !runtime.includes("getAttribute('replay')")
-      && !runtime.includes("hasAttribute('loop')"),
+      && runtime.includes("getAttribute('replay')")
+      && runtime.includes("hasAttribute('loop')")
+      && runtime.includes("this.addEventListener('pointerenter'")
+      && runtime.includes("clearTimeout(this._loop)"),
   },
   {
     name: "all 11 non-target Landometer static SVGs remain byte-identical to release 1.1.0",
@@ -168,7 +170,7 @@ const report = {
   executedAt: new Date().toISOString(),
   artifactRoot: ".",
   browser: "system Google Chrome through Playwright",
-  evidenceBoundary: "Geometry is sourced from the exact scoped runtime; reduced motion exposes the authored final CSS state. The LCH logo wedge and sRGB inner composites are converted through the browser canvas to 8-bit sRGB static colors. Exact normalized overlap paths and non-target static hashes are verified; this does not claim master-PNG pixel identity.",
+  evidenceBoundary: "Geometry is sourced from the exact owner-supplied v2 runtime; reduced motion exposes the authored final CSS state. The LCH logo wedge and sRGB inner composites are converted through the browser canvas to 8-bit sRGB static colors. Exact normalized overlap paths and non-target static hashes are verified; optional replay/loop API presence is byte-parity evidence, not downstream authorization, and this does not claim master-PNG pixel identity.",
   checks,
   computed,
   status: failed.length ? "failed" : "passed",

@@ -8,10 +8,11 @@
   "timestampNote": "The task context exposes the calendar date but not the message clock time; no time was invented.",
   "authorityEvidenceRef": "current-task:user-message:2026-09-05:owner-created-full-rights-and-approves-all-pending-publication-gates",
   "supplementalAuthorityEvidenceRef": "current-task:user-message:2026-09-05:fix-only-logo-full-final-composition-and-mirror-all-assets-to-google-drive-for-claude-chatgpt-sync",
+  "urgentRepairAuthorityEvidenceRef": "current-task:user-message:2026-09-05:owner-reported-incomplete-live-animation-preview-and-required-correct-repair-before-saving-skill",
   "repository": "https://github.com/montri-th/motif",
   "publicationUrl": "https://montri-th.github.io/motif/",
   "assetManifestRef": "assets/motif-library.json",
-  "assetManifestSha256": "0e8f361e1922329debe254b8434d2ca126db9004d1b25dc382a795e1743f352a",
+  "assetManifestSha256": "43599ecda749b8bb2c0ddc00929b10a75053c816f9c4caae83d80483e7dcfe45",
   "rightsStatement": "The owner states that they created the supplied motif assets, hold full rights, and approve all pending matters required for this publication.",
   "rightsEvidenceClass": "owner_stated_not_independently_verified",
   "publicationActions": [
@@ -36,12 +37,14 @@
     "proportional_raster_exports_that_preserve_exact_geometry_and_color",
     "site_specific_favicon_crop_from_the_owner_approved_landometer_lockup_source",
     "deterministic_social_preview_composition_from_approved_motif_and_visible_page_copy",
-    "owner_scoped_logo_full_anti_seam_geometry_patch_with_opaque_token_composites"
+    "owner_scoped_logo_full_anti_seam_geometry_patch_with_opaque_token_composites",
+    "exact_distribution_of_owner_supplied_landometer_v2_css_and_javascript",
+    "library_preview_logo_final_settle_and_hold_before_auto_replay"
   ],
   "distributionMirror": {
     "provider": "Google Drive",
     "rootUrl": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
-    "immutableReleaseUrl": "https://drive.google.com/drive/folders/1wVC9UB8t57bLdQNeNrCbYapj2FlixgBg",
+    "immutableReleaseUrl": "https://drive.google.com/drive/folders/1ivOhP0g8vMxgUoNCHmyGsCpEaYjBrRzF",
     "purpose": "Easy exact-asset retrieval by the team and authorized Claude, ChatGPT, and agent workflows.",
     "accessBoundary": "Drive access remains account-dependent; no automatic cross-service background synchronization is claimed."
   },
@@ -69,6 +72,7 @@
   "technicalConditions": [
     "Every delivered asset resolves the path, MIME type, bytes, SHA-256, role, scope, and fallback in the manifest.",
     "Downstream work must still verify accessibility, contrast, motion, sizing, context, claims, and final rendered or exported output.",
-    "Only the listed transformations are approved; redraw, recolor, crop, distortion, or reconstruction from screenshots or model memory remain prohibited."
+    "Only the listed transformations are approved; redraw, recolor, crop, distortion, or reconstruction from screenshots or model memory remain prohibited.",
+    "Optional replay and loop APIs present in the exact source bytes do not by themselves authorize repeating motion in a downstream artifact."
   ]
 }

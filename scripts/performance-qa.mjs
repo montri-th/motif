@@ -121,7 +121,7 @@ const report = {
   browser: await Promise.resolve(browser.version?.()).catch(() => null),
   route: "/motif/",
   evidenceBoundary: "Local synthetic timing is diagnostic evidence only. It is not field p75 Core Web Vitals and does not predict GitHub Pages or end-user network performance.",
-  paintRisk: "bounded gradients, finite/state-bound production motion, and one user-opened dialog-local 3000 ms inspection replay with pause/visibility cleanup; no external runtime, analytics, video, blur-heavy full-screen animation, or page-level permanent polling",
+  paintRisk: "bounded gradients, finite/state-bound production recommendations, and one user-opened dialog-local inspection replay: 3000 ms by default, with logo settled at 2050 ms and held until 5000 ms; pause/visibility cleanup remains active, with no external runtime, analytics, video, blur-heavy full-screen animation, or page-level permanent polling",
   cold,
   repeat,
   checks,

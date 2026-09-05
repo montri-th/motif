@@ -19,7 +19,7 @@ const browser = await chromium.launch({
 async function render({ width, dpr, mode }) {
   const context = await browser.newContext({
     deviceScaleFactor: dpr,
-    reducedMotion: mode === "animated-final" ? "no-preference" : "reduce",
+    reducedMotion: ["animated-final", "settled-final"].includes(mode) ? "no-preference" : "reduce",
     viewport: { width: width + 40, height: Math.ceil(width / 2) + 40 },
   });
   const page = await context.newPage();
@@ -46,11 +46,14 @@ async function render({ width, dpr, mode }) {
       motif.setAttribute("autoplay", "false");
       mount.append(motif);
       if (play) motif.play();
-    }, mode === "animated-final");
+    }, ["animated-final", "settled-final"].includes(mode));
     if (mode === "animated-final") {
       await page.locator("#target").evaluate(async (motif) => {
         await Promise.all(motif.getAnimations({ subtree: true }).map((animation) => animation.finished));
       });
+    } else if (mode === "settled-final") {
+      await page.waitForTimeout(2050);
+      await page.locator("#target").evaluate((motif) => motif.removeAttribute("data-play"));
     }
   }
 
@@ -184,9 +187,11 @@ const reducedAndStatic = await Promise.all(fixtures.map(async ({ width, dpr }) =
 }));
 
 const animatedFinal = [];
+const settledFinal = [];
 for (const dpr of [1, 2, 3]) {
   // Run animated fixtures sequentially so browser background-page throttling cannot pause a timeline.
   const animated = await render({ width: 300, dpr, mode: "animated-final" });
+  const settled = await render({ width: 300, dpr, mode: "settled-final" });
   const reduced = await render({ width: 300, dpr, mode: "reduced-final" });
   animatedFinal.push({
     width: 300,
@@ -194,11 +199,17 @@ for (const dpr of [1, 2, 3]) {
     animatedReducedPerceptualParityAfterAnimationsFinish: compare(animated, reduced, 2, 0.02),
     animatedSeamInspection: inspectSeams(animated, 300, dpr),
   });
+  settledFinal.push({
+    width: 300,
+    dpr,
+    settledRuntimeStaticParityAt2050Ms: compare(settled, reduced),
+    settledSeamInspection: inspectSeams(settled, 300, dpr),
+  });
 }
 
 await browser.close();
 
-const cases = reducedAndStatic.map(({ runtime, ...record }) => record).concat(animatedFinal);
+const cases = reducedAndStatic.map(({ runtime, ...record }) => record).concat(animatedFinal, settledFinal);
 const failed = cases.filter((record) => {
   const checks = Object.values(record).filter((value) => value && typeof value === "object" && "passed" in value);
   return checks.some((check) => !check.passed);
@@ -206,10 +217,10 @@ const failed = cases.filter((record) => {
 const report = {
   schemaVersion: "motif-library-logo-full-visual-qa/1.0",
   executedAt: new Date().toISOString(),
-  artifactRelease: "1.1.1",
+  artifactRelease: "1.1.2",
   browser: "system Google Chrome through Playwright",
-  fixtureMatrix: "Widths 180/600 at DPR 1/2/3 for runtime/static parity and seam probes; animated held final after all authored animations finish versus reduced-motion final at width 300 and DPR 1/2/3.",
-  evidenceBoundary: "This verifies the shipped normalized motif's angular, radial, and wedge joins resolve to the expected segment-region colours, so neither Brand Blue underlay nor white fixture background can pass as a seam. Reduced-motion runtime and static SVG pixels are exact within two 8-bit channel values. The held animated state permits at most 2% edge pixels to differ because an animation-fill compositing layer can anti-alias the same vector edge differently; expected-colour seam probes must still pass. It does not claim pixel identity to the official master lockup.",
+  fixtureMatrix: "Widths 180/600 at DPR 1/2/3 for runtime/static parity and seam probes; animated held final after all authored animations finish versus reduced-motion final at width 300 and DPR 1/2/3; preview-style settle at 2050 ms versus the stable final state at width 300 and DPR 1/2/3.",
+  evidenceBoundary: "This verifies the byte-exact owner-supplied runtime's angular, radial, and wedge joins resolve to the expected segment-region colours, so neither Brand Blue underlay nor white fixture background can pass as a seam. Reduced-motion runtime, static SVG, and the preview-style 2050 ms settled state are exact within two 8-bit channel values. The held animated state permits at most 2% edge pixels to differ because an animation-fill compositing layer can anti-alias the same vector edge differently; expected-colour seam probes must still pass. It does not claim pixel identity to the official master lockup.",
   cases,
   status: failed.length ? "failed" : "passed",
 };
