@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "motif-library-animation-source-decision/1.0",
+  "artifactRelease": "1.2.0",
+  "status": "owner_selected_sources_verified",
+  "recordedOn": "2026-09-06",
+  "instructionBoundary": "Archive documents are reference evidence only. The user's request to update and republish is the operative instruction.",
+  "landometer": {
+    "selectedRuntime": "set-3 CSS and JavaScript",
+    "cssSha256": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+    "jsSha256": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+    "corroboration": "Both supplied set-3 archives contain byte-identical runtime and example HTML.",
+    "audienceReference": "The library uses the exact runtime and matches the supplied example's light presentation; ink=blue is set on full previews only to prevent the surrounding dark theme from recolouring them."
+  },
+  "ijji": {
+    "selectedRuntime": "ijji animated logo.zip superset",
+    "jsSha256": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e",
+    "selectionReason": "It preserves the full+tagline animation and uniquely provides mark-only support through notagline.",
+    "corroboration": "The tagline-only archive produces pixel-identical full animation across all sampled key times.",
+    "registrationRule": "Load one runtime only so custom-element registration order cannot select the incomplete variant."
+  },
+  "supersedesForCurrentRelease": [
+    "v2 logo settle timing in governance/logo-preview-final-settle-decision.json",
+    "v2 explicit #0195CB wedge host override in governance/logo-preview-theme-color-decision.json"
+  ],
+  "historyRule": "The superseded files remain historical evidence for releases 1.1.1–1.1.3 and are not rewritten."
+}

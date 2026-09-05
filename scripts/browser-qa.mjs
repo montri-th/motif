@@ -35,7 +35,8 @@ function mimeFor(file) {
   }[extension] || "application/octet-stream";
 }
 
-const server = http.createServer((request, response) => {
+const requestedBase = process.env.MOTIF_BROWSER_QA_BASE_URL?.replace(/\/$/, "") || "";
+const server = requestedBase ? null : http.createServer((request, response) => {
   let pathname = decodeURIComponent(new URL(request.url, "http://localhost").pathname);
   if (pathname.endsWith("/")) pathname += "index.html";
   const relative = pathname.replace(/^\/motif\/?/, "").replace(/^\/+/, "");
@@ -53,10 +54,10 @@ const server = http.createServer((request, response) => {
   fs.createReadStream(candidate).pipe(response);
 });
 
-await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
-const address = server.address();
-const origin = `http://127.0.0.1:${address.port}`;
-const siteBase = `${origin}/motif`;
+if (server) await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+const address = server?.address();
+const origin = requestedBase || `http://127.0.0.1:${address.port}`;
+const siteBase = requestedBase || `${origin}/motif`;
 fs.mkdirSync(screenshotDir, { recursive: true });
 
 const browser = await chromium.launch({
@@ -65,6 +66,33 @@ const browser = await chromium.launch({
 });
 
 const browserVersion = await browser.version();
+const exactSourceFiles = [
+  {
+    path: "assets/landometer/landometer-motifs.css",
+    sha256: "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+  },
+  {
+    path: "assets/landometer/landometer-motifs.js",
+    sha256: "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+  },
+  {
+    path: "assets/ijji/logo-sting/ijji-logo-sting.js",
+    sha256: "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e",
+  },
+  {
+    path: "assets/ijji/logo-sting/layers/ijji-logo-still.png",
+    sha256: "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+  },
+  {
+    path: "assets/ijji/logo-sting/layers/ijji-mark-still.png",
+    sha256: "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630",
+  },
+];
+for (const source of exactSourceFiles) {
+  const bytes = fs.readFileSync(path.join(root, source.path));
+  const actual = crypto.createHash("sha256").update(bytes).digest("hex");
+  record(actual === source.sha256, `Exact authored source bytes: ${source.path}`, actual);
+}
 const viewports = [
   { width: 320, height: 800 },
   { width: 360, height: 800 },
@@ -125,7 +153,7 @@ async function inspectRoute(route, locale, viewport) {
   record(response?.status() === 200, `${label} route returns 200`, String(response?.status()));
   record(metrics.lang === locale, `${label} initial locale`, metrics.lang);
   record(metrics.h1Count === 1 && metrics.mainCount === 1, `${label} landmark contract`, `h1=${metrics.h1Count}, main=${metrics.mainCount}`);
-  record(metrics.cardCount === 9 && metrics.visibleCardCount === 9, `${label} static asset inventory`, `total=${metrics.cardCount}, visible=${metrics.visibleCardCount}`);
+  record(metrics.cardCount === 11 && metrics.visibleCardCount === 11, `${label} static asset inventory`, `total=${metrics.cardCount}, visible=${metrics.visibleCardCount}`);
   record(metrics.scrollWidth <= metrics.clientWidth + 1, `${label} no page-level horizontal overflow`, `${metrics.scrollWidth}/${metrics.clientWidth}`);
   record(metrics.brokenImages.length === 0, `${label} images load`, metrics.brokenImages.join(", ") || "all loaded");
   record(metrics.imageAltMissing === 0, `${label} image alt contract`, `missing=${metrics.imageAltMissing}`);
@@ -178,7 +206,7 @@ for (const viewport of viewports) {
   record(previewLuminanceProxy > 0.7, "Dark theme keeps exact ink/Brand Blue assets on an explicit light preview surface", previewSurface);
 
   await page.locator('[data-filter="ijji"]').click();
-  record(await page.locator(".asset-card:not([hidden])").count() === 3, "Brand filter shows three ijji cards");
+  record(await page.locator(".asset-card:not([hidden])").count() === 5, "Brand filter shows all five ijji cards across identity and pending-state families");
   await page.locator('[data-filter="all"]').click();
   await page.locator("[data-asset-search]").fill("rings");
   record(await page.locator(".asset-card:not([hidden])").count() === 2, "Search finds cross-family rings examples");
@@ -192,6 +220,8 @@ for (const viewport of viewports) {
     motifs: [...stage.querySelectorAll("lm-motif")].map((motif) => ({
       kind: motif.getAttribute("kind"),
       quiet: motif.hasAttribute("quiet"),
+      ink: motif.getAttribute("ink"),
+      inlineWedge: motif.style.getPropertyValue("--lm-wedge").trim(),
       playing: motif.hasAttribute("data-play"),
       svgCount: motif.querySelectorAll("svg").length,
       ariaHidden: motif.getAttribute("aria-hidden"),
@@ -202,8 +232,10 @@ for (const viewport of viewports) {
     initialLandometerPreview.motifs.length === 2
       && initialLandometerPreview.motifs.every((motif) => motif.kind === selectedLandometerKind && motif.playing && motif.svgCount === 1 && motif.ariaHidden === "true")
       && initialLandometerPreview.motifs.filter((motif) => motif.quiet).length === 1
+      && initialLandometerPreview.motifs.find((motif) => !motif.quiet)?.ink === "blue"
+      && initialLandometerPreview.motifs.every((motif) => motif.inlineWedge === "")
       && initialLandometerPreview.captions.join(",") === "full,quiet",
-    "Landometer preview immediately autoplays paired full and quiet exact-runtime motifs",
+    "Landometer v3 preview immediately autoplays paired full and quiet exact-runtime motifs with blue full ink and no wedge override",
     JSON.stringify(initialLandometerPreview),
   );
 
@@ -285,11 +317,12 @@ for (const viewport of viewports) {
       JSON.stringify(kindSnapshot),
     );
     if (kind === "logo") {
-      await page.waitForTimeout(2250);
+      await page.waitForTimeout(3500);
       const settledLogo = await page.evaluate(() => ({
         playingCount: document.querySelectorAll("#preview-stage lm-motif[data-play]").length,
         status: document.querySelector("#preview-status")?.textContent?.trim(),
         fullPathCount: document.querySelectorAll("#preview-stage lm-motif:not([quiet]) path").length,
+        quietPathCount: document.querySelectorAll("#preview-stage lm-motif[quiet] path").length,
         outerSkyStroke: getComputedStyle(document.querySelectorAll("#preview-stage lm-motif:not([quiet]) path")[8]).stroke,
         outerSkyRight: (() => {
           const box = document.querySelectorAll("#preview-stage lm-motif:not([quiet]) path")[8].getBBox();
@@ -300,9 +333,10 @@ for (const viewport of viewports) {
         settledLogo.playingCount === 0
           && settledLogo.status.includes("ประกอบครบแล้ว")
           && settledLogo.fullPathCount === 10
+          && settledLogo.quietPathCount === 14
           && settledLogo.outerSkyStroke === "rgb(89, 210, 254)"
           && settledLogo.outerSkyRight >= 413.4,
-        "Landometer logo preview settles to the exact static final state after both variants finish",
+        "Landometer v3 logo preview settles at 3.4 seconds with all 10 full and 14 quiet paths intact",
         JSON.stringify(settledLogo),
       );
       const dialogBox = await page.locator("#preview-dialog").boundingBox();
@@ -320,19 +354,19 @@ for (const viewport of viewports) {
         "Landometer logo settled screenshot visibly paints the outer-sky quadrant",
         JSON.stringify({ probeX, probeY, outerSkyPixel, outerSkyDistance }),
       );
-      await page.waitForTimeout(2450);
+      await page.waitForTimeout(2100);
       record(
         await page.locator("#preview-stage lm-motif[data-play]").count() === 0,
         "Landometer logo preview holds the complete final state long enough to inspect",
       );
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(600);
       const logoReplay = await page.evaluate(() => ({
         playingCount: document.querySelectorAll("#preview-stage lm-motif[data-play]").length,
         status: document.querySelector("#preview-status")?.textContent?.trim(),
       }));
       record(
         logoReplay.playingCount === 2 && logoReplay.status.includes("กำลังประกอบ"),
-        "Landometer logo full and quiet auto-replay together after the final-state hold",
+        "Landometer logo full and quiet auto-replay together at the 6.0-second showcase interval",
         JSON.stringify(logoReplay),
       );
     }
@@ -357,6 +391,221 @@ for (const viewport of viewports) {
   record(await page.locator("#preview-stage .ijji-motif").count() === 0 && await page.locator("#preview-stage img").count() === 1, "ijji cancel removes motion and leaves static fallback");
   await page.locator("[data-dialog-close]").click();
 
+  const ijjiLogoFullTrigger = page.locator('[data-preview-brand="ijji-logo"][data-preview-id="tagline"]');
+  await ijjiLogoFullTrigger.click();
+  await page.locator("#preview-stage ijji-logo-sting").waitFor({ state: "attached" });
+  await page.waitForFunction(() => {
+    const logo = document.querySelector("#preview-stage ijji-logo-sting");
+    return logo?.shadowRoot && logo.currentTime > 0 && logo._playing;
+  });
+  const ijjiLogoFull = await page.evaluate(() => {
+    const logo = document.querySelector("#preview-stage ijji-logo-sting");
+    const shadow = logo?.shadowRoot;
+    const images = [...(shadow?.querySelectorAll("image") || [])];
+    const fallback = logo?.querySelector("img");
+    return {
+      count: document.querySelectorAll("#preview-stage ijji-logo-sting").length,
+      runtimeScripts: [...document.scripts].filter((script) => script.src.includes("/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0")).map((script) => script.src),
+      defined: Boolean(customElements.get("ijji-logo-sting")),
+      manual: logo?.hasAttribute("manual"),
+      loop: logo?.hasAttribute("loop"),
+      notagline: logo?.hasAttribute("notagline"),
+      surface: logo?.getAttribute("surface"),
+      bounce: logo?.getAttribute("bounce"),
+      assets: logo?.getAttribute("assets"),
+      duration: logo?.duration,
+      currentTime: logo?.currentTime,
+      playing: Boolean(logo?._playing),
+      viewBox: shadow?.querySelector("svg")?.getAttribute("viewBox"),
+      ariaLabel: shadow?.querySelector("svg")?.getAttribute("aria-label"),
+      rectFill: shadow?.querySelector("rect")?.getAttribute("fill"),
+      circles: shadow?.querySelectorAll("circle").length,
+      images: images.map((image) => image.getAttribute("href")),
+      fallback: fallback ? { src: fallback.src, alt: fallback.alt, complete: fallback.complete, naturalWidth: fallback.naturalWidth } : null,
+    };
+  });
+  const expectedFullLayers = ["i-1.png", "jj.png", "i-2.png", "tag-1-1.png", "tag-1-2.png", "tag-1-3.png", "tag-2-1.png", "tag-2-2.png", "tag-2-3.png"];
+  record(
+    ijjiLogoFull.count === 1
+      && ijjiLogoFull.runtimeScripts.length === 1
+      && ijjiLogoFull.defined
+      && ijjiLogoFull.manual
+      && ijjiLogoFull.loop
+      && !ijjiLogoFull.notagline
+      && ijjiLogoFull.surface === "brand-blue"
+      && ijjiLogoFull.bounce === "playful"
+      && ijjiLogoFull.assets === `${siteBase}/assets/ijji/logo-sting/layers/`
+      && ijjiLogoFull.duration === 9
+      && ijjiLogoFull.currentTime > 0
+      && ijjiLogoFull.playing,
+    "ijji full+tagline preview loads the exact runtime once and immediately plays with the supplied attributes",
+    JSON.stringify(ijjiLogoFull),
+  );
+  record(
+    ijjiLogoFull.viewBox === "556 433.1 890.7 1086.9"
+      && ijjiLogoFull.ariaLabel === "ijji — Your business buddy around the corner"
+      && ijjiLogoFull.rectFill.toUpperCase() === "#1D4497"
+      && ijjiLogoFull.circles === 4
+      && JSON.stringify(ijjiLogoFull.images.map((href) => href.split("/").pop())) === JSON.stringify(expectedFullLayers),
+    "ijji full+tagline audience frame uses the source viewBox, Brand Blue surface, four heads, and all nine authored image layers",
+    JSON.stringify({ viewBox: ijjiLogoFull.viewBox, ariaLabel: ijjiLogoFull.ariaLabel, rectFill: ijjiLogoFull.rectFill, circles: ijjiLogoFull.circles, images: ijjiLogoFull.images }),
+  );
+  record(
+    ijjiLogoFull.fallback?.src.endsWith("/assets/ijji/logo-sting/layers/ijji-logo-still.png")
+      && ijjiLogoFull.fallback.alt === "ijji — Your business buddy around the corner"
+      && ijjiLogoFull.fallback.complete
+      && ijjiLogoFull.fallback.naturalWidth > 0,
+    "ijji full+tagline component carries the exact accessible final-frame fallback",
+    JSON.stringify(ijjiLogoFull.fallback),
+  );
+
+  await page.evaluate(() => {
+    const logo = document.querySelector("#preview-stage ijji-logo-sting");
+    logo.__qaStarts = 0;
+    logo.__qaEnds = 0;
+    logo.addEventListener("ijji-sting-start", () => { logo.__qaStarts += 1; });
+    logo.addEventListener("ijji-sting-end", () => { logo.__qaEnds += 1; });
+    logo.seek(8.98);
+    logo.play();
+  });
+  await page.waitForTimeout(650);
+  const ijjiLoop = await page.evaluate(() => {
+    const logo = document.querySelector("#preview-stage ijji-logo-sting");
+    return {
+      starts: logo?.__qaStarts,
+      ends: logo?.__qaEnds,
+      currentTime: logo?.currentTime,
+      playing: Boolean(logo?._playing),
+      loop: logo?.hasAttribute("loop"),
+    };
+  });
+  record(
+    ijjiLoop.starts >= 2
+      && ijjiLoop.ends >= 1
+      && ijjiLoop.currentTime > 0
+      && ijjiLoop.currentTime < 1
+      && ijjiLoop.playing
+      && ijjiLoop.loop,
+    "ijji full+tagline preview auto-replays 400 ms after the authored 9-second final frame",
+    JSON.stringify(ijjiLoop),
+  );
+
+  await page.locator("#preview-cancel").click();
+  await page.waitForTimeout(50);
+  const ijjiFullPaused = await page.evaluate(() => {
+    const logo = document.querySelector("#preview-stage ijji-logo-sting");
+    const shadow = logo?.shadowRoot;
+    return {
+      currentTime: logo?.currentTime,
+      duration: logo?.duration,
+      playing: Boolean(logo?._playing),
+      loop: logo?.hasAttribute("loop"),
+      pieceOpacity: [...(shadow?.querySelectorAll("image") || [])].slice(0, 3).map((image) => image.getAttribute("opacity")),
+      wordOpacity: [...(shadow?.querySelectorAll("image") || [])].slice(3).map((image) => image.getAttribute("opacity")),
+      cancelDisabled: document.querySelector("#preview-cancel")?.disabled,
+      status: document.querySelector("#preview-status")?.textContent?.trim(),
+    };
+  });
+  record(
+    ijjiFullPaused.currentTime === ijjiFullPaused.duration
+      && ijjiFullPaused.duration === 9
+      && !ijjiFullPaused.playing
+      && !ijjiFullPaused.loop
+      && ijjiFullPaused.pieceOpacity.every((opacity) => opacity === "1")
+      && ijjiFullPaused.wordOpacity.every((opacity) => opacity === "1")
+      && ijjiFullPaused.cancelDisabled
+      && ijjiFullPaused.status.includes("หยุด auto replay"),
+    "Pausing ijji full+tagline removes the loop and lands on the complete authored final logo",
+    JSON.stringify(ijjiFullPaused),
+  );
+  await page.locator("#preview-dialog").screenshot({ path: path.join(screenshotDir, "ijji-logo-full-final.png") });
+  await page.locator("[data-dialog-close]").click();
+
+  const ijjiLogoMarkTrigger = page.locator('[data-preview-brand="ijji-logo"][data-preview-id="mark"]');
+  await ijjiLogoMarkTrigger.click();
+  await page.locator("#preview-stage ijji-logo-sting").waitFor({ state: "attached" });
+  await page.waitForFunction(() => {
+    const logo = document.querySelector("#preview-stage ijji-logo-sting");
+    return logo?.shadowRoot && logo.currentTime > 0 && logo._playing;
+  });
+  const ijjiLogoMark = await page.evaluate(() => {
+    const logo = document.querySelector("#preview-stage ijji-logo-sting");
+    const shadow = logo?.shadowRoot;
+    const images = [...(shadow?.querySelectorAll("image") || [])];
+    const fallback = logo?.querySelector("img");
+    return {
+      runtimeScriptCount: [...document.scripts].filter((script) => script.src.includes("/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0")).length,
+      manual: logo?.hasAttribute("manual"),
+      loop: logo?.hasAttribute("loop"),
+      notagline: logo?.hasAttribute("notagline"),
+      surface: logo?.getAttribute("surface"),
+      bounce: logo?.getAttribute("bounce"),
+      assets: logo?.getAttribute("assets"),
+      duration: logo?.duration,
+      currentTime: logo?.currentTime,
+      playing: Boolean(logo?._playing),
+      viewBox: shadow?.querySelector("svg")?.getAttribute("viewBox"),
+      ariaLabel: shadow?.querySelector("svg")?.getAttribute("aria-label"),
+      rectFill: shadow?.querySelector("rect")?.getAttribute("fill"),
+      circles: shadow?.querySelectorAll("circle").length,
+      hiddenWords: images.slice(3).filter((image) => image.getAttribute("display") === "none").length,
+      fallback: fallback ? { src: fallback.src, alt: fallback.alt, complete: fallback.complete, naturalWidth: fallback.naturalWidth } : null,
+    };
+  });
+  record(
+    ijjiLogoMark.runtimeScriptCount === 1
+      && ijjiLogoMark.manual
+      && ijjiLogoMark.loop
+      && ijjiLogoMark.notagline
+      && ijjiLogoMark.surface === null
+      && ijjiLogoMark.bounce === "extra"
+      && ijjiLogoMark.assets === `${siteBase}/assets/ijji/logo-sting/layers/`
+      && ijjiLogoMark.duration === 6.4
+      && ijjiLogoMark.currentTime > 0
+      && ijjiLogoMark.playing,
+    "ijji mark-only preview reuses the single runtime and immediately plays the compact supplied sequence",
+    JSON.stringify(ijjiLogoMark),
+  );
+  record(
+    ijjiLogoMark.viewBox === "598 433.1 848.7 839.9"
+      && ijjiLogoMark.ariaLabel === "ijji"
+      && ijjiLogoMark.rectFill === "none"
+      && ijjiLogoMark.circles === 4
+      && ijjiLogoMark.hiddenWords === 6
+      && ijjiLogoMark.fallback?.src.endsWith("/assets/ijji/logo-sting/layers/ijji-mark-still.png")
+      && ijjiLogoMark.fallback.alt === "ijji"
+      && ijjiLogoMark.fallback.complete
+      && ijjiLogoMark.fallback.naturalWidth > 0,
+    "ijji mark-only audience frame uses the compact source viewBox, hides all tagline layers, and carries its final fallback",
+    JSON.stringify(ijjiLogoMark),
+  );
+  await page.locator("#preview-cancel").click();
+  const ijjiMarkPaused = await page.evaluate(() => {
+    const logo = document.querySelector("#preview-stage ijji-logo-sting");
+    const shadow = logo?.shadowRoot;
+    return {
+      currentTime: logo?.currentTime,
+      duration: logo?.duration,
+      playing: Boolean(logo?._playing),
+      loop: logo?.hasAttribute("loop"),
+      pieceOpacity: [...(shadow?.querySelectorAll("image") || [])].slice(0, 3).map((image) => image.getAttribute("opacity")),
+      hiddenWords: [...(shadow?.querySelectorAll("image") || [])].slice(3).filter((image) => image.getAttribute("display") === "none").length,
+      status: document.querySelector("#preview-status")?.textContent?.trim(),
+    };
+  });
+  record(
+    ijjiMarkPaused.currentTime === ijjiMarkPaused.duration
+      && ijjiMarkPaused.duration === 6.4
+      && !ijjiMarkPaused.playing
+      && !ijjiMarkPaused.loop
+      && ijjiMarkPaused.pieceOpacity.every((opacity) => opacity === "1")
+      && ijjiMarkPaused.hiddenWords === 6
+      && ijjiMarkPaused.status.includes("หยุด auto replay"),
+    "Pausing ijji mark-only removes the loop and lands on the complete authored mark",
+    JSON.stringify(ijjiMarkPaused),
+  );
+  await page.locator("[data-dialog-close]").click();
+
   await page.locator('[data-copy-code][data-brand="landometer"]').first().click();
   const clipboard = await page.evaluate(() => navigator.clipboard.readText());
   record(clipboard.includes("<lm-motif kind=\"dial\"") && clipboard.includes("montri-th.github.io/motif"), "Copy-code action writes canonical Landometer snippet");
@@ -364,11 +613,36 @@ for (const viewport of viewports) {
   await page.locator('[data-copy-code][data-brand="landometer"][data-id="logo"]').click();
   const logoClipboard = await page.evaluate(() => navigator.clipboard.readText());
   record(
-    logoClipboard.includes('<lm-motif kind="logo" ink="blue" style="--lm-wedge:#0195CB"></lm-motif>')
-      && logoClipboard.includes("landometer-motifs.css?v=1.1.3")
-      && logoClipboard.includes("landometer-motifs.js?v=1.1.3"),
-    "Logo copy-code action preserves the approved blue ink, official wedge, and 1.1.3 runtime contract",
+    logoClipboard.includes('<lm-motif kind="logo" ink="blue"></lm-motif>')
+      && !logoClipboard.includes("--lm-wedge")
+      && logoClipboard.includes("landometer-motifs.css?v=1.2.0")
+      && logoClipboard.includes("landometer-motifs.js?v=1.2.0"),
+    "Logo copy-code action preserves the authored v3 blue-ink contract without a legacy wedge override",
     logoClipboard,
+  );
+
+  await page.locator('[data-copy-code][data-brand="ijji-logo"][data-id="tagline"]').click();
+  const ijjiFullClipboard = await page.evaluate(() => navigator.clipboard.readText());
+  record(
+    ijjiFullClipboard.includes("ijji-logo-sting.js?v=1.2.0")
+      && ijjiFullClipboard.includes('<ijji-logo-sting surface="brand-blue" bounce="playful" assets="https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/">')
+      && ijjiFullClipboard.includes("ijji-logo-still.png")
+      && !ijjiFullClipboard.includes(" manual")
+      && !ijjiFullClipboard.includes(" loop"),
+    "ijji full+tagline copy snippet preserves exact source settings and finite-once production playback",
+    ijjiFullClipboard,
+  );
+
+  await page.locator('[data-copy-code][data-brand="ijji-logo"][data-id="mark"]').click();
+  const ijjiMarkClipboard = await page.evaluate(() => navigator.clipboard.readText());
+  record(
+    ijjiMarkClipboard.includes("ijji-logo-sting.js?v=1.2.0")
+      && ijjiMarkClipboard.includes('<ijji-logo-sting notagline bounce="extra" assets="https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/">')
+      && ijjiMarkClipboard.includes("ijji-mark-still.png")
+      && !ijjiMarkClipboard.includes(" manual")
+      && !ijjiMarkClipboard.includes(" loop"),
+    "ijji mark-only copy snippet preserves exact compact settings and finite-once production playback",
+    ijjiMarkClipboard,
   );
 
   const downloadPromise = page.waitForEvent("download");
@@ -389,7 +663,7 @@ for (const viewport of viewports) {
   const page = await context.newPage();
   await page.goto(`${siteBase}/`, { waitUntil: "networkidle" });
   await page.locator('[data-preview-brand="landometer"][data-preview-id="logo"]').click();
-  await page.waitForTimeout(2250);
+  await page.waitForTimeout(3500);
 
   const darkMobileLogo = await page.evaluate(() => {
     const stage = document.querySelector("#preview-stage");
@@ -412,6 +686,7 @@ for (const viewport of viewports) {
       status: document.querySelector("#preview-status")?.textContent?.trim(),
       playingCount: stage?.querySelectorAll("lm-motif[data-play]").length,
       fullInk: full?.getAttribute("ink"),
+      fullInlineWedgeProperty: full?.style.getPropertyValue("--lm-wedge").trim(),
       fullWedgeProperty: full ? getComputedStyle(full).getPropertyValue("--lm-wedge").trim() : null,
       fullPathCount: fullPaths.length,
       quietPathCount: quietPaths.length,
@@ -443,13 +718,14 @@ for (const viewport of viewports) {
   );
   record(
     darkMobileLogo.fullInk === "blue"
-      && darkMobileLogo.fullWedgeProperty?.toUpperCase() === "#0195CB",
-    "390x844 dark-mode full logo host locks blue ink and the official cyan wedge",
-    JSON.stringify({ ink: darkMobileLogo.fullInk, wedge: darkMobileLogo.fullWedgeProperty }),
+      && darkMobileLogo.fullInlineWedgeProperty === ""
+      && !darkMobileLogo.fullWedgeProperty?.toUpperCase().includes("#0195CB"),
+    "390x844 dark-mode full logo uses v3 blue ink and the authored derived wedge without a legacy override",
+    JSON.stringify({ ink: darkMobileLogo.fullInk, inlineWedge: darkMobileLogo.fullInlineWedgeProperty, computedWedge: darkMobileLogo.fullWedgeProperty }),
   );
   record(
-    darkMobileLogo.fullPathCount === 10 && darkMobileLogo.quietPathCount === 9,
-    "390x844 dark-mode logo pair retains all 10 full and 9 quiet paths",
+    darkMobileLogo.fullPathCount === 10 && darkMobileLogo.quietPathCount === 14,
+    "390x844 dark-mode logo pair retains all 10 full and 14 quiet v3 paths",
     JSON.stringify({ full: darkMobileLogo.fullPathCount, quiet: darkMobileLogo.quietPathCount }),
   );
   record(
@@ -458,8 +734,8 @@ for (const viewport of viewports) {
     JSON.stringify({ rgba: darkMobileLogo.pin, raw: darkMobileLogo.raw.pin }),
   );
   record(
-    JSON.stringify(darkMobileLogo.wedge) === JSON.stringify([1, 149, 203, 255]),
-    "390x844 dark-mode full logo wedge computes to official rgb(1, 149, 203)",
+    JSON.stringify(darkMobileLogo.wedge) === JSON.stringify([31, 135, 206, 255]),
+    "390x844 dark-mode full logo wedge computes from v3 source tokens to rgb(31, 135, 206)",
     JSON.stringify({ rgba: darkMobileLogo.wedge, raw: darkMobileLogo.raw.wedge }),
   );
   record(
@@ -609,6 +885,49 @@ for (const fixture of [
   await context.close();
 }
 
+// ijji identity previews preserve the source's minimum perceived width without creating viewport overflow.
+for (const fixture of [
+  { id: "tagline", viewport: { width: 320, height: 800 }, minimumWidth: 319 },
+  { id: "mark", viewport: { width: 360, height: 800 }, minimumWidth: 160 },
+]) {
+  const context = await browser.newContext({ viewport: fixture.viewport });
+  const page = await context.newPage();
+  await page.goto(`${siteBase}/`, { waitUntil: "networkidle" });
+  await page.locator(`[data-preview-brand="ijji-logo"][data-preview-id="${fixture.id}"]`).click();
+  await page.locator("#preview-stage ijji-logo-sting").waitFor({ state: "attached" });
+  const layout = await page.evaluate(() => {
+    const dialog = document.querySelector("#preview-dialog");
+    const body = dialog?.querySelector(".dialog-body");
+    const stage = dialog?.querySelector(".dialog-stage");
+    const logo = stage?.querySelector("ijji-logo-sting");
+    const fallback = logo?.querySelector("img");
+    const rect = dialog?.getBoundingClientRect();
+    const logoRect = logo?.getBoundingClientRect();
+    return {
+      open: Boolean(dialog?.open),
+      dialogWithinViewport: Boolean(rect && rect.left >= -1 && rect.right <= window.innerWidth + 1),
+      logoWidth: logoRect?.width || 0,
+      pageOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      overflows: [dialog, body, stage, logo].map((element) => ({
+        name: element?.id || element?.localName || element?.className,
+        delta: element ? element.scrollWidth - element.clientWidth : Number.POSITIVE_INFINITY,
+      })),
+      fallbackLoaded: Boolean(fallback?.complete && fallback.naturalWidth > 0),
+    };
+  });
+  record(
+    layout.open
+      && layout.dialogWithinViewport
+      && layout.logoWidth >= fixture.minimumWidth
+      && layout.pageOverflow <= 1
+      && layout.overflows.every(({ delta }) => delta <= 1)
+      && layout.fallbackLoaded,
+    `ijji ${fixture.id} preview at ${fixture.viewport.width}px preserves its audience width, fallback, and horizontal containment`,
+    JSON.stringify(layout),
+  );
+  await context.close();
+}
+
 // The ijji loop must also stop automatically when the bounded simulated state ends.
 {
   const context = await browser.newContext({ viewport: { width: 900, height: 900 } });
@@ -658,6 +977,46 @@ for (const fixture of [
   await page.waitForTimeout(100);
   const ijjiAnimations = await page.locator("#preview-stage .ijji-motif *").evaluateAll((elements) => elements.map((element) => getComputedStyle(element).animationName));
   record(ijjiAnimations.every((name) => name === "none"), "Reduced motion disables ijji animation", [...new Set(ijjiAnimations)].join(", "));
+  await page.locator("[data-dialog-close]").click();
+
+  for (const fixture of [
+    { id: "tagline", duration: 9, hiddenWords: 0 },
+    { id: "mark", duration: 6.4, hiddenWords: 6 },
+  ]) {
+    await page.locator(`[data-preview-brand="ijji-logo"][data-preview-id="${fixture.id}"]`).click();
+    await page.locator("#preview-stage ijji-logo-sting").waitFor({ state: "attached" });
+    const reducedIdentity = await page.evaluate(() => {
+      const logo = document.querySelector("#preview-stage ijji-logo-sting");
+      const images = [...(logo?.shadowRoot?.querySelectorAll("image") || [])];
+      return {
+        currentTime: logo?.currentTime,
+        duration: logo?.duration,
+        playing: Boolean(logo?._playing),
+        loop: logo?.hasAttribute("loop"),
+        pieceOpacity: images.slice(0, 3).map((image) => image.getAttribute("opacity")),
+        wordOpacity: images.slice(3).map((image) => image.getAttribute("opacity")),
+        hiddenWords: images.slice(3).filter((image) => image.getAttribute("display") === "none").length,
+        replayHidden: document.querySelector("#preview-replay")?.hidden,
+        pauseHidden: document.querySelector("#preview-cancel")?.hidden,
+        status: document.querySelector("#preview-status")?.textContent?.trim(),
+      };
+    });
+    record(
+      reducedIdentity.currentTime === fixture.duration
+        && reducedIdentity.duration === fixture.duration
+        && !reducedIdentity.playing
+        && !reducedIdentity.loop
+        && reducedIdentity.pieceOpacity.every((opacity) => opacity === "1")
+        && reducedIdentity.hiddenWords === fixture.hiddenWords
+        && (fixture.id === "mark" || reducedIdentity.wordOpacity.every((opacity) => opacity === "1"))
+        && reducedIdentity.replayHidden
+        && reducedIdentity.pauseHidden
+        && reducedIdentity.status.includes("reduced motion"),
+      `Reduced motion presents the complete static ijji ${fixture.id} final frame with replay controls hidden`,
+      JSON.stringify(reducedIdentity),
+    );
+    await page.locator("[data-dialog-close]").click();
+  }
   await context.close();
 }
 
@@ -682,7 +1041,7 @@ for (const fixture of [
       noticeColor: noticeStyle?.color,
     };
   });
-  record(noJs.h1 === 1 && noJs.cards === 9 && noJs.downloads >= 9 && noJs.hero && noJs.visibleEnhancedControls === 0 && noJs.notice && noJs.noticeBackground !== "rgba(0, 0, 0, 0)" && noJs.noticeColor !== noJs.noticeBackground, "No-JS baseline keeps learning content and direct downloads without dead enhancement controls", JSON.stringify(noJs));
+  record(noJs.h1 === 1 && noJs.cards === 11 && noJs.downloads >= 11 && noJs.hero && noJs.visibleEnhancedControls === 0 && noJs.notice && noJs.noticeBackground !== "rgba(0, 0, 0, 0)" && noJs.noticeColor !== noJs.noticeBackground, "No-JS baseline keeps learning content and direct downloads without dead enhancement controls", JSON.stringify(noJs));
   record(noJs.overflow <= 1, "No-JS mobile baseline has no horizontal overflow", String(noJs.overflow));
   await context.close();
 }
@@ -710,29 +1069,30 @@ for (const scale of [130, 200]) {
       width: Math.round(element.getBoundingClientRect().width),
     })),
   }));
-  record(scaled.overflow <= 1 && scaled.h1Visible && scaled.cards === 9 && scaled.offenders.length === 0, `Thai text scale ${scale}% preserves page contract`, JSON.stringify(scaled));
+  record(scaled.overflow <= 1 && scaled.h1Visible && scaled.cards === 11 && scaled.offenders.length === 0, `Thai text scale ${scale}% preserves page contract`, JSON.stringify(scaled));
   await context.close();
 }
 
 await browser.close();
-await new Promise((resolve) => server.close(resolve));
+if (server) await new Promise((resolve) => server.close(resolve));
 
 const socialPath = path.join(root, "assets/social/motif-library-1200x630.png");
 const socialBytes = fs.readFileSync(socialPath);
 const report = {
   schemaVersion: "motif-library-browser-qa/1.0",
   executedAt: new Date().toISOString(),
-  artifactRelease: "1.1.3",
+  artifactRelease: "1.2.0",
   artifactRoot: ".",
+  target: requestedBase ? "published_https" : "local_loopback",
   routes: ["/motif/", "/motif/en/"],
   browser: browserVersion,
   emulationNote: "Viewport checks are desktop Chrome emulation, not native iPhone, iPad, Safari, or screen-reader evidence.",
   lifecycleEmulationNote: "Visibility and pagehide/pageshow handlers are exercised with standards-shaped in-page events; this is not a full operating-system tab suspension or cross-navigation BFCache observation.",
   viewports,
-  states: ["light", "dark", "keyboard", "paired full/quiet dialog", "immediate autoplay", "three-second default auto-replay", "logo exact-final settle and five-second replay", "390x844 dark logo approved-palette lock", "pause", "replay now", "Escape focus restoration", "stale async-preview isolation", "dynamic reduced motion", "synthetic document visibility lifecycle", "synthetic pagehide/pageshow lifecycle", "filter", "search", "copy", "logo 1.1.3 copy contract", "PNG export", "ijji bounded timeout", "ijji cancel", "reduced motion final states", "no JavaScript", "Thai 130% text", "200% text"],
+  states: ["light", "dark", "keyboard", "paired full/quiet dialog", "immediate autoplay", "three-second default auto-replay", "Landometer v3 logo exact-final settle at 3.4 seconds and replay at 6.0 seconds", "390x844 dark Landometer v3 palette lock", "pause", "replay now", "Escape focus restoration", "stale async-preview isolation", "dynamic reduced motion", "synthetic document visibility lifecycle", "synthetic pagehide/pageshow lifecycle", "filter", "search", "copy", "Landometer 1.2.0 copy contract", "PNG export", "ijji bounded timeout", "ijji cancel", "ijji full+tagline immediate play and loop", "ijji mark-only immediate play", "ijji exact attributes, viewBoxes, layers, and fallbacks", "ijji finite-once 1.2.0 copy contracts", "ijji identity mobile widths", "reduced motion final states", "no JavaScript", "Thai 130% text", "200% text"],
   screenshotsCaptured: {
     storage: "ephemeral local QA output; intentionally not published",
-    names: ["th-mobile-360.png", "th-desktop-1440.png", "en-mobile-390.png", "logo-full-quiet-final.png", "logo-full-quiet-final-dark-mobile-390x844.png"],
+    names: ["th-mobile-360.png", "th-desktop-1440.png", "en-mobile-390.png", "logo-full-quiet-final.png", "logo-full-quiet-final-dark-mobile-390x844.png", "ijji-logo-full-final.png"],
   },
   socialPreview: {
     path: "assets/social/motif-library-1200x630.png",
@@ -764,4 +1124,4 @@ if (failures.length) {
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
-console.log(`PASS: ${checks.length} browser checks across ${viewports.length * 2} responsive route renders plus paired-motion interaction, critical modal layout, reduced-motion, no-JS, and text-scale states.`);
+console.log(`PASS: ${checks.length} browser checks across ${viewports.length * 2} responsive route renders plus Landometer v3 and ijji identity motion, critical modal layout, reduced-motion, no-JS, and text-scale states.`);

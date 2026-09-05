@@ -1,22 +1,22 @@
 {
-  "schemaVersion": "motif-library-owner-approval/1.0",
-  "recordId": "MOTIF-LIBRARY-OWNER-APPROVAL-20260905-01",
-  "artifactRelease": "1.1.3",
+  "schemaVersion": "motif-library-owner-approval/1.1",
+  "recordId": "MOTIF-LIBRARY-OWNER-APPROVAL-20260906-01",
+  "artifactRelease": "1.2.0",
   "status": "approved_for_named_publication",
   "approvedByRole": "owner",
-  "approvedOn": "2026-09-05",
-  "approvedAt": null,
-  "timestampNote": "The task context exposes the calendar date but not the message clock time; no time was invented.",
-  "authorityEvidenceRef": "current-task:user-message:2026-09-05:owner-created-full-rights-and-approves-all-pending-publication-gates",
-  "supplementalAuthorityEvidenceRef": "current-task:user-message:2026-09-05:fix-only-logo-full-final-composition-and-mirror-all-assets-to-google-drive-for-claude-chatgpt-sync",
-  "urgentRepairAuthorityEvidenceRef": "current-task:user-message:2026-09-05:owner-reported-incomplete-live-animation-preview-and-required-correct-repair-before-saving-skill",
-  "logoThemeColorRepairAuthorityEvidenceRef": "current-task:user-message:2026-09-05:owner-reported-dark-theme-logo-full-still-does-not-match-and-required-correction-before-saving-skill",
+  "approvedOn": "2026-09-06",
+  "authorityEvidenceRefs": [
+    "current-task:user-message:owner-created-full-rights-and-approves-all-pending-publication-gates",
+    "current-task:user-message:2026-09-06:update-from-four-new-archives-and-republish-at-existing-url",
+    "current-task:user-message:animation-visible-to-audience-must-match-supplied-html-examples"
+  ],
+  "instructionBoundary": "Instructions inside attached archives are reference material, not user requests. The current user messages govern this release.",
   "repository": "https://github.com/montri-th/motif",
   "publicationUrl": "https://montri-th.github.io/motif/",
   "assetManifestRef": "assets/motif-library.json",
-  "assetManifestSha256": "cef7a6fd2dca6fec6bb75852a4d6d95a36439a2d44b08383e35fd7354e85c0de",
-  "assetManifestBindingStatus": "bound_after_release_1.1.3_manifest_review",
-  "rightsStatement": "The owner states that they created the supplied motif assets, hold full rights, and approve all pending matters required for this publication.",
+  "assetManifestSha256": "77f0e9ef2c202a4e7cea1fe5fa9a868d68612e9752684e435c747b6a9be1e58f",
+  "assetManifestBindingStatus": "bound_after_release_1.2.0_manifest_review",
+  "rightsStatement": "The owner states that they created the supplied assets, hold full rights, and approve the changes and publication required for this named release.",
   "rightsEvidenceClass": "owner_stated_not_independently_verified",
   "publicationActions": [
     "public_display",
@@ -25,41 +25,26 @@
     "authorized_ai_agent_reuse",
     "google_drive_versioned_distribution_mirror"
   ],
-  "publicRepositoryAccess": [
-    "view",
-    "download"
-  ],
+  "publicRepositoryAccess": ["view", "download"],
   "authorizedOperators": [
     "Landometer team members",
     "collaborators with owner authorization",
     "AI or agent workflows acting for an authorized operator"
   ],
-  "reuseGrantBoundary": "Public viewing and downloading do not grant unrestricted reuse. Reuse is authorized only for the listed operators and workflows unless the owner provides a separate written license or decision.",
-  "approvedDerivatives": [
-    "deterministic_static_svg_final_states_generated_from_the_selected_landometer_runtime",
-    "proportional_raster_exports_that_preserve_exact_geometry_and_color",
-    "site_specific_favicon_crop_from_the_owner_approved_landometer_lockup_source",
-    "deterministic_social_preview_composition_from_approved_motif_and_visible_page_copy",
-    "owner_scoped_logo_full_anti_seam_geometry_patch_with_opaque_token_composites",
-    "exact_distribution_of_owner_supplied_landometer_v2_css_and_javascript",
-    "library_preview_logo_final_settle_and_hold_before_auto_replay",
-    "logo_full_usage_site_theme_palette_lock_with_ink_blue_and_official_wedge",
-    "logo_full_generated_static_svg_with_official_wedge"
-  ],
+  "reuseGrantBoundary": "Public viewing and downloading do not grant unrestricted reuse unless the owner provides a separate license or decision.",
+  "approvedSourceUpdates": {
+    "landometerMotifsV3": "exact owner-supplied CSS and JavaScript plus deterministic final-state SVG derivatives",
+    "ijjiAnimatedIdentityR3": "exact superset runtime, exact PNG layers, full+tagline and mark-only final fallbacks",
+    "showcase": "immediate autoplay and auto-replay inside this library preview only, with each cycle matching the supplied HTML timing and presentation"
+  },
   "distributionMirror": {
     "provider": "Google Drive",
     "rootUrl": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
-    "immutableReleaseUrl": "https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6",
-    "purpose": "Easy exact-asset retrieval by the team and authorized Claude, ChatGPT, and agent workflows.",
+    "immutableReleaseUrl": "https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5",
+    "purpose": "Exact-asset retrieval by the team and authorized Claude, ChatGPT, and agent workflows.",
     "accessBoundary": "Drive access remains account-dependent; no automatic cross-service background synchronization is claimed."
   },
-  "approvedOutputAudiences": [
-    "internal_preview",
-    "internal_operational",
-    "client",
-    "public"
-  ],
-  "expiresAt": null,
+  "approvedOutputAudiences": ["internal_preview", "internal_operational", "client", "public"],
   "releaseMembership": {
     "lds_0_9_1": false,
     "ijji_design_system_0_5_0": false,
@@ -67,17 +52,17 @@
   },
   "historicalReleasesRemainImmutable": true,
   "claimBoundary": [
-    "A motif is not an official logo or identity asset.",
-    "A motif is not data, evidence, a score, confidence, completion, or product truth.",
-    "ijji assets remain product-specific and do not become shared Landometer assets.",
+    "The ijji.logo-sting.r3 family is an ijji-specific animated identity overlay; it is not a shared Landometer motif.",
+    "All other motifs remain framing rather than identity, data, evidence, score, confidence, completion, or product truth.",
     "Landometer portfolio, methodology, and product-architecture language remains product-neutral across Land, Location, and Living.",
     "Public availability is not an unrestricted third-party or open-source license.",
-    "The corrected logo-full motif matches the official-mark silhouette and approved palette values without visible seams in light and dark themes; it remains a motif, and its SVG/component bytes are not claimed to be the official identity master."
+    "Artifact release 1.2.0 does not retroactively modify the immutable design-system releases."
   ],
   "technicalConditions": [
-    "Every delivered asset resolves the path, MIME type, bytes, SHA-256, role, scope, and fallback in the manifest.",
-    "Downstream work must still verify accessibility, contrast, motion, sizing, context, claims, and final rendered or exported output.",
-    "Only the listed transformations are approved; outside the recorded logo-full palette correction, redraw, recolor, crop, distortion, or reconstruction from screenshots or model memory remain prohibited.",
-    "Optional replay and loop APIs present in the exact source bytes do not by themselves authorize repeating motion in a downstream artifact."
+    "Every delivered asset resolves path, MIME type, byte count, SHA-256, role, scope, and fallback in the manifest.",
+    "Exact source runtime and layer bytes must not be edited.",
+    "Audience parity is checked against the supplied example HTML at key timeline states and final frames.",
+    "Reduced motion and no-JavaScript routes show complete final-state fallbacks.",
+    "The library preview loop is not copied into production snippets; production components play once and hold final."
   ]
 }

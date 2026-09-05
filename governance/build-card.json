@@ -1,16 +1,15 @@
 {
-  "schemaVersion": "motif-library-build-card/1.0",
+  "schemaVersion": "motif-library-build-card/1.1",
   "artifactId": "landometer-motif-library-web-v1",
   "artifactName": "Landometer Motif Library",
-  "artifactRelease": "1.1.3",
+  "artifactRelease": "1.2.0",
   "experienceProfile": "methodology_learning",
   "formatProfile": "web_public",
   "pageKind": "utility",
-  "localSubtype": "motif_asset_reference",
+  "localSubtype": "motif_and_animated_identity_asset_reference",
   "audiences": ["dev", "designer", "product", "sales"],
-  "audienceNote": "These are intended readers named by the owner, not canonical organizational personas.",
-  "decision": "Choose the correct brand layer, motif job, channel, and static or motion route before implementation.",
-  "behaviorChangeGoal": "Teams and agents reuse exact governed files instead of redrawing, crossing product boundaries, or treating motifs as identity, evidence, or data.",
+  "decision": "Choose the correct brand layer, asset family, job, channel, and static or motion route before implementation.",
+  "behaviorChangeGoal": "Teams and agents reuse exact governed files, understand the animation from the audience view, and keep Landometer motifs, ijji animated identity, and ijji pending-state motifs distinct.",
   "routes": [
     { "locale": "th", "path": "/motif/", "canonical": "https://montri-th.github.io/motif/" },
     { "locale": "en", "path": "/motif/en/", "canonical": "https://montri-th.github.io/motif/en/" }
@@ -23,25 +22,24 @@
   },
   "machineContract": {
     "manifest": "assets/motif-library.json",
-    "schema": "motif-library-agent-contract/1.0",
-    "selection": "one exact generated_vector record as a static baseline; optional web-only motion resolves through an exact matching-family extension",
-    "productionLandometerMotionMode": "finite_once",
-    "runtimeCapabilityBoundary": "The exact v2 runtime contains optional replay and loop APIs; downstream use requires a separate explicit job-specific owner decision."
+    "schema": "motif-library-agent-contract/1.1",
+    "selection": "one exact baseline record; optional web motion resolves through an exact matching-family extension",
+    "landometerMotionMode": "finite_once",
+    "ijjiAnimatedIdentityMotionMode": "finite_once_logo_sting",
+    "ijjiPendingMotionMode": "state_bound_only"
   },
   "decisionRecords": {
+    "sourceSelection": "governance/animation-source-v3-decision.json",
+    "audienceParity": "governance/audience-animation-parity.json",
     "showcaseMotion": "governance/showcase-motion-decision.json",
-    "logoFullGeometry": "governance/logo-full-geometry-decision.json",
-    "logoPreviewFinalSettle": "governance/logo-preview-final-settle-decision.json",
-    "logoPreviewThemeColor": "governance/logo-preview-theme-color-decision.json"
+    "historicalLogoFullGeometry": "governance/logo-full-geometry-decision.json",
+    "historicalLogoPreviewFinalSettle": "governance/logo-preview-final-settle-decision.json",
+    "historicalLogoPreviewThemeColor": "governance/logo-preview-theme-color-decision.json"
   },
   "distributionMirrors": {
     "googleDrive": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
-    "immutableRelease": "https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6",
+    "immutableRelease": "https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5",
     "syncGuide": "docs/ai-sync.md"
-  },
-  "rightsBoundary": {
-    "publicAccess": ["view", "download"],
-    "reuse": "team, owner-authorized collaborators, and AI/agent workflows acting for an authorized operator"
   },
   "delivery": {
     "repository": "https://github.com/montri-th/motif",
@@ -51,18 +49,15 @@
     "visibility": "public",
     "indexability": "index_follow"
   },
-  "learningArc": ["recognisable friction", "consequence", "credible possibility", "guided choice", "visible AHA", "reusable next action"],
-  "constructiveCases": ["guide the page", "carry one story across formats", "show genuine ijji work in progress"],
-  "rejectedCase": "ijji graph-b used as shared identity or proof of sales growth",
   "capabilities": {
     "assetSearch": true,
     "brandFilter": true,
-    "finiteLandometerProductionRecommendation": true,
-    "exactLandometerV2Runtime": true,
-    "pairedLandometerModalShowcase": true,
-    "ownerSelectedModalAutoreplayWithPause": true,
-    "logoPreviewFinalSettleAndHold": true,
-    "logoFullThemeInvariant": true,
+    "exactLandometerV3Runtime": true,
+    "pairedLandometerFullQuietShowcase": true,
+    "exactIjjiAnimatedIdentityR3": true,
+    "ijjiFullAndMarkOnlyShowcase": true,
+    "immediateAutoplayAndAutoReplayWithPause": true,
+    "audienceReferenceParity": true,
     "boundedIjjiPendingStatePreview": true,
     "clientSidePngExport": true,
     "themeSwitch": true,
@@ -71,11 +66,8 @@
   },
   "authorities": {
     "designSystem": "LDS 0.9.1 / 0.9.1-r8 / v0.9.1-mp7",
-    "ijji": "ijji DS 0.5.0 / Add-on 0.5.3 boundary",
-    "motifAssets": "owner-approved artifact overlay on 2026-09-05",
-    "showcaseMotion": "owner-selected component-local instructional behavior on 2026-09-05; see governance/showcase-motion-decision.json",
-    "logoPreviewFinalSettle": "artifact-level repair prompted by the owner's screenshot observation; see governance/logo-preview-final-settle-decision.json",
-    "logoPreviewThemeColor": "artifact-level light/dark palette repair prompted by the owner's iPhone screenshot; see governance/logo-preview-theme-color-decision.json",
+    "ijji": "ijji DS 0.5.0 / Add-on 0.5.3 product boundary",
+    "artifactOverlay": "owner-approved update on 2026-09-06",
     "productTruth": "No product capability or business evidence claims are made"
   }
 }

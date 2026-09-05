@@ -2,6 +2,11 @@ import { createRequire } from "node:module";
 import fs from "node:fs";
 import path from "node:path";
 
+if (!process.argv.includes("--historical-1.1.3")) {
+  console.error("This is the archived release-1.1.3 logo harness (2050/5000 ms and #0195CB). It cannot validate release 1.2.0. Pass --historical-1.1.3 only when intentionally reproducing immutable historical evidence.");
+  process.exit(2);
+}
+
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 const { PNG } = require("pngjs");

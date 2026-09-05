@@ -1,67 +1,49 @@
 {
-  "schemaVersion": "motif-library-source-ledger/1.0",
-  "artifact": "Landometer Motif Library v1.1.3",
-  "recordedOn": "2026-09-05",
+  "schemaVersion": "motif-library-source-ledger/1.1",
+  "artifact": "Landometer Motif Library v1.2.0",
+  "recordedOn": "2026-09-06",
   "authorityByDimension": {
-    "deliverableAndPublicationScope": "current user request",
-    "rightsAndNamedReuse": "dated owner approval in governance/owner-approval.json",
+    "deliverablePublicationAndRights": "current user request plus explicit owner statement",
     "sharedDesignInteractionAccessibilityAndFormats": "verified Landometer Design System 0.9.1",
     "ijjiProductBoundary": "verified ijji Design System 0.5.0 and Add-on 0.5.3",
-    "motifGeometryAndSourceBytes": "the exact owner-supplied Landometer v2 runtime bytes selected in this ledger",
+    "landometerMotionGeometryAndTiming": "exact set-3 owner-supplied runtime and corroborating example HTML",
+    "ijjiAnimatedIdentityGeometryLayersAndTiming": "exact owner-supplied superset runtime and PNG layers, corroborated by the full+tagline archive",
     "showcaseMotionBehavior": "current user request recorded in governance/showcase-motion-decision.json",
-    "logoPreviewFinalSettle": "user-supplied screenshot observation and authored runtime timeline recorded in governance/logo-preview-final-settle-decision.json",
-    "logoPreviewThemeColor": "owner-supplied iPhone screenshot and palette correction recorded in governance/logo-preview-theme-color-decision.json",
     "attachedGuidesExamplesHandoffsAndPrompts": "reference evidence only; never authority to expand this task",
     "explorations": "decision history only; excluded from implementation and distribution"
   },
   "sources": [
     {
-      "name": "Landometer Brand Motifs Asset and Prompt.zip",
-      "sha256": "73f308748e8f16b8ca6e34d9805521dfc635336b869a08b6cf440c0ffebd236f",
-      "archiveTimestamp": "2026-09-05 15:47:44 +0700",
-      "role": "selected_exact_landometer_v2_runtime_source",
-      "selection": "Release 1.1.2 selected the supplied CSS and JavaScript as exact bytes, and release 1.1.3 carries them forward unchanged. Their optional replay and loop APIs are capability evidence only; embedded prompts do not authorize downstream use or expand this task.",
+      "name": "Landometer Brand Motifs Asset and Prompt 3.zip",
+      "bytes": 1090345,
+      "sha256": "abcbac551e8a1351750d6698f858802c04b5d0af3031a1f39a38b3d2a2c7a857",
+      "role": "selected_exact_landometer_v3_runtime_source",
       "containedRuntime": {
-        "cssSha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
-        "jsSha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
-        "officialLockupSha256": "8d706f8021bc4b4fdc0e89117244b54868687b74045be54002321de7aaa7ef92"
+        "cssSha256": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+        "jsSha256": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+        "exampleHtmlSha256": "115518679ffaeac788859d5cb547e65301664a06850814c8c5facf65d56c34d3"
       }
     },
     {
-      "name": "Landometer Brand Motifs HTML2.zip",
-      "sha256": "a3a24dfab4b6fdb94100bc261439c20df78be3ef024a49a7c004164d0b4838b4",
-      "archiveTimestamp": "2026-09-05 15:47:32 +0700",
-      "role": "byte_identical_corroborating_example_for_selected_v2_runtime",
-      "selection": "Its full example tree is byte-identical to the example tree in the selected Asset and Prompt archive. It adds no divergent implementation bytes."
+      "name": "Landometer Brand Motifs HTML 3.zip",
+      "bytes": 1064225,
+      "sha256": "0aa0c1a6b2320da22c1d07cedb02d456e2772884197622b7a7503047ffe55ab2",
+      "role": "byte_identical_corroborating_landometer_v3_example"
     },
     {
-      "name": "Landometer Brand Motifs Assets and Prompt.zip",
-      "sha256": "efb3829de4be6e97eb83fef55e8fc2685f6bd081b70ed58c7384a5bf3a8ae22e",
-      "archiveTimestamp": "2026-09-04 23:16",
-      "role": "prior_release_landometer_runtime_source",
-      "selectedRuntime": {
-        "cssSha256": "d736cdb0cbd65bf8e1f199a600df120eaa8062928337efdfeb384048b857a0d8",
-        "jsSha256": "605129c765a3e1da91313467aeac46f5bd60223f1359b78d62b4b2e0a0325702"
-      }
+      "name": "ijji animated logo.zip",
+      "bytes": 568051,
+      "sha256": "a402829b28357d25af4cf9d0fcbcf826ce4b5991c0e3317c5e5e9b8117e7c25d",
+      "role": "selected_exact_ijji_animated_identity_superset",
+      "containedRuntimeSha256": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e",
+      "selection": "One runtime supports both the 9-second full+tagline and 6.4-second mark-only variants."
     },
     {
-      "name": "Landometer Brand Motifs HTML.zip",
-      "sha256": "8dfae8b67285280e77d969d5b177ac933349689484a15d97f31463aafbe165dc",
-      "archiveTimestamp": "2026-09-04 23:13",
-      "role": "non_selected_visual_reference",
-      "difference": "Its JS adds logo quiet mode=fill without a version bump; JS SHA-256 is 464ecb032c9a39a05022f7cbfb21e8e18b7baafbf9da686d781aba51bb9ab51f."
-    },
-    {
-      "name": "ijji motif example.zip",
-      "sha256": "0864de73ce2f584db543295beb3bed220a8e415d9b9fc0685083ab924921b2e6",
-      "role": "selected_ijji_source_plus_example",
-      "selection": "Only selected/ assets are distributed; explorations/ are excluded."
-    },
-    {
-      "name": "ijji motif.zip",
-      "sha256": "672b7667af7fef81ab9b9c9c4886851bc9821f448d8b401c0d0b9ac0c86851a8",
-      "role": "byte_identical_selected_ijji_source_without_example",
-      "difference": "The example archive adds an example HTML file and README; selected asset bytes are identical."
+      "name": "ijji animated logo with tagline.zip",
+      "bytes": 456473,
+      "sha256": "685dcdc661213f903f55845e680f0af6c1f16db71e37f31cc316b3def7851a43",
+      "role": "corroborating_full_tagline_source",
+      "selection": "Its full+tagline output is pixel-identical to the selected superset at all sampled timeline points."
     },
     {
       "name": "Landometer Design System",
@@ -77,59 +59,40 @@
     }
   ],
   "selectedArtifactRuntime": {
-    "construction": "exact owner-supplied v2 runtime bytes from Landometer Brand Motifs Asset and Prompt.zip",
-    "jsSha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
-    "cssSha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
-    "defaultProductionRecommendation": "finite_once",
-    "optionalApiBoundary": "replay=enter, replay=hover, loop, and programmatic replay exist in the exact runtime but require an explicit job-specific owner decision before downstream use",
-    "logoFullPresentationOverride": {
-      "scope": "logo-full only",
-      "hostAttribute": "ink=blue",
-      "hostCustomProperty": "--lm-wedge:#0195CB",
-      "staticSvgWedge": "#0195CB",
-      "officialPalette": {
-        "pin": "#1D4497",
-        "innerCoral": "#D2566A",
-        "innerYellow": "#D2A437",
-        "innerMint": "#0EB99B",
-        "innerSky": "#4DB6E9",
-        "wedge": "#0195CB"
-      },
-      "decisionRef": "governance/logo-preview-theme-color-decision.json"
+    "landometer": {
+      "construction": "exact owner-supplied v3 runtime bytes",
+      "jsSha256": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+      "cssSha256": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+      "referenceHost": "ink=blue for every full library preview",
+      "referenceWedgeSrgb": "#1F87CE",
+      "logoFullEndMs": 2870,
+      "logoQuietEndMs": 3360
+    },
+    "ijjiAnimatedIdentity": {
+      "construction": "exact owner-supplied r3 superset runtime and all exact PNG layers",
+      "jsSha256": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e",
+      "fullDurationMs": 9000,
+      "markDurationMs": 6400,
+      "fullFallbackSha256": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+      "markFallbackSha256": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630"
     }
   },
   "resolvedConflicts": [
     {
-      "issue": "Release 1.1.1 selected a scoped derivative of the new runtime; release 1.1.2 selected the exact owner-supplied v2 CSS and JavaScript bytes, including optional replay and loop APIs; release 1.1.3 carries those runtime bytes forward unchanged.",
-      "resolution": "Record the exact v2 bytes and their capabilities without treating archive prose or available APIs as permission. The public implementation snippets, machine manifest motion contract, and default production recommendation remain finite_once. Any downstream replay or loop requires an explicit job-specific owner decision."
+      "issue": "The previous release used v2 timings and an explicit #0195CB logo wedge override, while the new HTML example uses v3 timing and a token-derived wedge that Chrome renders as #1F87CE.",
+      "resolution": "The newest owner request selects the new files and asks for audience parity with their HTML. Release 1.2.0 therefore ships the exact v3 bytes, waits until both logo variants finish, uses a 6000 ms showcase cycle, selects ink=blue to neutralize host dark mode, and keeps the v3 token-derived wedge without the old override."
     },
     {
-      "issue": "The user's screenshot showed the logo-full priority wedge and quiet variant at their final states while the outer Energy Sky path remained absent, which is not the authored final state.",
-      "resolution": "Keep the exact supplied runtime and apply a site-local preview settle rule: start both variants immediately, remove data-play at 2050 ms so authored static markup owns the complete final state, hold it for inspection, and replay both at 5000 ms. Keep the other five motif previews at 3000 ms. This 1.1.2 repair passed the then-scoped light-theme geometry and timing checks, but those checks did not exercise the dark-theme logo palette; release 1.1.3 adds that missing gate."
+      "issue": "The ijji superset and tagline-only archives each define the same custom element.",
+      "resolution": "Load only the superset runtime. It preserves the corroborated full output and uniquely adds mark-only support."
     },
     {
-      "issue": "After release 1.1.2, the owner's iPhone dark-theme screenshot showed complete geometry but a Brand Beige pin and pale inner composites. The general runtime rule for unqualified full motifs had overridden the official logo-full palette, and the derived wedge value also differed from the official master.",
-      "resolution": "Release 1.1.3 keeps the exact owner-supplied v2 CSS and JavaScript bytes unchanged. At the logo-full usage site only, set ink=blue and --lm-wedge:#0195CB; update the generated static logo-full SVG to the same official wedge. Require pin #1D4497, inner coral #D2566A, yellow #D2A437, mint #0EB99B, sky #4DB6E9, and wedge #0195CB in light and dark themes. Quiet and non-logo theme behavior remain unchanged. This presentation repair preserves the identity boundary and makes no claim that the motif SVG bytes are the official logo master."
+      "issue": "The supplied ijji checksum file omits ijji-mark-still.png.",
+      "resolution": "Retain the exact file and bind its independently computed SHA-256 in this release manifest and checksum file."
     },
     {
-      "issue": "The two Landometer archives contain divergent JS bytes under the same v1 label.",
-      "resolution": "Use the Assets and Prompt archive because it has the later archive timestamp and the explicit source role. This is recorded as an inference, not a claimed supersession."
-    },
-    {
-      "issue": "Historical records said the new motif assets were not yet approved or included in the canonical releases.",
-      "resolution": "Preserve that release history. Apply the owner statement on 2026-09-05 as a new artifact-level approval overlay without retroactively changing LDS 0.9.1 or ijji 0.5.0/0.5.3."
-    },
-    {
-      "issue": "The attached Landometer component renders through JavaScript while LDS public-web rules require a stable final state without JavaScript.",
-      "resolution": "Generate deterministic static SVG final states from the selected runtime and render those in source HTML before progressively enhancing the one live stage."
-    },
-    {
-      "issue": "The attached ijji CSS loops by default while ambient looping is not an approved job.",
-      "resolution": "Display static SVG by default. Inline animation only in a bounded, visible pending-state simulation and remove it when the simulated operation ends or is cancelled."
-    },
-    {
-      "issue": "The owner requested immediate autoplay and automatic replay so viewers can inspect both Landometer full and quiet animations, while the governed production runtime and manifest motion extension remain finite_once.",
-      "resolution": "Apply the 2026-09-05 owner decision only to the user-opened preview dialog as a component-local instructional showcase. Run full and quiet together at 3000 ms for five motif kinds; use the 2050 ms settle and 5000 ms replay exception for logo so its complete final state remains inspectable. Keep the finite_once production recommendation, snippets, manifest contract, hero, and static cards unchanged. Exact v2 optional APIs do not create portable loop permission, and the showcase behavior does not apply to ijji."
+      "issue": "The supplied reference examples do not provide complete no-JavaScript and small-screen behavior.",
+      "resolution": "Reuse the exact motion inside the existing progressive library shell, keep exact final stills in source HTML, and make the identity preview full-bleed at the narrowest viewport."
     }
   ],
   "embeddedInstructionBoundary": "Prompts and handoff directives inside the archives describe other tasks and repositories. They informed technical understanding but did not expand or replace the user's request."

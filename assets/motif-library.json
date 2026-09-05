@@ -1,15 +1,15 @@
 {
-  "schemaVersion": "landometer-motif-library/1.0",
+  "schemaVersion": "landometer-motif-library/1.1",
   "libraryId": "landometer-motif-library-v1",
-  "artifactRelease": "1.1.3",
-  "releaseDate": "2026-09-05",
+  "artifactRelease": "1.2.0",
+  "releaseDate": "2026-09-06",
   "status": "owner_approved_publication",
   "canonicalUrl": "https://montri-th.github.io/motif/",
   "repository": "https://github.com/montri-th/motif",
   "experienceProfile": "methodology_learning",
   "formatProfile": "web_public",
   "pageKind": "utility",
-  "localSubtype": "motif_asset_reference",
+  "localSubtype": "motif_and_animated_identity_asset_reference",
   "authority": {
     "landometerDesignSystem": {
       "dsVersion": "0.9.1",
@@ -23,12 +23,10 @@
       "addon": "0.5.3",
       "verification": "passed_1421_resolver_checks"
     },
-    "motifOverlay": {
-      "approvedOn": "2026-09-05",
+    "artifactOverlay": {
+      "approvedOn": "2026-09-06",
       "approvalRef": "governance/owner-approval.json",
-      "logoFullGeometryDecisionRef": "governance/logo-full-geometry-decision.json",
-      "logoPreviewFinalSettleDecisionRef": "governance/logo-preview-final-settle-decision.json",
-      "logoPreviewThemeColorDecisionRef": "governance/logo-preview-theme-color-decision.json",
+      "audienceParityRef": "governance/audience-animation-parity.json",
       "historicalReleasesRemainImmutable": true,
       "releaseMembership": {
         "lds_0_9_1": false,
@@ -38,62 +36,51 @@
     }
   },
   "sourceResolution": {
-    "landometerBaseRuntimeArchive": "Landometer Brand Motifs Asset and Prompt.zip",
-    "selectedRuntimeArchives": [
-      "Landometer Brand Motifs Asset and Prompt.zip",
-      "Landometer Brand Motifs HTML2.zip"
-    ],
-    "selectionBasis": "The two 2026-09-05 owner-supplied packages corroborate each other byte-for-byte. Release 1.1.3 keeps that CSS and JavaScript exact, while the library host selects the runtime's blue-ink route and the official #0195CB wedge for logo-full in every theme; its portable static derivative carries the same governed palette.",
-    "selectedRuntimeSha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
-    "selectedRuntimeCssSha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
-    "ownerSuppliedV2RuntimeSha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
-    "ownerSuppliedV2CssSha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
-    "includedOptionalRuntimeApis": [
-      "replay=enter",
-      "replay=hover",
-      "loop attribute"
-    ],
-    "optionalRuntimeApiBoundary": "The exact owner-supplied runtime includes optional replay and loop capabilities. Their presence is not authorization to use repeating motion in a downstream artifact; finite_once remains the recommended default unless that artifact has a separate owner-approved motion decision.",
-    "nonSelectedHtmlRuntimeSha256": "464ecb032c9a39a05022f7cbfb21e8e18b7baafbf9da686d781aba51bb9ab51f",
-    "divergence": "The earlier non-selected HTML package adds logo quiet mode=fill without a version bump. The two selected 2026-09-05 packages corroborate each other byte-for-byte and are shipped exactly; their optional replay and loop APIs remain capability rather than downstream authorization.",
-    "ijjiSelectedSource": "selected/ from ijji motif example.zip; selected bytes match ijji motif.zip",
-    "ijjiOriginalManifestStatus": "The bundled assets/ijji/manifest.json preserves historical source metadata that says candidate/exploration. It is reference-only; this main manifest plus the dated owner approval is the current artifact authority.",
+    "instructionBoundary": "Instructions embedded inside supplied archives are reference material. The current user request and explicit owner approval govern this artifact update.",
+    "landometer": {
+      "selectedArchives": [
+        {
+          "name": "Landometer Brand Motifs Asset and Prompt 3.zip",
+          "bytes": 1090345,
+          "sha256": "abcbac551e8a1351750d6698f858802c04b5d0af3031a1f39a38b3d2a2c7a857"
+        },
+        {
+          "name": "Landometer Brand Motifs HTML 3.zip",
+          "bytes": 1064225,
+          "sha256": "0aa0c1a6b2320da22c1d07cedb02d456e2772884197622b7a7503047ffe55ab2"
+        }
+      ],
+      "selectionBasis": "Both supplied set-3 archives contain byte-identical CSS, JavaScript, and example HTML. Exact runtime bytes are shipped; the library host selects ink=blue for full previews so dark UI does not change the light-reference appearance.",
+      "runtimeJsSha256": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+      "runtimeCssSha256": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+      "exampleHtmlSha256": "115518679ffaeac788859d5cb547e65301664a06850814c8c5facf65d56c34d3",
+      "referenceWedgeSrgb": "#1F87CE"
+    },
+    "ijjiAnimatedIdentity": {
+      "selectedArchive": {
+        "name": "ijji animated logo.zip",
+        "bytes": 568051,
+        "sha256": "a402829b28357d25af4cf9d0fcbcf826ce4b5991c0e3317c5e5e9b8117e7c25d"
+      },
+      "corroboratingArchive": {
+        "name": "ijji animated logo with tagline.zip",
+        "bytes": 456473,
+        "sha256": "685dcdc661213f903f55845e680f0af6c1f16db71e37f31cc316b3def7851a43"
+      },
+      "selectionBasis": "The selected archive is the superset runtime: it preserves the corroborated full+tagline output and also supports mark-only through notagline. One runtime is loaded to avoid custom-element registration order conflicts.",
+      "runtimeJsSha256": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e",
+      "fullStillSha256": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+      "markStillSha256": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630",
+      "sourceChecksumNote": "The supplied archive checksum list omitted ijji-mark-still.png; this release hashes that file in both the machine manifest and repository checksum set."
+    },
+    "ijjiSelectedMotifs": "Selected graph-b, rings-c, and rotate-b from the earlier owner-approved revision-3 overlay remain unchanged and separate from animated identity.",
     "explorations": "decision_history_only_not_distributed"
   },
   "showcaseExperience": {
     "classification": "component_local_instructional_showcase",
     "authorityRef": "governance/showcase-motion-decision.json",
-    "scope": "landometer_preview_dialog_only",
-    "variants": [
-      "full",
-      "quiet"
-    ],
     "revealTrigger": "user_opens_preview_dialog",
     "autoplay": "immediate",
-    "replayIntervalMs": 3000,
-    "replayExceptions": {
-      "logo": {
-        "settleAtMs": 2050,
-        "settleAction": "remove_data_play_to_show_authored_final_state",
-        "finalStateHoldMs": 2950,
-        "replayIntervalMs": 5000,
-        "decisionRef": "governance/logo-preview-final-settle-decision.json",
-        "presentationPalette": {
-          "hostAttribute": "ink=blue",
-          "hostStyle": "--lm-wedge:#0195CB",
-          "pin": "#1D4497",
-          "inner": [
-            "#D2566A",
-            "#D2A437",
-            "#0EB99B",
-            "#4DB6E9"
-          ],
-          "wedge": "#0195CB",
-          "invariantAcrossThemes": true,
-          "decisionRef": "governance/logo-preview-theme-color-decision.json"
-        }
-      }
-    },
     "activeConditions": [
       "dialog_open",
       "document_visible",
@@ -104,24 +91,53 @@
       "pause_auto_replay",
       "replay_now"
     ],
-    "boundary": "The repeating pair is an inspection aid in this library UI. It is not a reusable motion extension and does not change the finite_once production lifecycle."
+    "landometer": {
+      "variants": [
+        "full",
+        "quiet"
+      ],
+      "defaultReplayIntervalMs": 3000,
+      "logo": {
+        "settleAtMs": 3400,
+        "replayIntervalMs": 6000,
+        "fullEndMs": 2870,
+        "quietEndMs": 3360,
+        "hostAttribute": "ink=blue",
+        "wedgeSrgb": "#1F87CE"
+      }
+    },
+    "ijjiLogoSting": {
+      "full": {
+        "durationMs": 9000,
+        "loopGapMs": 400,
+        "surface": "brand-blue",
+        "bounce": "playful"
+      },
+      "mark": {
+        "durationMs": 6400,
+        "loopGapMs": 400,
+        "notagline": true,
+        "bounce": "extra"
+      }
+    },
+    "reducedMotion": "show_complete_final_state_without_replay",
+    "boundary": "Auto-replay exists only so library visitors can inspect the full sequence. Copied production snippets use the exact runtime's finite-once, final-hold behavior."
   },
   "distributionMirrors": {
     "googleDrive": {
       "role": "governed_asset_mirror_for_authorized_human_and_agent_retrieval",
       "rootUrl": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
-      "immutableReleaseUrl": "https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6",
+      "immutableReleaseUrl": "https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5",
       "syncGuide": "docs/ai-sync.md",
       "releaseIdentityRule": "Resolve release-index.json, then verify the exact manifest and checksum before use."
     }
   },
   "agentContract": {
-    "schemaVersion": "motif-library-agent-contract/1.0",
-    "selectionRule": "Choose one exact generated_vector record from families[].assets as the static baseline. Copy its scalar fields without translating enum values, then choose allowedJob and allowedFormat from that same record only, using fieldDerivation. The baseline record always has motionMode static.",
+    "schemaVersion": "motif-library-agent-contract/1.1",
+    "selectionRule": "Choose one exact baseline record from families[].assets. Copy scalar fields and choose allowedJob and allowedFormat from that same record. Do not infer an animated-identity route from a motif record.",
     "requiredFields": [
       "familyId",
       "productScope",
-      "motif",
       "assetId",
       "allowedJob",
       "allowedFormat",
@@ -133,35 +149,34 @@
       "staticFallback",
       "approvalRef"
     ],
-    "fieldDerivation": {
-      "allowedJob": "Choose one exact value from selectedRecord.allowedJobs.",
-      "allowedFormat": "Choose one exact value from selectedRecord.allowedFormats."
-    },
     "baselineMotionMode": "static",
-    "showcaseBoundary": "Do not copy or infer the library preview dialog's auto-replay behavior. Downstream Landometer web motion remains finite_once unless a separately authorized artifact-level decision says otherwise.",
-    "runtimeCapabilityBoundary": "The Landometer runtime exposes optional replay=enter, replay=hover, and loop attributes because the owner-supplied runtime is distributed byte-exact. Their presence is not permission or a recommendation to use them; finite_once remains the default recommendation.",
-    "logoFullThemeInvariant": "When using landometer.logo.full on web, preserve the official palette in every theme by applying ink=blue and --lm-wedge:#0195CB to the lm-motif host. Do not apply this logo-specific exception to other motifs or to logo.quiet.",
-    "motionExtensionRule": "Default to no extension. Only for allowedFormat web_public, choose the one extension whose familyId equals selectedRecord.familyId; copy its exact runtimeAssetIds and lifecycle. For Landometer, recommend finite_once by default and do not enable optional replay or loop APIs without a separate artifact-level authorization. Keep selectedRecord.path as the static fallback. Do not infer a motion runtime for deck, social, document, or video outputs.",
-    "motionExtensionRequiredFields": [
-      "motionMode",
-      "runtimeAssetIds",
-      "runtimeAllowedJob",
-      "runtimeAllowedFormat",
-      "staticFallback"
-    ],
+    "showcaseBoundary": "Do not copy the library preview auto-replay behavior into production. It is an inspection aid.",
+    "motionExtensionRule": "For web_public only, select the one extension whose familyId matches the baseline record. Copy its exact runtimeAssetIds and lifecycle, and keep the selected baseline path as fallback.",
     "motionExtensions": {
       "finite_once": {
-        "familyId": "landometer.motif.v1",
+        "familyId": "landometer.motif.v3",
         "eligibleBaselineRole": "generated_vector",
         "motionMode": "finite_once",
         "runtimeAssetIds": [
-          "landometer.motif.runtime.css",
-          "landometer.motif.runtime.js"
+          "landometer.motif.runtime.css.v3",
+          "landometer.motif.runtime.js.v3"
         ],
         "runtimeAllowedJob": "finite_once_motion",
         "runtimeAllowedFormat": "web_public",
         "staticFallback": "selectedRecord.path",
         "lifecycle": "play_once_then_hold_final_state; honor prefers-reduced-motion"
+      },
+      "finite_once_logo_sting": {
+        "familyId": "ijji.logo-sting.r3",
+        "eligibleBaselineRole": "raster_identity",
+        "motionMode": "finite_once_logo_sting",
+        "runtimeAssetIds": [
+          "ijji.logo-sting.runtime.r3"
+        ],
+        "runtimeAllowedJob": "finite_once_logo_sting",
+        "runtimeAllowedFormat": "web_public",
+        "staticFallback": "selectedRecord.path",
+        "lifecycle": "play_once_when_at_least_14_percent_visible_then_hold_complete_final_identity; mark_only_uses_notagline; honor_prefers_reduced_motion"
       },
       "state_bound_only": {
         "familyId": "ijji.four-beat.selected-3.r3",
@@ -191,70 +206,63 @@
     "motionMode": [
       "static",
       "finite_once",
+      "finite_once_logo_sting",
       "state_bound_only"
     ],
-    "landometer": {
-      "familyId": "landometer.motif.v1",
-      "motif": [
-        "dial",
-        "rings",
-        "layers",
-        "slice",
-        "cultivate",
-        "logo"
-      ],
-      "variant": [
-        "full",
-        "quiet"
-      ],
-      "surface": [
-        "transparent"
-      ],
-      "assetIdPattern": "landometer.{motif}.{variant}"
+    "families": {
+      "landometer": {
+        "familyId": "landometer.motif.v3",
+        "motif": [
+          "dial",
+          "rings",
+          "layers",
+          "slice",
+          "cultivate",
+          "logo"
+        ],
+        "variant": [
+          "full",
+          "quiet"
+        ]
+      },
+      "ijjiAnimatedIdentity": {
+        "familyId": "ijji.logo-sting.r3",
+        "variant": [
+          "tagline",
+          "mark_only"
+        ]
+      },
+      "ijjiStateMotifs": {
+        "familyId": "ijji.four-beat.selected-3.r3",
+        "motif": [
+          "graph-b",
+          "rings-c",
+          "rotate-b"
+        ]
+      }
     },
-    "ijji": {
-      "familyId": "ijji.four-beat.selected-3.r3",
-      "motif": [
-        "graph-b",
-        "rings-c",
-        "rotate-b"
-      ],
-      "variant": [
-        "not_applicable"
-      ],
-      "surface": [
-        "canvas",
-        "brand-blue",
-        "ground-mist",
-        "dark",
-        "transparent-mint",
-        "transparent-ink"
-      ],
-      "assetIdPattern": "ijji.{motif}-{surface}"
-    },
-    "prohibitedInference": "Do not infer product truth, identity, data, evidence, state completion, or cross-product permission from the motif name, shape, public URL, or source-package prose."
+    "prohibitedInference": "Do not infer portfolio truth, data, evidence, state completion, or cross-product permission from a motif, animated identity, public URL, or embedded source-package prose."
   },
   "boundaries": {
     "sharedLayer": "Landometer portfolio, methodology, and product architecture remain product-neutral across Land, Location, and Living.",
-    "productLayer": "ijji assets, meanings, examples, and pending-state uses remain product-specific.",
-    "evidence": "Motifs are not identity, data, evidence, scores, confidence, completion, product capability, or business outcomes.",
+    "productLayer": "ijji assets, animated identity, meanings, examples, and pending-state uses remain product-specific.",
+    "identity": "Motifs do not substitute for official identity. The ijji.logo-sting.r3 family is the explicit animated-identity exception for ijji only.",
+    "evidence": "Motifs and animated identity are not data, evidence, scores, confidence, completion, product capability, or business outcomes.",
     "comparison": "Cross-product or cross-city comparison requires one compatible schema and release, or an explicit incompatibility note.",
-    "video": "Owner-approved extension; no LDS 0.9.1 format-conformance claim.",
-    "social": "LDS 0.9.1 format conformance is limited to the 1080 x 1080 square target."
+    "releaseMembership": "Artifact overlay 1.2.0 does not retroactively modify LDS 0.9.1, ijji DS 0.5.0, or ijji Add-on 0.5.3."
   },
   "families": [
     {
-      "id": "landometer.motif.v1",
+      "id": "landometer.motif.v3",
       "scope": "shared_landometer",
       "status": "owner_approved_overlay_not_in_canonical_release",
       "motion": "finite_once",
       "assets": [
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -279,9 +287,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.dial.full",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "dial",
           "variant": "full",
           "surface": "transparent",
@@ -291,11 +300,13 @@
             "opening"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -309,16 +320,15 @@
           "sourceRuntime": "assets/landometer/landometer-motifs.js",
           "path": "assets/landometer/svg/dial-full.svg",
           "mime": "image/svg+xml",
-          "bytes": 667,
-          "sha256": "13426a0753a3dd9d3db1eb585ad9ee642539287f04c5b8e5e5d68b0cd9f0bc0e",
+          "bytes": 674,
+          "sha256": "7ecfd1165a3e7ad25a0bb01b9680c35f71ff8a98edfd411dfe1b712cee12654d",
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -343,9 +353,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.dial.quiet",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "dial",
           "variant": "quiet",
           "surface": "transparent",
@@ -355,11 +366,13 @@
             "opening"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -373,16 +386,15 @@
           "sourceRuntime": "assets/landometer/landometer-motifs.js",
           "path": "assets/landometer/svg/dial-quiet.svg",
           "mime": "image/svg+xml",
-          "bytes": 726,
-          "sha256": "c3a75bc25099f79c0636d22f68c3fa5638dc0098b8ea8efa0884ad386a62f01c",
+          "bytes": 733,
+          "sha256": "2e624d80b604891ad2ed3e4d5cc6268d2383f39f740ef1def5012c49aee0da1f",
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -407,9 +419,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.rings.full",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rings",
           "variant": "full",
           "surface": "transparent",
@@ -419,11 +432,13 @@
             "section_orientation"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -442,11 +457,10 @@
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -471,9 +485,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.rings.quiet",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rings",
           "variant": "quiet",
           "surface": "transparent",
@@ -483,11 +498,13 @@
             "section_orientation"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -501,16 +518,15 @@
           "sourceRuntime": "assets/landometer/landometer-motifs.js",
           "path": "assets/landometer/svg/rings-quiet.svg",
           "mime": "image/svg+xml",
-          "bytes": 764,
-          "sha256": "cbfedf2d3e414ac28ab2c3cc839f0c8754abed4367e778c4ae40b24162d12682",
+          "bytes": 833,
+          "sha256": "d494be1f72e833704cd3c20d9d41f60599991d6efd5f670a86e40a7296eb566b",
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -535,9 +551,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.layers.full",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "layers",
           "variant": "full",
           "surface": "transparent",
@@ -547,11 +564,13 @@
             "quiet_divider"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -570,11 +589,10 @@
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -599,9 +617,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.layers.quiet",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "layers",
           "variant": "quiet",
           "surface": "transparent",
@@ -611,11 +630,13 @@
             "quiet_divider"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -629,16 +650,15 @@
           "sourceRuntime": "assets/landometer/landometer-motifs.js",
           "path": "assets/landometer/svg/layers-quiet.svg",
           "mime": "image/svg+xml",
-          "bytes": 1311,
-          "sha256": "bbe561030d59069240455cad51b86639e626eb53c77b34d338420ee3399cec2b",
+          "bytes": 1274,
+          "sha256": "e3e2bf65bcd38d34d0a07910bef44917eab76fdaf097131ec133d163f6a65a03",
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -663,9 +683,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.slice.full",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "slice",
           "variant": "full",
           "surface": "transparent",
@@ -674,11 +695,13 @@
             "action_closure"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -697,11 +720,10 @@
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -726,9 +748,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.slice.quiet",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "slice",
           "variant": "quiet",
           "surface": "transparent",
@@ -737,11 +760,13 @@
             "action_closure"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -760,11 +785,10 @@
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -789,9 +813,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.cultivate.full",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "cultivate",
           "variant": "full",
           "surface": "transparent",
@@ -801,11 +826,13 @@
             "handoff"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -819,16 +846,15 @@
           "sourceRuntime": "assets/landometer/landometer-motifs.js",
           "path": "assets/landometer/svg/cultivate-full.svg",
           "mime": "image/svg+xml",
-          "bytes": 977,
-          "sha256": "49630584ab996b6add2a9df618cef039bc5594244cb5e66717135a57e8d21c6b",
+          "bytes": 984,
+          "sha256": "ce494d792c12d73949a3dc8e6d18f6f93faa6aeab33d18b2de0889ab4af5af12",
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -853,9 +879,10 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.cultivate.quiet",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "cultivate",
           "variant": "quiet",
           "surface": "transparent",
@@ -865,11 +892,13 @@
             "handoff"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -888,11 +917,10 @@
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -917,22 +945,25 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.logo.full",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "animated_mark_assembly_reference",
           "motif": "logo",
           "variant": "full",
           "surface": "transparent",
           "motionMode": "static",
           "allowedJobs": [
-            "exceptional_opening_once_per_page"
+            "animated_brand_opening"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -944,31 +975,23 @@
           "staticFallback": "self",
           "altPolicy": "empty_when_decorative; describe the motif only in a learning or asset-catalog context",
           "sourceRuntime": "assets/landometer/landometer-motifs.js",
-          "themeInvariantPalette": {
-            "hostAttribute": "ink=blue",
-            "hostStyle": "--lm-wedge:#0195CB",
-            "pin": "#1D4497",
-            "inner": [
-              "#D2566A",
-              "#D2A437",
-              "#0EB99B",
-              "#4DB6E9"
-            ],
-            "wedge": "#0195CB",
-            "decisionRef": "governance/logo-preview-theme-color-decision.json"
+          "referencePresentation": {
+            "hostAttributeForThemeInvariantPreview": "ink=blue",
+            "wedgeDerivation": "color-mix(in lch, energy-sky 48%, brand-blue)",
+            "browserSrgbWedge": "#1F87CE",
+            "referenceHtml": "owner-supplied set-3 example"
           },
           "path": "assets/landometer/svg/logo-full.svg",
           "mime": "image/svg+xml",
-          "bytes": 1434,
-          "sha256": "f8a9d34c834f7e0c11e0c7016ced614fbd57dc8653a94a29ccd3e521962f12b7",
+          "bytes": 1252,
+          "sha256": "90e9543f2f86a18f891331c13be25038b4334ca7dbe55b194650bc441e3558e1",
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -993,22 +1016,25 @@
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
           "assetId": "landometer.logo.quiet",
-          "familyId": "landometer.motif.v1",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "generated_vector",
+          "identityRole": "animated_mark_assembly_reference",
           "motif": "logo",
           "variant": "quiet",
           "surface": "transparent",
           "motionMode": "static",
           "allowedJobs": [
-            "exceptional_opening_once_per_page"
+            "animated_brand_opening"
           ],
           "prohibitedJobs": [
-            "identity",
             "data_encoding",
             "evidence",
             "measured_state",
-            "loading_state"
+            "loading_state",
+            "official_navigation_identity",
+            "favicon",
+            "co_brand_lockup"
           ],
           "allowedFormats": [
             "web_public",
@@ -1022,16 +1048,15 @@
           "sourceRuntime": "assets/landometer/landometer-motifs.js",
           "path": "assets/landometer/svg/logo-quiet.svg",
           "mime": "image/svg+xml",
-          "bytes": 1267,
-          "sha256": "658ecb27dbd6b10ea04a162db666cd7e3f46238a530b628332bdaa12dd1e353d",
+          "bytes": 1979,
+          "sha256": "5b6798cdb6c3ada246286e6ce3386644f383c4f987a267e5c5db392809403e14",
           "viewBox": "0 0 600 300"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "not_applicable",
           "permittedTransformations": [],
           "prohibitedTransformations": [
             "redraw",
@@ -1052,33 +1077,33 @@
             "authorized_ai_or_agent_workflow"
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
-          "assetId": "landometer.motif.runtime.css",
-          "familyId": "landometer.motif.v1",
+          "assetId": "landometer.motif.runtime.css.v3",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "web_runtime",
+          "identityRole": "not_applicable",
           "allowedJobs": [
             "finite_once_motion"
           ],
           "prohibitedJobs": [
-            "perpetual_attention_motion"
+            "essential_content"
           ],
           "allowedFormats": [
             "web_public"
           ],
           "motionMode": "finite_once",
-          "runtimeGroupId": "landometer.motif.runtime.web.v1",
+          "runtimeGroupId": "landometer.motif.runtime.web.v3",
           "staticFallbackBinding": "selectedRecord.path",
           "path": "assets/landometer/landometer-motifs.css",
           "mime": "text/css",
-          "bytes": 5375,
-          "sha256": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794"
+          "bytes": 11190,
+          "sha256": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "not_applicable",
           "permittedTransformations": [],
           "prohibitedTransformations": [
             "redraw",
@@ -1099,28 +1124,643 @@
             "authorized_ai_or_agent_workflow"
           ],
           "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
-          "assetId": "landometer.motif.runtime.js",
-          "familyId": "landometer.motif.v1",
+          "assetId": "landometer.motif.runtime.js.v3",
+          "familyId": "landometer.motif.v3",
           "productScope": "shared_landometer",
           "role": "web_runtime",
+          "identityRole": "not_applicable",
           "allowedJobs": [
             "finite_once_motion"
           ],
           "prohibitedJobs": [
-            "data_encoding",
-            "essential_content",
-            "perpetual_attention_motion"
+            "essential_content"
           ],
           "allowedFormats": [
             "web_public"
           ],
           "motionMode": "finite_once",
-          "runtimeGroupId": "landometer.motif.runtime.web.v1",
+          "runtimeGroupId": "landometer.motif.runtime.web.v3",
           "staticFallbackBinding": "selectedRecord.path",
           "path": "assets/landometer/landometer-motifs.js",
           "mime": "text/javascript",
-          "bytes": 12208,
-          "sha256": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb"
+          "bytes": 17845,
+          "sha256": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2"
+        }
+      ]
+    },
+    {
+      "id": "ijji.logo-sting.r3",
+      "scope": "ijji_product_specific",
+      "status": "owner_approved_artifact_overlay_not_in_canonical_release",
+      "motion": "finite_once_logo_sting",
+      "assets": [
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [
+            "resize_proportionally",
+            "rasterize_exact_geometry"
+          ],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.tagline",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "raster_identity",
+          "identityRole": "animated_logo_final_fallback",
+          "motif": "logo-sting",
+          "variant": "tagline",
+          "surface": "brand-blue",
+          "motionMode": "static",
+          "minDeliveredPx": 320,
+          "allowedJobs": [
+            "ijji_animated_identity_with_tagline"
+          ],
+          "prohibitedJobs": [
+            "shared_landometer_identity",
+            "data_encoding",
+            "evidence",
+            "pending_state"
+          ],
+          "allowedFormats": [
+            "web_public",
+            "deck_16x9",
+            "social_square_1080",
+            "document_pdf",
+            "video_owner_extension"
+          ],
+          "staticFallback": "self",
+          "altPolicy": "ijji — Your business buddy around the corner",
+          "path": "assets/ijji/logo-sting/layers/ijji-logo-still.png",
+          "mime": "image/png",
+          "bytes": 222927,
+          "sha256": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [
+            "resize_proportionally",
+            "rasterize_exact_geometry"
+          ],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.mark",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "raster_identity",
+          "identityRole": "animated_mark_final_fallback",
+          "motif": "logo-sting",
+          "variant": "mark_only",
+          "surface": "transparent",
+          "compatibleHostSurfaces": [
+            "brand-blue",
+            "dark"
+          ],
+          "motionMode": "static",
+          "minDeliveredPx": 160,
+          "allowedJobs": [
+            "ijji_animated_identity_mark_only"
+          ],
+          "prohibitedJobs": [
+            "shared_landometer_identity",
+            "data_encoding",
+            "evidence",
+            "pending_state"
+          ],
+          "allowedFormats": [
+            "web_public",
+            "deck_16x9",
+            "social_square_1080",
+            "document_pdf",
+            "video_owner_extension"
+          ],
+          "staticFallback": "self",
+          "altPolicy": "ijji",
+          "path": "assets/ijji/logo-sting/layers/ijji-mark-still.png",
+          "mime": "image/png",
+          "bytes": 110298,
+          "sha256": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.runtime.r3",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "web_runtime",
+          "identityRole": "animated_identity_runtime",
+          "allowedJobs": [
+            "finite_once_logo_sting"
+          ],
+          "prohibitedJobs": [
+            "shared_landometer_identity",
+            "data_encoding",
+            "evidence",
+            "pending_state"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "finite_once_logo_sting",
+          "runtimeGroupId": "ijji.logo-sting.runtime.web.r3",
+          "staticFallbackBinding": "selectedRecord.path",
+          "path": "assets/ijji/logo-sting/ijji-logo-sting.js",
+          "mime": "text/javascript",
+          "bytes": 12656,
+          "sha256": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.i-1",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/i-1.png",
+          "mime": "image/png",
+          "bytes": 16689,
+          "sha256": "df5fb769b2bcf84a5bbb64a5b7be424463b3883632b722cebc5d9c4a29362ac6"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.i-2",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/i-2.png",
+          "mime": "image/png",
+          "bytes": 16357,
+          "sha256": "857ca5198e350fd02f644d492f1b7b0b14b9cacb9f2dd21f2031788678ce80f5"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.jj",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/jj.png",
+          "mime": "image/png",
+          "bytes": 46738,
+          "sha256": "cb2743b05ee7d3270bef5e5f5a5bec2916e6fe6b1e99d85793ebbd1ec398dd93"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.tag-1-1",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/tag-1-1.png",
+          "mime": "image/png",
+          "bytes": 17822,
+          "sha256": "6b51513e93df40e2a00b928d606373e688a3b6dd9e6869a6e803a7bef5ab7784"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.tag-1-2",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/tag-1-2.png",
+          "mime": "image/png",
+          "bytes": 32636,
+          "sha256": "fb72390fe3125ed5c5ab9c2bafd03fb71cb74e751ebd7f14737ac7c0367117fa"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.tag-1-3",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/tag-1-3.png",
+          "mime": "image/png",
+          "bytes": 24199,
+          "sha256": "5e01f5a2303ba67e18e69153003ba1f363e6eb1c80b67aa68115b8e434072ff0"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.tag-2-1",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/tag-2-1.png",
+          "mime": "image/png",
+          "bytes": 24136,
+          "sha256": "2e4529e6961ffa9508ae12e4346cba6870f009cc4851e2a9c613e69ef7999cf8"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.tag-2-2",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/tag-2-2.png",
+          "mime": "image/png",
+          "bytes": 16080,
+          "sha256": "ea066302ab3f407d258260f85ba19cd184b5ddbfa313f1f480726639b9ef3713"
+        },
+        {
+          "approvalStatus": "owner_approved_artifact_overlay",
+          "approvalRef": "governance/owner-approval.json",
+          "publicationPermission": true,
+          "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
+          "permittedTransformations": [],
+          "prohibitedTransformations": [
+            "redraw",
+            "recolor",
+            "crop_geometry",
+            "distort",
+            "trace_from_screenshot_or_memory"
+          ],
+          "approvedOutputAudiences": [
+            "internal_preview",
+            "internal_operational",
+            "client",
+            "public"
+          ],
+          "authorizedOperators": [
+            "landometer_team",
+            "owner_authorized_collaborator",
+            "authorized_ai_or_agent_workflow"
+          ],
+          "reusePermission": "authorized_operators_only; public access permits viewing and downloading but is not an unrestricted reuse license",
+          "assetId": "ijji.logo-sting.layer.tag-2-3",
+          "familyId": "ijji.logo-sting.r3",
+          "productScope": "ijji_product_specific",
+          "role": "runtime_layer",
+          "identityRole": "animated_identity_source_layer",
+          "allowedJobs": [
+            "runtime_dependency_only"
+          ],
+          "prohibitedJobs": [
+            "standalone_use",
+            "redraw",
+            "recolor"
+          ],
+          "allowedFormats": [
+            "web_public"
+          ],
+          "motionMode": "runtime_dependency",
+          "staticFallbackBinding": "not_applicable",
+          "path": "assets/ijji/logo-sting/layers/tag-2-3.png",
+          "mime": "image/png",
+          "bytes": 23984,
+          "sha256": "3821e99ab1ff83edc12b95e06c2d2fc2cd1019905900a8f15fc57481b7d367c4"
         }
       ]
     },
@@ -1131,11 +1771,10 @@
       "motion": "state_bound_only",
       "assets": [
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1163,6 +1802,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "graph-b",
           "variant": "not_applicable",
           "surface": "canvas",
@@ -1201,11 +1841,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1233,6 +1872,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "graph-b",
           "variant": "not_applicable",
           "surface": "brand-blue",
@@ -1271,11 +1911,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1303,6 +1942,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "graph-b",
           "variant": "not_applicable",
           "surface": "ground-mist",
@@ -1341,11 +1981,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1373,6 +2012,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "graph-b",
           "variant": "not_applicable",
           "surface": "dark",
@@ -1411,11 +2051,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1443,6 +2082,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "graph-b",
           "variant": "not_applicable",
           "surface": "transparent-mint",
@@ -1481,11 +2121,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1513,6 +2152,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "graph-b",
           "variant": "not_applicable",
           "surface": "transparent-ink",
@@ -1551,11 +2191,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1583,6 +2222,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rings-c",
           "variant": "not_applicable",
           "surface": "canvas",
@@ -1621,11 +2261,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1653,6 +2292,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rings-c",
           "variant": "not_applicable",
           "surface": "brand-blue",
@@ -1691,11 +2331,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1723,6 +2362,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rings-c",
           "variant": "not_applicable",
           "surface": "ground-mist",
@@ -1761,11 +2401,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1793,6 +2432,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rings-c",
           "variant": "not_applicable",
           "surface": "dark",
@@ -1831,11 +2471,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1863,6 +2502,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rings-c",
           "variant": "not_applicable",
           "surface": "transparent-mint",
@@ -1901,11 +2541,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -1933,6 +2572,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rings-c",
           "variant": "not_applicable",
           "surface": "transparent-ink",
@@ -1971,11 +2611,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -2003,6 +2642,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rotate-b",
           "variant": "not_applicable",
           "surface": "canvas",
@@ -2041,11 +2681,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -2073,6 +2712,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rotate-b",
           "variant": "not_applicable",
           "surface": "brand-blue",
@@ -2111,11 +2751,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -2143,6 +2782,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rotate-b",
           "variant": "not_applicable",
           "surface": "ground-mist",
@@ -2181,11 +2821,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -2213,6 +2852,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rotate-b",
           "variant": "not_applicable",
           "surface": "dark",
@@ -2251,11 +2891,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -2283,6 +2922,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rotate-b",
           "variant": "not_applicable",
           "surface": "transparent-mint",
@@ -2321,11 +2961,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "none",
           "permittedTransformations": [
             "resize_proportionally",
             "rasterize_exact_geometry"
@@ -2353,6 +2992,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "generated_vector",
+          "identityRole": "none",
           "motif": "rotate-b",
           "variant": "not_applicable",
           "surface": "transparent-ink",
@@ -2391,11 +3031,10 @@
           "viewBox": "-20 -20 240 240"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "not_applicable",
           "permittedTransformations": [],
           "prohibitedTransformations": [
             "redraw",
@@ -2420,6 +3059,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "web_runtime",
+          "identityRole": "not_applicable",
           "allowedJobs": [
             "real_pending_state"
           ],
@@ -2439,11 +3079,10 @@
           "sha256": "195a53a793d0fd693e0d9e6ec941a687ca3fbb55a7af262d85d0905c6ddf2bf4"
         },
         {
-          "approvalStatus": "owner_approved_overlay",
+          "approvalStatus": "owner_approved_artifact_overlay",
           "approvalRef": "governance/owner-approval.json",
           "publicationPermission": true,
           "rights": "owner_created_and_holds_full_rights; public availability is not an unrestricted third-party license",
-          "identityRole": "not_applicable",
           "permittedTransformations": [],
           "prohibitedTransformations": [
             "redraw",
@@ -2468,6 +3107,7 @@
           "familyId": "ijji.four-beat.selected-3.r3",
           "productScope": "ijji_product_specific",
           "role": "web_runtime",
+          "identityRole": "not_applicable",
           "allowedJobs": [
             "real_pending_state"
           ],

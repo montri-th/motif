@@ -558,6 +558,9 @@ html[lang="th"] h3 { line-height: 1.35; }
 .asset-preview { min-width: 0; min-height: 230px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 8px; padding: 24px; background: var(--ldm-foundation-surface-soft-light); color: var(--ldm-foundation-text-primary-light); }
 .asset-preview.single { grid-template-columns: 1fr; }
 .asset-preview.dark { background: var(--brand-blue); }
+.asset-preview.logo-sting { min-height: 290px; padding: 28px; background: var(--brand-blue); }
+.asset-preview.logo-sting img { width: min(100%, 420px); margin-inline: auto; }
+.asset-preview.logo-sting.mark img { width: min(100%, 300px); }
 .asset-preview img { width: 100%; }
 .asset-preview .variant { min-width: 0; text-align: center; }
 .asset-preview .variant span { display: block; margin-top: 4px; color: var(--ldm-foundation-text-metadata-light); font-family: "JetBrains Mono", monospace; font-size: .66rem; }
@@ -615,6 +618,9 @@ dialog::backdrop { background: rgba(11,20,25,.72); -webkit-backdrop-filter: blur
 .dialog-motif-variant lm-motif { width: 100%; }
 .dialog-motif-variant figcaption { margin-top: 10px; color: var(--meta); font-family: "JetBrains Mono", "IBM Plex Sans Thai", monospace; font-size: .72rem; text-align: center; text-transform: lowercase; }
 .dialog-stage .ijji-slot { width: min(100%, 280px); }
+.dialog-stage.is-logo-sting { min-height: 420px; padding: 24px; background: var(--brand-blue); }
+.dialog-stage.is-logo-sting ijji-logo-sting { display: block; width: min(100%, 560px); }
+dialog.is-logo-sting { width: min(820px, calc(100% - 16px)); }
 .dialog-status { min-height: 28px; margin: 16px 0 0; color: var(--ink-2); }
 .dialog-timer { font-variant-numeric: tabular-nums; }
 .dialog-body .button:disabled { cursor: default; opacity: .55; }
@@ -679,12 +685,25 @@ dialog::backdrop { background: rgba(11,20,25,.72); -webkit-backdrop-filter: blur
   .bad-proof-head > * { min-width: 0; }
   .bad-proof img { width: min(88px, 100%); }
   .family-head { align-items: flex-start; flex-direction: column; }
+  dialog.is-logo-sting { width: calc(100% - 4px); max-height: calc(100% - 8px); }
+  dialog.is-logo-sting .dialog-head { padding: 14px 16px; }
+  dialog.is-logo-sting .dialog-head h2 { font-size: 1.1rem; }
+  dialog.is-logo-sting .dialog-body { padding: 8px; }
+  .dialog-stage.is-logo-sting { min-height: 0; padding: 4px; border-radius: 12px; }
   .workflow-card,
   .workflow-card li,
   .workflow-card li > span { min-width: 0; }
   .library-tools { position: static; }
   .asset-actions { grid-template-columns: 1fr; }
   .footer-inner { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 340px) {
+  dialog.is-logo-sting { width: 100%; max-width: none; border-inline: 0; border-radius: 0; }
+  dialog.is-logo-sting .dialog-body { padding-inline: 0; }
+  .dialog-stage.is-logo-sting { padding-inline: 0; border-radius: 0; }
+  dialog.is-logo-sting .dialog-status,
+  dialog.is-logo-sting .dialog-body > .cluster { margin-inline: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

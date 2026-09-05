@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
+const release = "1.2.0";
 const allowPendingLive = process.env.MOTIF_ALLOW_PENDING_LIVE === "1";
 const failures = [];
 let checks = 0;
@@ -12,252 +13,464 @@ function check(condition, message) {
   if (!condition) failures.push(message);
 }
 
+function absolute(relativePath) {
+  return path.join(root, relativePath);
+}
+
+function exists(relativePath) {
+  return fs.existsSync(absolute(relativePath));
+}
+
 function read(relativePath) {
-  return fs.readFileSync(path.join(root, relativePath), "utf8");
+  return fs.readFileSync(absolute(relativePath), "utf8");
+}
+
+function readJson(relativePath) {
+  try {
+    return JSON.parse(read(relativePath));
+  } catch (error) {
+    check(false, `${relativePath}: invalid JSON (${error.message})`);
+    return {};
+  }
 }
 
 function sha256File(relativePath) {
-  return crypto.createHash("sha256").update(fs.readFileSync(path.join(root, relativePath))).digest("hex");
+  return crypto.createHash("sha256").update(fs.readFileSync(absolute(relativePath))).digest("hex");
+}
+
+function sameMembers(actual, expected) {
+  return Array.isArray(actual)
+    && actual.length === expected.length
+    && [...actual].sort().join("\n") === [...expected].sort().join("\n");
+}
+
+function listFiles(relativeDirectory = "") {
+  const directory = absolute(relativeDirectory);
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const relative = path.posix.join(relativeDirectory, entry.name);
+    if (relative === ".git" || relative.startsWith(".git/")) return [];
+    if (relative === "governance/SHA256SUMS.txt") return [];
+    if (entry.isSymbolicLink()) {
+      check(false, `Release tree must not contain a symlink: ${relative}`);
+      return [];
+    }
+    if (entry.isDirectory()) return listFiles(relative);
+    if (!entry.isFile()) {
+      check(false, `Release tree contains an unsupported entry: ${relative}`);
+      return [];
+    }
+    return [relative];
+  });
 }
 
 const required = [
-  "CLAUDE.md",
-  "index.html",
-  "en/index.html",
-  "404.html",
-  "site.css",
-  "site.js",
   ".nojekyll",
-  "robots.txt",
-  "sitemap.xml",
-  "llms.txt",
+  "404.html",
+  "CLAUDE.md",
+  "LICENSE.md",
+  "README.md",
+  "assets/downloads/ijji-animated-logo-r3.zip",
+  "assets/downloads/ijji-motifs-selected-r3.zip",
+  "assets/downloads/landometer-motifs-v1.zip",
+  "assets/downloads/landometer-motifs-v3.zip",
+  "assets/downloads/motif-library-v1.zip",
+  "assets/downloads/motif-library-v1.2.0.zip",
+  "assets/identity/landometer-favicon-64-v1.png",
+  "assets/ijji/logo-sting/README.md",
+  "assets/ijji/logo-sting/ijji-logo-sting.js",
+  "assets/ijji/logo-sting/layers/ijji-logo-still.png",
+  "assets/ijji/logo-sting/layers/ijji-mark-still.png",
+  "assets/landometer/landometer-motifs.css",
+  "assets/landometer/landometer-motifs.js",
   "assets/motif-library.json",
   "assets/social/motif-library-1200x630.png",
-  "assets/identity/landometer-favicon-64-v1.png",
-  "assets/downloads/landometer-motifs-v1.zip",
-  "assets/downloads/ijji-motifs-selected-r3.zip",
-  "assets/downloads/motif-library-v1.zip",
   "docs/ai-sync.md",
+  "docs/usage-guide.md",
+  "en/index.html",
+  "governance/QA.md",
+  "governance/SHA256SUMS.txt",
+  "governance/animation-source-v3-decision.json",
+  "governance/audience-animation-parity.json",
+  "governance/browser-qa.json",
+  "governance/build-card.json",
+  "governance/identity-assets.json",
+  "governance/owner-approval.json",
+  "governance/performance-qa.json",
+  "governance/runtime-parity.json",
+  "governance/showcase-motion-decision.json",
+  "governance/source-ledger.json",
+  "index.html",
+  "llms.txt",
+  "robots.txt",
+  "site.css",
+  "site.js",
+  "sitemap.xml",
+  // Immutable release history referenced by the current build card.
   "governance/logo-full-geometry-decision.json",
   "governance/logo-preview-final-settle-decision.json",
   "governance/logo-preview-theme-color-decision.json",
-  "governance/logo-full-visual-qa.json",
-  "governance/owner-approval.json",
-  "governance/showcase-motion-decision.json",
-  "governance/source-ledger.json",
-  "governance/build-card.json",
-  "governance/identity-assets.json",
-  "governance/browser-qa.json",
-  "governance/performance-qa.json",
-  "governance/runtime-parity.json",
-  "governance/QA.md",
-  "governance/SHA256SUMS.txt",
 ];
-required.forEach((file) => check(fs.existsSync(path.join(root, file)), `Missing required file: ${file}`));
+required.forEach((file) => check(exists(file), `Missing required file: ${file}`));
 
-if (fs.existsSync(path.join(root, "governance/SHA256SUMS.txt"))) {
-  const checksumLines = read("governance/SHA256SUMS.txt").trimEnd().split("\n");
-  const checksummedPaths = new Set();
-  for (const line of checksumLines) {
-    const match = line.match(/^([a-f0-9]{64})  (.+)$/);
+// The repository checksum is a closed, sorted inventory of every release file.
+if (exists("governance/SHA256SUMS.txt")) {
+  const lines = read("governance/SHA256SUMS.txt").trimEnd().split("\n").filter(Boolean);
+  const checksummedPaths = [];
+  for (const line of lines) {
+    const match = line.match(/^([a-f0-9]{64})  ([^\0]+)$/);
     check(Boolean(match), `Malformed repository checksum line: ${line}`);
     if (!match) continue;
-    const [, expected, relative] = match;
-    checksummedPaths.add(relative);
+    const [, expectedHash, relative] = match;
+    checksummedPaths.push(relative);
     check(relative !== "governance/SHA256SUMS.txt", "Repository checksum file must not hash itself");
     check(!relative.startsWith(".git/"), `Repository checksum must exclude Git internals: ${relative}`);
-    check(fs.existsSync(path.join(root, relative)), `Repository checksum path is missing: ${relative}`);
-    if (fs.existsSync(path.join(root, relative))) check(sha256File(relative) === expected, `Repository checksum mismatch: ${relative}`);
+    check(exists(relative), `Repository checksum path is missing: ${relative}`);
+    if (exists(relative)) check(sha256File(relative) === expectedHash, `Repository checksum mismatch: ${relative}`);
   }
-  for (const relative of ["index.html", "en/index.html", "404.html", "assets/motif-library.json", "assets/downloads/landometer-motifs-v1.zip", "assets/downloads/ijji-motifs-selected-r3.zip", "assets/downloads/motif-library-v1.zip"]) {
-    check(checksummedPaths.has(relative), `Repository checksum omits release-critical file: ${relative}`);
-  }
+  check(new Set(checksummedPaths).size === checksummedPaths.length, "Repository checksum inventory contains duplicate paths");
+  check(checksummedPaths.join("\n") === [...checksummedPaths].sort().join("\n"), "Repository checksum inventory must be path-sorted");
+  const releaseFiles = listFiles().sort();
+  check(sameMembers(checksummedPaths, releaseFiles), "Repository checksum inventory must cover every non-Git release file exactly once");
+  for (const relative of [
+    "index.html",
+    "en/index.html",
+    "404.html",
+    "assets/motif-library.json",
+    "assets/downloads/landometer-motifs-v3.zip",
+    "assets/downloads/landometer-motifs-v1.zip",
+    "assets/downloads/ijji-animated-logo-r3.zip",
+    "assets/downloads/ijji-motifs-selected-r3.zip",
+    "assets/downloads/motif-library-v1.2.0.zip",
+    "assets/downloads/motif-library-v1.zip",
+  ]) check(checksummedPaths.includes(relative), `Repository checksum omits release-critical file: ${relative}`);
 }
 
-const manifest = JSON.parse(read("assets/motif-library.json"));
-const approval = JSON.parse(read("governance/owner-approval.json"));
-const sourceLedger = JSON.parse(read("governance/source-ledger.json"));
-const showcaseDecision = JSON.parse(read("governance/showcase-motion-decision.json"));
-const buildCard = JSON.parse(read("governance/build-card.json"));
-const identityAssets = JSON.parse(read("governance/identity-assets.json"));
-const logoGeometryDecision = JSON.parse(read("governance/logo-full-geometry-decision.json"));
-const logoPreviewFinalSettleDecision = JSON.parse(read("governance/logo-preview-final-settle-decision.json"));
-const logoPreviewThemeColorDecision = JSON.parse(read("governance/logo-preview-theme-color-decision.json"));
-const logoVisualQa = JSON.parse(read("governance/logo-full-visual-qa.json"));
-const driveReleaseUrl = "https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6";
-check(manifest.schemaVersion === "landometer-motif-library/1.0", "Unexpected manifest schema version");
-check(manifest.artifactRelease === "1.1.3", "Manifest must identify artifact release 1.1.3");
-check(manifest.families.length === 2, "Manifest must contain exactly two brand families");
-check(manifest.families.flatMap((family) => family.assets).length === 34, "Manifest must contain 34 asset records");
-check(manifest.agentContract?.schemaVersion === "motif-library-agent-contract/1.0", "Deterministic agent contract is missing");
-check(manifest.agentContract?.fieldDerivation?.allowedJob === "Choose one exact value from selectedRecord.allowedJobs.", "Agent contract must derive allowedJob from the selected record");
-check(manifest.agentContract?.fieldDerivation?.allowedFormat === "Choose one exact value from selectedRecord.allowedFormats.", "Agent contract must derive allowedFormat from the selected record");
-check(manifest.agentContract?.baselineMotionMode === "static", "Agent contract must select a static baseline before any motion extension");
-check(manifest.showcaseExperience?.authorityRef === "governance/showcase-motion-decision.json", "Showcase experience must resolve its authority decision");
-check(manifest.showcaseExperience?.replayIntervalMs === 3000, "Showcase default replay interval must remain 3000 ms");
-check(manifest.showcaseExperience?.replayExceptions?.logo?.replayIntervalMs === 5000, "Logo showcase replay interval must be 5000 ms");
-check(manifest.showcaseExperience?.replayExceptions?.logo?.settleAtMs === 2050, "Logo showcase must settle to its final state at 2050 ms");
-check(manifest.showcaseExperience?.replayExceptions?.logo?.finalStateHoldMs === 2950, "Logo showcase must hold the complete final state for 2950 ms");
-check(manifest.showcaseExperience?.replayExceptions?.logo?.decisionRef === "governance/logo-preview-final-settle-decision.json", "Logo showcase exception must resolve its decision record");
-check(manifest.showcaseExperience?.replayExceptions?.logo?.presentationPalette?.hostAttribute === "ink=blue", "Logo showcase must lock the full motif to Brand Blue");
-check(manifest.showcaseExperience?.replayExceptions?.logo?.presentationPalette?.hostStyle === "--lm-wedge:#0195CB", "Logo showcase must lock the official priority wedge");
-check(manifest.showcaseExperience?.replayExceptions?.logo?.presentationPalette?.invariantAcrossThemes === true, "Logo showcase palette must be invariant across themes");
-check(manifest.showcaseExperience?.scope === "landometer_preview_dialog_only", "Showcase replay must remain dialog-scoped");
-check(manifest.agentContract?.showcaseBoundary?.includes("Do not copy"), "Agent contract must distinguish showcase replay from downstream motion");
-check(buildCard.routes.length === 2, "Build Card must declare two locale routes");
-check(identityAssets.assets.length === 2, "Identity manifest must declare favicon and social preview");
-check(buildCard.decisionRecords?.logoFullGeometry === "governance/logo-full-geometry-decision.json", "Build Card must resolve the logo-full geometry decision");
-check(buildCard.decisionRecords?.logoPreviewThemeColor === "governance/logo-preview-theme-color-decision.json", "Build Card must resolve the logo-preview theme-colour decision");
-check(sourceLedger.embeddedInstructionBoundary.includes("did not expand"), "Source ledger must preserve the embedded-instruction boundary");
-check(Boolean(sourceLedger.authorityByDimension?.motifGeometryAndSourceBytes), "Source authority must be separated by dimension");
-check(approval.publicRepositoryAccess.join(",") === "view,download", "Public repository access must be limited to view/download");
-check(approval.authorizedOperators.length === 3, "Authorized reuse operators must be explicit");
-check(showcaseDecision.status === "owner_selected_for_named_artifact", "Showcase motion decision must retain owner-selected status");
-check(showcaseDecision.scope?.surface === "landometer_preview_dialog_only", "Showcase decision must remain dialog-scoped");
-check(showcaseDecision.contractBoundary?.productionLandometerMotionMode === "finite_once", "Showcase decision must preserve finite_once as the production recommendation");
-check(showcaseDecision.contractBoundary?.portableLoopPermission === false, "Showcase decision must not grant portable loop permission");
-check(logoGeometryDecision.status === "owner_selected_for_named_artifact", "Logo-full geometry decision must retain owner-selected status");
-check(logoGeometryDecision.visualClaimBoundary.includes("not claimed to be byte-identical or pixel-identical"), "Logo-full decision must preserve the visual claim boundary");
-check(logoPreviewFinalSettleDecision.previewTimeline?.settleAtMs === 2050, "Logo-preview settle decision must record 2050 ms");
-check(logoPreviewFinalSettleDecision.previewTimeline?.holdDurationMs === 2950, "Logo-preview settle decision must record the 2950 ms final-state hold");
-check(logoPreviewFinalSettleDecision.previewTimeline?.replayAtMs === 5000, "Logo-preview settle decision must record the 5000 ms replay boundary");
-check(logoPreviewFinalSettleDecision.productionBoundary?.defaultRecommendation === "finite_once", "Logo-preview settle decision must keep finite_once as the production recommendation");
-check(logoPreviewFinalSettleDecision.productionBoundary?.permissionBoundary?.includes("not approval"), "Logo-preview settle decision must not authorize optional runtime APIs by presence alone");
-check(logoPreviewThemeColorDecision.status === "owner_selected_for_named_artifact"
-  || (allowPendingLive && logoPreviewThemeColorDecision.status === "candidate_selected_local_qa_passed_live_pending"), "Logo-preview theme-colour decision must pass rendered QA before final release");
-check(logoPreviewThemeColorDecision.selectedFix?.hostAttribute === "ink=blue", "Logo-preview theme-colour decision must select the blue-ink host route");
-check(logoPreviewThemeColorDecision.selectedFix?.hostWedgeOverride === "--lm-wedge=#0195CB", "Logo-preview theme-colour decision must select the official wedge");
-check(logoPreviewThemeColorDecision.selectedFix?.runtimeBytesChanged === false, "Logo-preview palette fix must preserve exact source runtime bytes");
-check(logoPreviewThemeColorDecision.selectedFix?.staticSvgChanged === true, "Logo-preview palette fix must bind the regenerated portable static asset");
-check(logoPreviewThemeColorDecision.releaseGate?.status === "passed"
-  || (allowPendingLive && logoPreviewThemeColorDecision.releaseGate?.status === "pending"), "Logo-preview theme-colour live gate must pass before final release");
-check(logoVisualQa.artifactRelease === "1.1.3", "Logo-full visual QA must bind artifact release 1.1.3");
-check(logoVisualQa.status === "passed" && logoVisualQa.cases.length === 15, "Logo-full visual QA must pass fifteen light/dark DPR/size/settle fixtures");
-check(manifest.authority?.motifOverlay?.logoFullGeometryDecisionRef === "governance/logo-full-geometry-decision.json", "Manifest must resolve the logo-full geometry decision");
-check(manifest.authority?.motifOverlay?.logoPreviewFinalSettleDecisionRef === "governance/logo-preview-final-settle-decision.json", "Manifest must resolve the logo-preview settle decision");
-check(manifest.authority?.motifOverlay?.logoPreviewThemeColorDecisionRef === "governance/logo-preview-theme-color-decision.json", "Manifest must resolve the logo-preview theme-colour decision");
-check(manifest.distributionMirrors?.googleDrive?.rootUrl === "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh", "Manifest must resolve the governed Drive mirror");
-check(manifest.distributionMirrors?.googleDrive?.immutableReleaseUrl === driveReleaseUrl, "Manifest must resolve the immutable Drive release 1.1.3 folder");
-check(approval.distributionMirror?.immutableReleaseUrl === driveReleaseUrl, "Owner approval must resolve the immutable Drive release 1.1.3 folder");
-check(read("docs/ai-sync.md").includes(driveReleaseUrl), "AI sync guide must resolve the immutable Drive release 1.1.3 folder");
-check(manifest.sourceResolution?.selectedRuntimeSha256 === "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb", "Manifest must bind the byte-exact owner-supplied Landometer JavaScript");
-check(manifest.sourceResolution?.selectedRuntimeCssSha256 === "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794", "Manifest must bind the byte-exact owner-supplied Landometer CSS");
-check(manifest.sourceResolution?.optionalRuntimeApiBoundary?.includes("not authorization"), "Runtime optional APIs must not be presented as downstream authorization");
-check(manifest.agentContract?.runtimeCapabilityBoundary?.includes("finite_once remains the default recommendation"), "Agent contract must recommend finite_once despite optional runtime APIs");
-check(manifest.agentContract?.logoFullThemeInvariant?.includes("ink=blue") && manifest.agentContract?.logoFullThemeInvariant?.includes("--lm-wedge:#0195CB"), "Agent contract must carry the logo-full theme invariant");
+if (exists("assets/downloads/landometer-motifs-v1.zip") && exists("assets/downloads/landometer-motifs-v3.zip")) {
+  check(
+    sha256File("assets/downloads/landometer-motifs-v1.zip") === sha256File("assets/downloads/landometer-motifs-v3.zip"),
+    "Stable Landometer kit alias must be byte-identical to the v3 kit",
+  );
+}
+if (exists("assets/downloads/motif-library-v1.zip") && exists("assets/downloads/motif-library-v1.2.0.zip")) {
+  check(
+    sha256File("assets/downloads/motif-library-v1.zip") === sha256File("assets/downloads/motif-library-v1.2.0.zip"),
+    "Stable full-library kit alias must be byte-identical to the 1.2.0 kit",
+  );
+}
 
-const manifestHash = sha256File("assets/motif-library.json");
-check(approval.assetManifestSha256 === manifestHash, "Owner approval does not bind the current asset manifest hash");
-check(approval.status === "approved_for_named_publication", "Owner approval status is not publishable");
-check(approval.releaseMembership.lds_0_9_1 === false, "Overlay must not claim LDS 0.9.1 release membership");
-check(approval.releaseMembership.ijji_addon_0_5_3 === false, "Overlay must not claim ijji Add-on 0.5.3 release membership");
+const manifest = readJson("assets/motif-library.json");
+const approval = readJson("governance/owner-approval.json");
+const sourceLedger = readJson("governance/source-ledger.json");
+const buildCard = readJson("governance/build-card.json");
+const showcaseDecision = readJson("governance/showcase-motion-decision.json");
+const sourceDecision = readJson("governance/animation-source-v3-decision.json");
+const audienceParity = readJson("governance/audience-animation-parity.json");
+const identityAssets = readJson("governance/identity-assets.json");
 
-const allAssets = manifest.families.flatMap((family) => family.assets);
+const driveRootUrl = "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh";
+const driveReleaseUrl = "https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5";
+const expectedFamilyCounts = new Map([
+  ["landometer.motif.v3", 14],
+  ["ijji.logo-sting.r3", 12],
+  ["ijji.four-beat.selected-3.r3", 20],
+]);
+
+check(manifest.schemaVersion === "landometer-motif-library/1.1", "Unexpected manifest schema version");
+check(manifest.artifactRelease === release, `Manifest must identify artifact release ${release}`);
+check(manifest.status === "owner_approved_publication", "Manifest status must identify an owner-approved publication");
+check(manifest.canonicalUrl === "https://montri-th.github.io/motif/", "Manifest canonical URL mismatch");
+check(manifest.repository === "https://github.com/montri-th/motif", "Manifest repository URL mismatch");
+check(Array.isArray(manifest.families) && manifest.families.length === 3, "Manifest must contain exactly three separately governed families");
+
+const families = Array.isArray(manifest.families) ? manifest.families : [];
+const familyIds = families.map((family) => family.id);
+check(sameMembers(familyIds, [...expectedFamilyCounts.keys()]), "Manifest family IDs do not match the selected release families");
+for (const family of families) {
+  check(expectedFamilyCounts.get(family.id) === family.assets?.length, `${family.id}: unexpected asset-record count`);
+  check(family.scope === (family.id === "landometer.motif.v3" ? "shared_landometer" : "ijji_product_specific"), `${family.id}: product scope mismatch`);
+}
+
+const allAssets = families.flatMap((family) => family.assets || []);
+check(allAssets.length === 46, "Manifest must contain exactly 46 asset records");
+check(new Set(allAssets.map((asset) => asset.assetId)).size === allAssets.length, "Manifest asset IDs must be unique");
+check(new Set(allAssets.map((asset) => asset.path)).size === allAssets.length, "Manifest asset paths must be unique");
 const assetsById = new Map(allAssets.map((asset) => [asset.assetId, asset]));
 
-for (const asset of allAssets) {
-  check(fs.existsSync(path.join(root, asset.path)), `Manifest asset missing: ${asset.path}`);
-  if (!fs.existsSync(path.join(root, asset.path))) continue;
-  const bytes = fs.statSync(path.join(root, asset.path)).size;
-  check(asset.bytes === bytes, `Byte mismatch: ${asset.path}`);
-  check(asset.sha256 === sha256File(asset.path), `SHA-256 mismatch: ${asset.path}`);
-  check(asset.publicationPermission === true, `Publication permission missing: ${asset.path}`);
-  check(asset.approvalRef === "governance/owner-approval.json", `Approval ref mismatch: ${asset.path}`);
-  if (asset.role === "generated_vector") {
-    check(typeof asset.familyId === "string" && asset.familyId.length > 0, `Generated vector is missing familyId: ${asset.assetId}`);
-    check(typeof asset.productScope === "string" && asset.productScope.length > 0, `Generated vector is missing productScope: ${asset.assetId}`);
-    check(typeof asset.motif === "string" && asset.motif.length > 0, `Generated vector is missing motif: ${asset.assetId}`);
-    check(typeof asset.variant === "string" && asset.variant.length > 0, `Generated vector is missing variant: ${asset.assetId}`);
-    check(typeof asset.surface === "string" && asset.surface.length > 0, `Generated vector is missing surface: ${asset.assetId}`);
-    check(asset.motionMode === "static", `Generated vector must declare static motionMode: ${asset.assetId}`);
-    check(Array.isArray(asset.allowedJobs) && asset.allowedJobs.length > 0, `Generated vector has no selectable allowedJob: ${asset.assetId}`);
-    check(Array.isArray(asset.allowedFormats) && asset.allowedFormats.length > 0, `Generated vector has no selectable allowedFormat: ${asset.assetId}`);
-    check(asset.allowedFormats.every((value) => manifest.agentContract.allowedFormat.includes(value)), `Generated vector has an unknown allowedFormat: ${asset.assetId}`);
-  } else if (asset.role === "web_runtime") {
-    check(asset.staticFallbackBinding === "selectedRecord.path", `Runtime fallback must bind to the selected baseline path: ${asset.assetId}`);
-    check(!asset.staticFallback, `Runtime record must not publish an ambiguous fallback template: ${asset.assetId}`);
+check(manifest.agentContract?.schemaVersion === "motif-library-agent-contract/1.1", "Agent contract 1.1 is missing");
+check(manifest.agentContract?.baselineMotionMode === "static", "Agent contract must select a static baseline before motion");
+check(manifest.agentContract?.showcaseBoundary?.includes("Do not copy"), "Agent contract must distinguish library auto-replay from production motion");
+check(manifest.agentContract?.prohibitedInference?.includes("portfolio truth"), "Agent contract must preserve the evidence and product-truth boundary");
+check(manifest.boundaries?.sharedLayer?.includes("Land, Location, and Living"), "Shared Landometer boundary must remain product-neutral");
+check(manifest.boundaries?.identity?.includes("ijji.logo-sting.r3"), "Animated ijji identity exception must remain explicit and product-specific");
+check(manifest.boundaries?.comparison?.includes("compatible schema and release"), "Cross-product comparison compatibility boundary is missing");
+
+const expectedExtensions = {
+  finite_once: ["landometer.motif.runtime.css.v3", "landometer.motif.runtime.js.v3"],
+  finite_once_logo_sting: ["ijji.logo-sting.runtime.r3"],
+  state_bound_only: ["ijji.four-beat.runtime.css", "ijji.four-beat.runtime.js"],
+};
+const extensions = manifest.agentContract?.motionExtensions || {};
+check(sameMembers(Object.keys(extensions), Object.keys(expectedExtensions)), "Agent contract must expose exactly the three approved motion extensions");
+for (const [extensionId, expectedRuntimeIds] of Object.entries(expectedExtensions)) {
+  const extension = extensions[extensionId] || {};
+  check(extension.motionMode === extensionId, `${extensionId}: motion extension key and mode differ`);
+  check(extension.runtimeAllowedFormat === "web_public", `${extensionId}: runtime must remain web-only`);
+  check(extension.staticFallback === "selectedRecord.path", `${extensionId}: fallback must bind to the selected baseline record`);
+  check(sameMembers(extension.runtimeAssetIds, expectedRuntimeIds), `${extensionId}: exact runtime asset set mismatch`);
+  for (const assetId of expectedRuntimeIds) {
+    const asset = assetsById.get(assetId);
+    check(Boolean(asset), `${extensionId}: missing runtime asset ${assetId}`);
+    if (!asset) continue;
+    check(asset.role === "web_runtime", `${extensionId}: ${assetId} is not a web runtime`);
+    check(asset.familyId === extension.familyId, `${extensionId}: ${assetId} belongs to the wrong family`);
+    check(asset.motionMode === extensionId, `${extensionId}: ${assetId} has an incompatible motion mode`);
   }
 }
 
-for (const [extensionId, extension] of Object.entries(manifest.agentContract.motionExtensions || {})) {
-  check(extension.motionMode === extensionId, `Motion extension key/mode mismatch: ${extensionId}`);
-  check(extension.runtimeAllowedFormat === "web_public", `Motion extension must be web-only: ${extensionId}`);
-  check(extension.staticFallback === "selectedRecord.path", `Motion extension fallback is not baseline-bound: ${extensionId}`);
-  check(Array.isArray(extension.runtimeAssetIds) && extension.runtimeAssetIds.length === 2, `Motion extension must resolve an exact CSS+JS pair: ${extensionId}`);
-  const runtimeAssets = extension.runtimeAssetIds.map((assetId) => assetsById.get(assetId));
-  check(runtimeAssets.every(Boolean), `Motion extension references a missing runtime record: ${extensionId}`);
-  check(runtimeAssets.every((asset) => asset?.role === "web_runtime" && asset.familyId === extension.familyId && asset.motionMode === extension.motionMode), `Motion extension runtime pair is incompatible: ${extensionId}`);
-  check(new Set(runtimeAssets.map((asset) => asset?.runtimeGroupId)).size === 1, `Motion extension runtime pair does not share one group: ${extensionId}`);
+for (const family of families) {
+  for (const asset of family.assets || []) {
+    check(asset.familyId === family.id, `${asset.assetId}: familyId disagrees with its container`);
+    check(asset.productScope === family.scope, `${asset.assetId}: productScope disagrees with its family`);
+    check(typeof asset.assetId === "string" && asset.assetId.length > 0, `${asset.path}: assetId is missing`);
+    check(typeof asset.path === "string" && !path.isAbsolute(asset.path) && !asset.path.includes(".."), `${asset.assetId}: path must be repository-relative`);
+    check(exists(asset.path), `Manifest asset missing: ${asset.path}`);
+    if (exists(asset.path)) {
+      check(fs.statSync(absolute(asset.path)).size === asset.bytes, `Byte count mismatch: ${asset.path}`);
+      check(sha256File(asset.path) === asset.sha256, `SHA-256 mismatch: ${asset.path}`);
+    }
+    check(asset.publicationPermission === true, `Publication permission missing: ${asset.path}`);
+    check(asset.approvalRef === "governance/owner-approval.json", `Approval ref mismatch: ${asset.path}`);
+    check(Array.isArray(asset.allowedJobs) && asset.allowedJobs.length > 0, `Allowed jobs missing: ${asset.assetId}`);
+    check(Array.isArray(asset.allowedFormats) && asset.allowedFormats.length > 0, `Allowed formats missing: ${asset.assetId}`);
+    check(asset.allowedFormats.every((format) => manifest.agentContract?.allowedFormat?.includes(format)), `Unknown allowed format: ${asset.assetId}`);
+    if (asset.role === "generated_vector" || asset.role === "raster_identity") {
+      check(asset.motionMode === "static", `Baseline asset must be static: ${asset.assetId}`);
+      check(asset.staticFallback === "self", `Baseline asset must identify itself as the fallback: ${asset.assetId}`);
+      check(typeof asset.motif === "string" && asset.motif.length > 0, `Baseline motif is missing: ${asset.assetId}`);
+      check(typeof asset.variant === "string" && asset.variant.length > 0, `Baseline variant is missing: ${asset.assetId}`);
+      check(typeof asset.surface === "string" && asset.surface.length > 0, `Baseline surface is missing: ${asset.assetId}`);
+    } else if (asset.role === "web_runtime") {
+      check(asset.allowedFormats.length === 1 && asset.allowedFormats[0] === "web_public", `Runtime must be web-only: ${asset.assetId}`);
+      check(asset.staticFallbackBinding === "selectedRecord.path", `Runtime fallback is not baseline-bound: ${asset.assetId}`);
+      check(typeof asset.runtimeGroupId === "string" && asset.runtimeGroupId.length > 0, `Runtime group is missing: ${asset.assetId}`);
+    } else if (asset.role === "runtime_layer") {
+      check(asset.familyId === "ijji.logo-sting.r3", `Only ijji animated identity may publish runtime layers: ${asset.assetId}`);
+      check(asset.motionMode === "runtime_dependency", `Runtime layer has the wrong motion mode: ${asset.assetId}`);
+      check(asset.staticFallbackBinding === "not_applicable", `Runtime layer fallback boundary is missing: ${asset.assetId}`);
+      check(asset.allowedJobs.length === 1 && asset.allowedJobs[0] === "runtime_dependency_only", `Runtime layer cannot be authorized for standalone work: ${asset.assetId}`);
+    } else check(false, `Unknown manifest asset role: ${asset.role}`);
+  }
 }
 
-check(
-  sha256File("assets/landometer/landometer-motifs.css") === "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
-  "Selected Landometer CSS hash changed",
-);
-check(
-  sha256File("assets/landometer/landometer-motifs.js") === "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
-  "Selected Landometer JS hash changed",
-);
+const expectedLandometerHashes = {
+  "assets/landometer/landometer-motifs.css": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+  "assets/landometer/landometer-motifs.js": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+  "assets/landometer/svg/cultivate-full.svg": "ce494d792c12d73949a3dc8e6d18f6f93faa6aeab33d18b2de0889ab4af5af12",
+  "assets/landometer/svg/cultivate-quiet.svg": "edf8538107d30b078f0d7657bac054722ee88bdc10ddf7db00e63f44d077935f",
+  "assets/landometer/svg/dial-full.svg": "7ecfd1165a3e7ad25a0bb01b9680c35f71ff8a98edfd411dfe1b712cee12654d",
+  "assets/landometer/svg/dial-quiet.svg": "2e624d80b604891ad2ed3e4d5cc6268d2383f39f740ef1def5012c49aee0da1f",
+  "assets/landometer/svg/layers-full.svg": "a94a59a342df39591f490deec960bba2263bc1c453620c557ff84a1c47901843",
+  "assets/landometer/svg/layers-quiet.svg": "e3e2bf65bcd38d34d0a07910bef44917eab76fdaf097131ec133d163f6a65a03",
+  "assets/landometer/svg/logo-full.svg": "90e9543f2f86a18f891331c13be25038b4334ca7dbe55b194650bc441e3558e1",
+  "assets/landometer/svg/logo-quiet.svg": "5b6798cdb6c3ada246286e6ce3386644f383c4f987a267e5c5db392809403e14",
+  "assets/landometer/svg/rings-full.svg": "b50ec8fa3828ee5b3504ff05e0c47c1ae55f6b644225482454ec319809552286",
+  "assets/landometer/svg/rings-quiet.svg": "d494be1f72e833704cd3c20d9d41f60599991d6efd5f670a86e40a7296eb566b",
+  "assets/landometer/svg/slice-full.svg": "8d0dfb62d1ac92738afcd76e8b61b544a5c72bf10b165983235900558447b2df",
+  "assets/landometer/svg/slice-quiet.svg": "c72114d43b81584cbb46251a5519f768087259bf135216f6ea7933a83df4de6b",
+};
+for (const [relative, expectedHash] of Object.entries(expectedLandometerHashes)) {
+  check(exists(relative) && sha256File(relative) === expectedHash, `Selected Landometer v3 byte identity changed: ${relative}`);
+  const asset = allAssets.find((candidate) => candidate.path === relative);
+  check(asset?.sha256 === expectedHash, `Manifest does not bind selected Landometer v3 hash: ${relative}`);
+}
 
-const staticLandometer = fs.readdirSync(path.join(root, "assets/landometer/svg")).filter((name) => name.endsWith(".svg"));
-check(staticLandometer.length === 12, "Expected 12 static Landometer SVGs");
+const staticLandometer = exists("assets/landometer/svg")
+  ? fs.readdirSync(absolute("assets/landometer/svg")).filter((name) => name.endsWith(".svg")).sort()
+  : [];
+check(staticLandometer.length === 12, "Expected exactly 12 static Landometer SVGs");
 for (const name of staticLandometer) {
   const svg = read(`assets/landometer/svg/${name}`);
-  check(!svg.includes("var("), `Portable Landometer SVG retains a CSS variable: ${name}`);
-  check(!svg.includes("currentColor"), `Portable Landometer SVG retains currentColor: ${name}`);
   check(svg.includes('xmlns="http://www.w3.org/2000/svg"'), `SVG namespace missing: ${name}`);
+  check(!/(?:\bclass=|\bstyle=|var\(|currentColor)/.test(svg), `Portable Landometer SVG retains runtime-only styling: ${name}`);
 }
-for (const [name, expected] of Object.entries(logoGeometryDecision.nonTargetStaticSvgSha256 || {})) {
-  check(sha256File(`assets/landometer/svg/${name}`) === expected, `Non-target Landometer SVG changed: ${name}`);
-}
-check(sha256File("assets/landometer/svg/logo-full.svg") === "f8a9d34c834f7e0c11e0c7016ced614fbd57dc8653a94a29ccd3e521962f12b7", "Corrected logo-full static SVG hash changed");
-check(!/(?:color-mix|currentColor|var\(|style=)/.test(read("assets/landometer/svg/logo-full.svg")), "Corrected logo-full static SVG is not portable");
-check(read("assets/landometer/svg/logo-full.svg").includes('fill="#1D4497"') && read("assets/landometer/svg/logo-full.svg").includes('fill="#0195CB"'), "Corrected logo-full static SVG must preserve the official pin and wedge colours");
-check(read("assets/landometer/svg/slice-full.svg").includes('transform="translate(12 -12)"'), "Static full slice must bake the runtime final transform");
-check(read("assets/landometer/svg/slice-quiet.svg").includes('transform="translate(12 -12)"'), "Static quiet slice must bake the runtime final transform");
+const logoFullSvg = read("assets/landometer/svg/logo-full.svg");
+const logoQuietSvg = read("assets/landometer/svg/logo-quiet.svg");
+check((logoFullSvg.match(/<(?:path|circle|rect|ellipse|polygon|polyline|line)\b/g) || []).length === 10, "Landometer logo-full final state must contain all 10 authored geometry elements");
+check((logoQuietSvg.match(/<(?:path|circle|rect|ellipse|polygon|polyline|line)\b/g) || []).length === 14, "Landometer logo-quiet final state must contain all 14 authored geometry elements");
+check(logoFullSvg.includes('fill="#1F87CE"'), "Landometer v3 logo-full must retain the reference token-derived #1F87CE wedge");
+check(!logoFullSvg.includes("#0195CB"), "Historical release-1.1.3 wedge override leaked into v3 logo-full");
 
-const ijjiManifest = JSON.parse(read("assets/ijji/manifest.json"));
-check(ijjiManifest.files.length === 18, "Expected 18 selected ijji SVG records");
-for (const asset of ijjiManifest.files) {
-  const local = `assets/ijji/${asset.file}`;
-  check(fs.existsSync(path.join(root, local)), `Selected ijji file missing: ${local}`);
-  if (!fs.existsSync(path.join(root, local))) continue;
-  if (Number.isInteger(asset.bytes)) {
-    check(fs.statSync(path.join(root, local)).size === asset.bytes, `ijji byte mismatch: ${local}`);
+const expectedIjjiLogoHashes = {
+  "assets/ijji/logo-sting/ijji-logo-sting.js": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e",
+  "assets/ijji/logo-sting/layers/i-1.png": "df5fb769b2bcf84a5bbb64a5b7be424463b3883632b722cebc5d9c4a29362ac6",
+  "assets/ijji/logo-sting/layers/i-2.png": "857ca5198e350fd02f644d492f1b7b0b14b9cacb9f2dd21f2031788678ce80f5",
+  "assets/ijji/logo-sting/layers/ijji-logo-still.png": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+  "assets/ijji/logo-sting/layers/ijji-mark-still.png": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630",
+  "assets/ijji/logo-sting/layers/jj.png": "cb2743b05ee7d3270bef5e5f5a5bec2916e6fe6b1e99d85793ebbd1ec398dd93",
+  "assets/ijji/logo-sting/layers/tag-1-1.png": "6b51513e93df40e2a00b928d606373e688a3b6dd9e6869a6e803a7bef5ab7784",
+  "assets/ijji/logo-sting/layers/tag-1-2.png": "fb72390fe3125ed5c5ab9c2bafd03fb71cb74e751ebd7f14737ac7c0367117fa",
+  "assets/ijji/logo-sting/layers/tag-1-3.png": "5e01f5a2303ba67e18e69153003ba1f363e6eb1c80b67aa68115b8e434072ff0",
+  "assets/ijji/logo-sting/layers/tag-2-1.png": "2e4529e6961ffa9508ae12e4346cba6870f009cc4851e2a9c613e69ef7999cf8",
+  "assets/ijji/logo-sting/layers/tag-2-2.png": "ea066302ab3f407d258260f85ba19cd184b5ddbfa313f1f480726639b9ef3713",
+  "assets/ijji/logo-sting/layers/tag-2-3.png": "3821e99ab1ff83edc12b95e06c2d2fc2cd1019905900a8f15fc57481b7d367c4",
+};
+for (const [relative, expectedHash] of Object.entries(expectedIjjiLogoHashes)) {
+  check(exists(relative) && sha256File(relative) === expectedHash, `Selected ijji animated-identity byte changed: ${relative}`);
+  const asset = allAssets.find((candidate) => candidate.path === relative);
+  check(asset?.sha256 === expectedHash, `Manifest does not bind selected ijji animated-identity hash: ${relative}`);
+}
+const ijjiLogoAssets = allAssets.filter((asset) => asset.familyId === "ijji.logo-sting.r3");
+check(ijjiLogoAssets.filter((asset) => asset.role === "raster_identity").length === 2, "ijji animated identity must provide two final fallbacks");
+check(ijjiLogoAssets.filter((asset) => asset.role === "runtime_layer").length === 9, "ijji animated identity must provide all nine exact runtime layers");
+check(ijjiLogoAssets.filter((asset) => asset.role === "web_runtime").length === 1, "ijji animated identity must load one superset runtime only");
+
+check(manifest.sourceResolution?.landometer?.runtimeCssSha256 === expectedLandometerHashes["assets/landometer/landometer-motifs.css"], "Manifest source resolution has the wrong Landometer CSS hash");
+check(manifest.sourceResolution?.landometer?.runtimeJsSha256 === expectedLandometerHashes["assets/landometer/landometer-motifs.js"], "Manifest source resolution has the wrong Landometer JS hash");
+check(manifest.sourceResolution?.landometer?.exampleHtmlSha256 === "115518679ffaeac788859d5cb547e65301664a06850814c8c5facf65d56c34d3", "Manifest source resolution has the wrong Landometer example-HTML hash");
+check(manifest.sourceResolution?.landometer?.referenceWedgeSrgb === "#1F87CE", "Manifest must bind the v3 reference wedge colour");
+check(manifest.sourceResolution?.ijjiAnimatedIdentity?.runtimeJsSha256 === expectedIjjiLogoHashes["assets/ijji/logo-sting/ijji-logo-sting.js"], "Manifest source resolution has the wrong ijji runtime hash");
+check(manifest.sourceResolution?.ijjiAnimatedIdentity?.fullStillSha256 === expectedIjjiLogoHashes["assets/ijji/logo-sting/layers/ijji-logo-still.png"], "Manifest source resolution has the wrong ijji full fallback hash");
+check(manifest.sourceResolution?.ijjiAnimatedIdentity?.markStillSha256 === expectedIjjiLogoHashes["assets/ijji/logo-sting/layers/ijji-mark-still.png"], "Manifest source resolution has the wrong ijji mark fallback hash");
+
+check(manifest.showcaseExperience?.landometer?.defaultReplayIntervalMs === 3000, "Default Landometer showcase replay must remain 3000 ms");
+check(manifest.showcaseExperience?.landometer?.logo?.settleAtMs === 3400, "Landometer logo v3 preview must settle at 3400 ms");
+check(manifest.showcaseExperience?.landometer?.logo?.replayIntervalMs === 6000, "Landometer logo v3 preview must replay at 6000 ms");
+check(manifest.showcaseExperience?.landometer?.logo?.fullEndMs === 2870, "Landometer logo-full authored end must be 2870 ms");
+check(manifest.showcaseExperience?.landometer?.logo?.quietEndMs === 3360, "Landometer logo-quiet authored end must be 3360 ms");
+check(manifest.showcaseExperience?.landometer?.logo?.hostAttribute === "ink=blue", "Full Landometer previews must use blue ink in both library themes");
+check(manifest.showcaseExperience?.landometer?.logo?.wedgeSrgb === "#1F87CE", "Showcase metadata must retain the v3 token-derived wedge");
+check(manifest.showcaseExperience?.ijjiLogoSting?.full?.durationMs === 9000, "ijji full+tagline duration must be 9000 ms");
+check(manifest.showcaseExperience?.ijjiLogoSting?.mark?.durationMs === 6400, "ijji mark-only duration must be 6400 ms");
+check(manifest.showcaseExperience?.ijjiLogoSting?.mark?.notagline === true, "ijji mark-only route must bind notagline");
+check(manifest.showcaseExperience?.reducedMotion === "show_complete_final_state_without_replay", "Reduced motion must show a complete final state without replay");
+
+check(sourceDecision.artifactRelease === release && sourceDecision.status === "owner_selected_sources_verified", "Current animation-source decision is not release-ready");
+check(sourceDecision.landometer?.cssSha256 === expectedLandometerHashes["assets/landometer/landometer-motifs.css"], "Animation-source decision has the wrong Landometer CSS hash");
+check(sourceDecision.landometer?.jsSha256 === expectedLandometerHashes["assets/landometer/landometer-motifs.js"], "Animation-source decision has the wrong Landometer JS hash");
+check(sourceDecision.ijji?.jsSha256 === expectedIjjiLogoHashes["assets/ijji/logo-sting/ijji-logo-sting.js"], "Animation-source decision has the wrong ijji runtime hash");
+check(sourceDecision.supersedesForCurrentRelease?.some((value) => value.includes("logo-preview-final-settle-decision.json")), "Current source decision must supersede the historical v2 settle decision");
+check(sourceDecision.supersedesForCurrentRelease?.some((value) => value.includes("#0195CB")), "Current source decision must explicitly supersede the historical wedge override");
+
+check(sourceLedger.schemaVersion === "motif-library-source-ledger/1.1", "Unexpected source-ledger schema");
+check(sourceLedger.artifact === `Landometer Motif Library v${release}`, "Source ledger release mismatch");
+check(sourceLedger.embeddedInstructionBoundary?.includes("did not expand or replace"), "Source ledger must preserve the attached-document instruction boundary");
+check(sourceLedger.selectedArtifactRuntime?.landometer?.logoQuietEndMs === 3360, "Source ledger must record the complete Landometer quiet timeline");
+check(sourceLedger.selectedArtifactRuntime?.ijjiAnimatedIdentity?.fullDurationMs === 9000, "Source ledger must record the ijji full duration");
+check(sourceLedger.selectedArtifactRuntime?.ijjiAnimatedIdentity?.markDurationMs === 6400, "Source ledger must record the ijji mark duration");
+
+check(approval.schemaVersion === "motif-library-owner-approval/1.1", "Unexpected owner-approval schema");
+check(approval.artifactRelease === release && approval.status === "approved_for_named_publication", "Owner approval does not authorize release 1.2.0 publication");
+check(approval.rightsEvidenceClass === "owner_stated_not_independently_verified", "Owner-stated rights must retain their evidence classification");
+check(sameMembers(approval.publicRepositoryAccess, ["view", "download"]), "Public repository access must remain view/download only");
+check(approval.authorizedOperators?.length === 3, "Authorized reuse operators must remain explicit");
+check(approval.releaseMembership?.lds_0_9_1 === false, "Artifact overlay must not claim LDS 0.9.1 membership");
+check(approval.releaseMembership?.ijji_design_system_0_5_0 === false, "Artifact overlay must not claim ijji DS 0.5.0 membership");
+check(approval.releaseMembership?.ijji_addon_0_5_3 === false, "Artifact overlay must not claim ijji Add-on 0.5.3 membership");
+check(approval.assetManifestSha256 === sha256File("assets/motif-library.json"), "Owner approval does not bind the current manifest hash");
+
+check(buildCard.schemaVersion === "motif-library-build-card/1.1", "Unexpected Build Card schema");
+check(buildCard.artifactRelease === release, "Build Card release mismatch");
+check(buildCard.routes?.length === 2, "Build Card must declare exactly two locale routes");
+check(buildCard.decisionRecords?.sourceSelection === "governance/animation-source-v3-decision.json", "Build Card must resolve the v3 source decision");
+check(buildCard.decisionRecords?.audienceParity === "governance/audience-animation-parity.json", "Build Card must resolve audience-animation parity evidence");
+check(buildCard.capabilities?.exactLandometerV3Runtime === true, "Build Card must declare the exact Landometer v3 runtime");
+check(buildCard.capabilities?.exactIjjiAnimatedIdentityR3 === true, "Build Card must declare the exact ijji animated identity runtime");
+
+check(showcaseDecision.schemaVersion === "motif-library-showcase-motion-decision/1.1", "Unexpected showcase-decision schema");
+check(showcaseDecision.artifactRelease === release && showcaseDecision.status === "owner_selected_for_named_artifact", "Showcase decision is not authorized for release 1.2.0");
+check(showcaseDecision.showcaseBehavior?.landometer?.logo?.settleAtMs === 3400, "Showcase decision has the wrong Landometer settle time");
+check(showcaseDecision.showcaseBehavior?.landometer?.logo?.replayIntervalMs === 6000, "Showcase decision has the wrong Landometer replay time");
+check(showcaseDecision.showcaseBehavior?.ijjiAnimatedIdentity?.full?.durationMs === 9000, "Showcase decision has the wrong ijji full duration");
+check(showcaseDecision.showcaseBehavior?.ijjiAnimatedIdentity?.mark?.durationMs === 6400, "Showcase decision has the wrong ijji mark duration");
+check(showcaseDecision.productionBoundary?.portableLoopPermission === false, "Library replay must not grant portable loop permission");
+check(showcaseDecision.productionBoundary?.implementationSnippets === "no_loop_attribute", "Copied snippets must remain finite-once");
+
+check(audienceParity.artifactRelease === release, "Audience-animation parity record release mismatch");
+const acceptableParityStatus = audienceParity.status === "passed"
+  || audienceParity.status === "passed_live"
+  || (allowPendingLive && audienceParity.status === "local_source_and_reference_qa_passed_live_pending");
+check(acceptableParityStatus, `Audience-animation parity status is not ${allowPendingLive ? "candidate-" : "release-"}ready`);
+check(audienceParity.landometer?.variantsChecked === 12, "Audience parity must cover all 12 Landometer variants");
+check(audienceParity.landometer?.maximumTimelinesMs?.logo?.quiet === 3360, "Audience parity must cover the complete quiet-logo timeline");
+check(audienceParity.landometer?.hostAdaptation?.includes("no timing, geometry, or wedge override"), "Audience parity must preserve exact v3 geometry and wedge behavior");
+check(audienceParity.ijji?.corroboratingRuntimeResult === "pixel_identical_at_all_11_sampled_times", "ijji full runtimes were not corroborated across all sampled frames");
+check(audienceParity.ijji?.responsiveSourceCheck?.includes("320, 360, 390, and 1440"), "Audience parity must cover narrow and wide source fixtures");
+check(audienceParity.integrationChecks?.exactRuntimeAndLayerHashes === "passed", "Audience parity exact-byte integration gate failed");
+check(audienceParity.integrationChecks?.finalFallbacks === "passed", "Audience parity final-fallback gate failed");
+if (!allowPendingLive) {
+  check(audienceParity.integrationChecks?.libraryBrowserQa === "passed", "Strict release verification requires passed library browser QA");
+  check(audienceParity.integrationChecks?.liveByteAndRenderedQa === "passed", "Strict release verification requires passed live byte/rendered QA");
+}
+
+check(identityAssets.assets?.length === 2, "Identity manifest must declare favicon and social preview");
+for (const asset of identityAssets.assets || []) {
+  check(exists(asset.path), `Identity asset missing: ${asset.path}`);
+  if (exists(asset.path)) {
+    check(fs.statSync(absolute(asset.path)).size === asset.bytes, `Identity byte count mismatch: ${asset.path}`);
+    check(sha256File(asset.path) === asset.sha256, `Identity hash mismatch: ${asset.path}`);
   }
 }
+
+check(manifest.distributionMirrors?.googleDrive?.rootUrl === driveRootUrl, "Manifest Drive root mismatch");
+check(manifest.distributionMirrors?.googleDrive?.immutableReleaseUrl === driveReleaseUrl, "Manifest Drive release folder mismatch");
+check(approval.distributionMirror?.rootUrl === driveRootUrl, "Owner approval Drive root mismatch");
+check(approval.distributionMirror?.immutableReleaseUrl === driveReleaseUrl, "Owner approval Drive release folder mismatch");
+check(buildCard.distributionMirrors?.googleDrive === driveRootUrl, "Build Card Drive root mismatch");
+check(buildCard.distributionMirrors?.immutableRelease === driveReleaseUrl, "Build Card Drive release folder mismatch");
+check(read("docs/ai-sync.md").includes(driveReleaseUrl), "AI sync guide must resolve the immutable Drive 1.2.0 folder");
+check(read("CLAUDE.md").includes(driveRootUrl) && read("CLAUDE.md").includes("release-index.json"), "Claude handoff must resolve immutable releases through the governed Drive index");
 
 function verifyHtml(relativePath, locale, expectedCanonical) {
   const html = read(relativePath);
-  check(new RegExp(`<html\\s+lang="${locale}"`).test(html), `${relativePath}: wrong lang`);
+  check(new RegExp(`<html\\s+lang="${locale}"`).test(html), `${relativePath}: wrong language`);
   check((html.match(/<h1\b/g) || []).length === 1, `${relativePath}: expected exactly one H1`);
-  check((html.match(/<main\b/g) || []).length === 1, `${relativePath}: expected one main landmark`);
+  check((html.match(/<main\b/g) || []).length === 1, `${relativePath}: expected exactly one main landmark`);
   check(html.includes(`<link rel="canonical" href="${expectedCanonical}">`), `${relativePath}: canonical mismatch`);
-  check(html.includes('hreflang="th"') && html.includes('hreflang="en"'), `${relativePath}: hreflang pair missing`);
+  check(html.includes('hreflang="th"') && html.includes('hreflang="en"') && html.includes('hreflang="x-default"'), `${relativePath}: complete hreflang set missing`);
   check(html.includes("landometer-favicon-64-v1.png"), `${relativePath}: favicon declaration missing`);
-  check((html.match(/class="asset-card"/g) || []).length === 9, `${relativePath}: expected nine asset cards`);
+  check((html.match(/class="asset-card"/g) || []).length === 11, `${relativePath}: expected exactly 11 asset cards`);
+  check((html.match(/<article class="asset-card"[^>]*data-brand="landometer"/g) || []).length === 6, `${relativePath}: expected six Landometer cards`);
+  check((html.match(/<article class="asset-card"[^>]*data-brand="ijji"/g) || []).length === 5, `${relativePath}: expected five ijji-grouped cards`);
+  check((html.match(/data-preview-brand="ijji-logo"/g) || []).length === 2, `${relativePath}: expected two ijji animated-identity preview routes`);
+  check((html.match(/data-preview-brand="landometer"/g) || []).length === 6, `${relativePath}: expected six paired Landometer preview routes`);
+  check(html.includes('id="ijji-animated-logo-tagline"') && html.includes('id="ijji-animated-logo-mark"'), `${relativePath}: ijji full and mark cards are missing`);
+  check(html.includes("assets/downloads/landometer-motifs-v3.zip"), `${relativePath}: Landometer v3 kit link missing`);
+  check(html.includes("assets/downloads/ijji-animated-logo-r3.zip"), `${relativePath}: ijji animated-logo kit link missing`);
+  check(html.includes("assets/downloads/ijji-motifs-selected-r3.zip"), `${relativePath}: ijji selected-motif kit link missing`);
+  check(html.includes("assets/downloads/motif-library-v1.2.0.zip"), `${relativePath}: full release kit link missing`);
+  check(!html.includes("landometer-motifs-v1.zip") && !html.includes("motif-library-v1.zip"), `${relativePath}: stale kit link leaked into the current route`);
   check(!html.includes("explorations/"), `${relativePath}: exploration asset leaked into the page`);
-  check(!html.includes("assets/ijji/manifest.json"), `${relativePath}: historical ijji source manifest must not be presented as current authority`);
-  check(!html.includes("Landometer-Logo-TransparentBG"), `${relativePath}: candidate logo asset must not be used`);
-  check(html.includes("authorized") || html.includes("ได้รับอนุญาต"), `${relativePath}: authorized reuse boundary missing near downloads`);
+  check(!html.includes("Landometer-Logo-TransparentBG"), `${relativePath}: source lockup leaked into the page`);
+  check(html.includes("authorized") || html.includes("ได้รับอนุญาต"), `${relativePath}: authorized-reuse boundary missing`);
+  check(html.includes('"version": "1.2.0"'), `${relativePath}: JSON-LD release version mismatch`);
+  check(html.includes("site.js?v=1.2.0"), `${relativePath}: site runtime cache revision mismatch`);
+  check(html.includes("landometer-motifs.css?v=1.2.0") && html.includes("landometer-motifs.js?v=1.2.0"), `${relativePath}: exact Landometer runtime cache revision mismatch`);
+  check(html.includes("logo-full.svg?v=1.2.0") && html.includes("logo-quiet.svg?v=1.2.0"), `${relativePath}: v3 logo static assets are not cache-busted`);
+  check(html.includes("full + quiet") && html.includes("finite once"), `${relativePath}: showcase/production motion distinction is missing`);
 
-  const vectorIds = new Set(manifest.families.flatMap((family) => family.assets).filter((asset) => asset.role === "generated_vector").map((asset) => asset.assetId));
-  const displayedAssetIds = [...html.matchAll(/(?:shown )?assetIds:\s*([^<]+)/g)]
-    .flatMap((match) => match[1].split("/").map((value) => value.trim()));
-  displayedAssetIds.forEach((assetId) => check(vectorIds.has(assetId), `${relativePath}: displayed assetId is absent from manifest: ${assetId}`));
+  for (const assetId of [
+    "landometer.dial.full", "landometer.dial.quiet", "landometer.rings.full", "landometer.rings.quiet",
+    "landometer.layers.full", "landometer.layers.quiet", "landometer.slice.full", "landometer.slice.quiet",
+    "landometer.cultivate.full", "landometer.cultivate.quiet", "landometer.logo.full", "landometer.logo.quiet",
+    "ijji.logo-sting.tagline", "ijji.logo-sting.mark", "ijji.graph-b-transparent-ink", "ijji.graph-b-transparent-mint",
+    "ijji.rings-c-transparent-ink", "ijji.rings-c-transparent-mint", "ijji.rotate-b-transparent-ink", "ijji.rotate-b-transparent-mint",
+  ]) check(html.includes(assetId), `${relativePath}: displayed asset ID is missing: ${assetId}`);
 
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
-  check(ids.length === new Set(ids).size, `${relativePath}: duplicate IDs found`);
-
+  check(ids.length === new Set(ids).size, `${relativePath}: duplicate HTML IDs found`);
   const images = [...html.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);
   images.forEach((tag, index) => check(/\salt="[^"]*"/.test(tag), `${relativePath}: image ${index + 1} has no alt attribute`));
 
   const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => match[1]);
   check(jsonLdBlocks.length === 1, `${relativePath}: expected one JSON-LD block`);
-  jsonLdBlocks.forEach((block) => {
-    try { JSON.parse(block); check(true, `${relativePath}: JSON-LD parses`); }
-    catch { check(false, `${relativePath}: invalid JSON-LD`); }
-  });
+  for (const block of jsonLdBlocks) {
+    try {
+      const parsed = JSON.parse(block);
+      check(parsed.version === release, `${relativePath}: JSON-LD parsed but has the wrong release`);
+    } catch {
+      check(false, `${relativePath}: invalid JSON-LD`);
+    }
+  }
 
   const localRefs = [...html.matchAll(/\s(?:href|src)="([^"]+)"/g)].map((match) => match[1]);
   for (const ref of localRefs) {
@@ -266,7 +479,7 @@ function verifyHtml(relativePath, locale, expectedCanonical) {
     if (!clean) continue;
     const resolved = clean.startsWith("/motif/")
       ? path.join(root, clean.slice("/motif/".length))
-      : path.resolve(path.dirname(path.join(root, relativePath)), clean);
+      : path.resolve(path.dirname(absolute(relativePath)), clean);
     check(fs.existsSync(resolved), `${relativePath}: unresolved local reference ${ref}`);
   }
 }
@@ -275,34 +488,67 @@ verifyHtml("index.html", "th", "https://montri-th.github.io/motif/");
 verifyHtml("en/index.html", "en", "https://montri-th.github.io/motif/en/");
 
 const errorHtml = read("404.html");
-check(errorHtml.includes('<meta name="robots" content="noindex">'), "404.html: noindex directive missing");
-check(errorHtml.includes('/motif/assets/identity/landometer-favicon-64-v1.png'), "404.html: favicon path is not project-scoped");
-check(errorHtml.includes('href="/motif/site.css"'), "404.html: stylesheet path is not project-scoped");
-check(errorHtml.includes('href="/motif/"') && errorHtml.includes('href="/motif/en/"'), "404.html: recovery routes are missing");
-check(!/\b(?:href|src)="\/(?!motif\/)/.test(errorHtml), "404.html: root-absolute asset escaped the /motif/ project path");
+check(errorHtml.includes('<meta name="robots" content="noindex">'), "404 route must remain noindex");
+check(errorHtml.includes('/motif/assets/identity/landometer-favicon-64-v1.png'), "404 favicon path must remain project-scoped");
+check(errorHtml.includes('href="/motif/site.css"'), "404 stylesheet path must remain project-scoped");
+check(errorHtml.includes('href="/motif/"') && errorHtml.includes('href="/motif/en/"'), "404 recovery routes are missing");
+check(!/\b(?:href|src)="\/(?!motif\/)/.test(errorHtml), "404 asset escaped the /motif/ project path");
 
 const siteJs = read("site.js");
 check(!/https?:\/\/(?!montri-th\.github\.io\/motif)/.test(siteJs), "Site runtime contains an unexpected external URL");
 check(!siteJs.includes("eval("), "Site runtime must not use eval");
-check(siteJs.includes("document.baseURI"), "Dynamic asset imports must resolve from the locale document URL");
-check(siteJs.includes("const landometerDefaultReplayMs = 3000"), "Landometer showcase default replay cadence is missing");
-check(siteJs.includes("const landometerLogoReplayMs = 5000"), "Landometer logo showcase replay cadence is missing");
-check(siteJs.includes("const landometerLogoSettleMs = 2050"), "Landometer logo final-state settle timing is missing");
-check(siteJs.includes('pair.className = "dialog-motif-pair"'), "Landometer showcase must render the full/quiet pair");
+check(siteJs.includes("document.baseURI"), "Dynamic assets must resolve from the locale document URL");
+check(siteJs.includes("const landometerDefaultReplayMs = 3000"), "Default Landometer replay cadence is missing");
+check(siteJs.includes("const landometerLogoReplayMs = 6000"), "Landometer v3 logo replay cadence is missing");
+check(siteJs.includes("const landometerLogoSettleMs = 3400"), "Landometer v3 complete-final settle timing is missing");
+check(siteJs.includes('pair.className = "dialog-motif-pair"'), "Landometer preview must render full and quiet together");
+check(siteJs.includes('motif.setAttribute("ink", "blue")'), "Full Landometer preview must preserve the light-reference blue ink in dark mode");
+check(!siteJs.includes("--lm-wedge"), "Historical wedge override must not be applied by the v3 site runtime");
+check(siteJs.includes("ijji-logo-sting.js?v=1.2.0"), "ijji animated-identity runtime is not cache-busted to release 1.2.0");
+check(siteJs.includes('logo.setAttribute("manual", "")'), "Library must take explicit control of ijji logo showcase replay");
+check(siteJs.includes('logo.setAttribute("loop", "")') && siteJs.includes('logo.removeAttribute("loop")'), "ijji showcase auto-replay start/stop lifecycle is incomplete");
+check(siteJs.includes('logo.setAttribute("notagline", "")'), "ijji mark-only preview does not bind notagline");
+check(siteJs.includes('logo.setAttribute("surface", "brand-blue")'), "ijji full preview does not bind its reference Brand Blue surface");
 check(siteJs.includes('window.addEventListener("pagehide"'), "Preview timers must stop on pagehide");
-check(read("index.html").includes("full + quiet") && read("index.html").includes("finite once"), "Thai route must explain showcase versus production motion");
-check(read("en/index.html").includes("full + quiet") && read("en/index.html").includes("finite once"), "English route must explain showcase versus production motion");
-check(read("index.html").includes('"version": "1.1.3"') && read("en/index.html").includes('"version": "1.1.3"'), "Structured data must declare artifact release 1.1.3");
-check(read("index.html").includes('site.js?v=1.1.3') && read("en/index.html").includes('site.js?v=1.1.3'), "Locale routes must cache-bust the updated site runtime");
-check(read("index.html").includes('landometer-motifs.css?v=1.1.3') && read("en/index.html").includes('landometer-motifs.css?v=1.1.3'), "Locale routes must cache-bust the corrected motif CSS");
-check(read("index.html").includes('landometer-motifs.js?v=1.1.3') && read("en/index.html").includes('landometer-motifs.js?v=1.1.3'), "Locale routes must cache-bust the corrected motif runtime");
-check(read("index.html").includes('logo-full.svg?v=1.1.3') && read("en/index.html").includes('logo-full.svg?v=1.1.3'), "Locale routes must cache-bust the corrected logo-full static asset");
-check(siteJs.includes("landometer-motifs.css?v=1.1.3") && siteJs.includes("landometer-motifs.js?v=1.1.3"), "Copied Landometer implementation snippet must pin the corrected runtime release");
-check(siteJs.includes('motif.setAttribute("ink", "blue")') && siteJs.includes('motif.style.setProperty("--lm-wedge", "#0195CB")'), "Preview runtime must lock the official logo-full palette");
-check(siteJs.includes('ink="blue" style="--lm-wedge:#0195CB"'), "Copied logo-full snippet must carry the official theme-invariant palette");
-check(read("site.css").includes("html:not(.js-ready)"), "No-JS enhancement controls must fail closed");
+check(siteJs.includes('document.addEventListener("visibilitychange"'), "Preview motion must respond to document visibility");
+check(siteJs.includes('prefers-reduced-motion: reduce'), "Preview motion must honor reduced-motion preference");
+
+const historicalLogoHarness = read("scripts/logo-full-visual-qa.mjs");
+check(
+  historicalLogoHarness.includes('--historical-1.1.3') && historicalLogoHarness.includes("process.exit(2)"),
+  "Historical 1.1.3 logo harness must fail closed unless explicitly invoked for historical reproduction",
+);
+
+const ijjiCopyStart = siteJs.indexOf('} else if (brand === "ijji-logo") {');
+const ijjiCopyEnd = siteJs.indexOf("} else {", ijjiCopyStart + 1);
+check(ijjiCopyStart >= 0 && ijjiCopyEnd > ijjiCopyStart, "Unable to resolve the ijji animated-identity copy snippet");
+if (ijjiCopyStart >= 0 && ijjiCopyEnd > ijjiCopyStart) {
+  const copiedIjjiSnippet = siteJs.slice(ijjiCopyStart, ijjiCopyEnd);
+  check(!copiedIjjiSnippet.includes(" manual"), "Production ijji snippet must not copy library manual control");
+  check(!copiedIjjiSnippet.includes(" loop"), "Production ijji snippet must remain finite-once");
+  check(copiedIjjiSnippet.includes('notagline bounce="extra"'), "Copied ijji mark snippet must preserve its exact variant attributes");
+  check(copiedIjjiSnippet.includes('surface="brand-blue" bounce="playful"'), "Copied ijji full snippet must preserve its exact reference presentation");
+  check(copiedIjjiSnippet.includes("ijji-logo-still.png") && copiedIjjiSnippet.includes("ijji-mark-still.png"), "Copied ijji snippets must retain exact final fallbacks");
+}
+
+const siteCss = read("site.css");
+check(siteCss.includes("html:not(.js-ready)"), "No-JavaScript enhancement controls must fail closed");
+check(siteCss.includes(".dialog-stage.is-logo-sting"), "ijji animated-identity dialog surface is missing");
+check(siteCss.includes("dialog.is-logo-sting { width: calc(100% - 4px)"), "Narrow ijji animation dialog must preserve the 320 px source minimum where possible");
+check(siteCss.includes("@media (max-width: 340px)"), "Edge-to-edge smallest-screen ijji treatment is missing");
 check(read("sitemap.xml").includes("https://montri-th.github.io/motif/en/"), "English route missing from sitemap");
 check(read("robots.txt").includes("Sitemap: https://montri-th.github.io/motif/sitemap.xml"), "robots.txt sitemap mismatch");
+
+// Local machine-readable QA belongs to this release and must contain no failed checks.
+for (const relative of ["governance/browser-qa.json", "governance/performance-qa.json", "governance/runtime-parity.json"]) {
+  const evidence = readJson(relative);
+  check(evidence.artifactRelease === release, `${relative}: evidence is stale and must bind release 1.2.0`);
+  if (Array.isArray(evidence.checks)) {
+    const failed = evidence.checks.filter((item) => item.passed === false || item.status === "failed");
+    check(failed.length === 0, `${relative}: contains ${failed.length} failed checks`);
+  }
+  if (evidence.totals) check(evidence.totals.failed === 0 && evidence.totals.passed === evidence.totals.checks, `${relative}: aggregate check totals do not pass`);
+}
 
 if (failures.length) {
   console.error(`FAILED: ${failures.length} of ${checks} checks failed.`);
@@ -310,4 +556,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`PASS: ${checks} source, route, asset, authority, and hash checks.`);
+console.log(`PASS: ${checks} release ${release} source, route, asset, authority, audience-parity, and hash checks.`);

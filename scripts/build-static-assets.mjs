@@ -5,9 +5,9 @@ import vm from "node:vm";
 const root = path.resolve(import.meta.dirname, "..");
 const runtimePath = path.join(root, "assets/landometer/landometer-motifs.js");
 const outputDir = path.join(root, "assets/landometer/svg");
-// Official priority-wedge colour from the owner-supplied Landometer lockup.
-// The exact runtime bytes remain unchanged; the library host selects this logo-specific paint.
-const logoWedgeSrgb = "#0195CB";
+// Browser-computed 8-bit sRGB result of the v3 runtime's token-derived LCH wedge.
+// Keeping this value in the portable SVG makes its final frame match the supplied HTML example.
+const logoWedgeSrgb = "#1F87CE";
 // Browser-computed 8-bit sRGB results of each 80% energy colour mixed over Brand Blue.
 // Opaque results preserve the official mark's colour appearance without dark overlap seams.
 const logoBandSrgb = {
@@ -49,10 +49,10 @@ for (const kind of window.LandometerMotifs.kinds) {
       .replaceAll("currentColor", color);
     for (const [mix, srgb] of Object.entries(logoBandSrgb)) svg = svg.replaceAll(mix, srgb);
     svg = svg
-      .replace(/ style="stroke:(#[A-Fa-f0-9]{6});--lm-dash:[^;]+;--lm-delay:[^"]+"/g, ' stroke="$1"')
+      .replace(/ style="stroke:(#[A-Fa-f0-9]{6});[^"]*"/g, ' stroke="$1"')
       .replace(/ class="lm-step"/g, ' transform="translate(12 -12)" class="lm-step"')
       .replace(/\sclass="[^"]*"/g, "")
-      .replace(/\sstyle="--lm-[^"]*"/g, "");
+      .replace(/\sstyle="[^"]*--lm-[^"]*"/g, "");
     fs.writeFileSync(path.join(outputDir, `${kind}-${variant}.svg`), `${svg}\n`);
   }
 }

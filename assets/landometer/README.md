@@ -1,19 +1,19 @@
-# Landometer motif v1
+# Landometer motifs v3
 
-Status: owner-approved artifact overlay dated 2026-09-05; not retroactively part of LDS 0.9.1.
+Status: owner-approved artifact overlay dated 2026-09-06; not retroactively part of LDS 0.9.1.
 
 ## Files
 
-- `landometer-motifs.css` + `landometer-motifs.js`: exact owner-supplied v2 runtime bytes, including the corrected logo-full geometry.
-- `svg/`: deterministic final-state SVGs generated from that runtime for static, reduced-motion, print, email, deck, social, and fallback use.
+- `landometer-motifs.css` + `landometer-motifs.js`: exact set-3 owner-supplied runtime bytes.
+- `svg/`: deterministic complete final-state SVGs generated from that runtime for fallback, print, email, deck, social, and static use.
 
-Release runtime hashes:
+Exact runtime SHA-256:
 
-- CSS: `e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794`
-- JS: `d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb`
+- CSS: `7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e`
+- JavaScript: `3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2`
 
-Use full motifs for one major orientation, transition, or closure beat. Use quiet motifs for secondary rhythm. The authorized default remains one finite play that holds the final state; the source runtime's optional replay/loop APIs are capabilities, not permission to add repeating downstream motion. Essential content must not depend on motion.
+The six kinds are `dial`, `rings`, `layers`, `slice`, `cultivate`, and `logo`; each has `full` and `quiet`. The default production route plays once when visible and holds the authored final state. The library Preview may auto-replay so viewers can inspect the whole sequence, but copied production snippets do not carry that loop.
 
-The `logo` kind is an exceptional assembly motif, not the official logo. Release 1.1.2 shipped the exact corrected source bytes and made the library preview leave the animation compositor at 2050 ms, then hold the complete static final state until its 5000 ms replay. Release 1.1.3 keeps those CSS and JavaScript bytes unchanged while correcting the theme cascade at the usage site: every motion host for `logo-full` must use `ink="blue"` and `style="--lm-wedge:#0195CB"`. The generated `svg/logo-full.svg` uses the same official palette: pin `#1D4497`, inner coral `#D2566A`, yellow `#D2A437`, mint `#0EB99B`, sky `#4DB6E9`, and wedge `#0195CB`. This logo-full palette is invariant across light and dark themes. `logo-quiet` and every non-logo static motif remain unchanged. Never use this motif as navigation identity, favicon, social identity, or a replacement logo.
+For a theme-invariant library preview, every full variant uses `ink="blue"`; quiet keeps the runtime's default sky ink. The logo wedge stays exactly token-derived as in the supplied HTML and renders as `#1F87CE` in the checked browser. No host wedge override is applied.
 
-See `../../docs/usage-guide.md`, `../motif-library.json`, `../../governance/owner-approval.json`, and `../../LICENSE.md` for the complete contract. These files are included in the downloadable kit.
+Use the official identity files—not a motif—in navigation, favicon, or co-branding. See `../../docs/usage-guide.md`, `../motif-library.json`, and `../../governance/owner-approval.json`.

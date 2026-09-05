@@ -1,85 +1,57 @@
 {
-  "schemaVersion": "motif-library-showcase-motion-decision/1.0",
-  "decisionId": "landometer-modal-showcase-motion-v1",
+  "schemaVersion": "motif-library-showcase-motion-decision/1.1",
+  "decisionId": "motif-library-modal-showcase-motion-v2",
   "artifactId": "landometer-motif-library-web-v1",
-  "artifactRelease": "1.1.3",
-  "carriedForwardFromRelease": "1.1.0",
+  "artifactRelease": "1.2.0",
   "status": "owner_selected_for_named_artifact",
-  "recordedOn": "2026-09-05",
+  "recordedOn": "2026-09-06",
   "authority": {
-    "source": "current user request",
-    "scope": "Landometer preview dialog in this motif-library website only",
-    "intent": "Let dev, design, product, and sales viewers inspect the full and quiet animation variants without manually restarting each cycle."
-  },
-  "scope": {
-    "surface": "landometer_preview_dialog_only",
-    "brandLayer": "landometer.shared",
-    "locality": "this_artifact_only"
+    "source": "current user request plus carried-forward explicit request for reveal autoplay and auto replay",
+    "scope": "Preview dialog in this motif-library website only",
+    "intent": "Let dev, design, product, and sales viewers perceive the complete authored animations without manual timeline control."
   },
   "classification": "component_local_instructional_showcase",
   "showcaseBehavior": {
-    "surface": "preview_dialog",
-    "variants": ["full", "quiet"],
-    "presentation": "simultaneous_side_by_side",
     "trigger": "user_opened_reveal",
     "initialPlayback": "immediate_autoplay",
-    "replayIntervalMs": 3000,
-    "replayExceptions": {
+    "landometer": {
+      "presentation": "full_and_quiet_simultaneous_side_by_side",
+      "defaultReplayIntervalMs": 3000,
       "logo": {
-        "settleAtMs": 2050,
-        "settleAction": "remove_data_play_to_show_authored_final_state",
-        "finalStateHoldMs": 2950,
-        "replayIntervalMs": 5000,
-        "decisionRef": "governance/logo-preview-final-settle-decision.json",
+        "fullAuthoredEndMs": 2870,
+        "quietAuthoredEndMs": 3360,
+        "settleAtMs": 3400,
+        "replayIntervalMs": 6000,
+        "finalStateHoldMs": 2600,
         "fullHostInk": "blue",
-        "fullWedge": "#0195CB",
-        "themeColorInvariant": "logo-full keeps the approved Brand Blue and official colour-region palette in both light and dark themes",
-        "themeColorDecisionRef": "governance/logo-preview-theme-color-decision.json"
+        "wedge": "token-derived; Chrome sRGB #1F87CE",
+        "reference": "owner-supplied set-3 example HTML"
       }
     },
-    "runConditions": [
-      "dialog_is_open",
-      "document_is_visible",
-      "prefers_reduced_motion_is_not_reduce",
-      "viewer_has_not_manually_paused"
-    ],
-    "controls": {
-      "pause": "Pause auto-replay and leave both motifs at their stable final state.",
-      "replayNow": "Restart both variants together and resume auto-replay."
+    "ijjiAnimatedIdentity": {
+      "full": { "durationMs": 9000, "loopGapMs": 400, "surface": "brand-blue", "bounce": "playful" },
+      "mark": { "durationMs": 6400, "loopGapMs": 400, "notagline": true, "bounce": "extra" },
+      "reference": "owner-supplied ijji example HTML"
     },
-    "cleanup": [
-      "stop_and_clear_replay_on_dialog_close",
-      "stop_and_clear_replay_when_document_is_hidden",
-      "stop_and_clear_replay_on_pagehide"
-    ]
+    "runConditions": ["dialog_is_open", "document_is_visible", "prefers_reduced_motion_is_not_reduce", "viewer_has_not_manually_paused"],
+    "controls": {
+      "pause": "Pause auto-replay and leave the selected preview at its complete final state.",
+      "replayNow": "Restart the selected preview and resume auto-replay."
+    },
+    "cleanup": ["stop_on_dialog_close", "stop_when_document_hidden", "stop_on_pagehide"]
   },
   "accessibility": {
-    "motifs": "decorative_and_aria_hidden",
-    "variantLabels": "visible_text",
     "cycleAnnouncements": "none",
-    "reducedMotion": "show_stable_full_and_quiet_final_states_without_a_replay_timer",
-    "viewerControl": "pause_and_replay_now_controls_are_available_when_motion_is_allowed"
+    "timer": "excluded_from_live_announcements",
+    "reducedMotion": "show_complete_final_state_without_replay",
+    "viewerControl": "pause_and_replay_now_controls_when_motion_is_allowed"
   },
   "productionBoundary": {
-    "landometerRuntime": "exact_v2_bytes_with_optional_replay_and_loop_apis",
-    "defaultRecommendation": "finite_once_unchanged",
-    "implementationSnippets": "finite_once_unchanged",
-    "machineManifestMotionContract": "finite_once_unchanged",
-    "optionalApiPermission": "requires_explicit_job_specific_owner_decision"
-  },
-  "contractBoundary": {
-    "productionLandometerMotionMode": "finite_once",
-    "runtimeAssets": "exact owner-supplied v2 bytes; optional replay and loop APIs are disclosed capabilities, not blanket production approval",
-    "implementationSnippets": "finite_once",
-    "machineManifestMotionContract": "finite_once",
-    "hero": "unchanged_one_shot_progressive_enhancement",
-    "assetCards": "unchanged_static_final_state",
+    "landometer": "finite_once_then_hold_final",
+    "ijjiAnimatedIdentity": "finite_once_on_visibility_then_hold_final",
+    "ijjiPendingMotifs": "state_bound_only",
+    "implementationSnippets": "no_loop_attribute",
     "normativeDesignSystemChange": false,
     "portableLoopPermission": false
-  },
-  "excluded": {
-    "ijji": "Ijji is excluded from this decision and remains product-specific with state_bound_only motion.",
-    "ambientPageMotion": "No always-running page, hero, or card animation is authorized.",
-    "productClaims": "This inspection behavior creates no product, evidence, score, confidence, completion, or business claim."
   }
 }

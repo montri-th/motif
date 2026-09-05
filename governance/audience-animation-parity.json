@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "motif-library-audience-animation-parity/1.0",
+  "artifactRelease": "1.2.0",
+  "status": "local_source_and_reference_qa_passed_live_pending",
+  "recordedOn": "2026-09-06",
+  "evidenceBoundary": "Parity means the audience sees the same authored geometry, layer order, timing, palette, surface, and complete final state as the supplied HTML examples. The surrounding library shell and replay-after-hold inspection behavior are intentionally different.",
+  "landometer": {
+    "sourceBytes": "exact",
+    "referenceHtmlSha256": "115518679ffaeac788859d5cb547e65301664a06850814c8c5facf65d56c34d3",
+    "sampledTimesMs": [0, 600, 1200, 1800, 2400, 3400],
+    "variantsChecked": 12,
+    "result": "passed_all_variants_coherent_unclipped_and_complete_at_3400ms",
+    "maximumTimelinesMs": {
+      "dial": { "full": 1260, "quiet": 1260 },
+      "slice": { "full": 1220, "quiet": 1220 },
+      "rings": { "full": 1660, "quiet": 1820 },
+      "layers": { "full": 1460, "quiet": 1320 },
+      "cultivate": { "full": 2260, "quiet": 2080 },
+      "logo": { "full": 2870, "quiet": 3360 }
+    },
+    "hostAdaptation": "full previews set ink=blue to preserve the light reference palette when the library shell is dark; no timing, geometry, or wedge override is applied"
+  },
+  "ijji": {
+    "sourceBytes": "exact",
+    "fullSampledTimesSeconds": [0, 0.5, 1.2, 2.7, 3.5, 4.2, 4.8, 6.1, 6.8, 7.6, 9],
+    "corroboratingRuntimeResult": "pixel_identical_at_all_11_sampled_times",
+    "finalFallbackComparison": {
+      "fullMeanAbsoluteChannelDifferenceOf255": 0.147,
+      "fullMobile390MeanAbsoluteChannelDifferenceOf255": 0.172,
+      "markMeanAbsoluteChannelDifferenceOf255": 0.443,
+      "interpretation": "edge_antialiasing_only"
+    },
+    "responsiveSourceCheck": "no broken images or component overflow at 320, 360, 390, and 1440 px",
+    "contrast": { "mintOnBrandBlue": 4.777, "mintOnDark": 9.412 }
+  },
+  "integrationChecks": {
+    "exactRuntimeAndLayerHashes": "passed",
+    "finalFallbacks": "passed",
+    "reducedMotion": "passed_in_source_fixtures",
+    "noJavaScript": "library_source_html_keeps_exact_final_stills",
+    "libraryBrowserQa": "passed",
+    "liveByteAndRenderedQa": "pending"
+  },
+  "manualGate": "Native Safari visual playback remains a named manual follow-up; it does not replace exact-byte, Chromium, responsive, reduced-motion, and live checks."
+}

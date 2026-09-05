@@ -1,8 +1,9 @@
 {
   "schemaVersion": "motif-library-browser-qa/1.0",
-  "executedAt": "2026-09-05T12:20:34.642Z",
-  "artifactRelease": "1.1.3",
+  "executedAt": "2026-09-05T18:37:01.598Z",
+  "artifactRelease": "1.2.0",
   "artifactRoot": ".",
+  "target": "local_loopback",
   "routes": [
     "/motif/",
     "/motif/en/"
@@ -67,8 +68,8 @@
     "paired full/quiet dialog",
     "immediate autoplay",
     "three-second default auto-replay",
-    "logo exact-final settle and five-second replay",
-    "390x844 dark logo approved-palette lock",
+    "Landometer v3 logo exact-final settle at 3.4 seconds and replay at 6.0 seconds",
+    "390x844 dark Landometer v3 palette lock",
     "pause",
     "replay now",
     "Escape focus restoration",
@@ -79,10 +80,15 @@
     "filter",
     "search",
     "copy",
-    "logo 1.1.3 copy contract",
+    "Landometer 1.2.0 copy contract",
     "PNG export",
     "ijji bounded timeout",
     "ijji cancel",
+    "ijji full+tagline immediate play and loop",
+    "ijji mark-only immediate play",
+    "ijji exact attributes, viewBoxes, layers, and fallbacks",
+    "ijji finite-once 1.2.0 copy contracts",
+    "ijji identity mobile widths",
     "reduced motion final states",
     "no JavaScript",
     "Thai 130% text",
@@ -95,7 +101,8 @@
       "th-desktop-1440.png",
       "en-mobile-390.png",
       "logo-full-quiet-final.png",
-      "logo-full-quiet-final-dark-mobile-390x844.png"
+      "logo-full-quiet-final-dark-mobile-390x844.png",
+      "ijji-logo-full-final.png"
     ]
   },
   "socialPreview": {
@@ -108,8 +115,8 @@
     "visualReview": "inspected at intrinsic size; title, motif, safe area, and thumbnail composition passed"
   },
   "totals": {
-    "checks": 387,
-    "passed": 387,
+    "checks": 406,
+    "passed": 406,
     "failed": 0
   },
   "status": "candidate_ready_for_release_handoff",
@@ -120,6 +127,31 @@
     "field Core Web Vitals after sufficient real traffic"
   ],
   "checks": [
+    {
+      "name": "Exact authored source bytes: assets/landometer/landometer-motifs.css",
+      "status": "passed",
+      "detail": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e"
+    },
+    {
+      "name": "Exact authored source bytes: assets/landometer/landometer-motifs.js",
+      "status": "passed",
+      "detail": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2"
+    },
+    {
+      "name": "Exact authored source bytes: assets/ijji/logo-sting/ijji-logo-sting.js",
+      "status": "passed",
+      "detail": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e"
+    },
+    {
+      "name": "Exact authored source bytes: assets/ijji/logo-sting/layers/ijji-logo-still.png",
+      "status": "passed",
+      "detail": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac"
+    },
+    {
+      "name": "Exact authored source bytes: assets/ijji/logo-sting/layers/ijji-mark-still.png",
+      "status": "passed",
+      "detail": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630"
+    },
     {
       "name": "th 320x800 route returns 200",
       "status": "passed",
@@ -138,7 +170,7 @@
     {
       "name": "th 320x800 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 320x800 no page-level horizontal overflow",
@@ -207,7 +239,7 @@
     {
       "name": "en 320x800 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 320x800 no page-level horizontal overflow",
@@ -276,7 +308,7 @@
     {
       "name": "th 360x800 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 360x800 no page-level horizontal overflow",
@@ -345,7 +377,7 @@
     {
       "name": "en 360x800 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 360x800 no page-level horizontal overflow",
@@ -414,7 +446,7 @@
     {
       "name": "th 390x844 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 390x844 no page-level horizontal overflow",
@@ -483,7 +515,7 @@
     {
       "name": "en 390x844 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 390x844 no page-level horizontal overflow",
@@ -552,7 +584,7 @@
     {
       "name": "th 600x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 600x900 no page-level horizontal overflow",
@@ -621,7 +653,7 @@
     {
       "name": "en 600x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 600x900 no page-level horizontal overflow",
@@ -690,7 +722,7 @@
     {
       "name": "th 713x823 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 713x823 no page-level horizontal overflow",
@@ -759,7 +791,7 @@
     {
       "name": "en 713x823 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 713x823 no page-level horizontal overflow",
@@ -828,7 +860,7 @@
     {
       "name": "th 768x1024 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 768x1024 no page-level horizontal overflow",
@@ -897,7 +929,7 @@
     {
       "name": "en 768x1024 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 768x1024 no page-level horizontal overflow",
@@ -966,7 +998,7 @@
     {
       "name": "th 844x390 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 844x390 no page-level horizontal overflow",
@@ -1035,7 +1067,7 @@
     {
       "name": "en 844x390 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 844x390 no page-level horizontal overflow",
@@ -1104,7 +1136,7 @@
     {
       "name": "th 900x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 900x900 no page-level horizontal overflow",
@@ -1173,7 +1205,7 @@
     {
       "name": "en 900x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 900x900 no page-level horizontal overflow",
@@ -1242,7 +1274,7 @@
     {
       "name": "th 1080x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 1080x900 no page-level horizontal overflow",
@@ -1311,7 +1343,7 @@
     {
       "name": "en 1080x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 1080x900 no page-level horizontal overflow",
@@ -1380,7 +1412,7 @@
     {
       "name": "th 1200x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 1200x900 no page-level horizontal overflow",
@@ -1449,7 +1481,7 @@
     {
       "name": "en 1200x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 1200x900 no page-level horizontal overflow",
@@ -1518,7 +1550,7 @@
     {
       "name": "th 1440x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 1440x900 no page-level horizontal overflow",
@@ -1587,7 +1619,7 @@
     {
       "name": "en 1440x900 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 1440x900 no page-level horizontal overflow",
@@ -1656,7 +1688,7 @@
     {
       "name": "th 1600x1000 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "th 1600x1000 no page-level horizontal overflow",
@@ -1725,7 +1757,7 @@
     {
       "name": "en 1600x1000 static asset inventory",
       "status": "passed",
-      "detail": "total=9, visible=9"
+      "detail": "total=11, visible=11"
     },
     {
       "name": "en 1600x1000 no page-level horizontal overflow",
@@ -1795,7 +1827,7 @@
       "detail": "rgb(229, 233, 230)"
     },
     {
-      "name": "Brand filter shows three ijji cards",
+      "name": "Brand filter shows all five ijji cards across identity and pending-state families",
       "status": "passed"
     },
     {
@@ -1807,9 +1839,9 @@
       "status": "passed"
     },
     {
-      "name": "Landometer preview immediately autoplays paired full and quiet exact-runtime motifs",
+      "name": "Landometer v3 preview immediately autoplays paired full and quiet exact-runtime motifs with blue full ink and no wedge override",
       "status": "passed",
-      "detail": "{\"motifs\":[{\"kind\":\"dial\",\"quiet\":false,\"playing\":true,\"svgCount\":1,\"ariaHidden\":\"true\"},{\"kind\":\"dial\",\"quiet\":true,\"playing\":true,\"svgCount\":1,\"ariaHidden\":\"true\"}],\"captions\":[\"full\",\"quiet\"]}"
+      "detail": "{\"motifs\":[{\"kind\":\"dial\",\"quiet\":false,\"ink\":\"blue\",\"inlineWedge\":\"\",\"playing\":true,\"svgCount\":1,\"ariaHidden\":\"true\"},{\"kind\":\"dial\",\"quiet\":true,\"ink\":null,\"inlineWedge\":\"\",\"playing\":true,\"svgCount\":1,\"ariaHidden\":\"true\"}],\"captions\":[\"full\",\"quiet\"]}"
     },
     {
       "name": "Landometer full and quiet motifs auto-replay together after about three seconds",
@@ -1857,9 +1889,9 @@
       "detail": "{\"kinds\":[\"logo\",\"logo\"],\"quietCount\":1,\"playingCount\":2}"
     },
     {
-      "name": "Landometer logo preview settles to the exact static final state after both variants finish",
+      "name": "Landometer v3 logo preview settles at 3.4 seconds with all 10 full and 14 quiet paths intact",
       "status": "passed",
-      "detail": "{\"playingCount\":0,\"status\":\"ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป\",\"fullPathCount\":10,\"outerSkyStroke\":\"rgb(89, 210, 254)\",\"outerSkyRight\":413.5}"
+      "detail": "{\"playingCount\":0,\"status\":\"ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป\",\"fullPathCount\":10,\"quietPathCount\":14,\"outerSkyStroke\":\"rgb(89, 210, 254)\",\"outerSkyRight\":413.5}"
     },
     {
       "name": "Landometer logo settled screenshot visibly paints the outer-sky quadrant",
@@ -1871,7 +1903,7 @@
       "status": "passed"
     },
     {
-      "name": "Landometer logo full and quiet auto-replay together after the final-state hold",
+      "name": "Landometer logo full and quiet auto-replay together at the 6.0-second showcase interval",
       "status": "passed",
       "detail": "{\"playingCount\":2,\"status\":\"กำลังประกอบ full + quiet · เมื่อครบแล้วจะค้างท่าสุดท้ายให้ตรวจ\"}"
     },
@@ -1896,13 +1928,63 @@
       "status": "passed"
     },
     {
+      "name": "ijji full+tagline preview loads the exact runtime once and immediately plays with the supplied attributes",
+      "status": "passed",
+      "detail": "{\"count\":1,\"runtimeScripts\":[\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0\"],\"defined\":true,\"manual\":true,\"loop\":true,\"notagline\":false,\"surface\":\"brand-blue\",\"bounce\":\"playful\",\"assets\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/\",\"duration\":9,\"currentTime\":0.015600000023841858,\"playing\":true,\"viewBox\":\"556 433.1 890.7 1086.9\",\"ariaLabel\":\"ijji — Your business buddy around the corner\",\"rectFill\":\"#1D4497\",\"circles\":4,\"images\":[\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/i-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/jj.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/i-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-3.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-3.png\"],\"fallback\":{\"src\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\",\"alt\":\"ijji — Your business buddy around the corner\",\"complete\":true,\"naturalWidth\":891}}"
+    },
+    {
+      "name": "ijji full+tagline audience frame uses the source viewBox, Brand Blue surface, four heads, and all nine authored image layers",
+      "status": "passed",
+      "detail": "{\"viewBox\":\"556 433.1 890.7 1086.9\",\"ariaLabel\":\"ijji — Your business buddy around the corner\",\"rectFill\":\"#1D4497\",\"circles\":4,\"images\":[\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/i-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/jj.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/i-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-3.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-3.png\"]}"
+    },
+    {
+      "name": "ijji full+tagline component carries the exact accessible final-frame fallback",
+      "status": "passed",
+      "detail": "{\"src\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\",\"alt\":\"ijji — Your business buddy around the corner\",\"complete\":true,\"naturalWidth\":891}"
+    },
+    {
+      "name": "ijji full+tagline preview auto-replays 400 ms after the authored 9-second final frame",
+      "status": "passed",
+      "detail": "{\"starts\":2,\"ends\":1,\"currentTime\":0.21390000000000145,\"playing\":true,\"loop\":true}"
+    },
+    {
+      "name": "Pausing ijji full+tagline removes the loop and lands on the complete authored final logo",
+      "status": "passed",
+      "detail": "{\"currentTime\":9,\"duration\":9,\"playing\":false,\"loop\":false,\"pieceOpacity\":[\"1\",\"1\",\"1\"],\"wordOpacity\":[\"1\",\"1\",\"1\",\"1\",\"1\",\"1\"],\"cancelDisabled\":true,\"status\":\"หยุด auto replay แล้ว · แสดงโลโก้ที่ประกอบครบ\"}"
+    },
+    {
+      "name": "ijji mark-only preview reuses the single runtime and immediately plays the compact supplied sequence",
+      "status": "passed",
+      "detail": "{\"runtimeScriptCount\":1,\"manual\":true,\"loop\":true,\"notagline\":true,\"surface\":null,\"bounce\":\"extra\",\"assets\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/\",\"duration\":6.4,\"currentTime\":0.015600000047685171,\"playing\":true,\"viewBox\":\"598 433.1 848.7 839.9\",\"ariaLabel\":\"ijji\",\"rectFill\":\"none\",\"circles\":4,\"hiddenWords\":6,\"fallback\":{\"src\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\",\"alt\":\"ijji\",\"complete\":true,\"naturalWidth\":849}}"
+    },
+    {
+      "name": "ijji mark-only audience frame uses the compact source viewBox, hides all tagline layers, and carries its final fallback",
+      "status": "passed",
+      "detail": "{\"runtimeScriptCount\":1,\"manual\":true,\"loop\":true,\"notagline\":true,\"surface\":null,\"bounce\":\"extra\",\"assets\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/\",\"duration\":6.4,\"currentTime\":0.015600000047685171,\"playing\":true,\"viewBox\":\"598 433.1 848.7 839.9\",\"ariaLabel\":\"ijji\",\"rectFill\":\"none\",\"circles\":4,\"hiddenWords\":6,\"fallback\":{\"src\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\",\"alt\":\"ijji\",\"complete\":true,\"naturalWidth\":849}}"
+    },
+    {
+      "name": "Pausing ijji mark-only removes the loop and lands on the complete authored mark",
+      "status": "passed",
+      "detail": "{\"currentTime\":6.4,\"duration\":6.4,\"playing\":false,\"loop\":false,\"pieceOpacity\":[\"1\",\"1\",\"1\"],\"hiddenWords\":6,\"status\":\"หยุด auto replay แล้ว · แสดงโลโก้ที่ประกอบครบ\"}"
+    },
+    {
       "name": "Copy-code action writes canonical Landometer snippet",
       "status": "passed"
     },
     {
-      "name": "Logo copy-code action preserves the approved blue ink, official wedge, and 1.1.3 runtime contract",
+      "name": "Logo copy-code action preserves the authored v3 blue-ink contract without a legacy wedge override",
       "status": "passed",
-      "detail": "<link rel=\"stylesheet\" href=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.1.3\">\n<script src=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.1.3\" defer></script>\n<lm-motif kind=\"logo\" ink=\"blue\" style=\"--lm-wedge:#0195CB\"></lm-motif>"
+      "detail": "<link rel=\"stylesheet\" href=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.2.0\">\n<script src=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.2.0\" defer></script>\n<lm-motif kind=\"logo\" ink=\"blue\"></lm-motif>"
+    },
+    {
+      "name": "ijji full+tagline copy snippet preserves exact source settings and finite-once production playback",
+      "status": "passed",
+      "detail": "<script src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0\" defer></script>\n<ijji-logo-sting surface=\"brand-blue\" bounce=\"playful\" assets=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/\">\n  <img src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\" alt=\"ijji — Your business buddy around the corner\">\n</ijji-logo-sting>"
+    },
+    {
+      "name": "ijji mark-only copy snippet preserves exact compact settings and finite-once production playback",
+      "status": "passed",
+      "detail": "<script src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0\" defer></script>\n<ijji-logo-sting notagline bounce=\"extra\" assets=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/\">\n  <img src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\" alt=\"ijji\">\n</ijji-logo-sting>"
     },
     {
       "name": "PNG export keeps deterministic filename",
@@ -1917,17 +1999,17 @@
     {
       "name": "390x844 dark-mode logo preview reaches the complete held final state",
       "status": "passed",
-      "detail": "{\"theme\":\"dark\",\"status\":\"ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป\",\"playingCount\":0,\"fullInk\":\"blue\",\"fullWedgeProperty\":\"#0195CB\",\"fullPathCount\":10,\"quietPathCount\":9,\"pin\":[29,68,151,255],\"innerStrokes\":[[210,86,106,255],[210,164,55,255],[14,185,155,255],[77,182,233,255]],\"wedge\":[1,149,203,255],\"quietInk\":[89,210,254,255],\"raw\":{\"pin\":\"rgb(29, 68, 151)\",\"innerStrokes\":[\"color(srgb 0.822745 0.335686 0.416471)\",\"color(srgb 0.822745 0.643137 0.215686)\",\"color(srgb 0.0541176 0.724706 0.607843)\",\"color(srgb 0.301961 0.712157 0.915294)\"],\"wedge\":\"rgb(1, 149, 203)\",\"quietInk\":\"rgb(89, 210, 254)\"}}"
+      "detail": "{\"theme\":\"dark\",\"status\":\"ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป\",\"playingCount\":0,\"fullInk\":\"blue\",\"fullInlineWedgeProperty\":\"\",\"fullWedgeProperty\":\"color-mix(in lch, #59D2FE 48%, #1D4497)\",\"fullPathCount\":10,\"quietPathCount\":14,\"pin\":[29,68,151,255],\"innerStrokes\":[[210,86,106,255],[210,164,55,255],[14,185,155,255],[77,182,233,255]],\"wedge\":[31,135,206,255],\"quietInk\":[89,210,254,255],\"raw\":{\"pin\":\"rgb(29, 68, 151)\",\"innerStrokes\":[\"color(srgb 0.822745 0.335686 0.416471)\",\"color(srgb 0.822745 0.643137 0.215686)\",\"color(srgb 0.0541176 0.724706 0.607843)\",\"color(srgb 0.301961 0.712157 0.915294)\"],\"wedge\":\"lch(53.4545 46.5873 258.5)\",\"quietInk\":\"rgb(89, 210, 254)\"}}"
     },
     {
-      "name": "390x844 dark-mode full logo host locks blue ink and the official cyan wedge",
+      "name": "390x844 dark-mode full logo uses v3 blue ink and the authored derived wedge without a legacy override",
       "status": "passed",
-      "detail": "{\"ink\":\"blue\",\"wedge\":\"#0195CB\"}"
+      "detail": "{\"ink\":\"blue\",\"inlineWedge\":\"\",\"computedWedge\":\"color-mix(in lch, #59D2FE 48%, #1D4497)\"}"
     },
     {
-      "name": "390x844 dark-mode logo pair retains all 10 full and 9 quiet paths",
+      "name": "390x844 dark-mode logo pair retains all 10 full and 14 quiet v3 paths",
       "status": "passed",
-      "detail": "{\"full\":10,\"quiet\":9}"
+      "detail": "{\"full\":10,\"quiet\":14}"
     },
     {
       "name": "390x844 dark-mode full logo pin computes to Brand Blue rgb(29, 68, 151)",
@@ -1935,9 +2017,9 @@
       "detail": "{\"rgba\":[29,68,151,255],\"raw\":\"rgb(29, 68, 151)\"}"
     },
     {
-      "name": "390x844 dark-mode full logo wedge computes to official rgb(1, 149, 203)",
+      "name": "390x844 dark-mode full logo wedge computes from v3 source tokens to rgb(31, 135, 206)",
       "status": "passed",
-      "detail": "{\"rgba\":[1,149,203,255],\"raw\":\"rgb(1, 149, 203)\"}"
+      "detail": "{\"rgba\":[31,135,206,255],\"raw\":\"lch(53.4545 46.5873 258.5)\"}"
     },
     {
       "name": "390x844 dark-mode full logo inner strokes compute to the four approved composite colors",
@@ -1980,6 +2062,16 @@
       "detail": "{\"open\":true,\"motifCount\":2,\"quietCount\":1,\"overflows\":[{\"className\":\"preview-dialog\",\"delta\":0},{\"className\":\"dialog-body\",\"delta\":0},{\"className\":\"dialog-stage\",\"delta\":0},{\"className\":\"dialog-motif-pair\",\"delta\":0}],\"withinViewport\":true,\"pageOverflow\":0}"
     },
     {
+      "name": "ijji tagline preview at 320px preserves its audience width, fallback, and horizontal containment",
+      "status": "passed",
+      "detail": "{\"open\":true,\"dialogWithinViewport\":true,\"logoWidth\":320,\"pageOverflow\":0,\"overflows\":[{\"name\":\"preview-dialog\",\"delta\":0},{\"name\":\"div\",\"delta\":0},{\"name\":\"preview-stage\",\"delta\":0},{\"name\":\"ijji-logo-sting\",\"delta\":0}],\"fallbackLoaded\":true}"
+    },
+    {
+      "name": "ijji mark preview at 360px preserves its audience width, fallback, and horizontal containment",
+      "status": "passed",
+      "detail": "{\"open\":true,\"dialogWithinViewport\":true,\"logoWidth\":296,\"pageOverflow\":0,\"overflows\":[{\"name\":\"preview-dialog\",\"delta\":0},{\"name\":\"div\",\"delta\":0},{\"name\":\"preview-stage\",\"delta\":0},{\"name\":\"ijji-logo-sting\",\"delta\":0}],\"fallbackLoaded\":true}"
+    },
+    {
       "name": "ijji preview stops automatically at state timeout",
       "status": "passed"
     },
@@ -1998,9 +2090,19 @@
       "detail": "none"
     },
     {
+      "name": "Reduced motion presents the complete static ijji tagline final frame with replay controls hidden",
+      "status": "passed",
+      "detail": "{\"currentTime\":9,\"duration\":9,\"playing\":false,\"loop\":false,\"pieceOpacity\":[\"1\",\"1\",\"1\"],\"wordOpacity\":[\"1\",\"1\",\"1\",\"1\",\"1\",\"1\"],\"hiddenWords\":0,\"replayHidden\":true,\"pauseHidden\":true,\"status\":\"แสดงโลโก้ที่ประกอบครบ · ปิด animation ตามการตั้งค่า reduced motion\"}"
+    },
+    {
+      "name": "Reduced motion presents the complete static ijji mark final frame with replay controls hidden",
+      "status": "passed",
+      "detail": "{\"currentTime\":6.4,\"duration\":6.4,\"playing\":false,\"loop\":false,\"pieceOpacity\":[\"1\",\"1\",\"1\"],\"wordOpacity\":[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\"],\"hiddenWords\":6,\"replayHidden\":true,\"pauseHidden\":true,\"status\":\"แสดงโลโก้ที่ประกอบครบ · ปิด animation ตามการตั้งค่า reduced motion\"}"
+    },
+    {
       "name": "No-JS baseline keeps learning content and direct downloads without dead enhancement controls",
       "status": "passed",
-      "detail": "{\"h1\":1,\"cards\":9,\"downloads\":18,\"hero\":true,\"overflow\":0,\"visibleEnhancedControls\":0,\"notice\":true,\"noticeBackground\":\"rgb(255, 241, 209)\",\"noticeColor\":\"rgb(166, 74, 0)\"}"
+      "detail": "{\"h1\":1,\"cards\":11,\"downloads\":23,\"hero\":true,\"overflow\":0,\"visibleEnhancedControls\":0,\"notice\":true,\"noticeBackground\":\"rgb(255, 241, 209)\",\"noticeColor\":\"rgb(166, 74, 0)\"}"
     },
     {
       "name": "No-JS mobile baseline has no horizontal overflow",
@@ -2010,12 +2112,12 @@
     {
       "name": "Thai text scale 130% preserves page contract",
       "status": "passed",
-      "detail": "{\"overflow\":0,\"h1Visible\":true,\"cards\":9,\"offenders\":[]}"
+      "detail": "{\"overflow\":0,\"h1Visible\":true,\"cards\":11,\"offenders\":[]}"
     },
     {
       "name": "Thai text scale 200% preserves page contract",
       "status": "passed",
-      "detail": "{\"overflow\":0,\"h1Visible\":true,\"cards\":9,\"offenders\":[]}"
+      "detail": "{\"overflow\":0,\"h1Visible\":true,\"cards\":11,\"offenders\":[]}"
     }
   ]
 }

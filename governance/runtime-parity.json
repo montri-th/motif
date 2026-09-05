@@ -1,1832 +1,2152 @@
 {
-  "schemaVersion": "motif-library-runtime-parity/1.0",
-  "executedAt": "2026-09-05T12:17:40.316Z",
-  "artifactRelease": "1.1.3",
+  "schemaVersion": "motif-library-runtime-parity/1.1",
+  "executedAt": "2026-09-05T18:36:06.219Z",
+  "artifactRelease": "1.2.0",
   "artifactRoot": ".",
-  "browser": "system Google Chrome through Playwright",
-  "evidenceBoundary": "Geometry and lifecycle behavior are sourced from the byte-exact owner-supplied v2 runtime; its raw light-theme default remains Brand Blue with the authored LCH-derived #1F87CE wedge. The 1.1.3 artifact does not modify those source bytes: the showcase host explicitly selects ink=blue and --lm-wedge:#0195CB, producing the approved Brand Blue, four inner composite, four outer energy, and official cyan-wedge palette in both light and dark themes. Static SVG parity is evaluated against that artifact-delivered presentation. Exact normalized overlap paths and non-target static hashes are verified; optional replay/loop API presence is byte-parity evidence, not downstream authorization, and palette/region parity does not claim master-PNG raster pixel identity.",
+  "browser": "152.0.7977.82",
+  "evidenceBoundary": "Landometer parity is evaluated against the byte-exact owner-supplied v3 CSS/JavaScript and all 12 deterministic final-state SVG projections. Full previews select ink=blue only; they do not override the v3 token-derived #1F87CE wedge. Runtime timelines are measured from browser CSS animations and both logo variants finish before the library's 3400 ms settle. ijji parity covers the byte-exact round-3 runtime, exact source-layer and final-PNG inventory, full 9.0 s and mark-only 6.4 s lifecycle, reduced-motion final state, and browser-rendered final fidelity. Small raster differences at antialiased edges are allowed; surrounding library UI and dialog-only replay are integration concerns rather than source-animation changes.",
+  "landometer": {
+    "sourceHashes": {
+      "assets/landometer/landometer-motifs.css": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+      "assets/landometer/landometer-motifs.js": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+      "assets/ijji/logo-sting/ijji-logo-sting.js": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e"
+    },
+    "expectedTimelinesMs": {
+      "dial-full": 1260,
+      "dial-quiet": 1260,
+      "slice-full": 1220,
+      "slice-quiet": 1220,
+      "rings-full": 1660,
+      "rings-quiet": 1820,
+      "layers-full": 1460,
+      "layers-quiet": 1320,
+      "cultivate-full": 2260,
+      "cultivate-quiet": 2080,
+      "logo-full": 2870,
+      "logo-quiet": 3360
+    },
+    "computed": {
+      "kinds": [
+        "dial",
+        "slice",
+        "rings",
+        "layers",
+        "cultivate",
+        "logo"
+      ],
+      "variants": {
+        "dial-full": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M187 200 A113 113 0 0 1 220.10 120.10\" fill=\"none\" stroke=\"var(--energy-coral,#FF5A5F)\" stroke-width=\"34\" stroke-dasharray=\"90\" class=\"lm-draw lm-sweep\" style=\"--lm-delay:0ms\"></path><path d=\"M220.10 120.10 A113 113 0 0 1 300 87\" fill=\"none\" stroke=\"var(--energy-yellow,#FFBC1F)\" stroke-width=\"34\" stroke-dasharray=\"90\" class=\"lm-draw lm-sweep\" style=\"--lm-delay:150ms\"></path><path d=\"M300 87 A113 113 0 0 1 379.90 120.10\" fill=\"none\" stroke=\"var(--energy-mint,#0AD69C)\" stroke-width=\"34\" stroke-dasharray=\"90\" class=\"lm-draw lm-sweep\" style=\"--lm-delay:300ms\"></path><g class=\"lm-pulse\" style=\"--lm-delay:840ms\"><path d=\"M379.90 120.10 A113 113 0 0 1 413 200\" fill=\"none\" stroke=\"var(--energy-sky,#59D2FE)\" stroke-width=\"34\" stroke-dasharray=\"90\" class=\"lm-draw lm-sweep\" style=\"--lm-delay:450ms\"></path></g><rect x=\"170\" y=\"210\" width=\"260\" height=\"8\" fill=\"currentColor\" class=\"lm-growx-c\" style=\"--lm-delay:700ms\"></rect></svg>",
+          "geometryCount": 5,
+          "pathCount": 4,
+          "rectCount": 1,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": null,
+              "stroke": "#FF5A5F",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#FFBC1F",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#0AD69C",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#1D4497",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 10,
+          "animations": [
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 360
+            },
+            {
+              "name": "lm-sweep",
+              "endTimeMs": 520
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 510
+            },
+            {
+              "name": "lm-sweep",
+              "endTimeMs": 670
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 659.9999999999999
+            },
+            {
+              "name": "lm-sweep",
+              "endTimeMs": 820.0000000000001
+            },
+            {
+              "name": "lm-pulse",
+              "endTimeMs": 1260
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 810
+            },
+            {
+              "name": "lm-sweep",
+              "endTimeMs": 970
+            },
+            {
+              "name": "lm-grow-x",
+              "endTimeMs": 1060
+            }
+          ],
+          "timelineEndMs": 1260
+        },
+        "dial-quiet": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M187 200 A113 113 0 0 1 220.10 120.10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"6\" stroke-opacity=\"0.4\" stroke-dasharray=\"90\" class=\"lm-draw lm-sweep\" style=\"--lm-delay:0ms\"></path><path d=\"M220.10 120.10 A113 113 0 0 1 300 87\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"6\" stroke-opacity=\"0.4\" stroke-dasharray=\"90\" class=\"lm-draw lm-sweep\" style=\"--lm-delay:150ms\"></path><path d=\"M300 87 A113 113 0 0 1 379.90 120.10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"6\" stroke-opacity=\"0.4\" stroke-dasharray=\"90\" class=\"lm-draw lm-sweep\" style=\"--lm-delay:300ms\"></path><g class=\"lm-pulse\" style=\"--lm-delay:840ms\"><path d=\"M379.90 120.10 A113 113 0 0 1 413 200\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"6\" stroke-dasharray=\"90\" class=\"lm-draw lm-sweep\" style=\"--lm-delay:450ms\"></path></g><rect x=\"170\" y=\"210\" width=\"260\" height=\"2\" fill=\"currentColor\" class=\"lm-growx-c\" style=\"--lm-delay:700ms\"></rect></svg>",
+          "geometryCount": 5,
+          "pathCount": 4,
+          "rectCount": 1,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.4"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.4"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.4"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 10,
+          "animations": [
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 360
+            },
+            {
+              "name": "lm-sweep",
+              "endTimeMs": 520
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 510
+            },
+            {
+              "name": "lm-sweep",
+              "endTimeMs": 670
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 659.9999999999999
+            },
+            {
+              "name": "lm-sweep",
+              "endTimeMs": 820.0000000000001
+            },
+            {
+              "name": "lm-pulse",
+              "endTimeMs": 1260
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 810
+            },
+            {
+              "name": "lm-sweep",
+              "endTimeMs": 970
+            },
+            {
+              "name": "lm-grow-x",
+              "endTimeMs": 1060
+            }
+          ],
+          "timelineEndMs": 1260
+        },
+        "slice-full": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M300 150 L396 150 A96 96 0 1 1 300 54 Z\" fill=\"currentColor\" class=\"lm-disc lm-radiate\"></path><path d=\"M300 150 L396 150 A96 96 0 0 0 300 54 Z\" fill=\"var(--energy-sky,#59D2FE)\" class=\"lm-step\"></path></svg>",
+          "geometryCount": 2,
+          "pathCount": 2,
+          "rectCount": 0,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": "#1D4497",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 3,
+          "animations": [
+            {
+              "name": "lm-radiate",
+              "endTimeMs": 760
+            },
+            {
+              "name": "lm-fade",
+              "endTimeMs": 760
+            },
+            {
+              "name": "lm-step-wiggle",
+              "endTimeMs": 1220
+            }
+          ],
+          "timelineEndMs": 1220
+        },
+        "slice-quiet": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M300 150 L396 150 A96 96 0 1 1 300 54 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-opacity=\".4\" class=\"lm-disc lm-radiate\"></path><path d=\"M300 150 L396 150 A96 96 0 0 0 300 54 Z\" fill=\"currentColor\" fill-opacity=\".56\" class=\"lm-step\"></path></svg>",
+          "geometryCount": 2,
+          "pathCount": 2,
+          "rectCount": 0,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.4"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "0.56",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 3,
+          "animations": [
+            {
+              "name": "lm-radiate",
+              "endTimeMs": 760
+            },
+            {
+              "name": "lm-fade",
+              "endTimeMs": 760
+            },
+            {
+              "name": "lm-step-wiggle",
+              "endTimeMs": 1220
+            }
+          ],
+          "timelineEndMs": 1220
+        },
+        "rings-full": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M80 30 A230 230 0 0 1 310 260 L270 260 A190 190 0 0 0 80 70 Z\" fill=\"var(--energy-sky,#59D2FE)\" class=\"lm-radial lm-radiate\" style=\"--lm-delay:900ms\"></path><path d=\"M80 80 A180 180 0 0 1 260 260 L220 260 A140 140 0 0 0 80 120 Z\" fill=\"var(--energy-mint,#0AD69C)\" class=\"lm-radial lm-radiate\" style=\"--lm-delay:750ms\"></path><path d=\"M80 130 A130 130 0 0 1 210 260 L170 260 A90 90 0 0 0 80 170 Z\" fill=\"var(--energy-yellow,#FFBC1F)\" class=\"lm-radial lm-radiate\" style=\"--lm-delay:600ms\"></path><path d=\"M80 180 A80 80 0 0 1 160 260 L120 260 A40 40 0 0 0 80 220 Z\" fill=\"var(--energy-coral,#FF5A5F)\" class=\"lm-radial lm-radiate\" style=\"--lm-delay:450ms\"></path><path d=\"M80 230 A30 30 0 0 1 110 260 L80 260 Z\" fill=\"currentColor\" class=\"lm-drop\" style=\"--lm-delay:0ms\"></path></svg>",
+          "geometryCount": 5,
+          "pathCount": 5,
+          "rectCount": 0,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#0AD69C",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#FFBC1F",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#FF5A5F",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#1D4497",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 5,
+          "animations": [
+            {
+              "name": "lm-radiate",
+              "endTimeMs": 1660.0000000000002
+            },
+            {
+              "name": "lm-radiate",
+              "endTimeMs": 1510
+            },
+            {
+              "name": "lm-radiate",
+              "endTimeMs": 1359.9999999999998
+            },
+            {
+              "name": "lm-radiate",
+              "endTimeMs": 1210
+            },
+            {
+              "name": "lm-drop",
+              "endTimeMs": 920
+            }
+          ],
+          "timelineEndMs": 1660.0000000000002
+        },
+        "rings-quiet": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M80 30 A230 230 0 0 1 310 260 L270 260 A190 190 0 0 0 80 70 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-opacity=\".4\" class=\"lm-radial lm-approach\" style=\"--lm-delay:900ms\"></path><path d=\"M80 80 A180 180 0 0 1 260 260 L220 260 A140 140 0 0 0 80 120 Z\" fill=\"currentColor\" fill-opacity=\"0.24\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-opacity=\".4\" class=\"lm-radial lm-approach\" style=\"--lm-delay:750ms\"></path><path d=\"M80 130 A130 130 0 0 1 210 260 L170 260 A90 90 0 0 0 80 170 Z\" fill=\"currentColor\" fill-opacity=\"0.48\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-opacity=\".4\" class=\"lm-radial lm-approach\" style=\"--lm-delay:600ms\"></path><path d=\"M80 180 A80 80 0 0 1 160 260 L120 260 A40 40 0 0 0 80 220 Z\" fill=\"currentColor\" fill-opacity=\"0.72\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-opacity=\".4\" class=\"lm-radial lm-approach\" style=\"--lm-delay:450ms\"></path><path d=\"M80 230 A30 30 0 0 1 110 260 L80 260 Z\" fill=\"currentColor\" class=\"lm-drop\" style=\"--lm-delay:0ms\"></path></svg>",
+          "geometryCount": 5,
+          "pathCount": 5,
+          "rectCount": 0,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.4"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.24",
+              "strokeOpacity": "0.4"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.48",
+              "strokeOpacity": "0.4"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.72",
+              "strokeOpacity": "0.4"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 5,
+          "animations": [
+            {
+              "name": "lm-approach",
+              "endTimeMs": 1820
+            },
+            {
+              "name": "lm-approach",
+              "endTimeMs": 1670
+            },
+            {
+              "name": "lm-approach",
+              "endTimeMs": 1520
+            },
+            {
+              "name": "lm-approach",
+              "endTimeMs": 1370
+            },
+            {
+              "name": "lm-drop",
+              "endTimeMs": 920
+            }
+          ],
+          "timelineEndMs": 1820
+        },
+        "layers-full": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><rect x=\"60\" y=\"120\" width=\"480\" height=\"64\" fill=\"currentColor\" class=\"lm-growx\" style=\"--lm-dur:920ms;--lm-ease:var(--motion-ease-settle,cubic-bezier(.2,.9,.25,1.08))\"></rect><rect x=\"60\" y=\"100\" width=\"120\" height=\"20\" fill=\"var(--energy-coral,#FF5A5F)\" class=\"lm-land\" style=\"--lm-delay:300ms\"></rect><rect x=\"180\" y=\"100\" width=\"120\" height=\"20\" fill=\"var(--energy-yellow,#FFBC1F)\" class=\"lm-land\" style=\"--lm-delay:420ms\"></rect><rect x=\"300\" y=\"100\" width=\"120\" height=\"20\" fill=\"var(--energy-mint,#0AD69C)\" class=\"lm-land\" style=\"--lm-delay:540ms\"></rect><rect x=\"420\" y=\"100\" width=\"120\" height=\"20\" fill=\"var(--energy-sky,#59D2FE)\" class=\"lm-land\" style=\"--lm-delay:660ms\"></rect><g fill-opacity=\".56\" class=\"lm-settle\"><rect x=\"84\" y=\"148\" width=\"108\" height=\"36\" fill=\"var(--energy-coral,#FF5A5F)\"></rect><rect x=\"192\" y=\"148\" width=\"108\" height=\"36\" fill=\"var(--energy-yellow,#FFBC1F)\"></rect><rect x=\"300\" y=\"148\" width=\"108\" height=\"36\" fill=\"var(--energy-mint,#0AD69C)\"></rect><rect x=\"408\" y=\"148\" width=\"108\" height=\"36\" fill=\"var(--energy-sky,#59D2FE)\"></rect></g></svg>",
+          "geometryCount": 9,
+          "pathCount": 0,
+          "rectCount": 9,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": "#1D4497",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#FF5A5F",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#FFBC1F",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#0AD69C",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#FF5A5F",
+              "stroke": null,
+              "fillOpacity": "0.56",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#FFBC1F",
+              "stroke": null,
+              "fillOpacity": "0.56",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#0AD69C",
+              "stroke": null,
+              "fillOpacity": "0.56",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "0.56",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 6,
+          "animations": [
+            {
+              "name": "lm-grow-x",
+              "endTimeMs": 920
+            },
+            {
+              "name": "lm-land",
+              "endTimeMs": 860.0000000000001
+            },
+            {
+              "name": "lm-land",
+              "endTimeMs": 980
+            },
+            {
+              "name": "lm-land",
+              "endTimeMs": 1100
+            },
+            {
+              "name": "lm-land",
+              "endTimeMs": 1220.0000000000002
+            },
+            {
+              "name": "lm-settle-down",
+              "endTimeMs": 1460
+            }
+          ],
+          "timelineEndMs": 1460
+        },
+        "layers-quiet": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"300\" cy=\"142\" r=\"42\" fill=\"currentColor\" fill-opacity=\"0.72\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:0px;--lm-delay:0ms\"></circle><circle cx=\"250.5\" cy=\"142\" r=\"42\" fill=\"currentColor\" fill-opacity=\"0.54\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:49.5px;--lm-delay:150ms\"></circle><circle cx=\"349.5\" cy=\"142\" r=\"42\" fill=\"currentColor\" fill-opacity=\"0.54\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:-49.5px;--lm-delay:150ms\"></circle><circle cx=\"201\" cy=\"142\" r=\"42\" fill=\"currentColor\" fill-opacity=\"0.36\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:99px;--lm-delay:300ms\"></circle><circle cx=\"399\" cy=\"142\" r=\"42\" fill=\"currentColor\" fill-opacity=\"0.36\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:-99px;--lm-delay:300ms\"></circle><circle cx=\"151.5\" cy=\"142\" r=\"42\" fill=\"currentColor\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:148.5px;--lm-delay:450ms\"></circle><circle cx=\"448.5\" cy=\"142\" r=\"42\" fill=\"currentColor\" fill-opacity=\"0.18\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:-148.5px;--lm-delay:450ms\"></circle><circle cx=\"102\" cy=\"142\" r=\"42\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:198px;--lm-delay:600ms\"></circle><circle cx=\"498\" cy=\"142\" r=\"42\" fill=\"none\" stroke=\"currentColor\" stroke-opacity=\".56\" stroke-width=\"1.5\" class=\"lm-unfold\" style=\"--lm-dx:-198px;--lm-delay:600ms\"></circle></svg>",
+          "geometryCount": 9,
+          "pathCount": 0,
+          "rectCount": 0,
+          "circleCount": 9,
+          "paints": [
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.72",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.54",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.54",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.36",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.36",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.18",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.18",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            }
+          ],
+          "animationCount": 9,
+          "animations": [
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 720
+            },
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 870
+            },
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 870
+            },
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 1020
+            },
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 1020
+            },
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 1170
+            },
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 1170
+            },
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 1319.9999999999998
+            },
+            {
+              "name": "lm-unfold",
+              "endTimeMs": 1319.9999999999998
+            }
+          ],
+          "timelineEndMs": 1319.9999999999998
+        },
+        "cultivate-full": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><rect x=\"120\" y=\"149\" width=\"360\" height=\"2\" fill=\"currentColor\" class=\"lm-growx-c\"></rect><g class=\"lm-sway\" style=\"transform-origin:300px 150px;--lm-delay:1500ms\"><circle cx=\"300\" cy=\"140\" r=\"9\" fill=\"currentColor\" class=\"lm-drop\" style=\"--lm-delay:120ms\"></circle><path d=\"M300 131 L288 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:1200ms\"></path><path d=\"M300 131 L312 106\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:1200ms\"></path></g><path d=\"M200 150 A100 100 0 0 0 229.29 220.71\" fill=\"none\" stroke=\"var(--energy-coral,#FF5A5F)\" stroke-width=\"16\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:600ms\"></path><path d=\"M229.29 220.71 A100 100 0 0 0 300 250\" fill=\"none\" stroke=\"var(--energy-yellow,#FFBC1F)\" stroke-width=\"16\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:750ms\"></path><path d=\"M300 250 A100 100 0 0 0 370.71 220.71\" fill=\"none\" stroke=\"var(--energy-mint,#0AD69C)\" stroke-width=\"16\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:900ms\"></path><path d=\"M370.71 220.71 A100 100 0 0 0 400 150\" fill=\"none\" stroke=\"var(--energy-sky,#59D2FE)\" stroke-width=\"16\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:1050ms\"></path></svg>",
+          "geometryCount": 8,
+          "pathCount": 6,
+          "rectCount": 1,
+          "circleCount": 1,
+          "paints": [
+            {
+              "fill": "#1D4497",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#1D4497",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#1D4497",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#1D4497",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#FF5A5F",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#FFBC1F",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#0AD69C",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 9,
+          "animations": [
+            {
+              "name": "lm-grow-x",
+              "endTimeMs": 360
+            },
+            {
+              "name": "lm-sway",
+              "endTimeMs": 2260
+            },
+            {
+              "name": "lm-drop",
+              "endTimeMs": 1040
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1560
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1560
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 960
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1109.9999999999998
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1260
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1410.0000000000002
+            }
+          ],
+          "timelineEndMs": 2260
+        },
+        "cultivate-quiet": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><rect x=\"120\" y=\"199\" width=\"360\" height=\"2\" fill=\"currentColor\" class=\"lm-growx-c\"></rect><g stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\" stroke-opacity=\"0.56\" class=\"lm-sway\" style=\"transform-origin:180px 200px;--lm-delay:720ms\"><path d=\"M180 200 V172\" class=\"lm-growy\" style=\"--lm-delay:300ms\"></path><path d=\"M180 172 L170 154 M180 172 L190 154\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:540ms\"></path></g><g stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\" stroke-opacity=\"0.56\" class=\"lm-sway\" style=\"transform-origin:240px 200px;--lm-delay:870ms\"><path d=\"M240 200 V160\" class=\"lm-growy\" style=\"--lm-delay:450ms\"></path><path d=\"M240 160 L230 142 M240 160 L250 142\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:690ms\"></path></g><g stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\" stroke-opacity=\"0.56\" class=\"lm-sway\" style=\"transform-origin:300px 200px;--lm-delay:1020ms\"><path d=\"M300 200 V148\" class=\"lm-growy\" style=\"--lm-delay:600ms\"></path><path d=\"M300 148 L290 130 M300 148 L310 130\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:840ms\"></path></g><g stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\" stroke-opacity=\"0.56\" class=\"lm-sway\" style=\"transform-origin:360px 200px;--lm-delay:1170ms\"><path d=\"M360 200 V136\" class=\"lm-growy\" style=\"--lm-delay:750ms\"></path><path d=\"M360 136 L350 118 M360 136 L370 118\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:990ms\"></path></g><g stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\" stroke-opacity=\"1\" class=\"lm-sway\" style=\"transform-origin:420px 200px;--lm-delay:1320ms\"><path d=\"M420 200 V124\" class=\"lm-growy\" style=\"--lm-delay:900ms\"></path><path d=\"M420 124 L410 106 M420 124 L430 106\" stroke-dasharray=\"90\" class=\"lm-draw\" style=\"--lm-delay:1140ms\"></path></g></svg>",
+          "geometryCount": 11,
+          "pathCount": 10,
+          "rectCount": 1,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "0.56"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 16,
+          "animations": [
+            {
+              "name": "lm-grow-x",
+              "endTimeMs": 360
+            },
+            {
+              "name": "lm-sway",
+              "endTimeMs": 1480
+            },
+            {
+              "name": "lm-grow-y",
+              "endTimeMs": 720
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 900
+            },
+            {
+              "name": "lm-sway",
+              "endTimeMs": 1630
+            },
+            {
+              "name": "lm-grow-y",
+              "endTimeMs": 870
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1049.9999999999998
+            },
+            {
+              "name": "lm-sway",
+              "endTimeMs": 1780
+            },
+            {
+              "name": "lm-grow-y",
+              "endTimeMs": 1020
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1200
+            },
+            {
+              "name": "lm-sway",
+              "endTimeMs": 1930
+            },
+            {
+              "name": "lm-grow-y",
+              "endTimeMs": 1170
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1350
+            },
+            {
+              "name": "lm-sway",
+              "endTimeMs": 2080
+            },
+            {
+              "name": "lm-grow-y",
+              "endTimeMs": 1320
+            },
+            {
+              "name": "lm-draw90",
+              "endTimeMs": 1500
+            }
+          ],
+          "timelineEndMs": 2080
+        },
+        "logo-full": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M201 143 A99 99 0 0 1 399 143 A99 99 0 0 1 388.21 187.95 C367.78 228.04 328.12 265.17 300 286 C271.88 265.17 232.22 228.04 211.79 187.95 A99 99 0 0 1 201 143 Z\" fill=\"currentColor\" class=\"lm-pin\"></path><path d=\"M214.5 143 A85.5 85.5 0 0 1 239.54 82.54\" fill=\"none\" stroke-width=\"29\" class=\"lm-pop\" style=\"stroke:color-mix(in srgb, var(--energy-coral,#FF5A5F) 80%, currentColor);--lm-dx:-20.33px;--lm-dy:-8.42px;--lm-delay:600ms\"></path><path d=\"M239.28 82.81 A85.5 85.5 0 0 1 300 57.5\" fill=\"none\" stroke-width=\"29\" class=\"lm-pop\" style=\"stroke:color-mix(in srgb, var(--energy-yellow,#FFBC1F) 80%, currentColor);--lm-dx:-8.42px;--lm-dy:-20.33px;--lm-delay:680ms\"></path><path d=\"M299.63 57.5 A85.5 85.5 0 0 1 360.46 82.54\" fill=\"none\" stroke-width=\"29\" class=\"lm-pop\" style=\"stroke:color-mix(in srgb, var(--energy-mint,#0AD69C) 80%, currentColor);--lm-dx:8.42px;--lm-dy:-20.33px;--lm-delay:760ms\"></path><g class=\"lm-focus\" style=\"--lm-fx:41.57px;--lm-fy:-17.22px;--lm-delay:1910ms\"><path d=\"M360.19 82.28 A85.5 85.5 0 0 1 385.5 143\" fill=\"none\" stroke-width=\"29\" class=\"lm-pop\" style=\"stroke:color-mix(in srgb, var(--energy-sky,#59D2FE) 80%, currentColor);--lm-dx:20.33px;--lm-dy:-8.42px;--lm-delay:840ms\"></path></g><path d=\"M186.5 143 A113.5 113.5 0 0 1 219.74 62.74\" fill=\"none\" stroke-width=\"29\" class=\"lm-pop\" style=\"stroke:var(--energy-coral,#FF5A5F);--lm-dx:-20.33px;--lm-dy:-8.42px;--lm-delay:600ms\"></path><path d=\"M219.39 63.09 A113.5 113.5 0 0 1 300 29.5\" fill=\"none\" stroke-width=\"29\" class=\"lm-pop\" style=\"stroke:var(--energy-yellow,#FFBC1F);--lm-dx:-8.42px;--lm-dy:-20.33px;--lm-delay:680ms\"></path><path d=\"M299.5 29.5 A113.5 113.5 0 0 1 380.26 62.74\" fill=\"none\" stroke-width=\"29\" class=\"lm-pop\" style=\"stroke:var(--energy-mint,#0AD69C);--lm-dx:8.42px;--lm-dy:-20.33px;--lm-delay:760ms\"></path><g class=\"lm-focus\" style=\"--lm-fx:49.89px;--lm-fy:-20.66px;--lm-delay:1970ms\"><path d=\"M379.91 62.39 A113.5 113.5 0 0 1 413.5 143\" fill=\"none\" stroke-width=\"29\" class=\"lm-pop\" style=\"stroke:var(--energy-sky,#59D2FE);--lm-dx:20.33px;--lm-dy:-8.42px;--lm-delay:840ms\"></path></g><g class=\"lm-focus\" style=\"--lm-fx:33.26px;--lm-fy:-13.78px;--lm-fs:1.06;--lm-fr:3deg;--lm-delay:1850ms\"><path d=\"M300 143 L371.6 143 A71.6 71.6 0 0 0 350.63 92.37 Z\" fill=\"var(--lm-wedge, #3F93D1)\" class=\"lm-wedge\" style=\"--lm-delay:1150ms\"></path></g></svg>",
+          "geometryCount": 10,
+          "pathCount": 10,
+          "rectCount": 0,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": "#1D4497",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#D2566A",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#D2A437",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#0EB99B",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#4DB6E9",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#FF5A5F",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#FFBC1F",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#0AD69C",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#1F87CE",
+              "stroke": null,
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 13,
+          "animations": [
+            {
+              "name": "lm-pin-fall",
+              "endTimeMs": 700
+            },
+            {
+              "name": "lm-lay",
+              "endTimeMs": 1120
+            },
+            {
+              "name": "lm-lay",
+              "endTimeMs": 1200.0000000000002
+            },
+            {
+              "name": "lm-lay",
+              "endTimeMs": 1280
+            },
+            {
+              "name": "lm-focus-out",
+              "endTimeMs": 2810
+            },
+            {
+              "name": "lm-lay",
+              "endTimeMs": 1359.9999999999998
+            },
+            {
+              "name": "lm-lay",
+              "endTimeMs": 1120
+            },
+            {
+              "name": "lm-lay",
+              "endTimeMs": 1200.0000000000002
+            },
+            {
+              "name": "lm-lay",
+              "endTimeMs": 1280
+            },
+            {
+              "name": "lm-focus-out",
+              "endTimeMs": 2870
+            },
+            {
+              "name": "lm-lay",
+              "endTimeMs": 1359.9999999999998
+            },
+            {
+              "name": "lm-focus-out",
+              "endTimeMs": 2750
+            },
+            {
+              "name": "lm-wedge-pop",
+              "endTimeMs": 1750
+            }
+          ],
+          "timelineEndMs": 2870
+        },
+        "logo-quiet": {
+          "markup": "<svg viewBox=\"0 0 600 300\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M201 143 A99 99 0 0 1 399 143 A99 99 0 0 1 388.21 187.95 C367.78 228.04 328.12 265.17 300 286 C271.88 265.17 232.22 228.04 211.79 187.95 A99 99 0 0 1 201 143 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"700\" class=\"lm-pin-q\" style=\"--lm-dash:700\"></path><path d=\"M172 143 A128 128 0 0 1 390.51 52.49\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"302\" class=\"lm-drawv\" style=\"--lm-dash:302;--lm-dur:420ms;--lm-delay:820ms;\"></path><path d=\"M229 143 A71 71 0 0 1 350.2 92.8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"168\" class=\"lm-drawv\" style=\"--lm-dash:168;--lm-dur:420ms;--lm-delay:960ms;\"></path><path d=\"M172 143 H229\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"57\" class=\"lm-drawv\" style=\"--lm-dash:57;--lm-dur:300ms;--lm-delay:1030ms;\"></path><path d=\"M249.8 92.8 L209.49 52.49\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"57\" class=\"lm-drawv\" style=\"--lm-dash:57;--lm-dur:300ms;--lm-delay:1150ms;\"></path><path d=\"M300 72 V15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"57\" class=\"lm-drawv\" style=\"--lm-dash:57;--lm-dur:300ms;--lm-delay:1150ms;\"></path><path d=\"M350.2 92.8 L390.51 52.49\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"57\" class=\"lm-drawv\" style=\"--lm-dash:57;--lm-dur:300ms;--lm-delay:1150ms;\"></path><path d=\"M371 143 H399\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"28\" class=\"lm-drawv lm-hide\" style=\"--lm-dash:28;--lm-dur:300ms;--lm-delay:1150ms;--lm-swap-delay:2340ms;--lm-swap-dur:1020ms;\"></path><path d=\"M399 143 H428 A128 128 0 0 0 390.51 52.49\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-dasharray=\"130\" class=\"lm-drawv lm-hide\" style=\"--lm-dash:130;--lm-dur:420ms;--lm-delay:1150ms;--lm-swap-delay:2340ms;--lm-swap-dur:1020ms;\"></path><g class=\"lm-focus\" style=\"--lm-fx:49.89px;--lm-fy:-20.66px;--lm-delay:2460ms\"><path d=\"M399 143 H428 A128 128 0 0 0 390.51 52.49 L370 73 A99 99 0 0 1 399 143 Z\" fill=\"currentColor\" fill-opacity=\"0.24\" stroke=\"none\" class=\"lm-fill\" style=\"--lm-fo:0.24;--lm-fill-delay:1930ms\"></path><path d=\"M399 143 H428 A128 128 0 0 0 390.51 52.49 L370 73 A99 99 0 0 1 399 143 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" opacity=\"0\" class=\"lm-show\" style=\"--lm-swap-delay:2340ms;--lm-swap-dur:1020ms;\"></path></g><g class=\"lm-focus\" style=\"--lm-fx:41.57px;--lm-fy:-17.22px;--lm-delay:2400ms\"><path d=\"M371 143 H399 A99 99 0 0 0 370 73 L350.2 92.8 A71 71 0 0 1 371 143 Z\" fill=\"currentColor\" fill-opacity=\"0.56\" stroke=\"none\" class=\"lm-fill\" style=\"--lm-fo:0.56;--lm-fill-delay:1690ms\"></path><path d=\"M371 143 H399 A99 99 0 0 0 370 73 L350.2 92.8 A71 71 0 0 1 371 143 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" opacity=\"0\" class=\"lm-show\" style=\"--lm-swap-delay:2340ms;--lm-swap-dur:1020ms;\"></path></g><g class=\"lm-focus\" style=\"--lm-fx:33.26px;--lm-fy:-13.78px;--lm-fs:1.06;--lm-fr:3deg;--lm-delay:2340ms\"><path d=\"M300 143 L371 143 A71 71 0 0 0 350.2 92.8 Z\" fill=\"currentColor\" fill-opacity=\".88\" stroke=\"currentColor\" stroke-width=\"1.5\" class=\"lm-wedge lm-fill\" style=\"--lm-delay:1300ms;--lm-fo:.88;--lm-fill-delay:1450ms\"></path></g></svg>",
+          "geometryCount": 14,
+          "pathCount": 14,
+          "rectCount": 0,
+          "circleCount": 0,
+          "paints": [
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "0.24",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": null,
+              "fillOpacity": "0.56",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": null,
+              "stroke": "#59D2FE",
+              "fillOpacity": "1",
+              "strokeOpacity": "1"
+            },
+            {
+              "fill": "#59D2FE",
+              "stroke": "#59D2FE",
+              "fillOpacity": "0.88",
+              "strokeOpacity": "1"
+            }
+          ],
+          "animationCount": 21,
+          "animations": [
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 600
+            },
+            {
+              "name": "lm-squash",
+              "endTimeMs": 1000
+            },
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 1240
+            },
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 1380
+            },
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 1330
+            },
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 1450
+            },
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 1450
+            },
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 1450
+            },
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 1450
+            },
+            {
+              "name": "lm-hide",
+              "endTimeMs": 3360
+            },
+            {
+              "name": "lm-drawv",
+              "endTimeMs": 1569.9999999999998
+            },
+            {
+              "name": "lm-hide",
+              "endTimeMs": 3360
+            },
+            {
+              "name": "lm-focus-out",
+              "endTimeMs": 3360
+            },
+            {
+              "name": "lm-fill-in",
+              "endTimeMs": 2290
+            },
+            {
+              "name": "lm-show",
+              "endTimeMs": 3360
+            },
+            {
+              "name": "lm-focus-out",
+              "endTimeMs": 3300
+            },
+            {
+              "name": "lm-fill-in",
+              "endTimeMs": 2050
+            },
+            {
+              "name": "lm-show",
+              "endTimeMs": 3360
+            },
+            {
+              "name": "lm-focus-out",
+              "endTimeMs": 3239.9999999999995
+            },
+            {
+              "name": "lm-wedge-pop",
+              "endTimeMs": 1900
+            },
+            {
+              "name": "lm-fill-in",
+              "endTimeMs": 1810
+            }
+          ],
+          "timelineEndMs": 3360
+        }
+      },
+      "previews": {
+        "fullLight": {
+          "theme": "light",
+          "quiet": false,
+          "hostInk": "blue",
+          "inlineWedge": "",
+          "hostColorHex": "#1D4497",
+          "wedgeFillHex": "#1F87CE",
+          "geometryCount": 10
+        },
+        "fullDark": {
+          "theme": "dark",
+          "quiet": false,
+          "hostInk": "blue",
+          "inlineWedge": "",
+          "hostColorHex": "#1D4497",
+          "wedgeFillHex": "#1F87CE",
+          "geometryCount": 10
+        },
+        "quietLight": {
+          "theme": "light",
+          "quiet": true,
+          "hostInk": null,
+          "inlineWedge": "",
+          "hostColorHex": "#59D2FE",
+          "wedgeFillHex": null,
+          "geometryCount": 14
+        },
+        "quietDark": {
+          "theme": "dark",
+          "quiet": true,
+          "hostInk": null,
+          "inlineWedge": "",
+          "hostColorHex": "#59D2FE",
+          "wedgeFillHex": null,
+          "geometryCount": 14
+        }
+      }
+    },
+    "staticParity": {
+      "dial-full": {
+        "path": "assets/landometer/svg/dial-full.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "7ecfd1165a3e7ad25a0bb01b9680c35f71ff8a98edfd411dfe1b712cee12654d",
+        "actualSha256": "7ecfd1165a3e7ad25a0bb01b9680c35f71ff8a98edfd411dfe1b712cee12654d",
+        "portable": true
+      },
+      "dial-quiet": {
+        "path": "assets/landometer/svg/dial-quiet.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "2e624d80b604891ad2ed3e4d5cc6268d2383f39f740ef1def5012c49aee0da1f",
+        "actualSha256": "2e624d80b604891ad2ed3e4d5cc6268d2383f39f740ef1def5012c49aee0da1f",
+        "portable": true
+      },
+      "slice-full": {
+        "path": "assets/landometer/svg/slice-full.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "8d0dfb62d1ac92738afcd76e8b61b544a5c72bf10b165983235900558447b2df",
+        "actualSha256": "8d0dfb62d1ac92738afcd76e8b61b544a5c72bf10b165983235900558447b2df",
+        "portable": true
+      },
+      "slice-quiet": {
+        "path": "assets/landometer/svg/slice-quiet.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "c72114d43b81584cbb46251a5519f768087259bf135216f6ea7933a83df4de6b",
+        "actualSha256": "c72114d43b81584cbb46251a5519f768087259bf135216f6ea7933a83df4de6b",
+        "portable": true
+      },
+      "rings-full": {
+        "path": "assets/landometer/svg/rings-full.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "b50ec8fa3828ee5b3504ff05e0c47c1ae55f6b644225482454ec319809552286",
+        "actualSha256": "b50ec8fa3828ee5b3504ff05e0c47c1ae55f6b644225482454ec319809552286",
+        "portable": true
+      },
+      "rings-quiet": {
+        "path": "assets/landometer/svg/rings-quiet.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "d494be1f72e833704cd3c20d9d41f60599991d6efd5f670a86e40a7296eb566b",
+        "actualSha256": "d494be1f72e833704cd3c20d9d41f60599991d6efd5f670a86e40a7296eb566b",
+        "portable": true
+      },
+      "layers-full": {
+        "path": "assets/landometer/svg/layers-full.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "a94a59a342df39591f490deec960bba2263bc1c453620c557ff84a1c47901843",
+        "actualSha256": "a94a59a342df39591f490deec960bba2263bc1c453620c557ff84a1c47901843",
+        "portable": true
+      },
+      "layers-quiet": {
+        "path": "assets/landometer/svg/layers-quiet.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "e3e2bf65bcd38d34d0a07910bef44917eab76fdaf097131ec133d163f6a65a03",
+        "actualSha256": "e3e2bf65bcd38d34d0a07910bef44917eab76fdaf097131ec133d163f6a65a03",
+        "portable": true
+      },
+      "cultivate-full": {
+        "path": "assets/landometer/svg/cultivate-full.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "ce494d792c12d73949a3dc8e6d18f6f93faa6aeab33d18b2de0889ab4af5af12",
+        "actualSha256": "ce494d792c12d73949a3dc8e6d18f6f93faa6aeab33d18b2de0889ab4af5af12",
+        "portable": true
+      },
+      "cultivate-quiet": {
+        "path": "assets/landometer/svg/cultivate-quiet.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "edf8538107d30b078f0d7657bac054722ee88bdc10ddf7db00e63f44d077935f",
+        "actualSha256": "edf8538107d30b078f0d7657bac054722ee88bdc10ddf7db00e63f44d077935f",
+        "portable": true
+      },
+      "logo-full": {
+        "path": "assets/landometer/svg/logo-full.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "90e9543f2f86a18f891331c13be25038b4334ca7dbe55b194650bc441e3558e1",
+        "actualSha256": "90e9543f2f86a18f891331c13be25038b4334ca7dbe55b194650bc441e3558e1",
+        "portable": true
+      },
+      "logo-quiet": {
+        "path": "assets/landometer/svg/logo-quiet.svg",
+        "byteExactToRuntimeFinal": true,
+        "expectedSha256": "5b6798cdb6c3ada246286e6ce3386644f383c4f987a267e5c5db392809403e14",
+        "actualSha256": "5b6798cdb6c3ada246286e6ce3386644f383c4f987a267e5c5db392809403e14",
+        "portable": true
+      }
+    },
+    "inspection": {
+      "settleMs": 3400,
+      "replayMs": 6000
+    }
+  },
+  "ijji": {
+    "sourceInventory": {
+      "i-1.png": "df5fb769b2bcf84a5bbb64a5b7be424463b3883632b722cebc5d9c4a29362ac6",
+      "i-2.png": "857ca5198e350fd02f644d492f1b7b0b14b9cacb9f2dd21f2031788678ce80f5",
+      "ijji-logo-still.png": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+      "ijji-mark-still.png": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630",
+      "jj.png": "cb2743b05ee7d3270bef5e5f5a5bec2916e6fe6b1e99d85793ebbd1ec398dd93",
+      "tag-1-1.png": "6b51513e93df40e2a00b928d606373e688a3b6dd9e6869a6e803a7bef5ab7784",
+      "tag-1-2.png": "fb72390fe3125ed5c5ab9c2bafd03fb71cb74e751ebd7f14737ac7c0367117fa",
+      "tag-1-3.png": "5e01f5a2303ba67e18e69153003ba1f363e6eb1c80b67aa68115b8e434072ff0",
+      "tag-2-1.png": "2e4529e6961ffa9508ae12e4346cba6870f009cc4851e2a9c613e69ef7999cf8",
+      "tag-2-2.png": "ea066302ab3f407d258260f85ba19cd184b5ddbfa313f1f480726639b9ef3713",
+      "tag-2-3.png": "3821e99ab1ff83edc12b95e06c2d2fc2cd1019905900a8f15fc57481b7d367c4"
+    },
+    "computed": {
+      "full": {
+        "duration": 9,
+        "currentTime": 9,
+        "notagline": false,
+        "surface": "brand-blue",
+        "surfaceFill": "#1D4497",
+        "viewBox": "556 433.1 890.7 1086.9",
+        "ariaLabel": "ijji — Your business buddy around the corner",
+        "pieceCount": 3,
+        "headCount": 4,
+        "wordCount": 6,
+        "hiddenWordCount": 0,
+        "layerFiles": [
+          "i-1.png",
+          "jj.png",
+          "i-2.png",
+          "tag-1-1.png",
+          "tag-1-2.png",
+          "tag-1-3.png",
+          "tag-2-1.png",
+          "tag-2-2.png",
+          "tag-2-3.png"
+        ],
+        "methods": [
+          "play",
+          "pause",
+          "seek",
+          "finish",
+          "replay"
+        ],
+        "start": {
+          "time": 0,
+          "pieceOpacities": [
+            0,
+            0,
+            0
+          ],
+          "wordOpacities": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "headTransforms": [
+            "translate(732.4 1178.8) scale(1 1)",
+            "translate(887.3 1178.8) scale(0.659 0.659)",
+            "translate(1063.4 1178.8) scale(0.457 0.457)",
+            "translate(1293.4 1178.8) scale(0.313 0.313)"
+          ]
+        },
+        "bodiesComplete": {
+          "time": 3.8,
+          "pieceOpacities": [
+            1,
+            1,
+            1
+          ],
+          "wordOpacities": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "headTransforms": [
+            "translate(732.4 707.58) scale(1 1)",
+            "translate(887.3 700.071) scale(1.001 0.999)",
+            "translate(1063.4 659.902) scale(1.001 0.999)",
+            "translate(1293.4 586.061) scale(0.999 1.003)"
+          ]
+        },
+        "final": {
+          "time": 9,
+          "pieceOpacities": [
+            1,
+            1,
+            1
+          ],
+          "wordOpacities": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "headTransforms": [
+            "translate(732.4 707.6) scale(1 1)",
+            "translate(887.3 700) scale(1 1)",
+            "translate(1063.4 659.8) scale(1 1)",
+            "translate(1293.4 586.4) scale(1 1)"
+          ]
+        }
+      },
+      "mark": {
+        "duration": 6.4,
+        "currentTime": 6.4,
+        "notagline": true,
+        "surface": null,
+        "surfaceFill": "none",
+        "viewBox": "598 433.1 848.7 839.9",
+        "ariaLabel": "ijji",
+        "pieceCount": 3,
+        "headCount": 4,
+        "wordCount": 6,
+        "hiddenWordCount": 6,
+        "layerFiles": [
+          "i-1.png",
+          "jj.png",
+          "i-2.png",
+          "tag-1-1.png",
+          "tag-1-2.png",
+          "tag-1-3.png",
+          "tag-2-1.png",
+          "tag-2-2.png",
+          "tag-2-3.png"
+        ],
+        "methods": [
+          "play",
+          "pause",
+          "seek",
+          "finish",
+          "replay"
+        ],
+        "start": {
+          "time": 0,
+          "pieceOpacities": [
+            0,
+            0,
+            0
+          ],
+          "wordOpacities": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "headTransforms": [
+            "translate(732.4 1178.8) scale(1 1)",
+            "translate(887.3 1178.8) scale(0.659 0.659)",
+            "translate(1063.4 1178.8) scale(0.457 0.457)",
+            "translate(1293.4 1178.8) scale(0.313 0.313)"
+          ]
+        },
+        "bodiesComplete": {
+          "time": 3.8,
+          "pieceOpacities": [
+            1,
+            1,
+            1
+          ],
+          "wordOpacities": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "headTransforms": [
+            "translate(732.4 707.58) scale(1 1.001)",
+            "translate(887.3 700.071) scale(1.001 0.999)",
+            "translate(1063.4 659.902) scale(1.001 0.999)",
+            "translate(1293.4 586.061) scale(0.998 1.003)"
+          ]
+        },
+        "final": {
+          "time": 6.4,
+          "pieceOpacities": [
+            1,
+            1,
+            1
+          ],
+          "wordOpacities": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "headTransforms": [
+            "translate(732.4 707.6) scale(1 1)",
+            "translate(887.3 700) scale(1 1)",
+            "translate(1063.4 659.8) scale(1 1)",
+            "translate(1293.4 586.4) scale(1 1)"
+          ]
+        }
+      },
+      "finiteFull": {
+        "starts": 1,
+        "ends": 1,
+        "duration": 9,
+        "currentTime": 9,
+        "playing": false,
+        "loop": false
+      },
+      "finiteMark": {
+        "starts": 1,
+        "ends": 1,
+        "duration": 6.4,
+        "currentTime": 6.4,
+        "playing": false,
+        "loop": false
+      },
+      "reduced": {
+        "duration": 9,
+        "currentTime": 9,
+        "playing": false,
+        "ends": 1
+      }
+    },
+    "finalFidelity": {
+      "full": {
+        "comparable": true,
+        "width": 891,
+        "height": 1087,
+        "meanAbsoluteChannelDifferenceOf255": 0.109,
+        "changedPixelRatioOver16": 0.00496
+      },
+      "mark": {
+        "comparable": true,
+        "width": 849,
+        "height": 840,
+        "meanAbsoluteChannelDifferenceOf255": 0.075,
+        "changedPixelRatioOver16": 0.0038
+      }
+    },
+    "timelinesSeconds": {
+      "full": {
+        "hop": 0,
+        "bodies": 2.7,
+        "tagline": 4.2,
+        "hello": 6.1,
+        "hold": 7.6,
+        "end": 9
+      },
+      "mark": {
+        "hop": 0,
+        "bodies": 2.7,
+        "hello": 4.2,
+        "hold": 5.7,
+        "end": 6.4
+      }
+    }
+  },
   "checks": [
     {
-      "name": "owner-supplied runtime CSS and JavaScript remain byte-exact",
+      "name": "owner-supplied Landometer v3 and ijji round-3 runtimes remain byte-exact",
       "passed": true,
       "detail": {
         "expected": {
-          "landometer-motifs.css": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
-          "landometer-motifs.js": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb"
+          "assets/landometer/landometer-motifs.css": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+          "assets/landometer/landometer-motifs.js": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+          "assets/ijji/logo-sting/ijji-logo-sting.js": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e"
         },
         "actual": {
-          "landometer-motifs.css": "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
-          "landometer-motifs.js": "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb"
+          "assets/landometer/landometer-motifs.css": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+          "assets/landometer/landometer-motifs.js": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+          "assets/ijji/logo-sting/ijji-logo-sting.js": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e"
         }
       }
     },
     {
-      "name": "raw owner runtime keeps its authored light-theme Brand Blue composites and token-derived wedge",
+      "name": "all 12 portable Landometer SVGs are exact final-state projections of the v3 runtime",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "Landometer exposes exactly the six approved v3 kinds and full plus quiet variants",
       "passed": true,
       "detail": {
-        "pin": "#1D4497",
-        "inner": [
-          "#D2566A",
-          "#D2A437",
-          "#0EB99B",
-          "#4DB6E9"
+        "kinds": [
+          "dial",
+          "slice",
+          "rings",
+          "layers",
+          "cultivate",
+          "logo"
         ],
-        "outer": [
-          "#FF5A5F",
-          "#FFBC1F",
-          "#0AD69C",
-          "#59D2FE"
-        ],
-        "wedge": {
-          "cssFill": "lch(53.4545 46.5873 258.5)",
-          "srgbHex": "#1F87CE"
+        "variantCount": 12
+      }
+    },
+    {
+      "name": "every Landometer v3 animation reaches its authored final state inside the measured timeline",
+      "passed": true,
+      "detail": {
+        "dial-full": 1260,
+        "dial-quiet": 1260,
+        "slice-full": 1220,
+        "slice-quiet": 1220,
+        "rings-full": 1660,
+        "rings-quiet": 1820,
+        "layers-full": 1460,
+        "layers-quiet": 1320,
+        "cultivate-full": 2260,
+        "cultivate-quiet": 2080,
+        "logo-full": 2870,
+        "logo-quiet": 3360
+      }
+    },
+    {
+      "name": "logo v3 has the complete 10-path full and 14-path quiet resting geometry",
+      "passed": true,
+      "detail": {
+        "full": {
+          "paths": 10,
+          "geometry": 10
+        },
+        "quiet": {
+          "paths": 14,
+          "geometry": 14
         }
       }
     },
     {
-      "name": "artifact-delivered logo presentation locks the official palette in light and dark themes",
+      "name": "logo v3 full and quiet timelines complete before the 3400 ms inspection settle",
+      "passed": true,
+      "detail": {
+        "fullMs": 2870,
+        "quietMs": 3360,
+        "settleMs": 3400
+      }
+    },
+    {
+      "name": "full logo presentation uses ink=blue and the v3 token-derived #1F87CE wedge in light and dark",
       "passed": true,
       "detail": {
         "light": {
           "theme": "light",
+          "quiet": false,
           "hostInk": "blue",
-          "hostWedge": "#0195CB",
+          "inlineWedge": "",
           "hostColorHex": "#1D4497",
-          "pinFillHex": "#1D4497",
-          "innerStrokeHex": [
-            "#D2566A",
-            "#D2A437",
-            "#0EB99B",
-            "#4DB6E9"
-          ],
-          "outerStrokeHex": [
-            "#FF5A5F",
-            "#FFBC1F",
-            "#0AD69C",
-            "#59D2FE"
-          ],
-          "wedgeFillHex": "#0195CB",
+          "wedgeFillHex": "#1F87CE",
           "geometryCount": 10
         },
         "dark": {
           "theme": "dark",
+          "quiet": false,
           "hostInk": "blue",
-          "hostWedge": "#0195CB",
+          "inlineWedge": "",
           "hostColorHex": "#1D4497",
-          "pinFillHex": "#1D4497",
-          "innerStrokeHex": [
-            "#D2566A",
-            "#D2A437",
-            "#0EB99B",
-            "#4DB6E9"
-          ],
-          "outerStrokeHex": [
-            "#FF5A5F",
-            "#FFBC1F",
-            "#0AD69C",
-            "#59D2FE"
-          ],
-          "wedgeFillHex": "#0195CB",
+          "wedgeFillHex": "#1F87CE",
           "geometryCount": 10
         }
       }
     },
     {
-      "name": "logo full static wedge matches the artifact-delivered official presentation override",
+      "name": "the release integration contains no superseded #0195CB wedge override",
       "passed": true,
       "detail": {
-        "staticWedge": "#0195CB",
-        "rawRuntime": {
-          "cssFill": "lch(53.4545 46.5873 258.5)",
-          "srgbHex": "#1F87CE"
+        "fullPreviewHost": "ink=blue",
+        "computedWedge": "#1F87CE"
+      }
+    },
+    {
+      "name": "ijji runtime layer and final-PNG inventory is exact and contains no missing or extra files",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "i-1.png": "df5fb769b2bcf84a5bbb64a5b7be424463b3883632b722cebc5d9c4a29362ac6",
+          "i-2.png": "857ca5198e350fd02f644d492f1b7b0b14b9cacb9f2dd21f2031788678ce80f5",
+          "ijji-logo-still.png": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+          "ijji-mark-still.png": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630",
+          "jj.png": "cb2743b05ee7d3270bef5e5f5a5bec2916e6fe6b1e99d85793ebbd1ec398dd93",
+          "tag-1-1.png": "6b51513e93df40e2a00b928d606373e688a3b6dd9e6869a6e803a7bef5ab7784",
+          "tag-1-2.png": "fb72390fe3125ed5c5ab9c2bafd03fb71cb74e751ebd7f14737ac7c0367117fa",
+          "tag-1-3.png": "5e01f5a2303ba67e18e69153003ba1f363e6eb1c80b67aa68115b8e434072ff0",
+          "tag-2-1.png": "2e4529e6961ffa9508ae12e4346cba6870f009cc4851e2a9c613e69ef7999cf8",
+          "tag-2-2.png": "ea066302ab3f407d258260f85ba19cd184b5ddbfa313f1f480726639b9ef3713",
+          "tag-2-3.png": "3821e99ab1ff83edc12b95e06c2d2fc2cd1019905900a8f15fc57481b7d367c4"
         },
-        "previewLight": {
-          "theme": "light",
-          "hostInk": "blue",
-          "hostWedge": "#0195CB",
-          "hostColorHex": "#1D4497",
-          "pinFillHex": "#1D4497",
-          "innerStrokeHex": [
-            "#D2566A",
-            "#D2A437",
-            "#0EB99B",
-            "#4DB6E9"
-          ],
-          "outerStrokeHex": [
-            "#FF5A5F",
-            "#FFBC1F",
-            "#0AD69C",
-            "#59D2FE"
-          ],
-          "wedgeFillHex": "#0195CB",
-          "geometryCount": 10
-        },
-        "previewDark": {
-          "theme": "dark",
-          "hostInk": "blue",
-          "hostWedge": "#0195CB",
-          "hostColorHex": "#1D4497",
-          "pinFillHex": "#1D4497",
-          "innerStrokeHex": [
-            "#D2566A",
-            "#D2A437",
-            "#0EB99B",
-            "#4DB6E9"
-          ],
-          "outerStrokeHex": [
-            "#FF5A5F",
-            "#FFBC1F",
-            "#0AD69C",
-            "#59D2FE"
-          ],
-          "wedgeFillHex": "#0195CB",
-          "geometryCount": 10
+        "actual": {
+          "i-1.png": "df5fb769b2bcf84a5bbb64a5b7be424463b3883632b722cebc5d9c4a29362ac6",
+          "i-2.png": "857ca5198e350fd02f644d492f1b7b0b14b9cacb9f2dd21f2031788678ce80f5",
+          "ijji-logo-still.png": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+          "ijji-mark-still.png": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630",
+          "jj.png": "cb2743b05ee7d3270bef5e5f5a5bec2916e6fe6b1e99d85793ebbd1ec398dd93",
+          "tag-1-1.png": "6b51513e93df40e2a00b928d606373e688a3b6dd9e6869a6e803a7bef5ab7784",
+          "tag-1-2.png": "fb72390fe3125ed5c5ab9c2bafd03fb71cb74e751ebd7f14737ac7c0367117fa",
+          "tag-1-3.png": "5e01f5a2303ba67e18e69153003ba1f363e6eb1c80b67aa68115b8e434072ff0",
+          "tag-2-1.png": "2e4529e6961ffa9508ae12e4346cba6870f009cc4851e2a9c613e69ef7999cf8",
+          "tag-2-2.png": "ea066302ab3f407d258260f85ba19cd184b5ddbfa313f1f480726639b9ef3713",
+          "tag-2-3.png": "3821e99ab1ff83edc12b95e06c2d2fc2cd1019905900a8f15fc57481b7d367c4"
         }
       }
     },
     {
-      "name": "slice full static file bakes the runtime final transform",
-      "passed": true
-    },
-    {
-      "name": "slice quiet static file bakes the runtime final transform",
-      "passed": true
-    },
-    {
-      "name": "logo full final state has one pin, eight colour segments, and one wedge",
+      "name": "ijji final fallback PNG dimensions match the runtime view-box frames",
       "passed": true,
       "detail": {
-        "elementCount": 10
-      }
-    },
-    {
-      "name": "logo full inner band uses the exact radial and angular overlap paths",
-      "passed": true,
-      "detail": [
-        {
-          "tag": "path",
-          "d": "M214.50 143.00 A85.5 85.5 0 0 1 239.54 82.54",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "69",
-          "strokeOpacity": "1",
-          "strokeHex": "#D2566A",
-          "fillHex": null,
-          "transform": "none"
+        "full": {
+          "width": 891,
+          "height": 1087
         },
-        {
-          "tag": "path",
-          "d": "M239.28 82.81 A85.5 85.5 0 0 1 300.00 57.50",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "69",
-          "strokeOpacity": "1",
-          "strokeHex": "#D2A437",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M299.63 57.50 A85.5 85.5 0 0 1 360.46 82.54",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "69",
-          "strokeOpacity": "1",
-          "strokeHex": "#0EB99B",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M360.19 82.28 A85.5 85.5 0 0 1 385.50 143.00",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "69",
-          "strokeOpacity": "1",
-          "strokeHex": "#4DB6E9",
-          "fillHex": null,
-          "transform": "none"
+        "mark": {
+          "width": 849,
+          "height": 840
         }
-      ]
+      }
     },
     {
-      "name": "logo full outer band uses the exact radial and angular overlap paths",
+      "name": "ijji full and mark components expose the exact layers, lifecycle API, framing, and durations",
       "passed": true,
-      "detail": [
-        {
-          "tag": "path",
-          "d": "M186.50 143.00 A113.5 113.5 0 0 1 219.74 62.74",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "91",
-          "strokeOpacity": "1",
-          "strokeHex": "#FF5A5F",
-          "fillHex": null,
-          "transform": "none"
+      "detail": {
+        "full": {
+          "duration": 9,
+          "currentTime": 9,
+          "notagline": false,
+          "surface": "brand-blue",
+          "surfaceFill": "#1D4497",
+          "viewBox": "556 433.1 890.7 1086.9",
+          "ariaLabel": "ijji — Your business buddy around the corner",
+          "pieceCount": 3,
+          "headCount": 4,
+          "wordCount": 6,
+          "hiddenWordCount": 0,
+          "layerFiles": [
+            "i-1.png",
+            "jj.png",
+            "i-2.png",
+            "tag-1-1.png",
+            "tag-1-2.png",
+            "tag-1-3.png",
+            "tag-2-1.png",
+            "tag-2-2.png",
+            "tag-2-3.png"
+          ],
+          "methods": [
+            "play",
+            "pause",
+            "seek",
+            "finish",
+            "replay"
+          ],
+          "start": {
+            "time": 0,
+            "pieceOpacities": [
+              0,
+              0,
+              0
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 1178.8) scale(1 1)",
+              "translate(887.3 1178.8) scale(0.659 0.659)",
+              "translate(1063.4 1178.8) scale(0.457 0.457)",
+              "translate(1293.4 1178.8) scale(0.313 0.313)"
+            ]
+          },
+          "bodiesComplete": {
+            "time": 3.8,
+            "pieceOpacities": [
+              1,
+              1,
+              1
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 707.58) scale(1 1)",
+              "translate(887.3 700.071) scale(1.001 0.999)",
+              "translate(1063.4 659.902) scale(1.001 0.999)",
+              "translate(1293.4 586.061) scale(0.999 1.003)"
+            ]
+          },
+          "final": {
+            "time": 9,
+            "pieceOpacities": [
+              1,
+              1,
+              1
+            ],
+            "wordOpacities": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "headTransforms": [
+              "translate(732.4 707.6) scale(1 1)",
+              "translate(887.3 700) scale(1 1)",
+              "translate(1063.4 659.8) scale(1 1)",
+              "translate(1293.4 586.4) scale(1 1)"
+            ]
+          }
         },
-        {
-          "tag": "path",
-          "d": "M219.39 63.09 A113.5 113.5 0 0 1 300.00 29.50",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "91",
-          "strokeOpacity": "1",
-          "strokeHex": "#FFBC1F",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M299.50 29.50 A113.5 113.5 0 0 1 380.26 62.74",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "91",
-          "strokeOpacity": "1",
-          "strokeHex": "#0AD69C",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M379.91 62.39 A113.5 113.5 0 0 1 413.50 143.00",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "91",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
+        "mark": {
+          "duration": 6.4,
+          "currentTime": 6.4,
+          "notagline": true,
+          "surface": null,
+          "surfaceFill": "none",
+          "viewBox": "598 433.1 848.7 839.9",
+          "ariaLabel": "ijji",
+          "pieceCount": 3,
+          "headCount": 4,
+          "wordCount": 6,
+          "hiddenWordCount": 6,
+          "layerFiles": [
+            "i-1.png",
+            "jj.png",
+            "i-2.png",
+            "tag-1-1.png",
+            "tag-1-2.png",
+            "tag-1-3.png",
+            "tag-2-1.png",
+            "tag-2-2.png",
+            "tag-2-3.png"
+          ],
+          "methods": [
+            "play",
+            "pause",
+            "seek",
+            "finish",
+            "replay"
+          ],
+          "start": {
+            "time": 0,
+            "pieceOpacities": [
+              0,
+              0,
+              0
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 1178.8) scale(1 1)",
+              "translate(887.3 1178.8) scale(0.659 0.659)",
+              "translate(1063.4 1178.8) scale(0.457 0.457)",
+              "translate(1293.4 1178.8) scale(0.313 0.313)"
+            ]
+          },
+          "bodiesComplete": {
+            "time": 3.8,
+            "pieceOpacities": [
+              1,
+              1,
+              1
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 707.58) scale(1 1.001)",
+              "translate(887.3 700.071) scale(1.001 0.999)",
+              "translate(1063.4 659.902) scale(1.001 0.999)",
+              "translate(1293.4 586.061) scale(0.998 1.003)"
+            ]
+          },
+          "final": {
+            "time": 6.4,
+            "pieceOpacities": [
+              1,
+              1,
+              1
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 707.6) scale(1 1)",
+              "translate(887.3 700) scale(1 1)",
+              "translate(1063.4 659.8) scale(1 1)",
+              "translate(1293.4 586.4) scale(1 1)"
+            ]
+          }
         }
-      ]
-    },
-    {
-      "name": "logo full opaque inner composites and outer energy colours match the governed final regions",
-      "passed": true,
-      "detail": {
-        "inner": [
-          "#D2566A",
-          "#D2A437",
-          "#0EB99B",
-          "#4DB6E9"
-        ],
-        "outer": [
-          "#FF5A5F",
-          "#FFBC1F",
-          "#0AD69C",
-          "#59D2FE"
-        ]
       }
     },
     {
-      "name": "raw logo full wedge overlaps the inner band and retains the owner runtime's computed final colour",
+      "name": "ijji start, bodies, and final states remain complete and fail open",
       "passed": true,
       "detail": {
-        "tag": "path",
-        "d": "M300 143 L371.6 143 A71.6 71.6 0 0 0 350.63 92.37 Z",
-        "x": null,
-        "y": null,
-        "cx": null,
-        "cy": null,
-        "r": null,
-        "width": null,
-        "height": null,
-        "strokeWidth": null,
-        "strokeDasharray": null,
-        "strokeOpacity": "1",
-        "strokeHex": null,
-        "fillHex": "#1F87CE",
-        "transform": "none"
+        "full": {
+          "duration": 9,
+          "currentTime": 9,
+          "notagline": false,
+          "surface": "brand-blue",
+          "surfaceFill": "#1D4497",
+          "viewBox": "556 433.1 890.7 1086.9",
+          "ariaLabel": "ijji — Your business buddy around the corner",
+          "pieceCount": 3,
+          "headCount": 4,
+          "wordCount": 6,
+          "hiddenWordCount": 0,
+          "layerFiles": [
+            "i-1.png",
+            "jj.png",
+            "i-2.png",
+            "tag-1-1.png",
+            "tag-1-2.png",
+            "tag-1-3.png",
+            "tag-2-1.png",
+            "tag-2-2.png",
+            "tag-2-3.png"
+          ],
+          "methods": [
+            "play",
+            "pause",
+            "seek",
+            "finish",
+            "replay"
+          ],
+          "start": {
+            "time": 0,
+            "pieceOpacities": [
+              0,
+              0,
+              0
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 1178.8) scale(1 1)",
+              "translate(887.3 1178.8) scale(0.659 0.659)",
+              "translate(1063.4 1178.8) scale(0.457 0.457)",
+              "translate(1293.4 1178.8) scale(0.313 0.313)"
+            ]
+          },
+          "bodiesComplete": {
+            "time": 3.8,
+            "pieceOpacities": [
+              1,
+              1,
+              1
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 707.58) scale(1 1)",
+              "translate(887.3 700.071) scale(1.001 0.999)",
+              "translate(1063.4 659.902) scale(1.001 0.999)",
+              "translate(1293.4 586.061) scale(0.999 1.003)"
+            ]
+          },
+          "final": {
+            "time": 9,
+            "pieceOpacities": [
+              1,
+              1,
+              1
+            ],
+            "wordOpacities": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "headTransforms": [
+              "translate(732.4 707.6) scale(1 1)",
+              "translate(887.3 700) scale(1 1)",
+              "translate(1063.4 659.8) scale(1 1)",
+              "translate(1293.4 586.4) scale(1 1)"
+            ]
+          }
+        },
+        "mark": {
+          "duration": 6.4,
+          "currentTime": 6.4,
+          "notagline": true,
+          "surface": null,
+          "surfaceFill": "none",
+          "viewBox": "598 433.1 848.7 839.9",
+          "ariaLabel": "ijji",
+          "pieceCount": 3,
+          "headCount": 4,
+          "wordCount": 6,
+          "hiddenWordCount": 6,
+          "layerFiles": [
+            "i-1.png",
+            "jj.png",
+            "i-2.png",
+            "tag-1-1.png",
+            "tag-1-2.png",
+            "tag-1-3.png",
+            "tag-2-1.png",
+            "tag-2-2.png",
+            "tag-2-3.png"
+          ],
+          "methods": [
+            "play",
+            "pause",
+            "seek",
+            "finish",
+            "replay"
+          ],
+          "start": {
+            "time": 0,
+            "pieceOpacities": [
+              0,
+              0,
+              0
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 1178.8) scale(1 1)",
+              "translate(887.3 1178.8) scale(0.659 0.659)",
+              "translate(1063.4 1178.8) scale(0.457 0.457)",
+              "translate(1293.4 1178.8) scale(0.313 0.313)"
+            ]
+          },
+          "bodiesComplete": {
+            "time": 3.8,
+            "pieceOpacities": [
+              1,
+              1,
+              1
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 707.58) scale(1 1.001)",
+              "translate(887.3 700.071) scale(1.001 0.999)",
+              "translate(1063.4 659.902) scale(1.001 0.999)",
+              "translate(1293.4 586.061) scale(0.998 1.003)"
+            ]
+          },
+          "final": {
+            "time": 6.4,
+            "pieceOpacities": [
+              1,
+              1,
+              1
+            ],
+            "wordOpacities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "headTransforms": [
+              "translate(732.4 707.6) scale(1 1)",
+              "translate(887.3 700) scale(1 1)",
+              "translate(1063.4 659.8) scale(1 1)",
+              "translate(1293.4 586.4) scale(1 1)"
+            ]
+          }
+        }
       }
     },
     {
-      "name": "logo full static SVG bakes concrete portable paints with no runtime-only style",
-      "passed": true
+      "name": "ijji production playback is finite once and reduced motion resolves immediately to the final logo",
+      "passed": true,
+      "detail": {
+        "finiteFull": {
+          "starts": 1,
+          "ends": 1,
+          "duration": 9,
+          "currentTime": 9,
+          "playing": false,
+          "loop": false
+        },
+        "finiteMark": {
+          "starts": 1,
+          "ends": 1,
+          "duration": 6.4,
+          "currentTime": 6.4,
+          "playing": false,
+          "loop": false
+        },
+        "reduced": {
+          "duration": 9,
+          "currentTime": 9,
+          "playing": false,
+          "ends": 1
+        }
+      }
     },
     {
-      "name": "logo full variable-dash animation and the exact supplied v2 lifecycle APIs are present",
-      "passed": true
+      "name": "ijji layered final render matches both owner-supplied final PNGs within edge-antialiasing tolerance",
+      "passed": true,
+      "detail": {
+        "full": {
+          "comparable": true,
+          "width": 891,
+          "height": 1087,
+          "meanAbsoluteChannelDifferenceOf255": 0.109,
+          "changedPixelRatioOver16": 0.00496
+        },
+        "mark": {
+          "comparable": true,
+          "width": 849,
+          "height": 840,
+          "meanAbsoluteChannelDifferenceOf255": 0.075,
+          "changedPixelRatioOver16": 0.0038
+        }
+      }
     },
     {
-      "name": "all 11 non-target Landometer static SVGs remain byte-identical to release 1.1.0",
+      "name": "all runtime QA image requests succeeded",
       "passed": true,
       "detail": []
     }
   ],
-  "computed": {
-    "dial-full": {
-      "elementCount": 5,
-      "geometry": [
-        {
-          "tag": "path",
-          "d": "M187 200 A113 113 0 0 1 220.10 120.10",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "34",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#FF5A5F",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M220.10 120.10 A113 113 0 0 1 300 87",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "34",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#FFBC1F",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 87 A113 113 0 0 1 379.90 120.10",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "34",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#0AD69C",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M379.90 120.10 A113 113 0 0 1 413 200",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "34",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "170",
-          "y": "210",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "260",
-          "height": "8",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#1D4497",
-          "transform": "none"
-        }
-      ]
-    },
-    "dial-quiet": {
-      "elementCount": 5,
-      "geometry": [
-        {
-          "tag": "path",
-          "d": "M187 200 A113 113 0 0 1 220.10 120.10",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "6",
-          "strokeDasharray": "90",
-          "strokeOpacity": "0.4",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M220.10 120.10 A113 113 0 0 1 300 87",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "6",
-          "strokeDasharray": "90",
-          "strokeOpacity": "0.4",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 87 A113 113 0 0 1 379.90 120.10",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "6",
-          "strokeDasharray": "90",
-          "strokeOpacity": "0.4",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M379.90 120.10 A113 113 0 0 1 413 200",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "6",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "170",
-          "y": "210",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "260",
-          "height": "2",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        }
-      ]
-    },
-    "slice-full": {
-      "elementCount": 2,
-      "geometry": [
-        {
-          "tag": "path",
-          "d": "M300 150 L396 150 A96 96 0 1 1 300 54 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#1D4497",
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 150 L396 150 A96 96 0 0 0 300 54 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#59D2FE",
-          "transform": "matrix(1, 0, 0, 1, 12, -12)"
-        }
-      ]
-    },
-    "slice-quiet": {
-      "elementCount": 2,
-      "geometry": [
-        {
-          "tag": "path",
-          "d": "M300 150 L396 150 A96 96 0 1 1 300 54 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "2",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.4",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 150 L396 150 A96 96 0 0 0 300 54 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#59D2FE",
-          "transform": "matrix(1, 0, 0, 1, 12, -12)"
-        }
-      ]
-    },
-    "rings-full": {
-      "elementCount": 5,
-      "geometry": [
-        {
-          "tag": "path",
-          "d": "M80 30 A230 230 0 0 1 310 260 L270 260 A190 190 0 0 0 80 70 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M80 80 A180 180 0 0 1 260 260 L220 260 A140 140 0 0 0 80 120 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#0AD69C",
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M80 130 A130 130 0 0 1 210 260 L170 260 A90 90 0 0 0 80 170 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#FFBC1F",
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M80 180 A80 80 0 0 1 160 260 L120 260 A40 40 0 0 0 80 220 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#FF5A5F",
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M80 230 A30 30 0 0 1 110 260 L80 260 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#1D4497",
-          "transform": "none"
-        }
-      ]
-    },
-    "rings-quiet": {
-      "elementCount": 5,
-      "geometry": [
-        {
-          "tag": "path",
-          "d": "M80 30 A230 230 0 0 1 310 260 L270 260 A190 190 0 0 0 80 70 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.4",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M80 80 A180 180 0 0 1 260 260 L220 260 A140 140 0 0 0 80 120 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.4",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M80 130 A130 130 0 0 1 210 260 L170 260 A90 90 0 0 0 80 170 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.4",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M80 180 A80 80 0 0 1 160 260 L120 260 A40 40 0 0 0 80 220 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.4",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M80 230 A30 30 0 0 1 110 260 L80 260 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        }
-      ]
-    },
-    "layers-full": {
-      "elementCount": 10,
-      "geometry": [
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "60",
-          "y": "120",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "480",
-          "height": "64",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#1D4497",
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "60",
-          "y": "100",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "120",
-          "height": "20",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#FF5A5F",
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "180",
-          "y": "100",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "120",
-          "height": "20",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#FFBC1F",
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "300",
-          "y": "100",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "120",
-          "height": "20",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#0AD69C",
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "420",
-          "y": "100",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "120",
-          "height": "20",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "84",
-          "y": "148",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "108",
-          "height": "36",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#FF5A5F",
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "192",
-          "y": "148",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "108",
-          "height": "36",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#FFBC1F",
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "300",
-          "y": "148",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "108",
-          "height": "36",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#0AD69C",
-          "transform": "none"
-        },
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "408",
-          "y": "148",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "108",
-          "height": "36",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        }
-      ]
-    },
-    "layers-quiet": {
-      "elementCount": 9,
-      "geometry": [
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "300",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "250.5",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "349.5",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "201",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "399",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "151.5",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "448.5",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "102",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "498",
-          "cy": "142",
-          "r": "42",
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        }
-      ]
-    },
-    "cultivate-full": {
-      "elementCount": 8,
-      "geometry": [
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "120",
-          "y": "149",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "360",
-          "height": "2",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#1D4497",
-          "transform": "none"
-        },
-        {
-          "tag": "circle",
-          "d": null,
-          "x": null,
-          "y": null,
-          "cx": "300",
-          "cy": "140",
-          "r": "9",
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#1D4497",
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 131 L288 106",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "3",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#1D4497",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 131 L312 106",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "3",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#1D4497",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M200 150 A100 100 0 0 0 229.29 220.71",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "16",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#FF5A5F",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M229.29 220.71 A100 100 0 0 0 300 250",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "16",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#FFBC1F",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 250 A100 100 0 0 0 370.71 220.71",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "16",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#0AD69C",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M370.71 220.71 A100 100 0 0 0 400 150",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "16",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        }
-      ]
-    },
-    "cultivate-quiet": {
-      "elementCount": 16,
-      "geometry": [
-        {
-          "tag": "rect",
-          "d": null,
-          "x": "120",
-          "y": "199",
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": "360",
-          "height": "2",
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#59D2FE",
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M180 200 V172",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M180 172 L170 154 M180 172 L190 154",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": "90",
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M240 200 V160",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M240 160 L230 142 M240 160 L250 142",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": "90",
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 200 V148",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 148 L290 130 M300 148 L310 130",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": "90",
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M360 200 V136",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M360 136 L350 118 M360 136 L370 118",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": "90",
-          "strokeOpacity": "0.56",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M420 200 V124",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M420 124 L410 106 M420 124 L430 106",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        }
-      ]
-    },
-    "logo-full": {
-      "elementCount": 10,
-      "geometry": [
-        {
-          "tag": "path",
-          "d": "M201 143 A99 99 0 0 1 399 143 A99 99 0 0 1 388.21 187.95 C367.78 228.04 328.12 265.17 300 286 C271.88 265.17 232.22 228.04 211.79 187.95 A99 99 0 0 1 201 143 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#1D4497",
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M214.50 143.00 A85.5 85.5 0 0 1 239.54 82.54",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "69",
-          "strokeOpacity": "1",
-          "strokeHex": "#D2566A",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M239.28 82.81 A85.5 85.5 0 0 1 300.00 57.50",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "69",
-          "strokeOpacity": "1",
-          "strokeHex": "#D2A437",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M299.63 57.50 A85.5 85.5 0 0 1 360.46 82.54",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "69",
-          "strokeOpacity": "1",
-          "strokeHex": "#0EB99B",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M360.19 82.28 A85.5 85.5 0 0 1 385.50 143.00",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "69",
-          "strokeOpacity": "1",
-          "strokeHex": "#4DB6E9",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M186.50 143.00 A113.5 113.5 0 0 1 219.74 62.74",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "91",
-          "strokeOpacity": "1",
-          "strokeHex": "#FF5A5F",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M219.39 63.09 A113.5 113.5 0 0 1 300.00 29.50",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "91",
-          "strokeOpacity": "1",
-          "strokeHex": "#FFBC1F",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M299.50 29.50 A113.5 113.5 0 0 1 380.26 62.74",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "91",
-          "strokeOpacity": "1",
-          "strokeHex": "#0AD69C",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M379.91 62.39 A113.5 113.5 0 0 1 413.50 143.00",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "29",
-          "strokeDasharray": "91",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 143 L371.6 143 A71.6 71.6 0 0 0 350.63 92.37 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": null,
-          "strokeDasharray": null,
-          "strokeOpacity": "1",
-          "strokeHex": null,
-          "fillHex": "#1F87CE",
-          "transform": "none"
-        }
-      ],
-      "wedge": {
-        "cssFill": "lch(53.4545 46.5873 258.5)",
-        "srgbHex": "#1F87CE"
-      }
-    },
-    "logo-quiet": {
-      "elementCount": 9,
-      "geometry": [
-        {
-          "tag": "path",
-          "d": "M201 143 A99 99 0 0 1 399 143 A99 99 0 0 1 388.21 187.95 C367.78 228.04 328.12 265.17 300 286 C271.88 265.17 232.22 228.04 211.79 187.95 A99 99 0 0 1 201 143 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "700",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M172 143 A128 128 0 0 1 428 143",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "420",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M201 143 A99 99 0 0 1 399 143",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "420",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M229 143 A71 71 0 0 1 371 143",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "420",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M172 143 H428",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "420",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M249.8 92.8 L209.49 52.49",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 72 V15",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "90",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 143 L390.51 52.49",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "420",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        },
-        {
-          "tag": "path",
-          "d": "M300 143 L371 143 A71 71 0 0 0 350.2 92.8 Z",
-          "x": null,
-          "y": null,
-          "cx": null,
-          "cy": null,
-          "r": null,
-          "width": null,
-          "height": null,
-          "strokeWidth": "1.5",
-          "strokeDasharray": "420",
-          "strokeOpacity": "1",
-          "strokeHex": "#59D2FE",
-          "fillHex": null,
-          "transform": "none"
-        }
-      ]
-    },
-    "logo-full-preview-light": {
-      "theme": "light",
-      "hostInk": "blue",
-      "hostWedge": "#0195CB",
-      "hostColorHex": "#1D4497",
-      "pinFillHex": "#1D4497",
-      "innerStrokeHex": [
-        "#D2566A",
-        "#D2A437",
-        "#0EB99B",
-        "#4DB6E9"
-      ],
-      "outerStrokeHex": [
-        "#FF5A5F",
-        "#FFBC1F",
-        "#0AD69C",
-        "#59D2FE"
-      ],
-      "wedgeFillHex": "#0195CB",
-      "geometryCount": 10
-    },
-    "logo-full-preview-dark": {
-      "theme": "dark",
-      "hostInk": "blue",
-      "hostWedge": "#0195CB",
-      "hostColorHex": "#1D4497",
-      "pinFillHex": "#1D4497",
-      "innerStrokeHex": [
-        "#D2566A",
-        "#D2A437",
-        "#0EB99B",
-        "#4DB6E9"
-      ],
-      "outerStrokeHex": [
-        "#FF5A5F",
-        "#FFBC1F",
-        "#0AD69C",
-        "#59D2FE"
-      ],
-      "wedgeFillHex": "#0195CB",
-      "geometryCount": 10
-    }
-  },
   "status": "passed"
 }

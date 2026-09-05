@@ -18,6 +18,10 @@
       lmFinal: "ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป",
       lmPaused: "หยุด auto replay แล้ว · ภาพอยู่ที่สถานะสุดท้าย",
       lmReduced: "แสดงสถานะสุดท้ายของ full + quiet · ปิด auto replay ตามการตั้งค่า reduced motion",
+      ijjiLogoPlaying: "กำลังประกอบโลโก้ตามจังหวะต้นฉบับ · จะวนใหม่หลังค้างภาพสุดท้าย",
+      ijjiLogoFinal: "ประกอบโลโก้ครบแล้ว · ค้างภาพสุดท้ายก่อนวนรอบถัดไป",
+      ijjiLogoPaused: "หยุด auto replay แล้ว · แสดงโลโก้ที่ประกอบครบ",
+      ijjiLogoReduced: "แสดงโลโก้ที่ประกอบครบ · ปิด animation ตามการตั้งค่า reduced motion",
       replayNow: "เล่นซ้ำตอนนี้",
       pauseAutoplay: "หยุด auto replay",
       fullVariant: "full",
@@ -43,6 +47,10 @@
       lmFinal: "Assembly complete · holding the exact final state before the next replay",
       lmPaused: "Auto-replay paused · both motifs are at their final state",
       lmReduced: "Full + quiet final states · auto-replay is off for reduced motion",
+      ijjiLogoPlaying: "Building the logo with the source timing · it will replay after the final hold",
+      ijjiLogoFinal: "Logo assembly complete · holding the final frame before replay",
+      ijjiLogoPaused: "Auto-replay paused · showing the complete logo",
+      ijjiLogoReduced: "Complete logo shown · animation is off for reduced motion",
       replayNow: "Replay now",
       pauseAutoplay: "Pause auto-replay",
       fullVariant: "full",
@@ -149,8 +157,14 @@
       if (brand === "landometer") {
         const isQuiet = button.dataset.quiet === "true";
         const quiet = isQuiet ? " quiet" : "";
-        const logoPalette = id === "logo" && !isQuiet ? ' ink="blue" style="--lm-wedge:#0195CB"' : "";
-        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.1.3">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.1.3" defer><\/script>\n<lm-motif kind="${id}"${quiet}${logoPalette}></lm-motif>`;
+        const logoPalette = id === "logo" && !isQuiet ? ' ink="blue"' : "";
+        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.2.0">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.2.0" defer><\/script>\n<lm-motif kind="${id}"${quiet}${logoPalette}></lm-motif>`;
+      } else if (brand === "ijji-logo") {
+        const markOnly = id === "mark";
+        const attributes = markOnly ? ' notagline bounce="extra"' : ' surface="brand-blue" bounce="playful"';
+        const still = markOnly ? "ijji-mark-still.png" : "ijji-logo-still.png";
+        const alt = markOnly ? "ijji" : "ijji — Your business buddy around the corner";
+        snippet = `<script src="${origin}/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0" defer><\/script>\n<ijji-logo-sting${attributes} assets="${origin}/assets/ijji/logo-sting/layers/">\n  <img src="${origin}/assets/ijji/logo-sting/layers/${still}" alt="${alt}">\n</ijji-logo-sting>`;
       } else {
         snippet = `<img src="${origin}/assets/ijji/svg/ijji-${id}-transparent-ink.svg" width="120" height="120" alt="" aria-hidden="true">`;
       }
@@ -209,13 +223,15 @@
   let previewTimeout = 0;
   let landometerSettleTimeout = 0;
   let ijjiModulePromise = null;
+  let ijjiLogoRuntimePromise = null;
   let previewRenderGeneration = 0;
   let landometerPreviewPaused = false;
   let landometerReplayGeneration = 0;
+  let ijjiLogoPreviewPaused = false;
   const reducedMotionPreference = window.matchMedia?.("(prefers-reduced-motion: reduce)") || null;
   const landometerDefaultReplayMs = 3000;
-  const landometerLogoReplayMs = 5000;
-  const landometerLogoSettleMs = 2050;
+  const landometerLogoReplayMs = 6000;
+  const landometerLogoSettleMs = 3400;
 
   function clearPreviewTimers() {
     clearInterval(previewInterval);
@@ -287,13 +303,54 @@
     setPreviewStatus(reason === "done" ? copy.ijjiDone : copy.stopped);
   }
 
+  function loadIjjiLogoRuntime() {
+    if (customElements.get("ijji-logo-sting")) return Promise.resolve();
+    if (ijjiLogoRuntimePromise) return ijjiLogoRuntimePromise;
+    ijjiLogoRuntimePromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = new URL(`${base}/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0`, document.baseURI).href;
+      script.onload = () => customElements.whenDefined("ijji-logo-sting").then(resolve, reject);
+      script.onerror = reject;
+      document.head.append(script);
+    });
+    return ijjiLogoRuntimePromise;
+  }
+
+  function ijjiLogoElement() {
+    return dialogStage?.querySelector("ijji-logo-sting") || null;
+  }
+
+  function stopIjjiLogoAutoreplay({ finish = true } = {}) {
+    const logo = ijjiLogoElement();
+    if (!logo) return;
+    logo.removeAttribute("loop");
+    if (finish) logo.finish?.();
+    else logo.pause?.();
+  }
+
+  function startIjjiLogoAutoreplay() {
+    const logo = ijjiLogoElement();
+    if (
+      !logo
+      || ijjiLogoPreviewPaused
+      || previewConfig?.brand !== "ijji-logo"
+      || !dialog?.open
+      || document.visibilityState !== "visible"
+      || reducedMotionPreference?.matches
+    ) return;
+    logo.setAttribute("loop", "");
+    logo.replay?.();
+  }
+
   async function renderPreview() {
     const config = previewConfig ? { ...previewConfig } : null;
     if (!config || !dialogStage) return;
     const generation = ++previewRenderGeneration;
     clearPreviewTimers();
     dialogStage.replaceChildren();
-    dialogStage.classList.toggle("is-dark", config.brand === "ijji");
+    dialogStage.classList.toggle("is-dark", config.brand === "ijji" || config.brand === "ijji-logo");
+    dialogStage.classList.toggle("is-logo-sting", config.brand === "ijji-logo");
+    dialog?.classList.toggle("is-logo-sting", config.brand === "ijji-logo");
 
     if (config.brand === "landometer") {
       const pair = document.createElement("div");
@@ -308,10 +365,7 @@
         motif.setAttribute("kind", config.id);
         motif.setAttribute("autoplay", "false");
         if (variant.quiet) motif.setAttribute("quiet", "");
-        if (config.id === "logo" && !variant.quiet) {
-          motif.setAttribute("ink", "blue");
-          motif.style.setProperty("--lm-wedge", "#0195CB");
-        }
+        else motif.setAttribute("ink", "blue");
         const caption = document.createElement("figcaption");
         caption.textContent = variant.label;
         figure.append(motif, caption);
@@ -333,6 +387,59 @@
         setPreviewStatus(copy.lmReduced);
       } else {
         playLandometerPreviewCycle();
+      }
+      return;
+    }
+
+    if (config.brand === "ijji-logo") {
+      if (replayButton) {
+        replayButton.hidden = Boolean(reducedMotionPreference?.matches);
+        replayButton.disabled = false;
+        replayButton.textContent = copy.replayNow;
+      }
+      if (cancelButton) {
+        cancelButton.hidden = Boolean(reducedMotionPreference?.matches);
+        cancelButton.disabled = false;
+        cancelButton.textContent = copy.pauseAutoplay;
+      }
+      try {
+        await loadIjjiLogoRuntime();
+        if (
+          generation !== previewRenderGeneration
+          || !dialog?.open
+          || previewConfig?.brand !== config.brand
+          || previewConfig?.id !== config.id
+        ) return;
+        const markOnly = config.id === "mark";
+        const logo = document.createElement("ijji-logo-sting");
+        logo.setAttribute("manual", "");
+        logo.setAttribute("assets", new URL(`${base}/assets/ijji/logo-sting/layers/`, document.baseURI).href);
+        logo.setAttribute("bounce", markOnly ? "extra" : "playful");
+        if (markOnly) logo.setAttribute("notagline", "");
+        else logo.setAttribute("surface", "brand-blue");
+        const fallback = document.createElement("img");
+        fallback.src = `${base}/assets/ijji/logo-sting/layers/${markOnly ? "ijji-mark-still.png" : "ijji-logo-still.png"}`;
+        fallback.alt = markOnly ? "ijji" : "ijji — Your business buddy around the corner";
+        fallback.style.cssText = "display:block;width:100%;height:auto";
+        logo.append(fallback);
+        logo.addEventListener("ijji-sting-start", () => {
+          clearInterval(previewInterval);
+          setPreviewStatus(copy.ijjiLogoPlaying, 0);
+          previewInterval = window.setInterval(() => {
+            if (dialogTimer) dialogTimer.textContent = ` · ${copy.ijjiElapsed(logo.currentTime)}`;
+          }, 100);
+        });
+        logo.addEventListener("ijji-sting-end", () => {
+          clearInterval(previewInterval);
+          previewInterval = 0;
+          setPreviewStatus(copy.ijjiLogoFinal, logo.duration);
+        });
+        dialogStage.append(logo);
+        ijjiLogoPreviewPaused = false;
+        if (reducedMotionPreference?.matches) setPreviewStatus(copy.ijjiLogoReduced);
+        else requestAnimationFrame(startIjjiLogoAutoreplay);
+      } catch (_) {
+        if (generation === previewRenderGeneration && dialog?.open) setPreviewStatus(copy.unavailable);
       }
       return;
     }
@@ -390,7 +497,11 @@
         id: button.dataset.previewId,
         duration: Number(button.dataset.duration || 4),
       };
-      if (dialogTitle) dialogTitle.textContent = `${previewConfig.brand === "ijji" ? "ijji" : "Landometer"} · ${previewConfig.id}${previewConfig.brand === "landometer" ? " · full + quiet" : ""}`;
+      if (dialogTitle) {
+        const brandLabel = previewConfig.brand === "landometer" ? "Landometer" : "ijji";
+        const suffix = previewConfig.brand === "landometer" ? " · full + quiet" : previewConfig.brand === "ijji-logo" ? " · animated identity" : "";
+        dialogTitle.textContent = `${brandLabel} · ${previewConfig.id}${suffix}`;
+      }
       if (!dialog?.open) dialog?.showModal();
       renderPreview();
     });
@@ -398,14 +509,23 @@
 
   replayButton?.addEventListener("click", () => {
     landometerPreviewPaused = false;
-    renderPreview();
+    if (previewConfig?.brand === "ijji-logo") {
+      ijjiLogoPreviewPaused = false;
+      if (cancelButton) cancelButton.disabled = false;
+      startIjjiLogoAutoreplay();
+    } else renderPreview();
   });
   cancelButton?.addEventListener("click", () => {
     if (previewConfig?.brand === "ijji") {
       previewRenderGeneration += 1;
       finishIjjiPreview("stopped");
     }
-    else {
+    else if (previewConfig?.brand === "ijji-logo") {
+      ijjiLogoPreviewPaused = true;
+      stopIjjiLogoAutoreplay();
+      if (cancelButton) cancelButton.disabled = true;
+      setPreviewStatus(copy.ijjiLogoPaused);
+    } else {
       landometerPreviewPaused = true;
       stopLandometerAutoreplay();
       if (cancelButton) cancelButton.disabled = true;
@@ -416,7 +536,9 @@
   dialog?.addEventListener("close", () => {
     previewRenderGeneration += 1;
     clearPreviewTimers();
+    stopIjjiLogoAutoreplay({ finish: false });
     landometerPreviewPaused = false;
+    ijjiLogoPreviewPaused = false;
     dialogStage?.replaceChildren();
     previewConfig = null;
   });
@@ -425,19 +547,35 @@
   });
 
   document.addEventListener("visibilitychange", () => {
-    if (previewConfig?.brand !== "landometer" || !dialog?.open) return;
-    if (document.visibilityState === "visible") playLandometerPreviewCycle();
-    else stopLandometerAutoreplay();
+    if (!dialog?.open) return;
+    if (previewConfig?.brand === "landometer") {
+      if (document.visibilityState === "visible") playLandometerPreviewCycle();
+      else stopLandometerAutoreplay();
+    } else if (previewConfig?.brand === "ijji-logo") {
+      if (document.visibilityState === "visible") startIjjiLogoAutoreplay();
+      else stopIjjiLogoAutoreplay();
+    }
   });
 
   reducedMotionPreference?.addEventListener?.("change", () => {
-    if (previewConfig?.brand !== "landometer" || !dialog?.open) return;
-    stopLandometerAutoreplay();
+    if (!dialog?.open || !["landometer", "ijji-logo"].includes(previewConfig?.brand)) return;
+    if (previewConfig?.brand === "landometer") stopLandometerAutoreplay();
+    else {
+      // The owner-supplied ijji runtime snapshots the media query when the
+      // element connects. Recreate it so a live preference change is honoured
+      // in both directions without modifying the exact source runtime bytes.
+      stopIjjiLogoAutoreplay();
+      renderPreview();
+      return;
+    }
     const isReduced = reducedMotionPreference.matches;
     if (replayButton) replayButton.hidden = isReduced;
     if (cancelButton) cancelButton.hidden = isReduced;
-    if (isReduced) setPreviewStatus(copy.lmReduced);
-    else if (!landometerPreviewPaused) {
+    if (isReduced) setPreviewStatus(previewConfig.brand === "ijji-logo" ? copy.ijjiLogoReduced : copy.lmReduced);
+    else if (previewConfig.brand === "ijji-logo" && !ijjiLogoPreviewPaused) {
+      if (cancelButton) cancelButton.disabled = false;
+      startIjjiLogoAutoreplay();
+    } else if (previewConfig.brand === "landometer" && !landometerPreviewPaused) {
       if (cancelButton) cancelButton.disabled = false;
       playLandometerPreviewCycle();
     } else setPreviewStatus(copy.lmPaused);
@@ -446,11 +584,14 @@
   window.addEventListener("pagehide", () => {
     previewRenderGeneration += 1;
     if (previewConfig?.brand === "ijji" && dialog?.open) finishIjjiPreview("stopped");
+    else if (previewConfig?.brand === "ijji-logo") stopIjjiLogoAutoreplay();
     else stopLandometerAutoreplay();
     clearPreviewTimers();
   });
   window.addEventListener("pageshow", (event) => {
-    if (event.persisted && previewConfig?.brand === "landometer" && dialog?.open) playLandometerPreviewCycle();
+    if (!event.persisted || !dialog?.open) return;
+    if (previewConfig?.brand === "landometer") playLandometerPreviewCycle();
+    if (previewConfig?.brand === "ijji-logo") startIjjiLogoAutoreplay();
   });
 
   document.querySelectorAll("[data-download-png]").forEach((button) => {

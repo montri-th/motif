@@ -1,7 +1,9 @@
-# Claude handoff · Landometer Motif Library
+# Claude handoff · Landometer Motif Library 1.2.0
 
-Before selecting or changing a motif, read [`docs/ai-sync.md`](docs/ai-sync.md), then resolve the current immutable release through the `release-index.json` file in the shared [Google Drive motif library](https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh).
+Read [`docs/ai-sync.md`](docs/ai-sync.md), then resolve the current immutable release through `release-index.json` in the shared [Google Drive library](https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh).
 
-Use the exact `assetId`, path, and SHA-256 from `assets/motif-library.json`. Start from the static vector record. Landometer motion is `finite_once`; the repeating full + quiet preview belongs only to this library dialog. For `landometer.logo.full` motion only, preserve the unchanged v2 runtime and select the approved light/dark palette with `ink="blue"` and `style="--lm-wedge:#0195CB"`; verify the rendered result in both themes. ijji is product-specific and may animate only while a real pending state exists. A motif is not a logo, identity, data, evidence, score, confidence, completion state, or product claim.
+Use the exact baseline record, path, and SHA-256 from `assets/motif-library.json`. The three families are distinct: `landometer.motif.v3` uses finite-once production motion; `ijji.logo-sting.r3` is the explicit ijji animated-identity route and also plays once; `ijji.four-beat.selected-3.r3` is state-bound pending motion only. Never infer one lifecycle from another.
 
-Do not edit an existing Drive release folder or silently overwrite a different checksum. Publish a new version, verify it, and only then update the two stable Drive pointers. There is no background synchronization: resolve the Drive index again at the start of each task.
+For Landometer v3, do not cut the logo at the historical 2050 ms point and do not apply the historical `--lm-wedge:#0195CB` override. For ijji animated identity, load only the selected superset runtime and all exact layer PNGs. Keep final SVG/PNG fallbacks for no-JavaScript and reduced motion. The library's auto-replay is an inspection aid and must not be copied into production unless a new artifact-specific owner decision says so.
+
+Do not edit an immutable Drive release. Publish a new version, verify repository/live/Drive bytes, then update the two stable Drive pointers. There is no automatic background synchronization.
