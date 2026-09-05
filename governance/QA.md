@@ -1,6 +1,6 @@
 # Landometer Motif Library · release QA
 
-Status: `candidate_release_1.1.3_local_passed_pending_live_dark_theme_qa`
+Status: `passed_release_1.1.3`
 
 Release date: 2026-09-05 (Asia/Bangkok)
 
@@ -41,9 +41,9 @@ Delivery: `main:/` on `montri-th/motif`, served as a GitHub Pages project site a
 | Responsive, interaction, accessibility, performance, and parity regression | Passed locally | Browser 387/387; synthetic performance 6/6; runtime/static parity 14/14; logo visual 15/15 |
 | Static and motion agreement | Passed locally | Generated `logo-full.svg` and the held component use the same official wedge and colour-region palette in light and dark |
 | Copy-snippet contract | Passed locally | Copied logo component includes `ink="blue"` and `--lm-wedge:#0195CB`; non-logo snippets remain unchanged |
-| Source/route/asset authority verifier | Pending final package/checksum rebuild | Must include the theme-colour decision and refreshed manifest/checksums |
-| GitHub Pages byte and rendered attestation | Pending deployment | Must attest final bytes and inspect the deployed dark-theme 390×844 result before acceptance |
-| Download kits and Drive mirror | Pending final live gate | Rebuild and synchronize only after the rendered live gate passes |
+| Source/route/asset authority verifier | Passed · 1,385/1,385 strict final checks | Includes the passed theme-colour decision, refreshed manifest, packages, and checksums |
+| GitHub Pages byte and rendered attestation | Passed on candidate commit `2ec9b11` · provider run `33965971753` | Live files passed 33/33 byte/MIME/route checks; dark 390×844 passed exact palette, 10/9 paths, immediate paired start, held final state, and paired 5000 ms replay with no runtime errors |
+| Download kits and Drive mirror | Kits rebuilt; Drive ready for post-freeze sync | The immutable 1.1.3 Drive folder may be populated and indexed only from the final strict-verified commit; its external sync receipt must record file IDs, hashes, inventory, and final commit |
 
 Machine-readable evidence must be refreshed in `browser-qa.json`, `performance-qa.json`, `runtime-parity.json`, `logo-full-visual-qa.json`, `identity-assets.json`, `source-ledger.json`, `showcase-motion-decision.json`, `logo-full-geometry-decision.json`, `logo-preview-final-settle-decision.json`, `logo-preview-theme-color-decision.json`, and `owner-approval.json` before 1.1.3 is marked passed.
 

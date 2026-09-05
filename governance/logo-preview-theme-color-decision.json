@@ -2,7 +2,7 @@
   "schemaVersion": "motif-library-logo-preview-theme-color-decision/1.0",
   "decisionId": "landometer-logo-preview-theme-color-20260905",
   "artifactRelease": "1.1.3",
-  "status": "candidate_selected_local_qa_passed_live_pending",
+  "status": "owner_selected_for_named_artifact",
   "recordedOn": "2026-09-05",
   "evidence": {
     "source": "owner-supplied iPhone screenshot in the current task",
@@ -46,10 +46,26 @@
     "normativeDesignSystemChange": false
   },
   "releaseGate": {
-    "status": "pending",
+    "status": "passed",
     "localDarkThemeQaRequired": true,
     "localDarkThemeQaStatus": "passed_15_visual_14_runtime_parity_387_browser_checks",
     "liveIphoneClassViewportQaRequired": true,
-    "requiredObservation": "On the deployed dark-theme route at a 390x844 iPhone-class viewport, confirm that the held full motif has the Brand Blue pin and Brand-Blue-derived inner colours, all paths are present, quiet remains Energy Sky, and paired replay still starts at 5000 ms."
+    "requiredObservation": "On the deployed dark-theme route at a 390x844 iPhone-class viewport, confirm that the held full motif has the Brand Blue pin and Brand-Blue-derived inner colours, all paths are present, quiet remains Energy Sky, and paired replay still starts at 5000 ms.",
+    "liveVerification": {
+      "checkedAt": "2026-09-05T12:26:33.693Z",
+      "sourceCommit": "2ec9b11e4abc214df5d3795714ad473f0a5bc63b",
+      "providerRun": "33965971753",
+      "url": "https://montri-th.github.io/motif/?release=1.1.3",
+      "viewport": "390x844",
+      "colorScheme": "dark",
+      "pathCounts": { "full": 10, "quiet": 9 },
+      "pinRgba": [29, 68, 151, 255],
+      "innerRgba": [[210, 86, 106, 255], [210, 164, 55, 255], [14, 185, 155, 255], [77, 182, 233, 255]],
+      "wedgeRgba": [1, 149, 203, 255],
+      "quietRgba": [89, 210, 254, 255],
+      "timeline": "both start immediately; complete final state holds after 2050 ms; both replay at 5000 ms",
+      "runtimeErrors": 0,
+      "result": "passed"
+    }
   }
 }
