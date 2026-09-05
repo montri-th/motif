@@ -381,7 +381,9 @@ for (const viewport of viewports) {
 
   const ijjiPreview = page.locator('[data-preview-brand="ijji"][data-preview-id="rotate-b"]').last();
   await ijjiPreview.click();
-  await page.waitForTimeout(150);
+  // The production route loads this runtime on demand. Wait for the audience-visible
+  // motif instead of assuming the network import will always finish within 150 ms.
+  await page.locator("#preview-stage .ijji-motif").waitFor({ state: "attached" });
   record(
     await page.locator("#preview-stage .ijji-motif").count() === 1 && await page.locator("#preview-stage lm-motif").count() === 0,
     "ijji pending-state preview remains a single state-bound motif",

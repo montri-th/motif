@@ -456,7 +456,7 @@
     }
 
     try {
-      const moduleUrl = new URL(`${base}/assets/ijji/ijji-motifs.js`, document.baseURI).href;
+      const moduleUrl = new URL(`${base}/assets/ijji/ijji-motifs.js?v=1.2.0`, document.baseURI).href;
       ijjiModulePromise ||= import(moduleUrl);
       const module = await ijjiModulePromise;
       if (
