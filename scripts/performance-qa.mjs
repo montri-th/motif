@@ -117,6 +117,7 @@ const failed = checks.filter((check) => !check.passed);
 const report = {
   schemaVersion: "motif-library-performance-qa/1.0",
   executedAt: new Date().toISOString(),
+  artifactRelease: "1.1.3",
   artifactRoot: ".",
   browser: await Promise.resolve(browser.version?.()).catch(() => null),
   route: "/motif/",

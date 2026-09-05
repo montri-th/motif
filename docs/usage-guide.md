@@ -1,6 +1,6 @@
 # Landometer + ijji Motif Usage Guide
 
-Version 1.1.2 · 5 September 2026
+Version 1.1.3 · 5 September 2026
 
 ## คำตอบสั้นที่สุด
 
@@ -58,7 +58,9 @@ Version 1.1.2 · 5 September 2026
 
 Release 1.1.1 แก้เฉพาะ geometry ตอนจบของ `landometer.logo.full`: inner band ซ้อนใต้ outer ring, segment ถัดไปซ้อน 0.25° และ wedge ซ้อนขอบ band เพื่อปิดรอยแหว่งจาก anti-aliasing ภาพสุดท้ายจึงประกอบครบตาม silhouette/ตำแหน่งสีของ mark ทางการ แต่ยังเป็น motif ไม่ใช่ official logo และไม่ได้อ้างว่า pixel-identical กับไฟล์ master ดูขอบเขตที่ [`../governance/logo-full-geometry-decision.json`](../governance/logo-full-geometry-decision.json)
 
-Release 1.1.2 เปลี่ยนจาก scoped derivative ของ release 1.1.1 มาใช้ไฟล์ v2 ของเจ้าของตรง byte (`JS d4e5c636…12fb`, `CSS e7028286…1794`) และเพิ่ม settle/hold เฉพาะ preview เพื่อแก้ mixed frame ที่พบใน screenshot ของผู้ใช้: wedge และ quiet อยู่ปลายทางแล้วแต่ outer Energy Sky path ของ full ยังไม่ปรากฏ การแก้นี้ไม่เปลี่ยน authored runtime timeline และผ่านทั้ง local rendered QA กับการตรวจ animation/bytes บน GitHub Pages จริงแล้ว
+Release 1.1.2 เปลี่ยนจาก scoped derivative ของ release 1.1.1 มาใช้ไฟล์ v2 ของเจ้าของตรง byte (`JS d4e5c636…12fb`, `CSS e7028286…1794`) และเพิ่ม settle/hold เฉพาะ preview เพื่อแก้ mixed frame ที่พบใน screenshot แรกของผู้ใช้: wedge และ quiet อยู่ปลายทางแล้วแต่ outer Energy Sky path ของ full ยังไม่ปรากฏ การแก้นี้ไม่เปลี่ยน authored runtime timeline และผ่านการตรวจ geometry/timing ใน light-theme fixture ทั้ง local และ GitHub Pages แต่ fixture นั้นไม่ได้ตรวจ palette ใน dark theme ซึ่งภาพ iPhone ภายหลังแสดงว่ายังผิดอยู่
+
+Release 1.1.3 แก้ปัญหาสีอีกกรณีที่ภาพ iPhone ใน dark theme เปิดเผย: geometry ครบแล้ว แต่ `logo-full` รับ Brand Beige จากกติกา dark-theme ทั่วไปแทน Brand Blue รุ่นนี้รักษาไฟล์ CSS/JS v2 เดิมทุก byte แล้วล็อกเฉพาะ host ของ `logo-full` ด้วย `ink="blue"` และ `--lm-wedge:#0195CB`; static `logo-full.svg` ใช้ wedge เดียวกัน ผลลัพธ์ทั้ง light/dark ต้องคง pin `#1D4497`, inner coral `#D2566A`, yellow `#D2A437`, mint `#0EB99B`, sky `#4DB6E9` และ wedge `#0195CB` ส่วน quiet กับ motif ชนิดอื่นไม่เปลี่ยน ดู [`../governance/logo-preview-theme-color-decision.json`](../governance/logo-preview-theme-color-decision.json)
 
 สำหรับ Claude/ChatGPT ให้ใช้ [`ai-sync.md`](ai-sync.md) และ Drive `release-index.json` เป็นขั้นตอนค้น release ก่อนอ่าน manifest/hash ทุกครั้ง ไม่มี background sync อัตโนมัติระหว่างบริการ
 
@@ -139,10 +141,13 @@ Require the agent to:
 ### Landometer motion component
 
 ```html
-<link rel="stylesheet" href="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.1.2">
-<script src="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.1.2" defer></script>
+<link rel="stylesheet" href="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.1.3">
+<script src="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.1.3" defer></script>
 
 <lm-motif kind="dial"></lm-motif>
+
+<!-- logo-full only: keep the approved logo palette in both light and dark themes -->
+<lm-motif kind="logo" ink="blue" style="--lm-wedge:#0195CB"></lm-motif>
 ```
 
 With no optional replay attribute, the component plays once when it becomes visible. Do not make it essential content. Put a generated final-state SVG in source HTML when a meaningful visual must survive without JavaScript. The exact v2 runtime also contains `replay="enter"`, `replay="hover"`, `loop`, and programmatic replay APIs, but availability is not permission: keep the production recommendation at `finite_once` unless an explicit job-specific owner decision defines another lifecycle.
@@ -155,7 +160,9 @@ That loop is a component-local instructional showcase, not a portable production
 
 Release 1.1.1 patches only the held final geometry of `landometer.logo.full`. Controlled radial, 0.25° angular, and wedge overlaps remove visible anti-alias gaps while preserving the official mark-aligned silhouette and colour-region layout. It remains a motif rather than the official identity file, and no literal pixel-identity claim is made. See [`../governance/logo-full-geometry-decision.json`](../governance/logo-full-geometry-decision.json). Claude and ChatGPT retrieval/update rules are in [`ai-sync.md`](ai-sync.md).
 
-Release 1.1.2 selects the owner-supplied v2 runtime as exact bytes (`JS d4e5c636…12fb`, `CSS e7028286…1794`) and adds only the library-level logo settle/hold described above. The user's screenshot is evidence of a mixed preview frame—priority wedge and quiet final present while the full outer Energy Sky path remained absent—not authority to alter the authored animation or broaden downstream use. Both local rendered QA and deployed GitHub Pages byte/animation verification passed. Claude and ChatGPT retrieval/update rules remain in [`ai-sync.md`](ai-sync.md).
+Release 1.1.2 selected the owner-supplied v2 runtime as exact bytes (`JS d4e5c636…12fb`, `CSS e7028286…1794`) and added only the library-level logo settle/hold described above. The user's first screenshot was evidence of a mixed preview frame—priority wedge and quiet final present while the full outer Energy Sky path remained absent—not authority to alter the authored animation or broaden downstream use. The then-scoped local and deployed checks passed light-theme geometry and timing, but the fixture did not exercise the dark-theme palette later shown to be wrong. Claude and ChatGPT retrieval/update rules remain in [`ai-sync.md`](ai-sync.md).
+
+Release 1.1.3 addresses a separate dark-theme colour failure exposed by the owner's iPhone screenshot: complete geometry inherited Brand Beige from the general dark-theme motif rule instead of keeping the approved logo palette. The exact v2 CSS and JavaScript bytes remain unchanged. Only the `logo-full` host selects `ink="blue"` and `--lm-wedge:#0195CB`, while the generated static `logo-full.svg` uses the same official wedge. In light and dark themes the held result must keep pin `#1D4497`, inner coral `#D2566A`, yellow `#D2A437`, mint `#0EB99B`, sky `#4DB6E9`, and wedge `#0195CB`. Quiet and non-logo theme behavior remain unchanged. See [`../governance/logo-preview-theme-color-decision.json`](../governance/logo-preview-theme-color-decision.json).
 
 ### ijji static asset
 

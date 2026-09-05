@@ -2,7 +2,7 @@
 
 A bilingual learning site and exact-byte asset library for Landometer shared motifs and ijji product-specific motifs.
 
-Artifact release: **1.1.2** · 5 September 2026
+Artifact release: **1.1.3** · 5 September 2026
 
 Live target: <https://montri-th.github.io/motif/>
 
@@ -38,11 +38,13 @@ Then open <http://localhost:4173/>. Core content and static motif previews remai
 
 Since release 1.1.0, opening a Landometer Preview dialog reveals the full and quiet variants side by side and starts both immediately. Dial, rings, layers, slice, and cultivate replay together every 3000 ms. In release 1.1.2, logo settles to its complete authored static state at 2050 ms, holds for inspection, and replays both variants at 5000 ms. The viewer can pause auto-replay or replay immediately. Reduced-motion users receive both stable final states without a replay timer.
 
-This loop is a component-local instructional aid for this library—not a new production motion contract. The exact v2 runtime includes optional replay and loop APIs, but their presence does not authorize downstream use. Implementation snippets, the machine manifest, and the default production recommendation remain `finite_once`; the hero remains one-shot and asset-card thumbnails remain static. ijji is excluded and remains `state_bound_only`. The decisions and stopping rules are recorded in [`governance/showcase-motion-decision.json`](governance/showcase-motion-decision.json) and [`governance/logo-preview-final-settle-decision.json`](governance/logo-preview-final-settle-decision.json).
+This loop is a component-local instructional aid for this library—not a new production motion contract. The exact v2 runtime includes optional replay and loop APIs, but their presence does not authorize downstream use. Implementation snippets, the machine manifest, and the default production recommendation remain `finite_once`; the hero remains one-shot and asset-card thumbnails remain static. ijji is excluded and remains `state_bound_only`. The decisions and stopping rules are recorded in [`governance/showcase-motion-decision.json`](governance/showcase-motion-decision.json), [`governance/logo-preview-final-settle-decision.json`](governance/logo-preview-final-settle-decision.json), and [`governance/logo-preview-theme-color-decision.json`](governance/logo-preview-theme-color-decision.json).
 
 Release 1.1.1 changes only the Landometer `logo-full` assembly geometry and the minimal CSS declaration it requires. Controlled radial and 0.25° angular overlaps close the visible anti-alias gaps in the held final frame. `logo-quiet`, the other five motif kinds, ijji, and the production motion lifecycles are unchanged. The scoped decision and claim boundary are recorded in [`governance/logo-full-geometry-decision.json`](governance/logo-full-geometry-decision.json).
 
-Release 1.1.2 selects the new owner-supplied v2 CSS and JavaScript as exact bytes. It also fixes the mixed library preview state seen in the owner's screenshot: the dialog removes `data-play` at 2050 ms so authored markup supplies the complete final frame, then holds it until the 5000 ms replay. Both local rendered QA and deployed GitHub Pages verification passed, including an exact outer Energy Sky pixel probe in the held final frame.
+Release 1.1.2 selected the new owner-supplied v2 CSS and JavaScript as exact bytes. It also fixed the mixed library preview state seen in the owner's first screenshot: the dialog removes `data-play` at 2050 ms so authored markup supplies the complete final frame, then holds it until the 5000 ms replay. Its then-scoped local and deployed checks passed the light-theme geometry, outer Energy Sky pixel, and timing gates; they did not exercise the dark-theme logo palette later shown to be wrong.
+
+Release 1.1.3 corrects a separate dark-theme presentation defect exposed by the owner's iPhone screenshot. Release 1.1.2 could settle with complete geometry yet inherit Brand Beige from the general dark-theme motif rule, so its full logo preview did not match the approved mark palette. The exact v2 CSS and JavaScript bytes remain unchanged. Only `logo-full` is locked at the host to `ink="blue"` with `--lm-wedge:#0195CB`, and its generated static SVG uses the same official cyan wedge. The held result therefore keeps the Brand Blue pin `#1D4497`, official inner coral `#D2566A`, yellow `#D2A437`, mint `#0EB99B`, sky `#4DB6E9`, and wedge `#0195CB` in both light and dark themes. The quiet variant and all non-logo theme behavior remain unchanged.
 
 ## Shared Google Drive mirror
 
@@ -79,10 +81,12 @@ node scripts/verify-site.mjs
 
 After `build-manifest.mjs`, inspect the contract diff and confirm that the change is within current owner authority. Then bind the reviewed digest to `assetManifestSha256` in `governance/owner-approval.json` before rebuilding downloads and repository checksums. Never re-bind a changed manifest mechanically when its scope lacks owner approval.
 
-Release 1.1.2 uses the exact v2 runtime bytes from `Landometer Brand Motifs Asset and Prompt.zip`: JavaScript `d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb` and CSS `e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794`. Optional replay/loop APIs are present in those bytes, but remain outside the default `finite_once` production recommendation unless a job receives its own explicit owner decision. Exact source and artifact boundaries are recorded in `governance/source-ledger.json`.
+Release 1.1.3 carries forward without modification the exact v2 runtime bytes selected in 1.1.2 from `Landometer Brand Motifs Asset and Prompt.zip`: JavaScript `d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb` and CSS `e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794`. Optional replay/loop APIs are present in those bytes, but remain outside the default `finite_once` production recommendation unless a job receives its own explicit owner decision. Exact source and artifact boundaries are recorded in `governance/source-ledger.json`.
 
 ## ภาษาไทยแบบสั้น
 
 คลังนี้ช่วยให้ทีมเลือก motif ตาม brand layer, งาน, channel และ motion mode จากไฟล์จริงที่มี version/hash ชัดเจน ห้ามใช้ motif เป็นโลโก้ ข้อมูล หลักฐาน หรือ claim และห้ามนำ ijji ไปเหมารวมเป็น Landometer ทุกงานควรตรวจ static fallback, reduced motion, accessibility และไฟล์ส่งจริงก่อนเผยแพร่
 
 ตั้งแต่ release 1.1.0 หน้าต่าง Preview ของ Landometer จะแสดง full + quiet พร้อมกัน โดย motif ห้าแบบวนทุก 3 วินาที ส่วน release 1.1.2 ให้ logo เล่นทันที, ลง final state ที่ 2050 ms, ค้างให้ตรวจ และวนใหม่ที่ 5000 ms พฤติกรรมนี้เป็นโหมดสาธิตเฉพาะคลัง ไม่ใช่ค่า production: code snippet, manifest และคำแนะนำเริ่มต้นยังเป็น `finite_once`; hero ยังเล่นครั้งเดียว, card ยังเป็นภาพนิ่ง และ ijji ยังคง `state_bound_only` แม้ runtime v2 จะมี API replay/loop ก็ต้องมี owner decision เฉพาะงานก่อนใช้
+
+Release 1.1.3 แก้ปัญหาอีกจุดที่พบจากภาพ iPhone: ใน dark mode ตัวเต็มเคยรับสี Beige จากกติกาทั่วไปจนไม่เหมือน mark ที่อนุมัติ รุ่นนี้ไม่แก้ไฟล์ runtime ต้นฉบับ แต่ล็อกเฉพาะ `logo-full` ให้ใช้ Brand Blue และ wedge `#0195CB` ทั้ง light/dark พร้อมอัปเดต static SVG ให้ตรงกัน ส่วน quiet และ motif อื่นไม่เปลี่ยน

@@ -1,6 +1,7 @@
 {
   "schemaVersion": "motif-library-owner-approval/1.0",
   "recordId": "MOTIF-LIBRARY-OWNER-APPROVAL-20260905-01",
+  "artifactRelease": "1.1.3",
   "status": "approved_for_named_publication",
   "approvedByRole": "owner",
   "approvedOn": "2026-09-05",
@@ -9,10 +10,12 @@
   "authorityEvidenceRef": "current-task:user-message:2026-09-05:owner-created-full-rights-and-approves-all-pending-publication-gates",
   "supplementalAuthorityEvidenceRef": "current-task:user-message:2026-09-05:fix-only-logo-full-final-composition-and-mirror-all-assets-to-google-drive-for-claude-chatgpt-sync",
   "urgentRepairAuthorityEvidenceRef": "current-task:user-message:2026-09-05:owner-reported-incomplete-live-animation-preview-and-required-correct-repair-before-saving-skill",
+  "logoThemeColorRepairAuthorityEvidenceRef": "current-task:user-message:2026-09-05:owner-reported-dark-theme-logo-full-still-does-not-match-and-required-correction-before-saving-skill",
   "repository": "https://github.com/montri-th/motif",
   "publicationUrl": "https://montri-th.github.io/motif/",
   "assetManifestRef": "assets/motif-library.json",
-  "assetManifestSha256": "43599ecda749b8bb2c0ddc00929b10a75053c816f9c4caae83d80483e7dcfe45",
+  "assetManifestSha256": "cef7a6fd2dca6fec6bb75852a4d6d95a36439a2d44b08383e35fd7354e85c0de",
+  "assetManifestBindingStatus": "bound_after_release_1.1.3_manifest_review",
   "rightsStatement": "The owner states that they created the supplied motif assets, hold full rights, and approve all pending matters required for this publication.",
   "rightsEvidenceClass": "owner_stated_not_independently_verified",
   "publicationActions": [
@@ -39,12 +42,14 @@
     "deterministic_social_preview_composition_from_approved_motif_and_visible_page_copy",
     "owner_scoped_logo_full_anti_seam_geometry_patch_with_opaque_token_composites",
     "exact_distribution_of_owner_supplied_landometer_v2_css_and_javascript",
-    "library_preview_logo_final_settle_and_hold_before_auto_replay"
+    "library_preview_logo_final_settle_and_hold_before_auto_replay",
+    "logo_full_usage_site_theme_palette_lock_with_ink_blue_and_official_wedge",
+    "logo_full_generated_static_svg_with_official_wedge"
   ],
   "distributionMirror": {
     "provider": "Google Drive",
     "rootUrl": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
-    "immutableReleaseUrl": "https://drive.google.com/drive/folders/1ivOhP0g8vMxgUoNCHmyGsCpEaYjBrRzF",
+    "immutableReleaseUrl": "https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6",
     "purpose": "Easy exact-asset retrieval by the team and authorized Claude, ChatGPT, and agent workflows.",
     "accessBoundary": "Drive access remains account-dependent; no automatic cross-service background synchronization is claimed."
   },
@@ -67,12 +72,12 @@
     "ijji assets remain product-specific and do not become shared Landometer assets.",
     "Landometer portfolio, methodology, and product-architecture language remains product-neutral across Land, Location, and Living.",
     "Public availability is not an unrestricted third-party or open-source license.",
-    "The corrected logo-full motif matches the official-mark silhouette and colour-region layout without visible seams; it remains a motif and is not claimed to be byte- or pixel-identical to the official master."
+    "The corrected logo-full motif matches the official-mark silhouette and approved palette values without visible seams in light and dark themes; it remains a motif, and its SVG/component bytes are not claimed to be the official identity master."
   ],
   "technicalConditions": [
     "Every delivered asset resolves the path, MIME type, bytes, SHA-256, role, scope, and fallback in the manifest.",
     "Downstream work must still verify accessibility, contrast, motion, sizing, context, claims, and final rendered or exported output.",
-    "Only the listed transformations are approved; redraw, recolor, crop, distortion, or reconstruction from screenshots or model memory remain prohibited.",
+    "Only the listed transformations are approved; outside the recorded logo-full palette correction, redraw, recolor, crop, distortion, or reconstruction from screenshots or model memory remain prohibited.",
     "Optional replay and loop APIs present in the exact source bytes do not by themselves authorize repeating motion in a downstream artifact."
   ]
 }

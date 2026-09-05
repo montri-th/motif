@@ -1,6 +1,6 @@
 # Claude + ChatGPT asset sync
 
-Version 1.1.2 · 5 September 2026
+Version 1.1.3 · 5 September 2026
 
 This is the shared retrieval and update contract for Claude, ChatGPT, Codex, and other owner-authorized agents using the Landometer Motif Library.
 
@@ -9,7 +9,7 @@ This is the shared retrieval and update contract for Claude, ChatGPT, Codex, and
 - Public documentation and web runtime: <https://montri-th.github.io/motif/>
 - Public source repository: <https://github.com/montri-th/motif>
 - Shared Drive library root: <https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh>
-- Immutable Drive release 1.1.2: <https://drive.google.com/drive/folders/1ivOhP0g8vMxgUoNCHmyGsCpEaYjBrRzF>
+- Immutable Drive release 1.1.3: <https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6>
 
 The Google Drive folder is a governed mirror for easy agent retrieval. It does not replace the public repository, and it is deliberately outside the immutable LDS 0.9.1 and ijji DS/Add-on release folders.
 
@@ -28,7 +28,7 @@ The Google Drive folder is a governed mirror for easy agent retrieval. It does n
 - Default to a static SVG.
 - Landometer web motion defaults to `finite_once` and must hold the complete final state. The exact v2 bytes expose optional replay/loop APIs, but their presence is not downstream authorization. The library dialog's 3000 ms default replay—and its logo-specific 2050 ms final settle followed by a 5000 ms replay—is an inspection aid only.
 - ijji motion is `state_bound_only`: run it only during a genuine pending operation and stop on success, failure, cancel, or timeout.
-- The corrected `landometer.logo.full` ends as a complete, seam-free composition aligned to the official mark silhouette and colour regions. It remains a motif and must not replace the official logo asset.
+- The corrected `landometer.logo.full` ends as a complete, seam-free composition aligned to the official mark silhouette and colour regions. Its generated SVG and motion usage must keep the same approved palette in light and dark themes: pin `#1D4497`, inner coral `#D2566A`, yellow `#D2A437`, mint `#0EB99B`, sky `#4DB6E9`, and wedge `#0195CB`. For the exact unchanged v2 runtime, select that presentation with `ink="blue"` and `style="--lm-wedge:#0195CB"` on `logo-full` only. It remains a motif and must not replace the official logo asset.
 - Never redraw, recolor, crop geometry, distort, trace from a screenshot, or reconstruct from model memory.
 
 ## Update protocol

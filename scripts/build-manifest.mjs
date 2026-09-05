@@ -63,6 +63,16 @@ for (const kind of Object.keys(landometerJobs)) {
       staticFallback: "self",
       altPolicy: "empty_when_decorative; describe the motif only in a learning or asset-catalog context",
       sourceRuntime: "assets/landometer/landometer-motifs.js",
+      ...(kind === "logo" && variant === "full" ? {
+        themeInvariantPalette: {
+          hostAttribute: "ink=blue",
+          hostStyle: "--lm-wedge:#0195CB",
+          pin: "#1D4497",
+          inner: ["#D2566A", "#D2A437", "#0EB99B", "#4DB6E9"],
+          wedge: "#0195CB",
+          decisionRef: "governance/logo-preview-theme-color-decision.json",
+        },
+      } : {}),
     }));
   }
 }
@@ -166,7 +176,7 @@ ijjiAssets.push(
 const manifest = {
   schemaVersion: "landometer-motif-library/1.0",
   libraryId: "landometer-motif-library-v1",
-  artifactRelease: "1.1.2",
+  artifactRelease: "1.1.3",
   releaseDate: "2026-09-05",
   status: "owner_approved_publication",
   canonicalUrl: "https://montri-th.github.io/motif/",
@@ -193,6 +203,7 @@ const manifest = {
       approvalRef: "governance/owner-approval.json",
       logoFullGeometryDecisionRef: "governance/logo-full-geometry-decision.json",
       logoPreviewFinalSettleDecisionRef: "governance/logo-preview-final-settle-decision.json",
+      logoPreviewThemeColorDecisionRef: "governance/logo-preview-theme-color-decision.json",
       historicalReleasesRemainImmutable: true,
       releaseMembership: { lds_0_9_1: false, ijji_ds_0_5_0: false, ijji_addon_0_5_3: false },
     },
@@ -200,7 +211,7 @@ const manifest = {
   sourceResolution: {
     landometerBaseRuntimeArchive: "Landometer Brand Motifs Asset and Prompt.zip",
     selectedRuntimeArchives: ["Landometer Brand Motifs Asset and Prompt.zip", "Landometer Brand Motifs HTML2.zip"],
-    selectionBasis: "The two 2026-09-05 owner-supplied packages corroborate each other byte-for-byte. Release 1.1.2 ships that CSS and JavaScript exactly so the logo-full assembly uses the supplied complete final geometry.",
+    selectionBasis: "The two 2026-09-05 owner-supplied packages corroborate each other byte-for-byte. Release 1.1.3 keeps that CSS and JavaScript exact, while the library host selects the runtime's blue-ink route and the official #0195CB wedge for logo-full in every theme; its portable static derivative carries the same governed palette.",
     selectedRuntimeSha256: "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
     selectedRuntimeCssSha256: "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794",
     ownerSuppliedV2RuntimeSha256: "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb",
@@ -228,6 +239,15 @@ const manifest = {
         finalStateHoldMs: 2950,
         replayIntervalMs: 5000,
         decisionRef: "governance/logo-preview-final-settle-decision.json",
+        presentationPalette: {
+          hostAttribute: "ink=blue",
+          hostStyle: "--lm-wedge:#0195CB",
+          pin: "#1D4497",
+          inner: ["#D2566A", "#D2A437", "#0EB99B", "#4DB6E9"],
+          wedge: "#0195CB",
+          invariantAcrossThemes: true,
+          decisionRef: "governance/logo-preview-theme-color-decision.json",
+        },
       },
     },
     activeConditions: ["dialog_open", "document_visible", "reduced_motion_off", "not_manually_paused"],
@@ -238,7 +258,7 @@ const manifest = {
     googleDrive: {
       role: "governed_asset_mirror_for_authorized_human_and_agent_retrieval",
       rootUrl: "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
-      immutableReleaseUrl: "https://drive.google.com/drive/folders/1ivOhP0g8vMxgUoNCHmyGsCpEaYjBrRzF",
+      immutableReleaseUrl: "https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6",
       syncGuide: "docs/ai-sync.md",
       releaseIdentityRule: "Resolve release-index.json, then verify the exact manifest and checksum before use."
     }
@@ -254,6 +274,7 @@ const manifest = {
     baselineMotionMode: "static",
     showcaseBoundary: "Do not copy or infer the library preview dialog's auto-replay behavior. Downstream Landometer web motion remains finite_once unless a separately authorized artifact-level decision says otherwise.",
     runtimeCapabilityBoundary: "The Landometer runtime exposes optional replay=enter, replay=hover, and loop attributes because the owner-supplied runtime is distributed byte-exact. Their presence is not permission or a recommendation to use them; finite_once remains the default recommendation.",
+    logoFullThemeInvariant: "When using landometer.logo.full on web, preserve the official palette in every theme by applying ink=blue and --lm-wedge:#0195CB to the lm-motif host. Do not apply this logo-specific exception to other motifs or to logo.quiet.",
     motionExtensionRule: "Default to no extension. Only for allowedFormat web_public, choose the one extension whose familyId equals selectedRecord.familyId; copy its exact runtimeAssetIds and lifecycle. For Landometer, recommend finite_once by default and do not enable optional replay or loop APIs without a separate artifact-level authorization. Keep selectedRecord.path as the static fallback. Do not infer a motion runtime for deck, social, document, or video outputs.",
     motionExtensionRequiredFields: ["motionMode", "runtimeAssetIds", "runtimeAllowedJob", "runtimeAllowedFormat", "staticFallback"],
     motionExtensions: {

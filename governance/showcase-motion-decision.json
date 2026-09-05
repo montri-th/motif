@@ -2,7 +2,7 @@
   "schemaVersion": "motif-library-showcase-motion-decision/1.0",
   "decisionId": "landometer-modal-showcase-motion-v1",
   "artifactId": "landometer-motif-library-web-v1",
-  "artifactRelease": "1.1.2",
+  "artifactRelease": "1.1.3",
   "carriedForwardFromRelease": "1.1.0",
   "status": "owner_selected_for_named_artifact",
   "recordedOn": "2026-09-05",
@@ -30,7 +30,11 @@
         "settleAction": "remove_data_play_to_show_authored_final_state",
         "finalStateHoldMs": 2950,
         "replayIntervalMs": 5000,
-        "decisionRef": "governance/logo-preview-final-settle-decision.json"
+        "decisionRef": "governance/logo-preview-final-settle-decision.json",
+        "fullHostInk": "blue",
+        "fullWedge": "#0195CB",
+        "themeColorInvariant": "logo-full keeps the approved Brand Blue and official colour-region palette in both light and dark themes",
+        "themeColorDecisionRef": "governance/logo-preview-theme-color-decision.json"
       }
     },
     "runConditions": [

@@ -2,7 +2,7 @@
   "schemaVersion": "motif-library-build-card/1.0",
   "artifactId": "landometer-motif-library-web-v1",
   "artifactName": "Landometer Motif Library",
-  "artifactRelease": "1.1.2",
+  "artifactRelease": "1.1.3",
   "experienceProfile": "methodology_learning",
   "formatProfile": "web_public",
   "pageKind": "utility",
@@ -31,10 +31,12 @@
   "decisionRecords": {
     "showcaseMotion": "governance/showcase-motion-decision.json",
     "logoFullGeometry": "governance/logo-full-geometry-decision.json",
-    "logoPreviewFinalSettle": "governance/logo-preview-final-settle-decision.json"
+    "logoPreviewFinalSettle": "governance/logo-preview-final-settle-decision.json",
+    "logoPreviewThemeColor": "governance/logo-preview-theme-color-decision.json"
   },
   "distributionMirrors": {
     "googleDrive": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
+    "immutableRelease": "https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6",
     "syncGuide": "docs/ai-sync.md"
   },
   "rightsBoundary": {
@@ -60,6 +62,7 @@
     "pairedLandometerModalShowcase": true,
     "ownerSelectedModalAutoreplayWithPause": true,
     "logoPreviewFinalSettleAndHold": true,
+    "logoFullThemeInvariant": true,
     "boundedIjjiPendingStatePreview": true,
     "clientSidePngExport": true,
     "themeSwitch": true,
@@ -72,6 +75,7 @@
     "motifAssets": "owner-approved artifact overlay on 2026-09-05",
     "showcaseMotion": "owner-selected component-local instructional behavior on 2026-09-05; see governance/showcase-motion-decision.json",
     "logoPreviewFinalSettle": "artifact-level repair prompted by the owner's screenshot observation; see governance/logo-preview-final-settle-decision.json",
+    "logoPreviewThemeColor": "artifact-level light/dark palette repair prompted by the owner's iPhone screenshot; see governance/logo-preview-theme-color-decision.json",
     "productTruth": "No product capability or business evidence claims are made"
   }
 }

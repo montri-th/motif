@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "motif-library-logo-preview-theme-color-decision/1.0",
+  "decisionId": "landometer-logo-preview-theme-color-20260905",
+  "artifactRelease": "1.1.3",
+  "status": "candidate_selected_local_qa_passed_live_pending",
+  "recordedOn": "2026-09-05",
+  "evidence": {
+    "source": "owner-supplied iPhone screenshot in the current task",
+    "observation": "In dark theme, logo-full ended with a Brand Beige pin and pale inner-band composites instead of the Brand Blue pin and official-mark-aligned inner colours.",
+    "cause": "The exact v2 runtime intentionally maps unqualified full motifs to Brand Beige under data-theme=dark. The logo preview host did not override that general decorative-motif rule.",
+    "boundary": "The screenshot is evidence of a theme-cascade defect in this library preview. It does not authorize editing the exact owner-supplied runtime bytes or changing other motif kinds."
+  },
+  "selectedFix": {
+    "surface": "landometer_logo_full_preview_and_copied_logo_component_snippet",
+    "hostAttribute": "ink=blue",
+    "resolvedColor": "var(--brand-blue, #1D4497)",
+    "hostWedgeOverride": "--lm-wedge=#0195CB",
+    "officialPalette": {
+      "pin": "#1D4497",
+      "innerCoral": "#D2566A",
+      "innerYellow": "#D2A437",
+      "innerMint": "#0EB99B",
+      "innerSky": "#4DB6E9",
+      "wedge": "#0195CB"
+    },
+    "runtimeBytesChanged": false,
+    "staticSvgChanged": true,
+    "quietVariantChanged": false,
+    "otherMotifThemeBehaviorChanged": false,
+    "reason": "The runtime already exposes its governed blue-ink route. Selecting it on logo-full prevents the dark-theme decorative override while preserving the supplied component and animation geometry byte-for-byte. The library host and regenerated portable logo-full SVG also lock the official #0195CB wedge instead of the runtime's generic token-derived wedge."
+  },
+  "requiredInvariants": [
+    "logo-full currentColor resolves to rgb(29, 68, 151) in light and dark themes",
+    "logo-full pin fill resolves to rgb(29, 68, 151) in light and dark themes",
+    "logo-full inner colour composites remain based on Brand Blue in light and dark themes",
+    "logo-full priority wedge resolves to rgb(1, 149, 203) in light and dark themes",
+    "logo-full and logo-quiet still start together, settle at 2050 ms, hold, and replay together at 5000 ms",
+    "reduced motion shows the same complete final states without replay",
+    "the copied logo component snippet includes ink=blue and --lm-wedge=#0195CB",
+    "non-logo motif theme behavior remains unchanged"
+  ],
+  "productionBoundary": {
+    "defaultRecommendation": "finite_once",
+    "identityBoundary": "The assembled mark remains a motif and does not replace the official logo asset.",
+    "optionalRuntimeApiBoundary": "Optional replay and loop capabilities remain unapproved for downstream use without a separate job-specific owner decision.",
+    "normativeDesignSystemChange": false
+  },
+  "releaseGate": {
+    "status": "pending",
+    "localDarkThemeQaRequired": true,
+    "localDarkThemeQaStatus": "passed_15_visual_14_runtime_parity_387_browser_checks",
+    "liveIphoneClassViewportQaRequired": true,
+    "requiredObservation": "On the deployed dark-theme route at a 390x844 iPhone-class viewport, confirm that the held full motif has the Brand Blue pin and Brand-Blue-derived inner colours, all paths are present, quiet remains Energy Sky, and paired replay still starts at 5000 ms."
+  }
+}

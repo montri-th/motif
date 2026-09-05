@@ -305,7 +305,6 @@ for (const viewport of viewports) {
         "Landometer logo preview settles to the exact static final state after both variants finish",
         JSON.stringify(settledLogo),
       );
-      await page.locator("html").evaluate((element) => { element.dataset.theme = "light"; });
       const dialogBox = await page.locator("#preview-dialog").boundingBox();
       const fullSvgBox = await page.locator("#preview-stage lm-motif:not([quiet]) svg").boundingBox();
       const logoFinalBuffer = await page.locator("#preview-dialog").screenshot({ path: path.join(screenshotDir, "logo-full-quiet-final.png") });
@@ -362,6 +361,16 @@ for (const viewport of viewports) {
   const clipboard = await page.evaluate(() => navigator.clipboard.readText());
   record(clipboard.includes("<lm-motif kind=\"dial\"") && clipboard.includes("montri-th.github.io/motif"), "Copy-code action writes canonical Landometer snippet");
 
+  await page.locator('[data-copy-code][data-brand="landometer"][data-id="logo"]').click();
+  const logoClipboard = await page.evaluate(() => navigator.clipboard.readText());
+  record(
+    logoClipboard.includes('<lm-motif kind="logo" ink="blue" style="--lm-wedge:#0195CB"></lm-motif>')
+      && logoClipboard.includes("landometer-motifs.css?v=1.1.3")
+      && logoClipboard.includes("landometer-motifs.js?v=1.1.3"),
+    "Logo copy-code action preserves the approved blue ink, official wedge, and 1.1.3 runtime contract",
+    logoClipboard,
+  );
+
   const downloadPromise = page.waitForEvent("download");
   await page.locator("[data-download-png]").first().click();
   const download = await downloadPromise;
@@ -370,6 +379,104 @@ for (const viewport of viewports) {
   const pngBytes = fs.readFileSync(pngPath);
   record(download.suggestedFilename() === "landometer-dial-full.png", "PNG export keeps deterministic filename", download.suggestedFilename());
   record(pngBytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), "PNG export produces a valid PNG signature", `${pngBytes.length} bytes`);
+  await context.close();
+}
+
+// The reported iPhone-class failure is reproduced in dark mode: the complete logo must keep the official palette.
+{
+  const viewport = { width: 390, height: 844 };
+  const context = await browser.newContext({ viewport, colorScheme: "dark" });
+  const page = await context.newPage();
+  await page.goto(`${siteBase}/`, { waitUntil: "networkidle" });
+  await page.locator('[data-preview-brand="landometer"][data-preview-id="logo"]').click();
+  await page.waitForTimeout(2250);
+
+  const darkMobileLogo = await page.evaluate(() => {
+    const stage = document.querySelector("#preview-stage");
+    const full = stage?.querySelector("lm-motif:not([quiet])");
+    const quiet = stage?.querySelector("lm-motif[quiet]");
+    const fullPaths = [...(full?.querySelectorAll("path") || [])];
+    const quietPaths = [...(quiet?.querySelectorAll("path") || [])];
+    const canvas = document.createElement("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    const paint = canvas.getContext("2d", { willReadFrequently: true });
+    const asRgba = (cssColor) => {
+      paint.clearRect(0, 0, 1, 1);
+      paint.fillStyle = cssColor;
+      paint.fillRect(0, 0, 1, 1);
+      return [...paint.getImageData(0, 0, 1, 1).data];
+    };
+    return {
+      theme: document.documentElement.dataset.theme,
+      status: document.querySelector("#preview-status")?.textContent?.trim(),
+      playingCount: stage?.querySelectorAll("lm-motif[data-play]").length,
+      fullInk: full?.getAttribute("ink"),
+      fullWedgeProperty: full ? getComputedStyle(full).getPropertyValue("--lm-wedge").trim() : null,
+      fullPathCount: fullPaths.length,
+      quietPathCount: quietPaths.length,
+      pin: fullPaths[0] ? asRgba(getComputedStyle(fullPaths[0]).fill) : null,
+      innerStrokes: fullPaths.slice(1, 5).map((path) => asRgba(getComputedStyle(path).stroke)),
+      wedge: fullPaths[9] ? asRgba(getComputedStyle(fullPaths[9]).fill) : null,
+      quietInk: quiet ? asRgba(getComputedStyle(quiet).color) : null,
+      raw: {
+        pin: fullPaths[0] ? getComputedStyle(fullPaths[0]).fill : null,
+        innerStrokes: fullPaths.slice(1, 5).map((path) => getComputedStyle(path).stroke),
+        wedge: fullPaths[9] ? getComputedStyle(fullPaths[9]).fill : null,
+        quietInk: quiet ? getComputedStyle(quiet).color : null,
+      },
+    };
+  });
+
+  const expectedInnerStrokes = [
+    [210, 86, 106, 255],
+    [210, 164, 55, 255],
+    [14, 185, 155, 255],
+    [77, 182, 233, 255],
+  ];
+  record(
+    darkMobileLogo.theme === "dark"
+      && darkMobileLogo.playingCount === 0
+      && darkMobileLogo.status?.includes("ประกอบครบแล้ว"),
+    "390x844 dark-mode logo preview reaches the complete held final state",
+    JSON.stringify(darkMobileLogo),
+  );
+  record(
+    darkMobileLogo.fullInk === "blue"
+      && darkMobileLogo.fullWedgeProperty?.toUpperCase() === "#0195CB",
+    "390x844 dark-mode full logo host locks blue ink and the official cyan wedge",
+    JSON.stringify({ ink: darkMobileLogo.fullInk, wedge: darkMobileLogo.fullWedgeProperty }),
+  );
+  record(
+    darkMobileLogo.fullPathCount === 10 && darkMobileLogo.quietPathCount === 9,
+    "390x844 dark-mode logo pair retains all 10 full and 9 quiet paths",
+    JSON.stringify({ full: darkMobileLogo.fullPathCount, quiet: darkMobileLogo.quietPathCount }),
+  );
+  record(
+    JSON.stringify(darkMobileLogo.pin) === JSON.stringify([29, 68, 151, 255]),
+    "390x844 dark-mode full logo pin computes to Brand Blue rgb(29, 68, 151)",
+    JSON.stringify({ rgba: darkMobileLogo.pin, raw: darkMobileLogo.raw.pin }),
+  );
+  record(
+    JSON.stringify(darkMobileLogo.wedge) === JSON.stringify([1, 149, 203, 255]),
+    "390x844 dark-mode full logo wedge computes to official rgb(1, 149, 203)",
+    JSON.stringify({ rgba: darkMobileLogo.wedge, raw: darkMobileLogo.raw.wedge }),
+  );
+  record(
+    JSON.stringify(darkMobileLogo.innerStrokes) === JSON.stringify(expectedInnerStrokes),
+    "390x844 dark-mode full logo inner strokes compute to the four approved composite colors",
+    JSON.stringify({ rgba: darkMobileLogo.innerStrokes, raw: darkMobileLogo.raw.innerStrokes }),
+  );
+  record(
+    JSON.stringify(darkMobileLogo.quietInk) === JSON.stringify([89, 210, 254, 255]),
+    "390x844 dark-mode quiet logo remains Energy Sky rgb(89, 210, 254)",
+    JSON.stringify({ rgba: darkMobileLogo.quietInk, raw: darkMobileLogo.raw.quietInk }),
+  );
+
+  await page.screenshot({
+    path: path.join(screenshotDir, "logo-full-quiet-final-dark-mobile-390x844.png"),
+    fullPage: false,
+  });
   await context.close();
 }
 
@@ -615,16 +722,17 @@ const socialBytes = fs.readFileSync(socialPath);
 const report = {
   schemaVersion: "motif-library-browser-qa/1.0",
   executedAt: new Date().toISOString(),
+  artifactRelease: "1.1.3",
   artifactRoot: ".",
   routes: ["/motif/", "/motif/en/"],
   browser: browserVersion,
   emulationNote: "Viewport checks are desktop Chrome emulation, not native iPhone, iPad, Safari, or screen-reader evidence.",
   lifecycleEmulationNote: "Visibility and pagehide/pageshow handlers are exercised with standards-shaped in-page events; this is not a full operating-system tab suspension or cross-navigation BFCache observation.",
   viewports,
-  states: ["light", "dark", "keyboard", "paired full/quiet dialog", "immediate autoplay", "three-second default auto-replay", "logo exact-final settle and five-second replay", "pause", "replay now", "Escape focus restoration", "stale async-preview isolation", "dynamic reduced motion", "synthetic document visibility lifecycle", "synthetic pagehide/pageshow lifecycle", "filter", "search", "copy", "PNG export", "ijji bounded timeout", "ijji cancel", "reduced motion final states", "no JavaScript", "Thai 130% text", "200% text"],
+  states: ["light", "dark", "keyboard", "paired full/quiet dialog", "immediate autoplay", "three-second default auto-replay", "logo exact-final settle and five-second replay", "390x844 dark logo approved-palette lock", "pause", "replay now", "Escape focus restoration", "stale async-preview isolation", "dynamic reduced motion", "synthetic document visibility lifecycle", "synthetic pagehide/pageshow lifecycle", "filter", "search", "copy", "logo 1.1.3 copy contract", "PNG export", "ijji bounded timeout", "ijji cancel", "reduced motion final states", "no JavaScript", "Thai 130% text", "200% text"],
   screenshotsCaptured: {
     storage: "ephemeral local QA output; intentionally not published",
-    names: ["th-mobile-360.png", "th-desktop-1440.png", "en-mobile-390.png", "logo-full-quiet-final.png"],
+    names: ["th-mobile-360.png", "th-desktop-1440.png", "en-mobile-390.png", "logo-full-quiet-final.png", "logo-full-quiet-final-dark-mobile-390x844.png"],
   },
   socialPreview: {
     path: "assets/social/motif-library-1200x630.png",

@@ -147,8 +147,10 @@
       const origin = "https://montri-th.github.io/motif";
       let snippet = "";
       if (brand === "landometer") {
-        const quiet = button.dataset.quiet === "true" ? " quiet" : "";
-        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.1.2">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.1.2" defer><\/script>\n<lm-motif kind="${id}"${quiet}></lm-motif>`;
+        const isQuiet = button.dataset.quiet === "true";
+        const quiet = isQuiet ? " quiet" : "";
+        const logoPalette = id === "logo" && !isQuiet ? ' ink="blue" style="--lm-wedge:#0195CB"' : "";
+        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.1.3">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.1.3" defer><\/script>\n<lm-motif kind="${id}"${quiet}${logoPalette}></lm-motif>`;
       } else {
         snippet = `<img src="${origin}/assets/ijji/svg/ijji-${id}-transparent-ink.svg" width="120" height="120" alt="" aria-hidden="true">`;
       }
@@ -306,6 +308,10 @@
         motif.setAttribute("kind", config.id);
         motif.setAttribute("autoplay", "false");
         if (variant.quiet) motif.setAttribute("quiet", "");
+        if (config.id === "logo" && !variant.quiet) {
+          motif.setAttribute("ink", "blue");
+          motif.style.setProperty("--lm-wedge", "#0195CB");
+        }
         const caption = document.createElement("figcaption");
         caption.textContent = variant.label;
         figure.append(motif, caption);

@@ -3,14 +3,17 @@
 Canonical site: https://montri-th.github.io/motif/
 English route: https://montri-th.github.io/motif/en/
 Repository: https://github.com/montri-th/motif
+Artifact release: 1.1.3
 Asset manifest: https://montri-th.github.io/motif/assets/motif-library.json
 Owner approval: https://montri-th.github.io/motif/governance/owner-approval.json
 Showcase motion decision: https://montri-th.github.io/motif/governance/showcase-motion-decision.json
 Logo preview final-settle decision: https://montri-th.github.io/motif/governance/logo-preview-final-settle-decision.json
+Logo preview theme-colour decision: https://montri-th.github.io/motif/governance/logo-preview-theme-color-decision.json
 Checksums: https://montri-th.github.io/motif/governance/SHA256SUMS.txt
 Human guide: https://montri-th.github.io/motif/docs/usage-guide.md
 Claude + ChatGPT sync guide: https://montri-th.github.io/motif/docs/ai-sync.md
 Google Drive mirror: https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh
+Immutable Drive release 1.1.3: https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6
 
 Purpose: help dev, designer, product, sales, and authorized AI/agent workflows select and reuse exact Landometer and ijji motif assets.
 
@@ -29,8 +32,9 @@ Agent rules:
 6. Do not redraw, recolor, crop geometry, distort, trace screenshots, or reconstruct from model memory.
 7. Default to static. For web_public motion only, resolve the matching family in agentContract.motionExtensions and copy its exact runtime IDs and lifecycle while keeping selectedRecord.path as fallback. Landometer motion is finite once. ijji motion is allowed only while a real pending operation exists and must stop on success, failure, cancel, or timeout.
 8. The library's user-opened Landometer preview dialog auto-replays full + quiet as an inspection aid. Logo settles to its complete static final state at 2050 ms and holds until its 5000 ms replay. Do not copy or infer that loop for downstream work; it does not alter the finite_once default production recommendation.
-9. Verify the final rendered or exported output and report unverified gates.
-10. For Drive retrieval, resolve release-index.json and verify the immutable release manifest/checksum. Drive synchronization is explicit per task, not an automatic background process.
+9. For `landometer.logo.full` only, preserve the exact runtime bytes and select the approved palette with `ink="blue"` plus `--lm-wedge:#0195CB`; verify pin #1D4497, inner coral #D2566A, yellow #D2A437, mint #0EB99B, sky #4DB6E9, and wedge #0195CB in both light and dark themes. Use the generated SVG as the static route.
+10. Verify the final rendered or exported output and report unverified gates.
+11. For Drive retrieval, resolve release-index.json and verify the immutable release manifest/checksum. Drive synchronization is explicit per task, not an automatic background process.
 
 Rights: public availability is not an unrestricted third-party or open-source license. Follow LICENSE.md and governance/owner-approval.json.
 

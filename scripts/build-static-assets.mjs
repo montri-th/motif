@@ -5,9 +5,9 @@ import vm from "node:vm";
 const root = path.resolve(import.meta.dirname, "..");
 const runtimePath = path.join(root, "assets/landometer/landometer-motifs.js");
 const outputDir = path.join(root, "assets/landometer/svg");
-// Browser-computed 8-bit sRGB result of the exact runtime's LCH wedge mix.
-// scripts/verify-runtime-parity.mjs independently recalculates and enforces this value.
-const logoWedgeSrgb = "#1F87CE";
+// Official priority-wedge colour from the owner-supplied Landometer lockup.
+// The exact runtime bytes remain unchanged; the library host selects this logo-specific paint.
+const logoWedgeSrgb = "#0195CB";
 // Browser-computed 8-bit sRGB results of each 80% energy colour mixed over Brand Blue.
 // Opaque results preserve the official mark's colour appearance without dark overlap seams.
 const logoBandSrgb = {

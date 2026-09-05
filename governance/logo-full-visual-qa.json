@@ -1,10 +1,10 @@
 {
   "schemaVersion": "motif-library-logo-full-visual-qa/1.0",
-  "executedAt": "2026-09-05T10:43:35.356Z",
-  "artifactRelease": "1.1.2",
+  "executedAt": "2026-09-05T12:18:02.171Z",
+  "artifactRelease": "1.1.3",
   "browser": "system Google Chrome through Playwright",
-  "fixtureMatrix": "Widths 180/600 at DPR 1/2/3 for runtime/static parity and seam probes; animated held final after all authored animations finish versus reduced-motion final at width 300 and DPR 1/2/3; preview-style settle at 2050 ms versus the stable final state at width 300 and DPR 1/2/3.",
-  "evidenceBoundary": "This verifies the byte-exact owner-supplied runtime's angular, radial, and wedge joins resolve to the expected segment-region colours, so neither Brand Blue underlay nor white fixture background can pass as a seam. Reduced-motion runtime, static SVG, and the preview-style 2050 ms settled state are exact within two 8-bit channel values. The held animated state permits at most 2% edge pixels to differ because an animation-fill compositing layer can anti-alias the same vector edge differently; expected-colour seam probes must still pass. It does not claim pixel identity to the official master lockup.",
+  "fixtureMatrix": "Widths 180/600 at DPR 1/2/3 for light-theme runtime/static parity and seam probes; animated held final after all authored animations finish versus reduced-motion final at width 300 and DPR 1/2/3; preview-style light-theme settle at 2050 ms versus the stable final state at width 300 and DPR 1/2/3; preview-style dark-theme settle at 2050 ms versus the canonical static asset, with direct Brand Blue, four inner composite, four outer energy, and #0195CB wedge probes at width 300 and DPR 1/2/3.",
+  "evidenceBoundary": "This verifies the artifact-delivered logo presentation while retaining the byte-exact owner-supplied runtime: the host explicitly selects ink=blue and --lm-wedge:#0195CB in both themes. Angular, radial, and wedge joins must resolve to the expected segment-region colours, so neither the pin underlay nor the fixture background can pass as a seam. Reduced-motion runtime, static SVG, and the preview-style 2050 ms settled state are exact within two 8-bit channel values. The held animated state permits at most 2% edge pixels to differ because an animation-fill compositing layer can anti-alias the same vector edge differently; expected-colour seam and canonical-palette probes must still pass. This proves final vector-region geometry and palette parity, not raster pixel identity to the official master lockup.",
   "cases": [
     {
       "width": 180,
@@ -274,9 +274,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -285,12 +285,12 @@
             ],
             "tolerance": 60,
             "rgba": [
-              66,
-              170,
+              58,
+              174,
               226,
               255
             ],
-            "nearestExpectedDistance": 17.72,
+            "nearestExpectedDistance": 21.77,
             "passed": true
           }
         ]
@@ -525,9 +525,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -536,12 +536,12 @@
             ],
             "tolerance": 60,
             "rgba": [
-              66,
-              170,
+              58,
+              174,
               226,
               255
             ],
-            "nearestExpectedDistance": 17.72,
+            "nearestExpectedDistance": 21.77,
             "passed": true
           }
         ]
@@ -776,9 +776,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -787,12 +787,12 @@
             ],
             "tolerance": 60,
             "rgba": [
-              43,
-              147,
-              213,
+              20,
+              157,
+              211,
               255
             ],
-            "nearestExpectedDistance": 18.36,
+            "nearestExpectedDistance": 22.11,
             "passed": true
           }
         ]
@@ -1027,9 +1027,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -1038,12 +1038,12 @@
             ],
             "tolerance": 60,
             "rgba": [
-              61,
-              160,
-              219,
+              53,
+              163,
+              218,
               255
             ],
-            "nearestExpectedDistance": 30.59,
+            "nearestExpectedDistance": 34.09,
             "passed": true
           }
         ]
@@ -1057,7 +1057,7 @@
         "pixelsOverTolerance": 9,
         "pixelRatio": 0.00005,
         "maxAllowedPixelRatio": 0.02,
-        "maxChannelDelta": 7,
+        "maxChannelDelta": 6,
         "tolerance": 2
       },
       "animatedSeamInspection": {
@@ -1278,9 +1278,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -1289,12 +1289,12 @@
             ],
             "tolerance": 60,
             "rgba": [
-              66,
-              170,
-              227,
+              58,
+              173,
+              226,
               255
             ],
-            "nearestExpectedDistance": 17.35,
+            "nearestExpectedDistance": 22.16,
             "passed": true
           }
         ]
@@ -1529,9 +1529,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -1540,12 +1540,12 @@
             ],
             "tolerance": 60,
             "rgba": [
-              42,
-              147,
-              213,
+              20,
+              158,
+              210,
               255
             ],
-            "nearestExpectedDistance": 17.72,
+            "nearestExpectedDistance": 22.16,
             "passed": true
           }
         ]
@@ -1780,9 +1780,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -1791,12 +1791,12 @@
             ],
             "tolerance": 60,
             "rgba": [
-              66,
-              170,
+              58,
+              174,
               226,
               255
             ],
-            "nearestExpectedDistance": 17.72,
+            "nearestExpectedDistance": 21.77,
             "passed": true
           }
         ]
@@ -2031,9 +2031,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -2042,12 +2042,12 @@
             ],
             "tolerance": 60,
             "rgba": [
-              66,
-              170,
+              58,
+              174,
               226,
               255
             ],
-            "nearestExpectedDistance": 17.72,
+            "nearestExpectedDistance": 21.77,
             "passed": true
           }
         ]
@@ -2282,9 +2282,9 @@
             "radius": 71.3,
             "angle": 22.5,
             "expected": [
-              31,
-              135,
-              206
+              1,
+              149,
+              203
             ],
             "alternateExpected": [
               77,
@@ -2293,12 +2293,1266 @@
             ],
             "tolerance": 60,
             "rgba": [
-              43,
-              147,
-              213,
+              20,
+              157,
+              211,
               255
             ],
-            "nearestExpectedDistance": 18.36,
+            "nearestExpectedDistance": 22.11,
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "width": 300,
+      "dpr": 1,
+      "theme": "dark",
+      "hostPresentation": "ink=\"blue\"; --lm-wedge:#0195CB",
+      "darkSettledRuntimeStaticParityAt2050Ms": {
+        "passed": true,
+        "pixelsOverTolerance": 0,
+        "pixelRatio": 0,
+        "maxAllowedPixelRatio": 0,
+        "maxChannelDelta": 0,
+        "tolerance": 2
+      },
+      "darkSettledCanonicalPalette": {
+        "passed": true,
+        "probes": [
+          {
+            "type": "pin",
+            "expected": [
+              29,
+              68,
+              151
+            ],
+            "rgba": [
+              29,
+              68,
+              151,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "wedge",
+            "expected": [
+              1,
+              149,
+              203
+            ],
+            "rgba": [
+              1,
+              149,
+              203,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-coral",
+            "expected": [
+              210,
+              86,
+              106
+            ],
+            "rgba": [
+              210,
+              86,
+              106,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-yellow",
+            "expected": [
+              210,
+              164,
+              55
+            ],
+            "rgba": [
+              210,
+              164,
+              55,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-mint",
+            "expected": [
+              14,
+              185,
+              155
+            ],
+            "rgba": [
+              14,
+              185,
+              155,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-sky",
+            "expected": [
+              77,
+              182,
+              233
+            ],
+            "rgba": [
+              77,
+              182,
+              233,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-coral",
+            "expected": [
+              255,
+              90,
+              95
+            ],
+            "rgba": [
+              255,
+              90,
+              95,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-yellow",
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "rgba": [
+              255,
+              188,
+              31,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-mint",
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "rgba": [
+              10,
+              214,
+              156,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-sky",
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          }
+        ]
+      },
+      "darkSettledSeamInspection": {
+        "passed": true,
+        "probes": [
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 45,
+            "expected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 30,
+            "rgba": [
+              77,
+              182,
+              233,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 45,
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "tolerance": 30,
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 90,
+            "expected": [
+              14,
+              185,
+              155
+            ],
+            "tolerance": 30,
+            "rgba": [
+              14,
+              185,
+              155,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 90,
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "tolerance": 30,
+            "rgba": [
+              10,
+              214,
+              156,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 135,
+            "expected": [
+              210,
+              164,
+              55
+            ],
+            "tolerance": 30,
+            "rgba": [
+              210,
+              164,
+              55,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 135,
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "tolerance": 30,
+            "rgba": [
+              255,
+              188,
+              31,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 22.5,
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "alternateExpected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 30,
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 67.5,
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "alternateExpected": [
+              14,
+              185,
+              155
+            ],
+            "tolerance": 30,
+            "rgba": [
+              14,
+              185,
+              155,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 112.5,
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "alternateExpected": [
+              210,
+              164,
+              55
+            ],
+            "tolerance": 30,
+            "rgba": [
+              210,
+              164,
+              55,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 157.5,
+            "expected": [
+              255,
+              90,
+              95
+            ],
+            "alternateExpected": [
+              210,
+              86,
+              106
+            ],
+            "tolerance": 30,
+            "rgba": [
+              233,
+              88,
+              101,
+              255
+            ],
+            "nearestExpectedDistance": 22.89,
+            "passed": true
+          },
+          {
+            "type": "wedge",
+            "radius": 71.3,
+            "angle": 22.5,
+            "expected": [
+              1,
+              149,
+              203
+            ],
+            "alternateExpected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 60,
+            "rgba": [
+              58,
+              174,
+              226,
+              255
+            ],
+            "nearestExpectedDistance": 21.77,
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "width": 300,
+      "dpr": 2,
+      "theme": "dark",
+      "hostPresentation": "ink=\"blue\"; --lm-wedge:#0195CB",
+      "darkSettledRuntimeStaticParityAt2050Ms": {
+        "passed": true,
+        "pixelsOverTolerance": 0,
+        "pixelRatio": 0,
+        "maxAllowedPixelRatio": 0,
+        "maxChannelDelta": 0,
+        "tolerance": 2
+      },
+      "darkSettledCanonicalPalette": {
+        "passed": true,
+        "probes": [
+          {
+            "type": "pin",
+            "expected": [
+              29,
+              68,
+              151
+            ],
+            "rgba": [
+              29,
+              68,
+              151,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "wedge",
+            "expected": [
+              1,
+              149,
+              203
+            ],
+            "rgba": [
+              1,
+              149,
+              203,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-coral",
+            "expected": [
+              210,
+              86,
+              106
+            ],
+            "rgba": [
+              210,
+              86,
+              106,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-yellow",
+            "expected": [
+              210,
+              164,
+              55
+            ],
+            "rgba": [
+              210,
+              164,
+              55,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-mint",
+            "expected": [
+              14,
+              185,
+              155
+            ],
+            "rgba": [
+              14,
+              185,
+              155,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-sky",
+            "expected": [
+              77,
+              182,
+              233
+            ],
+            "rgba": [
+              77,
+              182,
+              233,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-coral",
+            "expected": [
+              255,
+              90,
+              95
+            ],
+            "rgba": [
+              255,
+              90,
+              95,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-yellow",
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "rgba": [
+              255,
+              188,
+              31,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-mint",
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "rgba": [
+              10,
+              214,
+              156,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-sky",
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          }
+        ]
+      },
+      "darkSettledSeamInspection": {
+        "passed": true,
+        "probes": [
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 45,
+            "expected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 30,
+            "rgba": [
+              77,
+              182,
+              233,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 45,
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "tolerance": 30,
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 90,
+            "expected": [
+              14,
+              185,
+              155
+            ],
+            "tolerance": 30,
+            "rgba": [
+              14,
+              185,
+              155,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 90,
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "tolerance": 30,
+            "rgba": [
+              10,
+              214,
+              156,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 135,
+            "expected": [
+              210,
+              164,
+              55
+            ],
+            "tolerance": 30,
+            "rgba": [
+              210,
+              164,
+              55,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 135,
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "tolerance": 30,
+            "rgba": [
+              255,
+              188,
+              31,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 22.5,
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "alternateExpected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 30,
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 67.5,
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "alternateExpected": [
+              14,
+              185,
+              155
+            ],
+            "tolerance": 30,
+            "rgba": [
+              10,
+              214,
+              156,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 112.5,
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "alternateExpected": [
+              210,
+              164,
+              55
+            ],
+            "tolerance": 30,
+            "rgba": [
+              244,
+              182,
+              37,
+              255
+            ],
+            "nearestExpectedDistance": 13.89,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 157.5,
+            "expected": [
+              255,
+              90,
+              95
+            ],
+            "alternateExpected": [
+              210,
+              86,
+              106
+            ],
+            "tolerance": 30,
+            "rgba": [
+              233,
+              88,
+              101,
+              255
+            ],
+            "nearestExpectedDistance": 22.89,
+            "passed": true
+          },
+          {
+            "type": "wedge",
+            "radius": 71.3,
+            "angle": 22.5,
+            "expected": [
+              1,
+              149,
+              203
+            ],
+            "alternateExpected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 60,
+            "rgba": [
+              58,
+              174,
+              226,
+              255
+            ],
+            "nearestExpectedDistance": 21.77,
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "width": 300,
+      "dpr": 3,
+      "theme": "dark",
+      "hostPresentation": "ink=\"blue\"; --lm-wedge:#0195CB",
+      "darkSettledRuntimeStaticParityAt2050Ms": {
+        "passed": true,
+        "pixelsOverTolerance": 0,
+        "pixelRatio": 0,
+        "maxAllowedPixelRatio": 0,
+        "maxChannelDelta": 0,
+        "tolerance": 2
+      },
+      "darkSettledCanonicalPalette": {
+        "passed": true,
+        "probes": [
+          {
+            "type": "pin",
+            "expected": [
+              29,
+              68,
+              151
+            ],
+            "rgba": [
+              29,
+              68,
+              151,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "wedge",
+            "expected": [
+              1,
+              149,
+              203
+            ],
+            "rgba": [
+              1,
+              149,
+              203,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-coral",
+            "expected": [
+              210,
+              86,
+              106
+            ],
+            "rgba": [
+              210,
+              86,
+              106,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-yellow",
+            "expected": [
+              210,
+              164,
+              55
+            ],
+            "rgba": [
+              210,
+              164,
+              55,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-mint",
+            "expected": [
+              14,
+              185,
+              155
+            ],
+            "rgba": [
+              14,
+              185,
+              155,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "inner-sky",
+            "expected": [
+              77,
+              182,
+              233
+            ],
+            "rgba": [
+              77,
+              182,
+              233,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-coral",
+            "expected": [
+              255,
+              90,
+              95
+            ],
+            "rgba": [
+              255,
+              90,
+              95,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-yellow",
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "rgba": [
+              255,
+              188,
+              31,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-mint",
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "rgba": [
+              10,
+              214,
+              156,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "outer-sky",
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "expectedDistance": 0,
+            "passed": true
+          }
+        ]
+      },
+      "darkSettledSeamInspection": {
+        "passed": true,
+        "probes": [
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 45,
+            "expected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 30,
+            "rgba": [
+              77,
+              182,
+              233,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 45,
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "tolerance": 30,
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 90,
+            "expected": [
+              14,
+              185,
+              155
+            ],
+            "tolerance": 30,
+            "rgba": [
+              14,
+              185,
+              155,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 90,
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "tolerance": 30,
+            "rgba": [
+              10,
+              214,
+              156,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "angular-inner",
+            "radius": 85.5,
+            "angle": 135,
+            "expected": [
+              210,
+              164,
+              55
+            ],
+            "tolerance": 30,
+            "rgba": [
+              210,
+              145,
+              68,
+              255
+            ],
+            "nearestExpectedDistance": 23.02,
+            "passed": true
+          },
+          {
+            "type": "angular-outer",
+            "radius": 113.5,
+            "angle": 135,
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "tolerance": 30,
+            "rgba": [
+              255,
+              188,
+              31,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 22.5,
+            "expected": [
+              89,
+              210,
+              254
+            ],
+            "alternateExpected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 30,
+            "rgba": [
+              89,
+              210,
+              254,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 67.5,
+            "expected": [
+              10,
+              214,
+              156
+            ],
+            "alternateExpected": [
+              14,
+              185,
+              155
+            ],
+            "tolerance": 30,
+            "rgba": [
+              12,
+              200,
+              156,
+              255
+            ],
+            "nearestExpectedDistance": 14.14,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 112.5,
+            "expected": [
+              255,
+              188,
+              31
+            ],
+            "alternateExpected": [
+              210,
+              164,
+              55
+            ],
+            "tolerance": 30,
+            "rgba": [
+              221,
+              170,
+              49,
+              255
+            ],
+            "nearestExpectedDistance": 13.89,
+            "passed": true
+          },
+          {
+            "type": "radial",
+            "radius": 99.5,
+            "angle": 157.5,
+            "expected": [
+              255,
+              90,
+              95
+            ],
+            "alternateExpected": [
+              210,
+              86,
+              106
+            ],
+            "tolerance": 30,
+            "rgba": [
+              255,
+              90,
+              95,
+              255
+            ],
+            "nearestExpectedDistance": 0,
+            "passed": true
+          },
+          {
+            "type": "wedge",
+            "radius": 71.3,
+            "angle": 22.5,
+            "expected": [
+              1,
+              149,
+              203
+            ],
+            "alternateExpected": [
+              77,
+              182,
+              233
+            ],
+            "tolerance": 60,
+            "rgba": [
+              20,
+              157,
+              211,
+              255
+            ],
+            "nearestExpectedDistance": 22.11,
             "passed": true
           }
         ]

@@ -1,6 +1,7 @@
 {
   "schemaVersion": "motif-library-browser-qa/1.0",
-  "executedAt": "2026-09-05T10:43:10.331Z",
+  "executedAt": "2026-09-05T12:20:34.642Z",
+  "artifactRelease": "1.1.3",
   "artifactRoot": ".",
   "routes": [
     "/motif/",
@@ -67,6 +68,7 @@
     "immediate autoplay",
     "three-second default auto-replay",
     "logo exact-final settle and five-second replay",
+    "390x844 dark logo approved-palette lock",
     "pause",
     "replay now",
     "Escape focus restoration",
@@ -77,6 +79,7 @@
     "filter",
     "search",
     "copy",
+    "logo 1.1.3 copy contract",
     "PNG export",
     "ijji bounded timeout",
     "ijji cancel",
@@ -91,7 +94,8 @@
       "th-mobile-360.png",
       "th-desktop-1440.png",
       "en-mobile-390.png",
-      "logo-full-quiet-final.png"
+      "logo-full-quiet-final.png",
+      "logo-full-quiet-final-dark-mobile-390x844.png"
     ]
   },
   "socialPreview": {
@@ -104,8 +108,8 @@
     "visualReview": "inspected at intrinsic size; title, motif, safe area, and thumbnail composition passed"
   },
   "totals": {
-    "checks": 379,
-    "passed": 379,
+    "checks": 387,
+    "passed": 387,
     "failed": 0
   },
   "status": "candidate_ready_for_release_handoff",
@@ -1896,6 +1900,11 @@
       "status": "passed"
     },
     {
+      "name": "Logo copy-code action preserves the approved blue ink, official wedge, and 1.1.3 runtime contract",
+      "status": "passed",
+      "detail": "<link rel=\"stylesheet\" href=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.1.3\">\n<script src=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.1.3\" defer></script>\n<lm-motif kind=\"logo\" ink=\"blue\" style=\"--lm-wedge:#0195CB\"></lm-motif>"
+    },
+    {
       "name": "PNG export keeps deterministic filename",
       "status": "passed",
       "detail": "landometer-dial-full.png"
@@ -1904,6 +1913,41 @@
       "name": "PNG export produces a valid PNG signature",
       "status": "passed",
       "detail": "22740 bytes"
+    },
+    {
+      "name": "390x844 dark-mode logo preview reaches the complete held final state",
+      "status": "passed",
+      "detail": "{\"theme\":\"dark\",\"status\":\"ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป\",\"playingCount\":0,\"fullInk\":\"blue\",\"fullWedgeProperty\":\"#0195CB\",\"fullPathCount\":10,\"quietPathCount\":9,\"pin\":[29,68,151,255],\"innerStrokes\":[[210,86,106,255],[210,164,55,255],[14,185,155,255],[77,182,233,255]],\"wedge\":[1,149,203,255],\"quietInk\":[89,210,254,255],\"raw\":{\"pin\":\"rgb(29, 68, 151)\",\"innerStrokes\":[\"color(srgb 0.822745 0.335686 0.416471)\",\"color(srgb 0.822745 0.643137 0.215686)\",\"color(srgb 0.0541176 0.724706 0.607843)\",\"color(srgb 0.301961 0.712157 0.915294)\"],\"wedge\":\"rgb(1, 149, 203)\",\"quietInk\":\"rgb(89, 210, 254)\"}}"
+    },
+    {
+      "name": "390x844 dark-mode full logo host locks blue ink and the official cyan wedge",
+      "status": "passed",
+      "detail": "{\"ink\":\"blue\",\"wedge\":\"#0195CB\"}"
+    },
+    {
+      "name": "390x844 dark-mode logo pair retains all 10 full and 9 quiet paths",
+      "status": "passed",
+      "detail": "{\"full\":10,\"quiet\":9}"
+    },
+    {
+      "name": "390x844 dark-mode full logo pin computes to Brand Blue rgb(29, 68, 151)",
+      "status": "passed",
+      "detail": "{\"rgba\":[29,68,151,255],\"raw\":\"rgb(29, 68, 151)\"}"
+    },
+    {
+      "name": "390x844 dark-mode full logo wedge computes to official rgb(1, 149, 203)",
+      "status": "passed",
+      "detail": "{\"rgba\":[1,149,203,255],\"raw\":\"rgb(1, 149, 203)\"}"
+    },
+    {
+      "name": "390x844 dark-mode full logo inner strokes compute to the four approved composite colors",
+      "status": "passed",
+      "detail": "{\"rgba\":[[210,86,106,255],[210,164,55,255],[14,185,155,255],[77,182,233,255]],\"raw\":[\"color(srgb 0.822745 0.335686 0.416471)\",\"color(srgb 0.822745 0.643137 0.215686)\",\"color(srgb 0.0541176 0.724706 0.607843)\",\"color(srgb 0.301961 0.712157 0.915294)\"]}"
+    },
+    {
+      "name": "390x844 dark-mode quiet logo remains Energy Sky rgb(89, 210, 254)",
+      "status": "passed",
+      "detail": "{\"rgba\":[89,210,254,255],\"raw\":\"rgb(89, 210, 254)\"}"
     },
     {
       "name": "A stale delayed ijji import cannot overwrite a newer paired Landometer preview",

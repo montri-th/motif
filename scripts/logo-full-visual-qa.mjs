@@ -16,15 +16,16 @@ const browser = await chromium.launch({
   executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
 });
 
-async function render({ width, dpr, mode }) {
+async function render({ width, dpr, mode, theme = "light" }) {
   const context = await browser.newContext({
+    colorScheme: theme,
     deviceScaleFactor: dpr,
     reducedMotion: ["animated-final", "settled-final"].includes(mode) ? "no-preference" : "reduce",
     viewport: { width: width + 40, height: Math.ceil(width / 2) + 40 },
   });
   const page = await context.newPage();
-  await page.setContent(`<!doctype html><html><style>
-    html,body{margin:0;background:#fff} #target{display:block;width:${width}px;height:${width / 2}px}
+  await page.setContent(`<!doctype html><html data-theme="${theme}"><style>
+    html,body{margin:0;background:${theme === "dark" ? "#10181A" : "#fff"}} #target{display:block;width:${width}px;height:${width / 2}px}
   </style><body><div id="mount"></div></body></html>`);
 
   if (mode === "static") {
@@ -44,6 +45,8 @@ async function render({ width, dpr, mode }) {
       motif.id = "target";
       motif.setAttribute("kind", "logo");
       motif.setAttribute("autoplay", "false");
+      motif.setAttribute("ink", "blue");
+      motif.style.setProperty("--lm-wedge", "#0195CB");
       mount.append(motif);
       if (play) motif.play();
     }, ["animated-final", "settled-final"].includes(mode));
@@ -147,7 +150,7 @@ function inspectSeams(png, width, dpr) {
     type: "wedge",
     radius: 71.3,
     angle: 22.5,
-    expected: [0x1F, 0x87, 0xCE],
+    expected: [0x01, 0x95, 0xCB],
     alternateExpected: [0x4D, 0xB6, 0xE9],
     tolerance: 60,
   });
@@ -165,6 +168,33 @@ function inspectSeams(png, width, dpr) {
     };
   });
   return { passed: results.every((probe) => probe.passed), probes: results };
+}
+
+function inspectCanonicalPalette(png, width, dpr) {
+  const scale = width / 600 * dpr;
+  const probes = [
+    { type: "pin", coordinate: [300 * scale, 215 * scale], expected: [0x1D, 0x44, 0x97] },
+    { type: "wedge", coordinate: point(50, 22.5, scale), expected: [0x01, 0x95, 0xCB] },
+    { type: "inner-coral", coordinate: point(85.5, 157.5, scale), expected: [0xD2, 0x56, 0x6A] },
+    { type: "inner-yellow", coordinate: point(85.5, 112.5, scale), expected: [0xD2, 0xA4, 0x37] },
+    { type: "inner-mint", coordinate: point(85.5, 67.5, scale), expected: [0x0E, 0xB9, 0x9B] },
+    { type: "inner-sky", coordinate: point(85.5, 22.5, scale), expected: [0x4D, 0xB6, 0xE9] },
+    { type: "outer-coral", coordinate: point(113.5, 157.5, scale), expected: [0xFF, 0x5A, 0x5F] },
+    { type: "outer-yellow", coordinate: point(113.5, 112.5, scale), expected: [0xFF, 0xBC, 0x1F] },
+    { type: "outer-mint", coordinate: point(113.5, 67.5, scale), expected: [0x0A, 0xD6, 0x9C] },
+    { type: "outer-sky", coordinate: point(113.5, 22.5, scale), expected: [0x59, 0xD2, 0xFE] },
+  ].map((probe) => {
+    const rgba = pixelAt(png, ...probe.coordinate);
+    const expectedDistance = distance(rgba, probe.expected);
+    return {
+      type: probe.type,
+      expected: probe.expected,
+      rgba,
+      expectedDistance: Number(expectedDistance.toFixed(2)),
+      passed: rgba[3] === 255 && expectedDistance <= 3,
+    };
+  });
+  return { passed: probes.every((probe) => probe.passed), probes };
 }
 
 const fixtures = [];
@@ -188,6 +218,7 @@ const reducedAndStatic = await Promise.all(fixtures.map(async ({ width, dpr }) =
 
 const animatedFinal = [];
 const settledFinal = [];
+const darkSettledFinal = [];
 for (const dpr of [1, 2, 3]) {
   // Run animated fixtures sequentially so browser background-page throttling cannot pause a timeline.
   const animated = await render({ width: 300, dpr, mode: "animated-final" });
@@ -205,11 +236,23 @@ for (const dpr of [1, 2, 3]) {
     settledRuntimeStaticParityAt2050Ms: compare(settled, reduced),
     settledSeamInspection: inspectSeams(settled, 300, dpr),
   });
+
+  const darkSettled = await render({ width: 300, dpr, mode: "settled-final", theme: "dark" });
+  const darkStatic = await render({ width: 300, dpr, mode: "static", theme: "dark" });
+  darkSettledFinal.push({
+    width: 300,
+    dpr,
+    theme: "dark",
+    hostPresentation: 'ink="blue"; --lm-wedge:#0195CB',
+    darkSettledRuntimeStaticParityAt2050Ms: compare(darkSettled, darkStatic),
+    darkSettledCanonicalPalette: inspectCanonicalPalette(darkSettled, 300, dpr),
+    darkSettledSeamInspection: inspectSeams(darkSettled, 300, dpr),
+  });
 }
 
 await browser.close();
 
-const cases = reducedAndStatic.map(({ runtime, ...record }) => record).concat(animatedFinal, settledFinal);
+const cases = reducedAndStatic.map(({ runtime, ...record }) => record).concat(animatedFinal, settledFinal, darkSettledFinal);
 const failed = cases.filter((record) => {
   const checks = Object.values(record).filter((value) => value && typeof value === "object" && "passed" in value);
   return checks.some((check) => !check.passed);
@@ -217,10 +260,10 @@ const failed = cases.filter((record) => {
 const report = {
   schemaVersion: "motif-library-logo-full-visual-qa/1.0",
   executedAt: new Date().toISOString(),
-  artifactRelease: "1.1.2",
+  artifactRelease: "1.1.3",
   browser: "system Google Chrome through Playwright",
-  fixtureMatrix: "Widths 180/600 at DPR 1/2/3 for runtime/static parity and seam probes; animated held final after all authored animations finish versus reduced-motion final at width 300 and DPR 1/2/3; preview-style settle at 2050 ms versus the stable final state at width 300 and DPR 1/2/3.",
-  evidenceBoundary: "This verifies the byte-exact owner-supplied runtime's angular, radial, and wedge joins resolve to the expected segment-region colours, so neither Brand Blue underlay nor white fixture background can pass as a seam. Reduced-motion runtime, static SVG, and the preview-style 2050 ms settled state are exact within two 8-bit channel values. The held animated state permits at most 2% edge pixels to differ because an animation-fill compositing layer can anti-alias the same vector edge differently; expected-colour seam probes must still pass. It does not claim pixel identity to the official master lockup.",
+  fixtureMatrix: "Widths 180/600 at DPR 1/2/3 for light-theme runtime/static parity and seam probes; animated held final after all authored animations finish versus reduced-motion final at width 300 and DPR 1/2/3; preview-style light-theme settle at 2050 ms versus the stable final state at width 300 and DPR 1/2/3; preview-style dark-theme settle at 2050 ms versus the canonical static asset, with direct Brand Blue, four inner composite, four outer energy, and #0195CB wedge probes at width 300 and DPR 1/2/3.",
+  evidenceBoundary: "This verifies the artifact-delivered logo presentation while retaining the byte-exact owner-supplied runtime: the host explicitly selects ink=blue and --lm-wedge:#0195CB in both themes. Angular, radial, and wedge joins must resolve to the expected segment-region colours, so neither the pin underlay nor the fixture background can pass as a seam. Reduced-motion runtime, static SVG, and the preview-style 2050 ms settled state are exact within two 8-bit channel values. The held animated state permits at most 2% edge pixels to differ because an animation-fill compositing layer can anti-alias the same vector edge differently; expected-colour seam and canonical-palette probes must still pass. This proves final vector-region geometry and palette parity, not raster pixel identity to the official master lockup.",
   cases,
   status: failed.length ? "failed" : "passed",
 };

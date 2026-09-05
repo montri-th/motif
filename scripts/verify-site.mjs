@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
+const allowPendingLive = process.env.MOTIF_ALLOW_PENDING_LIVE === "1";
 const failures = [];
 let checks = 0;
 
@@ -39,6 +40,7 @@ const required = [
   "docs/ai-sync.md",
   "governance/logo-full-geometry-decision.json",
   "governance/logo-preview-final-settle-decision.json",
+  "governance/logo-preview-theme-color-decision.json",
   "governance/logo-full-visual-qa.json",
   "governance/owner-approval.json",
   "governance/showcase-motion-decision.json",
@@ -80,10 +82,11 @@ const buildCard = JSON.parse(read("governance/build-card.json"));
 const identityAssets = JSON.parse(read("governance/identity-assets.json"));
 const logoGeometryDecision = JSON.parse(read("governance/logo-full-geometry-decision.json"));
 const logoPreviewFinalSettleDecision = JSON.parse(read("governance/logo-preview-final-settle-decision.json"));
+const logoPreviewThemeColorDecision = JSON.parse(read("governance/logo-preview-theme-color-decision.json"));
 const logoVisualQa = JSON.parse(read("governance/logo-full-visual-qa.json"));
-const driveReleaseUrl = "https://drive.google.com/drive/folders/1ivOhP0g8vMxgUoNCHmyGsCpEaYjBrRzF";
+const driveReleaseUrl = "https://drive.google.com/drive/folders/1yrcgZf8C8Fk2EOABDtGgdDKtJBAzKpz6";
 check(manifest.schemaVersion === "landometer-motif-library/1.0", "Unexpected manifest schema version");
-check(manifest.artifactRelease === "1.1.2", "Manifest must identify artifact release 1.1.2");
+check(manifest.artifactRelease === "1.1.3", "Manifest must identify artifact release 1.1.3");
 check(manifest.families.length === 2, "Manifest must contain exactly two brand families");
 check(manifest.families.flatMap((family) => family.assets).length === 34, "Manifest must contain 34 asset records");
 check(manifest.agentContract?.schemaVersion === "motif-library-agent-contract/1.0", "Deterministic agent contract is missing");
@@ -96,11 +99,15 @@ check(manifest.showcaseExperience?.replayExceptions?.logo?.replayIntervalMs === 
 check(manifest.showcaseExperience?.replayExceptions?.logo?.settleAtMs === 2050, "Logo showcase must settle to its final state at 2050 ms");
 check(manifest.showcaseExperience?.replayExceptions?.logo?.finalStateHoldMs === 2950, "Logo showcase must hold the complete final state for 2950 ms");
 check(manifest.showcaseExperience?.replayExceptions?.logo?.decisionRef === "governance/logo-preview-final-settle-decision.json", "Logo showcase exception must resolve its decision record");
+check(manifest.showcaseExperience?.replayExceptions?.logo?.presentationPalette?.hostAttribute === "ink=blue", "Logo showcase must lock the full motif to Brand Blue");
+check(manifest.showcaseExperience?.replayExceptions?.logo?.presentationPalette?.hostStyle === "--lm-wedge:#0195CB", "Logo showcase must lock the official priority wedge");
+check(manifest.showcaseExperience?.replayExceptions?.logo?.presentationPalette?.invariantAcrossThemes === true, "Logo showcase palette must be invariant across themes");
 check(manifest.showcaseExperience?.scope === "landometer_preview_dialog_only", "Showcase replay must remain dialog-scoped");
 check(manifest.agentContract?.showcaseBoundary?.includes("Do not copy"), "Agent contract must distinguish showcase replay from downstream motion");
 check(buildCard.routes.length === 2, "Build Card must declare two locale routes");
 check(identityAssets.assets.length === 2, "Identity manifest must declare favicon and social preview");
 check(buildCard.decisionRecords?.logoFullGeometry === "governance/logo-full-geometry-decision.json", "Build Card must resolve the logo-full geometry decision");
+check(buildCard.decisionRecords?.logoPreviewThemeColor === "governance/logo-preview-theme-color-decision.json", "Build Card must resolve the logo-preview theme-colour decision");
 check(sourceLedger.embeddedInstructionBoundary.includes("did not expand"), "Source ledger must preserve the embedded-instruction boundary");
 check(Boolean(sourceLedger.authorityByDimension?.motifGeometryAndSourceBytes), "Source authority must be separated by dimension");
 check(approval.publicRepositoryAccess.join(",") === "view,download", "Public repository access must be limited to view/download");
@@ -116,18 +123,28 @@ check(logoPreviewFinalSettleDecision.previewTimeline?.holdDurationMs === 2950, "
 check(logoPreviewFinalSettleDecision.previewTimeline?.replayAtMs === 5000, "Logo-preview settle decision must record the 5000 ms replay boundary");
 check(logoPreviewFinalSettleDecision.productionBoundary?.defaultRecommendation === "finite_once", "Logo-preview settle decision must keep finite_once as the production recommendation");
 check(logoPreviewFinalSettleDecision.productionBoundary?.permissionBoundary?.includes("not approval"), "Logo-preview settle decision must not authorize optional runtime APIs by presence alone");
-check(logoVisualQa.artifactRelease === "1.1.2", "Logo-full visual QA must bind artifact release 1.1.2");
-check(logoVisualQa.status === "passed" && logoVisualQa.cases.length === 12, "Logo-full visual QA must pass twelve DPR/size/settle fixtures");
+check(logoPreviewThemeColorDecision.status === "owner_selected_for_named_artifact"
+  || (allowPendingLive && logoPreviewThemeColorDecision.status === "candidate_selected_local_qa_passed_live_pending"), "Logo-preview theme-colour decision must pass rendered QA before final release");
+check(logoPreviewThemeColorDecision.selectedFix?.hostAttribute === "ink=blue", "Logo-preview theme-colour decision must select the blue-ink host route");
+check(logoPreviewThemeColorDecision.selectedFix?.hostWedgeOverride === "--lm-wedge=#0195CB", "Logo-preview theme-colour decision must select the official wedge");
+check(logoPreviewThemeColorDecision.selectedFix?.runtimeBytesChanged === false, "Logo-preview palette fix must preserve exact source runtime bytes");
+check(logoPreviewThemeColorDecision.selectedFix?.staticSvgChanged === true, "Logo-preview palette fix must bind the regenerated portable static asset");
+check(logoPreviewThemeColorDecision.releaseGate?.status === "passed"
+  || (allowPendingLive && logoPreviewThemeColorDecision.releaseGate?.status === "pending"), "Logo-preview theme-colour live gate must pass before final release");
+check(logoVisualQa.artifactRelease === "1.1.3", "Logo-full visual QA must bind artifact release 1.1.3");
+check(logoVisualQa.status === "passed" && logoVisualQa.cases.length === 15, "Logo-full visual QA must pass fifteen light/dark DPR/size/settle fixtures");
 check(manifest.authority?.motifOverlay?.logoFullGeometryDecisionRef === "governance/logo-full-geometry-decision.json", "Manifest must resolve the logo-full geometry decision");
 check(manifest.authority?.motifOverlay?.logoPreviewFinalSettleDecisionRef === "governance/logo-preview-final-settle-decision.json", "Manifest must resolve the logo-preview settle decision");
+check(manifest.authority?.motifOverlay?.logoPreviewThemeColorDecisionRef === "governance/logo-preview-theme-color-decision.json", "Manifest must resolve the logo-preview theme-colour decision");
 check(manifest.distributionMirrors?.googleDrive?.rootUrl === "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh", "Manifest must resolve the governed Drive mirror");
-check(manifest.distributionMirrors?.googleDrive?.immutableReleaseUrl === driveReleaseUrl, "Manifest must resolve the immutable Drive release 1.1.2 folder");
-check(approval.distributionMirror?.immutableReleaseUrl === driveReleaseUrl, "Owner approval must resolve the immutable Drive release 1.1.2 folder");
-check(read("docs/ai-sync.md").includes(driveReleaseUrl), "AI sync guide must resolve the immutable Drive release 1.1.2 folder");
+check(manifest.distributionMirrors?.googleDrive?.immutableReleaseUrl === driveReleaseUrl, "Manifest must resolve the immutable Drive release 1.1.3 folder");
+check(approval.distributionMirror?.immutableReleaseUrl === driveReleaseUrl, "Owner approval must resolve the immutable Drive release 1.1.3 folder");
+check(read("docs/ai-sync.md").includes(driveReleaseUrl), "AI sync guide must resolve the immutable Drive release 1.1.3 folder");
 check(manifest.sourceResolution?.selectedRuntimeSha256 === "d4e5c636a499d8bfa71a79a03c961fbddd3f237b20f139486316856de7ff12fb", "Manifest must bind the byte-exact owner-supplied Landometer JavaScript");
 check(manifest.sourceResolution?.selectedRuntimeCssSha256 === "e7028286a484c41707ea30dd448fd9d9d6b2106eac4d563f991fd268a9fe1794", "Manifest must bind the byte-exact owner-supplied Landometer CSS");
 check(manifest.sourceResolution?.optionalRuntimeApiBoundary?.includes("not authorization"), "Runtime optional APIs must not be presented as downstream authorization");
 check(manifest.agentContract?.runtimeCapabilityBoundary?.includes("finite_once remains the default recommendation"), "Agent contract must recommend finite_once despite optional runtime APIs");
+check(manifest.agentContract?.logoFullThemeInvariant?.includes("ink=blue") && manifest.agentContract?.logoFullThemeInvariant?.includes("--lm-wedge:#0195CB"), "Agent contract must carry the logo-full theme invariant");
 
 const manifestHash = sha256File("assets/motif-library.json");
 check(approval.assetManifestSha256 === manifestHash, "Owner approval does not bind the current asset manifest hash");
@@ -193,8 +210,9 @@ for (const name of staticLandometer) {
 for (const [name, expected] of Object.entries(logoGeometryDecision.nonTargetStaticSvgSha256 || {})) {
   check(sha256File(`assets/landometer/svg/${name}`) === expected, `Non-target Landometer SVG changed: ${name}`);
 }
-check(sha256File("assets/landometer/svg/logo-full.svg") === "1b81df17093a4eac1a1459a03e13c6fb194169b32f74ebe5fc5e0ea539ef23d8", "Corrected logo-full static SVG hash changed");
+check(sha256File("assets/landometer/svg/logo-full.svg") === "f8a9d34c834f7e0c11e0c7016ced614fbd57dc8653a94a29ccd3e521962f12b7", "Corrected logo-full static SVG hash changed");
 check(!/(?:color-mix|currentColor|var\(|style=)/.test(read("assets/landometer/svg/logo-full.svg")), "Corrected logo-full static SVG is not portable");
+check(read("assets/landometer/svg/logo-full.svg").includes('fill="#1D4497"') && read("assets/landometer/svg/logo-full.svg").includes('fill="#0195CB"'), "Corrected logo-full static SVG must preserve the official pin and wedge colours");
 check(read("assets/landometer/svg/slice-full.svg").includes('transform="translate(12 -12)"'), "Static full slice must bake the runtime final transform");
 check(read("assets/landometer/svg/slice-quiet.svg").includes('transform="translate(12 -12)"'), "Static quiet slice must bake the runtime final transform");
 
@@ -274,12 +292,14 @@ check(siteJs.includes('pair.className = "dialog-motif-pair"'), "Landometer showc
 check(siteJs.includes('window.addEventListener("pagehide"'), "Preview timers must stop on pagehide");
 check(read("index.html").includes("full + quiet") && read("index.html").includes("finite once"), "Thai route must explain showcase versus production motion");
 check(read("en/index.html").includes("full + quiet") && read("en/index.html").includes("finite once"), "English route must explain showcase versus production motion");
-check(read("index.html").includes('"version": "1.1.2"') && read("en/index.html").includes('"version": "1.1.2"'), "Structured data must declare artifact release 1.1.2");
-check(read("index.html").includes('site.js?v=1.1.2') && read("en/index.html").includes('site.js?v=1.1.2'), "Locale routes must cache-bust the updated site runtime");
-check(read("index.html").includes('landometer-motifs.css?v=1.1.2') && read("en/index.html").includes('landometer-motifs.css?v=1.1.2'), "Locale routes must cache-bust the corrected motif CSS");
-check(read("index.html").includes('landometer-motifs.js?v=1.1.2') && read("en/index.html").includes('landometer-motifs.js?v=1.1.2'), "Locale routes must cache-bust the corrected motif runtime");
-check(read("index.html").includes('logo-full.svg?v=1.1.2') && read("en/index.html").includes('logo-full.svg?v=1.1.2'), "Locale routes must cache-bust the corrected logo-full static asset");
-check(siteJs.includes("landometer-motifs.css?v=1.1.2") && siteJs.includes("landometer-motifs.js?v=1.1.2"), "Copied Landometer implementation snippet must pin the corrected runtime release");
+check(read("index.html").includes('"version": "1.1.3"') && read("en/index.html").includes('"version": "1.1.3"'), "Structured data must declare artifact release 1.1.3");
+check(read("index.html").includes('site.js?v=1.1.3') && read("en/index.html").includes('site.js?v=1.1.3'), "Locale routes must cache-bust the updated site runtime");
+check(read("index.html").includes('landometer-motifs.css?v=1.1.3') && read("en/index.html").includes('landometer-motifs.css?v=1.1.3'), "Locale routes must cache-bust the corrected motif CSS");
+check(read("index.html").includes('landometer-motifs.js?v=1.1.3') && read("en/index.html").includes('landometer-motifs.js?v=1.1.3'), "Locale routes must cache-bust the corrected motif runtime");
+check(read("index.html").includes('logo-full.svg?v=1.1.3') && read("en/index.html").includes('logo-full.svg?v=1.1.3'), "Locale routes must cache-bust the corrected logo-full static asset");
+check(siteJs.includes("landometer-motifs.css?v=1.1.3") && siteJs.includes("landometer-motifs.js?v=1.1.3"), "Copied Landometer implementation snippet must pin the corrected runtime release");
+check(siteJs.includes('motif.setAttribute("ink", "blue")') && siteJs.includes('motif.style.setProperty("--lm-wedge", "#0195CB")'), "Preview runtime must lock the official logo-full palette");
+check(siteJs.includes('ink="blue" style="--lm-wedge:#0195CB"'), "Copied logo-full snippet must carry the official theme-invariant palette");
 check(read("site.css").includes("html:not(.js-ready)"), "No-JS enhancement controls must fail closed");
 check(read("sitemap.xml").includes("https://montri-th.github.io/motif/en/"), "English route missing from sitemap");
 check(read("robots.txt").includes("Sitemap: https://montri-th.github.io/motif/sitemap.xml"), "robots.txt sitemap mismatch");
