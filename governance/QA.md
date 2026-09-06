@@ -1,6 +1,6 @@
 # Landometer Motif Library · release QA
 
-Status: `release_candidate_1.2.0` · strict live attestation pending
+Status: `release_1.2.0_passed` · published animation and byte attestation complete
 
 Release date: 2026-09-06 (Asia/Bangkok)
 
@@ -67,7 +67,7 @@ Reduced motion shows a complete final state without replay. Closing the dialog, 
 | Machine manifest | Passed | Schema `landometer-motif-library/1.1`; release 1.2.0; three distinct families; 46 byte- and hash-bound asset records |
 | Local integrated browser, responsive, lifecycle, accessibility, and performance regression | Passed | Browser 406/406; runtime parity 15/15; performance/loading 10/10, all bound to release 1.2.0 |
 | Deterministic download kits and repository checksum closure | Passed | Four named 1.2.0 kits plus two byte-identical compatibility aliases are deterministic; the repository checksum is a sorted, exact inventory of every non-Git release file |
-| GitHub Pages byte and rendered attestation | Pending publication | Live Thai/English routes, exact runtime/layer/fallback bytes, mobile and desktop previews, autoplay, hold, replay, pause, reduced motion, and no runtime errors must pass against the published commit |
+| GitHub Pages byte and rendered attestation | Passed | Commit `067a083609b7dc131aac1de0c7dad3c90d448d01`; Pages run `33985336741`; 13/13 exact live bytes and 406/406 rendered browser checks across Thai/English, mobile/desktop, autoplay, hold, replay, pause, reduced motion, no-JavaScript, and text-scale states |
 | Immutable Google Drive mirror | Folder reserved; upload and receipt pending | Release folder `1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5` becomes authoritative only after exact files, hashes, inventory, and final commit are verified |
 
 Candidate verification may run with `MOTIF_ALLOW_PENDING_LIVE=1 node scripts/verify-site.mjs`. Strict verification omits that environment flag and must not pass until `governance/audience-animation-parity.json` records both integrated browser QA and live byte/rendered QA as passed.
