@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "motif-library-drive-sync-receipt/1.0",
+  "artifactRelease": "1.2.1",
+  "status": "verified",
+  "recordedOn": "2026-09-06",
+  "authority": {
+    "source": "owner request in the current task",
+    "scope": "publish the updated motif library to the existing GitHub Pages site and mirror all selected assets, source archives, kits, guidance, and QA to Google Drive",
+    "rightsEvidence": "governance/owner-approval.json"
+  },
+  "distribution": {
+    "publicSite": "https://montri-th.github.io/motif/",
+    "repository": "https://github.com/montri-th/motif",
+    "releaseContentCommit": "addbf4db9468a76082f29701152542b3e864bb0d",
+    "pagesRunId": 34004963954,
+    "pagesRunUrl": "https://github.com/montri-th/motif/actions/runs/34004963954",
+    "driveRootId": "1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
+    "driveReleaseId": "15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B",
+    "driveReleaseUrl": "https://drive.google.com/drive/folders/15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B"
+  },
+  "inventory": {
+    "expectedFileCount": 86,
+    "folders": [
+      { "name": "00_MANIFEST", "id": "1pjyljR8j64L80PkYM-bRsf2TOTUAFsOg", "expectedFiles": 9 },
+      { "name": "01_LANDOMETER", "id": "10JTQWkHjWCi-FYB9WS0GCdYTA-Zuc2K7", "expectedFilesRecursive": 15 },
+      { "name": "02_IJJI_ANIMATED_IDENTITY", "id": "1Su870B5sYQFQX1UM8URXZvD6o07rZB36", "expectedFilesRecursive": 13 },
+      { "name": "03_IJJI_STATE_MOTIFS", "id": "1qkIX2EQ_8Qll5c_GIjDnGe6rGiE5Y6Zu", "expectedFilesRecursive": 22 },
+      { "name": "04_KITS", "id": "19vK4EH_NbzF7AktYxtIpXFYslRmwNY6s", "expectedFiles": 6 },
+      { "name": "05_SOURCE_ARCHIVES", "id": "1EU6XAxQNATqDHQQ_U2PUpWBNpjcY9kW9", "expectedFiles": 4 },
+      { "name": "06_QA", "id": "11ghucD8QOuEJggmu4QjjquDQwRDYHvrj", "expectedFiles": 17 }
+    ]
+  },
+  "manifest": {
+    "path": "00_MANIFEST/motif-library.json",
+    "driveFileId": "1rsUkIeribT1sE4QC5oaUu0m4zusJXmY7",
+    "sha256": "77e8185104751e2c21c2e10fb8c5d771821bcb8123e02f116638fdbf3968d483",
+    "assetRecords": 46
+  },
+  "kits": [
+    { "name": "landometer-motifs-v3.zip", "driveFileId": "1cSCW7Ozqw5Ysuz3Q8iJpETuFs3q8Z1hq", "sha256": "7f82e4d513e5abcb355bf445ab95f898f62ae3210b21c2a825c16367b736ceae" },
+    { "name": "landometer-motifs-v1.zip", "driveFileId": "1prVRlXUO-Ea1YVjLyMCXOgDPkokjhI3x", "sha256": "7f82e4d513e5abcb355bf445ab95f898f62ae3210b21c2a825c16367b736ceae" },
+    { "name": "ijji-motifs-selected-r3.zip", "driveFileId": "1PKe-IOQlQ0d3kk2Y0O4RHoSqET2NxH9x", "sha256": "23535d0188c1e79c5f1cf2182cfc533b0e688195b13d8d467bf3193c60694e29" },
+    { "name": "ijji-animated-logo-r3.zip", "driveFileId": "1OpM16pUOKE20GfMANg9zV5pYaTX3qv1k", "sha256": "7eee4e71972e3b5b0cc598f017fc47026fbbf348244fa490b58ecd83185c5a21" },
+    { "name": "motif-library-v1.2.1.zip", "driveFileId": "10vyPAHtC2tLeRgvahO4T4eVOgDPEMv6W", "sha256": "ecd44355b1c433975cfb7637679b4c8d8cb35a0bc99bf468b78b665de854ac2d" },
+    { "name": "motif-library-v1.zip", "driveFileId": "1-I30zlgWZV6BjE7CquTOK38zhPdaEoEL", "sha256": "ecd44355b1c433975cfb7637679b4c8d8cb35a0bc99bf468b78b665de854ac2d" }
+  ],
+  "sourceArchives": [
+    { "name": "Landometer Brand Motifs Asset and Prompt 3.zip", "driveFileId": "1scnptFpScW6WFtCb80w1r2VrFrJjgGlS", "sha256": "abcbac551e8a1351750d6698f858802c04b5d0af3031a1f39a38b3d2a2c7a857" },
+    { "name": "Landometer Brand Motifs HTML 3.zip", "driveFileId": "1YB8m1cN1ee0Nd5eHj45nAZv4KR9bG357", "sha256": "0aa0c1a6b2320da22c1d07cedb02d456e2772884197622b7a7503047ffe55ab2" },
+    { "name": "ijji animated logo with tagline.zip", "driveFileId": "17DxbTSkrAlwfn94Pai854eLPZrJgaC2u", "sha256": "685dcdc661213f903f55845e680f0af6c1f16db71e37f31cc316b3def7851a43" },
+    { "name": "ijji animated logo.zip", "driveFileId": "13_0rbRaLpOnH7a8bOAMttpXfGnA1cGMY", "sha256": "a402829b28357d25af4cf9d0fcbcf826ce4b5991c0e3317c5e5e9b8117e7c25d" }
+  ],
+  "readBackVerification": {
+    "method": "Drive files.download raw-byte readback, decoded locally, then SHA-256 compared with the exact local source",
+    "contentFilesChecked": 84,
+    "matchingContentFiles": 84,
+    "failedContentFiles": 0,
+    "closureFiles": ["00_MANIFEST/sync-receipt.json", "00_MANIFEST/SHA256SUMS.txt"],
+    "filesChecked": 86,
+    "matchingFiles": 86,
+    "failedFiles": 0,
+    "closureStatus": "passed"
+  },
+  "stablePointerRule": "release-index.json and 00_AI_READ_FIRST__MOTIF_LIBRARY.md may point to 1.2.1 only after both closure files pass raw-byte readback."
+}

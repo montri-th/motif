@@ -1,6 +1,6 @@
 # Landometer Motif Library · release QA
 
-Status: `release_1.2.1_local_passed_live_and_drive_pending`
+Status: `release_1.2.1_local_live_and_drive_passed`
 
 Release date: 2026-09-06 (Asia/Bangkok)
 
@@ -71,8 +71,8 @@ Each locale route contains nine inline motion surfaces: one hero, two full brand
 | Local integrated browser, responsive, lifecycle, accessibility, and performance regression | Passed | Browser 465/465; runtime parity 15/15; performance/loading 14/14, all bound to release 1.2.1 |
 | Inline replay inventory and lifecycle | Passed | Exactly 2 full brand logos + 6 section motifs per route, plus the hero; two complete ijji-logo cycles; pause/resume, offscreen, hidden-page, pagehide/pageshow, dynamic reduced motion, no-JS, print, and 320/390 px containment all passed |
 | Deterministic download kits and repository checksum closure | Passed | Six current kits rebuilt byte-identically across repeated runs; compatibility aliases match their 1.2.1/v3 targets; 118 path-sorted repository hashes close the candidate inventory; historical `motif-library-v1.2.0.zip` remains unchanged |
-| GitHub Pages byte and rendered attestation | Pending publication | Must bind the published content commit, successful Pages run, exact live bytes, and a 465-check rendered live run |
-| Immutable Google Drive mirror | Folder structure reserved; upload and receipt pending | Release folder `15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B` becomes authoritative only after exact files, hashes, inventory, and final commit are verified |
+| GitHub Pages byte and rendered attestation | Passed | Content commit `addbf4db9468a76082f29701152542b3e864bb0d`; Pages run `34004963954`; nine exact live response-byte checks plus 465/465 rendered checks in `browser-qa-live.json` |
+| Immutable Google Drive mirror | Passed | Release folder `15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B`; 86/86 files verified by raw-byte readback; receipt file `1LogNncisB07AO-2bhO5vNANPRvq20QH4`; stable pointers updated only after closure |
 
 Candidate verification may run with `MOTIF_ALLOW_PENDING_LIVE=1 node scripts/verify-site.mjs`. Strict verification omits that environment flag and must not pass until `governance/audience-animation-parity.json` records both integrated browser QA and live byte/rendered QA as passed.
 

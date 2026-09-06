@@ -101,6 +101,7 @@ const required = [
   "governance/runtime-parity.json",
   "governance/showcase-motion-decision.json",
   "governance/source-ledger.json",
+  "governance/sync-receipt.json",
   "index.html",
   "llms.txt",
   "robots.txt",
@@ -170,6 +171,7 @@ const inlineDecision = readJson("governance/inline-autoreplay-decision.json");
 const sourceDecision = readJson("governance/animation-source-v3-decision.json");
 const audienceParity = readJson("governance/audience-animation-parity.json");
 const identityAssets = readJson("governance/identity-assets.json");
+const syncReceipt = readJson("governance/sync-receipt.json");
 
 const driveRootUrl = "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh";
 const driveReleaseUrl = "https://drive.google.com/drive/folders/15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B";
@@ -441,6 +443,16 @@ check(buildCard.distributionMirrors?.googleDrive === driveRootUrl, "Build Card D
 check(buildCard.distributionMirrors?.immutableRelease === driveReleaseUrl, "Build Card Drive release folder mismatch");
 check(read("docs/ai-sync.md").includes(driveReleaseUrl), "AI sync guide must resolve the immutable Drive 1.2.1 folder");
 check(read("CLAUDE.md").includes(driveRootUrl) && read("CLAUDE.md").includes("release-index.json"), "Claude handoff must resolve immutable releases through the governed Drive index");
+check(syncReceipt.schemaVersion === "motif-library-drive-sync-receipt/1.0", "Unexpected Drive sync-receipt schema");
+check(syncReceipt.artifactRelease === release, "Drive sync receipt release mismatch");
+check(syncReceipt.distribution?.driveReleaseUrl === driveReleaseUrl, "Drive sync receipt folder mismatch");
+check(syncReceipt.manifest?.sha256 === sha256File("assets/motif-library.json"), "Drive sync receipt manifest hash mismatch");
+check(syncReceipt.inventory?.expectedFileCount === 86, "Drive sync receipt inventory count mismatch");
+check(syncReceipt.readBackVerification?.contentFilesChecked === 84 && syncReceipt.readBackVerification?.failedContentFiles === 0, "Drive content read-back verification did not pass 84/84 files");
+if (!allowPendingLive) {
+  check(syncReceipt.status === "verified", "Strict release verification requires a verified Drive sync receipt");
+  check(syncReceipt.readBackVerification?.closureStatus === "passed", "Strict release verification requires verified Drive closure files");
+}
 
 function verifyHtml(relativePath, locale, expectedCanonical) {
   const html = read(relativePath);

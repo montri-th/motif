@@ -1,7 +1,7 @@
 {
   "schemaVersion": "motif-library-audience-animation-parity/1.0",
   "artifactRelease": "1.2.1",
-  "status": "local_source_and_reference_qa_passed_live_pending",
+  "status": "passed_live",
   "recordedOn": "2026-09-06",
   "evidenceBoundary": "Parity means the audience sees the same authored geometry, layer order, timing, palette, surface, and complete final state as the supplied HTML examples. The surrounding library shell and replay-after-hold inspection behavior are intentionally different.",
   "landometer": {
@@ -39,7 +39,7 @@
     "reducedMotion": "passed_in_source_fixtures_and_both_library_routes",
     "noJavaScript": "library_source_html_keeps_exact_final_stills",
     "libraryBrowserQa": "passed",
-    "liveByteAndRenderedQa": "pending_1.2.1"
+    "liveByteAndRenderedQa": "passed"
   },
   "inlineReplay": {
     "decisionRef": "governance/inline-autoreplay-decision.json",
@@ -61,8 +61,17 @@
     }
   },
   "liveAttestation": {
-    "status": "pending_publication",
-    "url": "https://montri-th.github.io/motif/"
+    "status": "passed",
+    "url": "https://montri-th.github.io/motif/",
+    "contentCommit": "addbf4db9468a76082f29701152542b3e864bb0d",
+    "pagesRunId": 34004963954,
+    "pagesRunUrl": "https://github.com/montri-th/motif/actions/runs/34004963954",
+    "evidence": "governance/browser-qa-live.json",
+    "executedAt": "2026-09-06T01:54:00.304Z",
+    "checks": 465,
+    "passed": 465,
+    "failed": 0,
+    "exactByteResponses": 9
   },
   "manualGate": "Native Safari visual playback remains a named manual follow-up; it does not replace exact-byte, Chromium, responsive, reduced-motion, and live checks."
 }
