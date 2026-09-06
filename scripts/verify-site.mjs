@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const release = "1.2.0";
+const release = "1.2.1";
 const allowPendingLive = process.env.MOTIF_ALLOW_PENDING_LIVE === "1";
 const failures = [];
 let checks = 0;
@@ -75,6 +75,7 @@ const required = [
   "assets/downloads/landometer-motifs-v3.zip",
   "assets/downloads/motif-library-v1.zip",
   "assets/downloads/motif-library-v1.2.0.zip",
+  "assets/downloads/motif-library-v1.2.1.zip",
   "assets/identity/landometer-favicon-64-v1.png",
   "assets/ijji/logo-sting/README.md",
   "assets/ijji/logo-sting/ijji-logo-sting.js",
@@ -94,6 +95,7 @@ const required = [
   "governance/browser-qa.json",
   "governance/build-card.json",
   "governance/identity-assets.json",
+  "governance/inline-autoreplay-decision.json",
   "governance/owner-approval.json",
   "governance/performance-qa.json",
   "governance/runtime-parity.json",
@@ -141,6 +143,7 @@ if (exists("governance/SHA256SUMS.txt")) {
     "assets/downloads/ijji-animated-logo-r3.zip",
     "assets/downloads/ijji-motifs-selected-r3.zip",
     "assets/downloads/motif-library-v1.2.0.zip",
+    "assets/downloads/motif-library-v1.2.1.zip",
     "assets/downloads/motif-library-v1.zip",
   ]) check(checksummedPaths.includes(relative), `Repository checksum omits release-critical file: ${relative}`);
 }
@@ -151,10 +154,10 @@ if (exists("assets/downloads/landometer-motifs-v1.zip") && exists("assets/downlo
     "Stable Landometer kit alias must be byte-identical to the v3 kit",
   );
 }
-if (exists("assets/downloads/motif-library-v1.zip") && exists("assets/downloads/motif-library-v1.2.0.zip")) {
+if (exists("assets/downloads/motif-library-v1.zip") && exists("assets/downloads/motif-library-v1.2.1.zip")) {
   check(
-    sha256File("assets/downloads/motif-library-v1.zip") === sha256File("assets/downloads/motif-library-v1.2.0.zip"),
-    "Stable full-library kit alias must be byte-identical to the 1.2.0 kit",
+    sha256File("assets/downloads/motif-library-v1.zip") === sha256File("assets/downloads/motif-library-v1.2.1.zip"),
+    "Stable full-library kit alias must be byte-identical to the 1.2.1 kit",
   );
 }
 
@@ -163,12 +166,13 @@ const approval = readJson("governance/owner-approval.json");
 const sourceLedger = readJson("governance/source-ledger.json");
 const buildCard = readJson("governance/build-card.json");
 const showcaseDecision = readJson("governance/showcase-motion-decision.json");
+const inlineDecision = readJson("governance/inline-autoreplay-decision.json");
 const sourceDecision = readJson("governance/animation-source-v3-decision.json");
 const audienceParity = readJson("governance/audience-animation-parity.json");
 const identityAssets = readJson("governance/identity-assets.json");
 
 const driveRootUrl = "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh";
-const driveReleaseUrl = "https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5";
+const driveReleaseUrl = "https://drive.google.com/drive/folders/15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B";
 const expectedFamilyCounts = new Map([
   ["landometer.motif.v3", 14],
   ["ijji.logo-sting.r3", 12],
@@ -343,8 +347,12 @@ check(manifest.showcaseExperience?.ijjiLogoSting?.full?.durationMs === 9000, "ij
 check(manifest.showcaseExperience?.ijjiLogoSting?.mark?.durationMs === 6400, "ijji mark-only duration must be 6400 ms");
 check(manifest.showcaseExperience?.ijjiLogoSting?.mark?.notagline === true, "ijji mark-only route must bind notagline");
 check(manifest.showcaseExperience?.reducedMotion === "show_complete_final_state_without_replay", "Reduced motion must show a complete final state without replay");
+check(manifest.showcaseExperience?.authorityRef === "governance/inline-autoreplay-decision.json", "Manifest must resolve the current inline replay decision");
+check(manifest.showcaseExperience?.dialogAuthorityRef === "governance/showcase-motion-decision.json", "Manifest must retain the dialog replay decision");
+check(manifest.showcaseExperience?.inlinePerLocaleRoute?.total === 9, "Manifest must declare all nine inline motion surfaces per locale route");
+check(manifest.showcaseExperience?.controls?.includes("page_pause_resume"), "Manifest must declare the page-level motion control");
 
-check(sourceDecision.artifactRelease === release && sourceDecision.status === "owner_selected_sources_verified", "Current animation-source decision is not release-ready");
+check(sourceDecision.artifactRelease === "1.2.0" && sourceDecision.status === "owner_selected_sources_verified", "The exact source decision must remain bound to its 1.2.0 introduction");
 check(sourceDecision.landometer?.cssSha256 === expectedLandometerHashes["assets/landometer/landometer-motifs.css"], "Animation-source decision has the wrong Landometer CSS hash");
 check(sourceDecision.landometer?.jsSha256 === expectedLandometerHashes["assets/landometer/landometer-motifs.js"], "Animation-source decision has the wrong Landometer JS hash");
 check(sourceDecision.ijji?.jsSha256 === expectedIjjiLogoHashes["assets/ijji/logo-sting/ijji-logo-sting.js"], "Animation-source decision has the wrong ijji runtime hash");
@@ -359,7 +367,7 @@ check(sourceLedger.selectedArtifactRuntime?.ijjiAnimatedIdentity?.fullDurationMs
 check(sourceLedger.selectedArtifactRuntime?.ijjiAnimatedIdentity?.markDurationMs === 6400, "Source ledger must record the ijji mark duration");
 
 check(approval.schemaVersion === "motif-library-owner-approval/1.1", "Unexpected owner-approval schema");
-check(approval.artifactRelease === release && approval.status === "approved_for_named_publication", "Owner approval does not authorize release 1.2.0 publication");
+check(approval.artifactRelease === release && approval.status === "approved_for_named_publication", `Owner approval does not authorize release ${release} publication`);
 check(approval.rightsEvidenceClass === "owner_stated_not_independently_verified", "Owner-stated rights must retain their evidence classification");
 check(sameMembers(approval.publicRepositoryAccess, ["view", "download"]), "Public repository access must remain view/download only");
 check(approval.authorizedOperators?.length === 3, "Authorized reuse operators must remain explicit");
@@ -373,17 +381,31 @@ check(buildCard.artifactRelease === release, "Build Card release mismatch");
 check(buildCard.routes?.length === 2, "Build Card must declare exactly two locale routes");
 check(buildCard.decisionRecords?.sourceSelection === "governance/animation-source-v3-decision.json", "Build Card must resolve the v3 source decision");
 check(buildCard.decisionRecords?.audienceParity === "governance/audience-animation-parity.json", "Build Card must resolve audience-animation parity evidence");
+check(buildCard.decisionRecords?.inlineAutoreplay === "governance/inline-autoreplay-decision.json", "Build Card must resolve the current inline replay decision");
 check(buildCard.capabilities?.exactLandometerV3Runtime === true, "Build Card must declare the exact Landometer v3 runtime");
 check(buildCard.capabilities?.exactIjjiAnimatedIdentityR3 === true, "Build Card must declare the exact ijji animated identity runtime");
+check(buildCard.capabilities?.inlineFullBrandLogoAutoreplay === true, "Build Card must declare inline brand-logo auto-replay");
+check(buildCard.capabilities?.inlineIntentAhaNextActionAutoreplay === true, "Build Card must declare example-section auto-replay");
+check(buildCard.capabilities?.pageLevelMotionPauseResume === true, "Build Card must declare the page-level pause/resume control");
 
 check(showcaseDecision.schemaVersion === "motif-library-showcase-motion-decision/1.1", "Unexpected showcase-decision schema");
-check(showcaseDecision.artifactRelease === release && showcaseDecision.status === "owner_selected_for_named_artifact", "Showcase decision is not authorized for release 1.2.0");
+check(showcaseDecision.artifactRelease === "1.2.0" && showcaseDecision.status === "owner_selected_for_named_artifact", "Historical dialog showcase decision must remain bound to its 1.2.0 introduction");
 check(showcaseDecision.showcaseBehavior?.landometer?.logo?.settleAtMs === 3400, "Showcase decision has the wrong Landometer settle time");
 check(showcaseDecision.showcaseBehavior?.landometer?.logo?.replayIntervalMs === 6000, "Showcase decision has the wrong Landometer replay time");
 check(showcaseDecision.showcaseBehavior?.ijjiAnimatedIdentity?.full?.durationMs === 9000, "Showcase decision has the wrong ijji full duration");
 check(showcaseDecision.showcaseBehavior?.ijjiAnimatedIdentity?.mark?.durationMs === 6400, "Showcase decision has the wrong ijji mark duration");
 check(showcaseDecision.productionBoundary?.portableLoopPermission === false, "Library replay must not grant portable loop permission");
 check(showcaseDecision.productionBoundary?.implementationSnippets === "no_loop_attribute", "Copied snippets must remain finite-once");
+
+check(inlineDecision.schemaVersion === "motif-library-inline-autoreplay-decision/1.0", "Unexpected inline-autoreplay decision schema");
+check(inlineDecision.artifactRelease === release && inlineDecision.status === "owner_selected_for_named_artifact", "Inline auto-replay decision is not authorized for the current release");
+check(inlineDecision.surfacesPerLocaleRoute?.total === 9, "Inline replay decision must enumerate nine surfaces per locale route");
+check(inlineDecision.surfacesPerLocaleRoute?.brandLayer?.length === 2, "Inline replay decision must include both full brand logos");
+check(inlineDecision.surfacesPerLocaleRoute?.intentAhaNextAction?.length === 6, "Inline replay decision must include all six example motifs");
+check(inlineDecision.playback?.replay === "continuous_while_eligible", "Inline replay decision must authorize continuous eligible replay");
+check(inlineDecision.viewerControl?.control === "one page-level pause/resume button", "Inline replay decision must preserve one page-level motion control");
+check(inlineDecision.productionBoundary?.exactSourceRuntimeBytesEdited === false, "Inline orchestration must not edit exact source runtime bytes");
+check(inlineDecision.productionBoundary?.normativeDesignSystemChange === false, "Inline replay must remain an artifact-local behavior");
 
 check(audienceParity.artifactRelease === release, "Audience-animation parity record release mismatch");
 const acceptableParityStatus = audienceParity.status === "passed"
@@ -417,7 +439,7 @@ check(approval.distributionMirror?.rootUrl === driveRootUrl, "Owner approval Dri
 check(approval.distributionMirror?.immutableReleaseUrl === driveReleaseUrl, "Owner approval Drive release folder mismatch");
 check(buildCard.distributionMirrors?.googleDrive === driveRootUrl, "Build Card Drive root mismatch");
 check(buildCard.distributionMirrors?.immutableRelease === driveReleaseUrl, "Build Card Drive release folder mismatch");
-check(read("docs/ai-sync.md").includes(driveReleaseUrl), "AI sync guide must resolve the immutable Drive 1.2.0 folder");
+check(read("docs/ai-sync.md").includes(driveReleaseUrl), "AI sync guide must resolve the immutable Drive 1.2.1 folder");
 check(read("CLAUDE.md").includes(driveRootUrl) && read("CLAUDE.md").includes("release-index.json"), "Claude handoff must resolve immutable releases through the governed Drive index");
 
 function verifyHtml(relativePath, locale, expectedCanonical) {
@@ -434,19 +456,30 @@ function verifyHtml(relativePath, locale, expectedCanonical) {
   check((html.match(/data-preview-brand="ijji-logo"/g) || []).length === 2, `${relativePath}: expected two ijji animated-identity preview routes`);
   check((html.match(/data-preview-brand="landometer"/g) || []).length === 6, `${relativePath}: expected six paired Landometer preview routes`);
   check(html.includes('id="ijji-animated-logo-tagline"') && html.includes('id="ijji-animated-logo-mark"'), `${relativePath}: ijji full and mark cards are missing`);
-  check(html.includes("assets/downloads/landometer-motifs-v3.zip"), `${relativePath}: Landometer v3 kit link missing`);
-  check(html.includes("assets/downloads/ijji-animated-logo-r3.zip"), `${relativePath}: ijji animated-logo kit link missing`);
-  check(html.includes("assets/downloads/ijji-motifs-selected-r3.zip"), `${relativePath}: ijji selected-motif kit link missing`);
-  check(html.includes("assets/downloads/motif-library-v1.2.0.zip"), `${relativePath}: full release kit link missing`);
+  check(html.includes("assets/downloads/landometer-motifs-v3.zip?v=1.2.1"), `${relativePath}: revisioned Landometer v3 kit link missing`);
+  check(html.includes("assets/downloads/ijji-animated-logo-r3.zip?v=1.2.1"), `${relativePath}: revisioned ijji animated-logo kit link missing`);
+  check(html.includes("assets/downloads/ijji-motifs-selected-r3.zip?v=1.2.1"), `${relativePath}: revisioned ijji selected-motif kit link missing`);
+  check(html.includes("assets/downloads/motif-library-v1.2.1.zip"), `${relativePath}: full release kit link missing`);
   check(!html.includes("landometer-motifs-v1.zip") && !html.includes("motif-library-v1.zip"), `${relativePath}: stale kit link leaked into the current route`);
   check(!html.includes("explorations/"), `${relativePath}: exploration asset leaked into the page`);
   check(!html.includes("Landometer-Logo-TransparentBG"), `${relativePath}: source lockup leaked into the page`);
   check(html.includes("authorized") || html.includes("ได้รับอนุญาต"), `${relativePath}: authorized-reuse boundary missing`);
-  check(html.includes('"version": "1.2.0"'), `${relativePath}: JSON-LD release version mismatch`);
-  check(html.includes("site.js?v=1.2.0"), `${relativePath}: site runtime cache revision mismatch`);
-  check(html.includes("landometer-motifs.css?v=1.2.0") && html.includes("landometer-motifs.js?v=1.2.0"), `${relativePath}: exact Landometer runtime cache revision mismatch`);
-  check(html.includes("logo-full.svg?v=1.2.0") && html.includes("logo-quiet.svg?v=1.2.0"), `${relativePath}: v3 logo static assets are not cache-busted`);
-  check(html.includes("full + quiet") && html.includes("finite once"), `${relativePath}: showcase/production motion distinction is missing`);
+  check(html.includes('"version": "1.2.1"'), `${relativePath}: JSON-LD release version mismatch`);
+  check(html.includes("site.js?v=1.2.1"), `${relativePath}: site runtime cache revision mismatch`);
+  check(html.includes("landometer-motifs.css?v=1.2.1") && html.includes("landometer-motifs.js?v=1.2.1"), `${relativePath}: exact Landometer runtime cache revision mismatch`);
+  check(html.includes("logo-full.svg?v=1.2.1") && html.includes("logo-quiet.svg?v=1.2.1"), `${relativePath}: v3 logo static assets are not cache-busted`);
+  check((html.match(/data-motion-toggle/g) || []).length === 1, `${relativePath}: expected one page-level motion control`);
+  check(!/data-motion-toggle[^>]*aria-pressed/.test(html), `${relativePath}: action-style motion control must not expose toggle-state semantics`);
+  check(/id="preview-status" aria-live="off"/.test(html), `${relativePath}: automatic preview cycles must not repeatedly announce`);
+  check(/data-preview-announcer role="status" aria-live="polite"/.test(html), `${relativePath}: preview user actions need a dedicated one-shot announcer`);
+  check((html.match(/data-lm-live/g) || []).length === 6, `${relativePath}: expected six inline Landometer motion surfaces`);
+  check((html.match(/data-ijji-logo-live/g) || []).length === 1, `${relativePath}: expected one inline ijji full-logo motion surface`);
+  check((html.match(/data-ijji-motif-live/g) || []).length === 2, `${relativePath}: expected two inline ijji motif surfaces`);
+  check(html.includes('data-lm-live data-kind="logo" data-ink="blue" data-loop="6000"'), `${relativePath}: Landometer full-logo inline replay is missing`);
+  check(html.includes('data-lm-live data-kind="dial" data-ink="blue" data-loop="3000"'), `${relativePath}: full hero motif must keep the exact Brand Blue palette`);
+  check(html.includes('data-lm-live data-kind="rings" data-ink="blue" data-loop="3000"'), `${relativePath}: full example motif must keep the exact Brand Blue palette`);
+  check(html.includes('data-ijji-logo-live'), `${relativePath}: ijji full-logo inline replay is missing`);
+  check(!html.includes("ใช้ภาพนิ่งเพื่อรักษาจังหวะเดียวกัน") && !html.includes("Use stable stills across decks"), `${relativePath}: superseded static-first paragraph remains visible`);
 
   for (const assetId of [
     "landometer.dial.full", "landometer.dial.quiet", "landometer.rings.full", "landometer.rings.quiet",
@@ -504,14 +537,24 @@ check(siteJs.includes("const landometerLogoSettleMs = 3400"), "Landometer v3 com
 check(siteJs.includes('pair.className = "dialog-motif-pair"'), "Landometer preview must render full and quiet together");
 check(siteJs.includes('motif.setAttribute("ink", "blue")'), "Full Landometer preview must preserve the light-reference blue ink in dark mode");
 check(!siteJs.includes("--lm-wedge"), "Historical wedge override must not be applied by the v3 site runtime");
-check(siteJs.includes("ijji-logo-sting.js?v=1.2.0"), "ijji animated-identity runtime is not cache-busted to release 1.2.0");
+check(siteJs.includes("ijji-logo-sting.js?v=1.2.1"), "ijji animated-identity runtime is not cache-busted to release 1.2.1");
 check(siteJs.includes('logo.setAttribute("manual", "")'), "Library must take explicit control of ijji logo showcase replay");
-check(siteJs.includes('logo.setAttribute("loop", "")') && siteJs.includes('logo.removeAttribute("loop")'), "ijji showcase auto-replay start/stop lifecycle is incomplete");
+check(siteJs.includes('logo.setAttribute("loop", "")') && siteJs.includes('previous.removeAttribute("loop")'), "ijji showcase auto-replay start/stop lifecycle is incomplete");
+check(siteJs.includes("disposeIjjiLogoPreview") && siteJs.includes("mountIjjiLogoPreview"), "ijji showcase must replace stopped components so stale source-runtime loop callbacks cannot restart them");
+check(siteJs.includes("preloadIjjiLogoLayers"), "ijji identity must preload every exact layer before replacing its complete fallback");
 check(siteJs.includes('logo.setAttribute("notagline", "")'), "ijji mark-only preview does not bind notagline");
 check(siteJs.includes('logo.setAttribute("surface", "brand-blue")'), "ijji full preview does not bind its reference Brand Blue surface");
 check(siteJs.includes('window.addEventListener("pagehide"'), "Preview timers must stop on pagehide");
 check(siteJs.includes('document.addEventListener("visibilitychange"'), "Preview motion must respond to document visibility");
+check(siteJs.includes('previewConfig?.brand === "ijji" && document.visibilityState !== "visible"'), "State-bound ijji preview must stop when the document is hidden");
 check(siteJs.includes('prefers-reduced-motion: reduce'), "Preview motion must honor reduced-motion preference");
+check(siteJs.includes("const inlineMotionControllers = []"), "Inline motion controller registry is missing");
+check(siteJs.includes("IntersectionObserver") && siteJs.includes("threshold: 0.14") && siteJs.includes("entry.intersectionRatio >= 0.14"), "Inline motion 14-percent visibility lifecycle is missing");
+check(siteJs.includes("inlineMotionPaused") && siteJs.includes("syncMotionToggle"), "Page-level inline motion pause/resume lifecycle is missing");
+check(siteJs.includes('motionToggle.removeAttribute("aria-pressed")') && siteJs.includes("motionToggle.hidden = isReduced"), "Page-level motion action semantics or reduced-motion visibility is incomplete");
+check(siteJs.includes('if (previewConfig.brand === "ijji-logo") ijjiLogoPreviewPaused = false') && !siteJs.includes("preservedIjjiPause"), "ijji preview must reset pause only for a fresh selection and preserve live user intent across async/remount lifecycles");
+check(siteJs.includes("announcePreviewAction") && siteJs.includes("dialogAnnouncer"), "Preview user actions need one-shot accessibility announcements separate from automatic cycles");
+check(siteJs.includes('data.motionState') || siteJs.includes('dataset.motionState'), "Inline motion final/running state marker is missing");
 
 const historicalLogoHarness = read("scripts/logo-full-visual-qa.mjs");
 check(
@@ -542,7 +585,7 @@ check(read("robots.txt").includes("Sitemap: https://montri-th.github.io/motif/si
 // Local machine-readable QA belongs to this release and must contain no failed checks.
 for (const relative of ["governance/browser-qa.json", "governance/performance-qa.json", "governance/runtime-parity.json"]) {
   const evidence = readJson(relative);
-  check(evidence.artifactRelease === release, `${relative}: evidence is stale and must bind release 1.2.0`);
+  check(evidence.artifactRelease === release, `${relative}: evidence is stale and must bind release ${release}`);
   if (Array.isArray(evidence.checks)) {
     const failed = evidence.checks.filter((item) => item.passed === false || item.status === "failed");
     check(failed.length === 0, `${relative}: contains ${failed.length} failed checks`);

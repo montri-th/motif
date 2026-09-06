@@ -1,7 +1,7 @@
 {
   "schemaVersion": "motif-library-runtime-parity/1.1",
-  "executedAt": "2026-09-05T18:36:06.219Z",
-  "artifactRelease": "1.2.0",
+  "executedAt": "2026-09-06T01:48:12.563Z",
+  "artifactRelease": "1.2.1",
   "artifactRoot": ".",
   "browser": "152.0.7977.82",
   "evidenceBoundary": "Landometer parity is evaluated against the byte-exact owner-supplied v3 CSS/JavaScript and all 12 deterministic final-state SVG projections. Full previews select ink=blue only; they do not override the v3 token-derived #1F87CE wedge. Runtime timelines are measured from browser CSS animations and both logo variants finish before the library's 3400 ms settle. ijji parity covers the byte-exact round-3 runtime, exact source-layer and final-PNG inventory, full 9.0 s and mark-only 6.4 s lifecycle, reduced-motion final state, and browser-rendered final fidelity. Small raster differences at antialiased edges are allowed; surrounding library UI and dialog-only replay are integration concerns rather than source-animation changes.",

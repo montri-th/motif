@@ -597,7 +597,7 @@ const failed = checks.filter((check) => !check.passed);
 const report = {
   schemaVersion: "motif-library-runtime-parity/1.1",
   executedAt: new Date().toISOString(),
-  artifactRelease: "1.2.0",
+  artifactRelease: "1.2.1",
   artifactRoot: ".",
   browser: browserVersion,
   evidenceBoundary: "Landometer parity is evaluated against the byte-exact owner-supplied v3 CSS/JavaScript and all 12 deterministic final-state SVG projections. Full previews select ink=blue only; they do not override the v3 token-derived #1F87CE wedge. Runtime timelines are measured from browser CSS animations and both logo variants finish before the library's 3400 ms settle. ijji parity covers the byte-exact round-3 runtime, exact source-layer and final-PNG inventory, full 9.0 s and mark-only 6.4 s lifecycle, reduced-motion final state, and browser-rendered final fidelity. Small raster differences at antialiased edges are allowed; surrounding library UI and dialog-only replay are integration concerns rather than source-animation changes.",
@@ -630,4 +630,4 @@ if (failed.length) {
   for (const check of failed) console.error(`- ${check.name}: ${JSON.stringify(check.detail || null)}`);
   process.exit(1);
 }
-console.log(`PASS: ${checks.length} release 1.2.0 runtime/static parity checks; report ${shouldWriteReport ? "written" : "not written"}.`);
+console.log(`PASS: ${checks.length} release 1.2.1 runtime/static parity checks; report ${shouldWriteReport ? "written" : "not written"}.`);

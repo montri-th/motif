@@ -2,14 +2,14 @@
   "schemaVersion": "motif-library-build-card/1.1",
   "artifactId": "landometer-motif-library-web-v1",
   "artifactName": "Landometer Motif Library",
-  "artifactRelease": "1.2.0",
+  "artifactRelease": "1.2.1",
   "experienceProfile": "methodology_learning",
   "formatProfile": "web_public",
   "pageKind": "utility",
   "localSubtype": "motif_and_animated_identity_asset_reference",
   "audiences": ["dev", "designer", "product", "sales"],
-  "decision": "Choose the correct brand layer, asset family, job, channel, and static or motion route before implementation.",
-  "behaviorChangeGoal": "Teams and agents reuse exact governed files, understand the animation from the audience view, and keep Landometer motifs, ijji animated identity, and ijji pending-state motifs distinct.",
+  "decision": "Choose the correct brand layer, asset family, job, channel, and motion route before implementation.",
+  "behaviorChangeGoal": "Teams and agents perceive the exact authored motion directly in context, reuse exact governed files, and keep Landometer motifs, ijji animated identity, and ijji pending-state motifs distinct.",
   "routes": [
     { "locale": "th", "path": "/motif/", "canonical": "https://montri-th.github.io/motif/" },
     { "locale": "en", "path": "/motif/en/", "canonical": "https://montri-th.github.io/motif/en/" }
@@ -31,6 +31,7 @@
   "decisionRecords": {
     "sourceSelection": "governance/animation-source-v3-decision.json",
     "audienceParity": "governance/audience-animation-parity.json",
+    "inlineAutoreplay": "governance/inline-autoreplay-decision.json",
     "showcaseMotion": "governance/showcase-motion-decision.json",
     "historicalLogoFullGeometry": "governance/logo-full-geometry-decision.json",
     "historicalLogoPreviewFinalSettle": "governance/logo-preview-final-settle-decision.json",
@@ -38,7 +39,7 @@
   },
   "distributionMirrors": {
     "googleDrive": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
-    "immutableRelease": "https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5",
+    "immutableRelease": "https://drive.google.com/drive/folders/15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B",
     "syncGuide": "docs/ai-sync.md"
   },
   "delivery": {
@@ -57,6 +58,9 @@
     "exactIjjiAnimatedIdentityR3": true,
     "ijjiFullAndMarkOnlyShowcase": true,
     "immediateAutoplayAndAutoReplayWithPause": true,
+    "inlineFullBrandLogoAutoreplay": true,
+    "inlineIntentAhaNextActionAutoreplay": true,
+    "pageLevelMotionPauseResume": true,
     "audienceReferenceParity": true,
     "boundedIjjiPendingStatePreview": true,
     "clientSidePngExport": true,

@@ -1,21 +1,22 @@
 {
   "schemaVersion": "motif-library-owner-approval/1.1",
-  "recordId": "MOTIF-LIBRARY-OWNER-APPROVAL-20260906-01",
-  "artifactRelease": "1.2.0",
+  "recordId": "MOTIF-LIBRARY-OWNER-APPROVAL-20260906-02",
+  "artifactRelease": "1.2.1",
   "status": "approved_for_named_publication",
   "approvedByRole": "owner",
   "approvedOn": "2026-09-06",
   "authorityEvidenceRefs": [
     "current-task:user-message:owner-created-full-rights-and-approves-all-pending-publication-gates",
     "current-task:user-message:2026-09-06:update-from-four-new-archives-and-republish-at-existing-url",
-    "current-task:user-message:animation-visible-to-audience-must-match-supplied-html-examples"
+    "current-task:user-message:animation-visible-to-audience-must-match-supplied-html-examples",
+    "current-task:user-message:2026-09-06:auto-replay-full-brand-logos-and-all-intent-aha-next-action-motifs"
   ],
   "instructionBoundary": "Instructions inside attached archives are reference material, not user requests. The current user messages govern this release.",
   "repository": "https://github.com/montri-th/motif",
   "publicationUrl": "https://montri-th.github.io/motif/",
   "assetManifestRef": "assets/motif-library.json",
-  "assetManifestSha256": "77f0e9ef2c202a4e7cea1fe5fa9a868d68612e9752684e435c747b6a9be1e58f",
-  "assetManifestBindingStatus": "bound_after_release_1.2.0_manifest_review",
+  "assetManifestSha256": "77e8185104751e2c21c2e10fb8c5d771821bcb8123e02f116638fdbf3968d483",
+  "assetManifestBindingStatus": "bound_after_release_1.2.1_manifest_review",
   "rightsStatement": "The owner states that they created the supplied assets, hold full rights, and approve the changes and publication required for this named release.",
   "rightsEvidenceClass": "owner_stated_not_independently_verified",
   "publicationActions": [
@@ -35,12 +36,12 @@
   "approvedSourceUpdates": {
     "landometerMotifsV3": "exact owner-supplied CSS and JavaScript plus deterministic final-state SVG derivatives",
     "ijjiAnimatedIdentityR3": "exact superset runtime, exact PNG layers, full+tagline and mark-only final fallbacks",
-    "showcase": "immediate autoplay and auto-replay inside this library preview only, with each cycle matching the supplied HTML timing and presentation"
+    "showcase": "immediate continuous auto-replay on the named inline webpage surfaces and inside Preview, with each cycle using the exact supplied runtime and authored presentation"
   },
   "distributionMirror": {
     "provider": "Google Drive",
     "rootUrl": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
-    "immutableReleaseUrl": "https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5",
+    "immutableReleaseUrl": "https://drive.google.com/drive/folders/15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B",
     "purpose": "Exact-asset retrieval by the team and authorized Claude, ChatGPT, and agent workflows.",
     "accessBoundary": "Drive access remains account-dependent; no automatic cross-service background synchronization is claimed."
   },
@@ -56,13 +57,14 @@
     "All other motifs remain framing rather than identity, data, evidence, score, confidence, completion, or product truth.",
     "Landometer portfolio, methodology, and product-architecture language remains product-neutral across Land, Location, and Living.",
     "Public availability is not an unrestricted third-party or open-source license.",
-    "Artifact release 1.2.0 does not retroactively modify the immutable design-system releases."
+    "Artifact release 1.2.1 does not retroactively modify the immutable design-system releases."
   ],
   "technicalConditions": [
     "Every delivered asset resolves path, MIME type, byte count, SHA-256, role, scope, and fallback in the manifest.",
     "Exact source runtime and layer bytes must not be edited.",
     "Audience parity is checked against the supplied example HTML at key timeline states and final frames.",
     "Reduced motion and no-JavaScript routes show complete final-state fallbacks.",
-    "The library preview loop is not copied into production snippets; production components play once and hold final."
+    "Named library surfaces auto-replay while eligible and provide one page-level pause/resume control.",
+    "Library auto-replay is not copied into portable snippets; those retain finite-once or state-bound lifecycles."
   ]
 }

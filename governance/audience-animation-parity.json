@@ -1,7 +1,7 @@
 {
   "schemaVersion": "motif-library-audience-animation-parity/1.0",
-  "artifactRelease": "1.2.0",
-  "status": "passed_live",
+  "artifactRelease": "1.2.1",
+  "status": "local_source_and_reference_qa_passed_live_pending",
   "recordedOn": "2026-09-06",
   "evidenceBoundary": "Parity means the audience sees the same authored geometry, layer order, timing, palette, surface, and complete final state as the supplied HTML examples. The surrounding library shell and replay-after-hold inspection behavior are intentionally different.",
   "landometer": {
@@ -36,29 +36,33 @@
   "integrationChecks": {
     "exactRuntimeAndLayerHashes": "passed",
     "finalFallbacks": "passed",
-    "reducedMotion": "passed_in_source_fixtures",
+    "reducedMotion": "passed_in_source_fixtures_and_both_library_routes",
     "noJavaScript": "library_source_html_keeps_exact_final_stills",
     "libraryBrowserQa": "passed",
-    "liveByteAndRenderedQa": "passed"
+    "liveByteAndRenderedQa": "pending_1.2.1"
   },
-  "liveAttestation": {
-    "url": "https://montri-th.github.io/motif/",
-    "publishedContentCommit": "067a083609b7dc131aac1de0c7dad3c90d448d01",
-    "githubPagesRun": 33985336741,
-    "githubPagesStatus": "success",
-    "verifiedAt": "2026-09-05T18:53:53.575Z",
-    "exactByteComparison": {
-      "checked": 13,
-      "passed": 13,
+  "inlineReplay": {
+    "decisionRef": "governance/inline-autoreplay-decision.json",
+    "surfacesPerLocaleRoute": 9,
+    "brandLayerFullLogos": 2,
+    "intentAhaNextActionMotifs": 6,
+    "browserQa": {
+      "evidence": "governance/browser-qa.json",
+      "checks": 465,
+      "passed": 465,
       "failed": 0
     },
-    "renderedBrowserQa": {
-      "evidence": "governance/browser-qa-live.json",
-      "target": "published_https",
-      "checks": 406,
-      "passed": 406,
-      "failed": 0
+    "performanceQa": {
+      "evidence": "governance/performance-qa.json",
+      "checks": 14,
+      "passed": 14,
+      "failed": 0,
+      "covers": "two complete ijji full-logo cycles, loop gap, stale-callback remount safety, nine page-motion surfaces, offscreen stop/resume, stable DOM, stable requests, stable layout, CLS, and long-task bounds"
     }
+  },
+  "liveAttestation": {
+    "status": "pending_publication",
+    "url": "https://montri-th.github.io/motif/"
   },
   "manualGate": "Native Safari visual playback remains a named manual follow-up; it does not replace exact-byte, Chromium, responsive, reduced-motion, and live checks."
 }

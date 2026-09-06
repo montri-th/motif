@@ -12,7 +12,7 @@ Exact runtime SHA-256:
 - CSS: `7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e`
 - JavaScript: `3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2`
 
-The six kinds are `dial`, `rings`, `layers`, `slice`, `cultivate`, and `logo`; each has `full` and `quiet`. The default production route plays once when visible and holds the authored final state. The library Preview may auto-replay so viewers can inspect the whole sequence, but copied production snippets do not carry that loop.
+The six kinds are `dial`, `rings`, `layers`, `slice`, `cultivate`, and `logo`; each has `full` and `quiet`. The library webpage auto-replays its named inline and Preview surfaces under the release-1.2.1 owner decision. The portable snippet plays once when visible and holds the authored final state.
 
 For a theme-invariant library preview, every full variant uses `ink="blue"`; quiet keeps the runtime's default sky ink. The logo wedge stays exactly token-derived as in the supplied HTML and renders as `#1F87CE` in the checked browser. No host wedge override is applied.
 

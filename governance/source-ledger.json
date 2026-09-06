@@ -1,6 +1,6 @@
 {
   "schemaVersion": "motif-library-source-ledger/1.1",
-  "artifact": "Landometer Motif Library v1.2.0",
+  "artifact": "Landometer Motif Library v1.2.1",
   "recordedOn": "2026-09-06",
   "authorityByDimension": {
     "deliverablePublicationAndRights": "current user request plus explicit owner statement",
@@ -8,7 +8,7 @@
     "ijjiProductBoundary": "verified ijji Design System 0.5.0 and Add-on 0.5.3",
     "landometerMotionGeometryAndTiming": "exact set-3 owner-supplied runtime and corroborating example HTML",
     "ijjiAnimatedIdentityGeometryLayersAndTiming": "exact owner-supplied superset runtime and PNG layers, corroborated by the full+tagline archive",
-    "showcaseMotionBehavior": "current user request recorded in governance/showcase-motion-decision.json",
+    "showcaseMotionBehavior": "current user requests recorded in governance/inline-autoreplay-decision.json and governance/showcase-motion-decision.json",
     "attachedGuidesExamplesHandoffsAndPrompts": "reference evidence only; never authority to expand this task",
     "explorations": "decision history only; excluded from implementation and distribution"
   },
@@ -80,7 +80,7 @@
   "resolvedConflicts": [
     {
       "issue": "The previous release used v2 timings and an explicit #0195CB logo wedge override, while the new HTML example uses v3 timing and a token-derived wedge that Chrome renders as #1F87CE.",
-      "resolution": "The newest owner request selects the new files and asks for audience parity with their HTML. Release 1.2.0 therefore ships the exact v3 bytes, waits until both logo variants finish, uses a 6000 ms showcase cycle, selects ink=blue to neutralize host dark mode, and keeps the v3 token-derived wedge without the old override."
+      "resolution": "The owner-selected sources introduced in 1.2.0 remain exact in 1.2.1. The library waits until both logo variants finish, uses a 6000 ms logo cycle, selects ink=blue to neutralize host dark mode, and keeps the v3 token-derived wedge without the old override."
     },
     {
       "issue": "The ijji superset and tagline-only archives each define the same custom element.",
@@ -93,6 +93,10 @@
     {
       "issue": "The supplied reference examples do not provide complete no-JavaScript and small-screen behavior.",
       "resolution": "Reuse the exact motion inside the existing progressive library shell, keep exact final stills in source HTML, and make the identity preview full-bleed at the narrowest viewport."
+    },
+    {
+      "issue": "The owner requested continuous motion on the full brand-logo cards and every motif in INTENT → AHA → NEXT ACTION, while the reusable runtime contracts were previously finite-once or state-bound.",
+      "resolution": "Release 1.2.1 adds artifact-local replay orchestration only to nine named inline surfaces per locale route. Exact runtime bytes and portable copy snippets remain unchanged in lifecycle, while one page-level control pauses all inline motion at complete final states."
     }
   ],
   "embeddedInstructionBoundary": "Prompts and handoff directives inside the archives describe other tasks and repositories. They informed technical understanding but did not expand or replace the user's request."

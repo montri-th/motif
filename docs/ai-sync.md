@@ -1,6 +1,6 @@
 # Claude + ChatGPT asset sync
 
-Version 1.2.0 · 6 September 2026
+Version 1.2.1 · 6 September 2026
 
 This is the shared retrieval and update contract for Claude, ChatGPT, Codex, and other owner-authorized agents.
 
@@ -9,7 +9,7 @@ This is the shared retrieval and update contract for Claude, ChatGPT, Codex, and
 - Public documentation/runtime: <https://montri-th.github.io/motif/>
 - Public repository: <https://github.com/montri-th/motif>
 - Shared Drive root: <https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh>
-- Immutable Drive release 1.2.0: <https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5>
+- Immutable Drive release 1.2.1: <https://drive.google.com/drive/folders/15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B>
 
 The Drive folder is a governed mirror for exact retrieval. It does not replace GitHub and is outside the immutable LDS 0.9.1 and ijji DS/Add-on release folders.
 
@@ -37,7 +37,7 @@ Do not turn a motif into identity. The only animated-identity route in this rele
 - Full Landometer previews may use `ink="blue"` so a dark host does not recolour the supplied light-reference look. Do not add the historical `--lm-wedge:#0195CB` override; v3 uses its token-derived wedge.
 - ijji animated identity must load only the selected superset runtime. Its exact PNG layers are runtime dependencies, not standalone creative elements.
 - Use the exact final SVG/PNG for no-JavaScript and reduced-motion fallback.
-- Auto-replay belongs only to the library Preview. Production snippets play once and hold final.
+- This library webpage auto-replays the hero, both full brand logos, all six INTENT → AHA → NEXT ACTION examples, and Preview while eligible. A page-level control pauses/resumes inline motion. Portable snippets retain finite-once or state-bound lifecycles.
 
 ## Update protocol
 

@@ -1,12 +1,12 @@
 {
-  "schemaVersion": "motif-library-performance-qa/1.1",
-  "executedAt": "2026-09-05T18:34:04.115Z",
-  "artifactRelease": "1.2.0",
+  "schemaVersion": "motif-library-performance-qa/1.2",
+  "executedAt": "2026-09-06T01:48:57.097Z",
+  "artifactRelease": "1.2.1",
   "artifactRoot": ".",
   "browser": "152.0.7977.82",
   "route": "/motif/",
-  "evidenceBoundary": "Local synthetic timing is diagnostic evidence only. It is not field p75 Core Web Vitals and does not predict GitHub Pages or end-user network performance. Motion checks attest lifecycle scope and source timing; they do not replace audience-view visual QA.",
-  "paintRisk": "bounded gradients, finite-once production snippets, and user-opened dialog-local inspection replay only. Landometer logo full/quiet finish by 2870/3360 ms, are settled at 3400 ms, hold, and replay at 6000 ms. ijji full runs 9000 ms and mark-only 6400 ms, then the exact runtime adds a 400 ms dialog-loop gap. Dialog close, hidden-page, pagehide, and reduced-motion paths stop or suppress replay; ijji identity runtime and layers load lazily only after Preview is opened.",
+  "evidenceBoundary": "Local synthetic timing is diagnostic evidence only. It is not field p75 Core Web Vitals and does not predict GitHub Pages or end-user network performance. Page motion checks attest nine governed stages, two observed ijji full-logo cycles, offscreen/resume remounts, and one forced pause-to-resume race inside the 400 ms hold at 1440x900; source timing and lifecycle checks do not replace audience-view visual QA.",
+  "paintRisk": "bounded gradients and page-scoped auto-replay. Six Landometer stages, one ijji full identity, and two ijji state motifs retain complete static fallbacks; IntersectionObserver, page visibility, reduced motion, pagehide, and the page motion action control bound active work. The ijji full logo runs 9000 ms with the exact runtime's 400 ms hold-to-loop gap; mark-only remains 6400 ms in its dialog preview. Stop/start deliberately remounts the identity component so detached callbacks cannot restart it, while the exact runtime and motif module each load once per navigation.",
   "inspection": {
     "timingContract": {
       "landometerLogoSettleMs": 3400,
@@ -15,10 +15,318 @@
       "ijjiMarkDurationMs": 6400,
       "ijjiRuntimeHoldThenLoopGapMs": 400
     },
-    "lazyBefore": {
-      "logoComponents": 0,
-      "landometerComponents": 1,
-      "logoRuntimeRequests": 0
+    "inlineLifecycle": {
+      "initial": {
+        "label": "initial_offscreen",
+        "pageMotionStages": 9,
+        "heroLandometerComponents": 1,
+        "logoStages": 1,
+        "inlineFullLogoComponents": 1,
+        "inlineLogoComponents": 1,
+        "dialogLogoComponents": 0,
+        "documentLogoComponents": 1,
+        "inlineLandometerComponents": 6,
+        "inlineIjjiMotifSlots": 2,
+        "totalDomElements": 915,
+        "logoStageChildren": 2,
+        "logoShadowElements": 16,
+        "runtimeScriptElements": 1,
+        "resourceCount": 49,
+        "logoRuntimeRequests": 1,
+        "motifModuleRequests": 1,
+        "logoLayerRequests": 12,
+        "uniqueLogoLayerUrls": 12,
+        "logoLayerTransferBytes": 0,
+        "motionState": "final",
+        "manual": true,
+        "loop": false,
+        "notagline": false,
+        "surface": "brand-blue",
+        "duration": 9,
+        "currentTime": 9,
+        "playing": false,
+        "layout": {
+          "width": 501,
+          "height": 420.484,
+          "documentHeight": 14091
+        },
+        "timing": {
+          "cumulativeLayoutShift": 0,
+          "longTaskMs": 0
+        },
+        "lifecycle": {
+          "startEvents": 0,
+          "endEvents": 0,
+          "componentMounts": 1,
+          "cycleDurationsMs": [],
+          "loopGapsMs": []
+        }
+      },
+      "activeStart": {
+        "label": "first_cycle_running",
+        "pageMotionStages": 9,
+        "heroLandometerComponents": 1,
+        "logoStages": 1,
+        "inlineFullLogoComponents": 1,
+        "inlineLogoComponents": 1,
+        "dialogLogoComponents": 0,
+        "documentLogoComponents": 1,
+        "inlineLandometerComponents": 6,
+        "inlineIjjiMotifSlots": 2,
+        "totalDomElements": 915,
+        "logoStageChildren": 2,
+        "logoShadowElements": 16,
+        "runtimeScriptElements": 1,
+        "resourceCount": 49,
+        "logoRuntimeRequests": 1,
+        "motifModuleRequests": 1,
+        "logoLayerRequests": 12,
+        "uniqueLogoLayerUrls": 12,
+        "logoLayerTransferBytes": 0,
+        "motionState": "running",
+        "manual": true,
+        "loop": true,
+        "notagline": false,
+        "surface": "brand-blue",
+        "duration": 9,
+        "currentTime": 0.031,
+        "playing": true,
+        "layout": {
+          "width": 501,
+          "height": 420.484,
+          "documentHeight": 14091
+        },
+        "timing": {
+          "cumulativeLayoutShift": 0,
+          "longTaskMs": 0
+        },
+        "lifecycle": {
+          "startEvents": 1,
+          "endEvents": 0,
+          "componentMounts": 2,
+          "cycleDurationsMs": [],
+          "loopGapsMs": []
+        }
+      },
+      "afterTwoCycles": {
+        "label": "after_two_complete_cycles",
+        "pageMotionStages": 9,
+        "heroLandometerComponents": 1,
+        "logoStages": 1,
+        "inlineFullLogoComponents": 1,
+        "inlineLogoComponents": 1,
+        "dialogLogoComponents": 0,
+        "documentLogoComponents": 1,
+        "inlineLandometerComponents": 6,
+        "inlineIjjiMotifSlots": 2,
+        "totalDomElements": 915,
+        "logoStageChildren": 2,
+        "logoShadowElements": 16,
+        "runtimeScriptElements": 1,
+        "resourceCount": 49,
+        "logoRuntimeRequests": 1,
+        "motifModuleRequests": 1,
+        "logoLayerRequests": 12,
+        "uniqueLogoLayerUrls": 12,
+        "logoLayerTransferBytes": 0,
+        "motionState": "running",
+        "manual": true,
+        "loop": true,
+        "notagline": false,
+        "surface": "brand-blue",
+        "duration": 9,
+        "currentTime": 9,
+        "playing": false,
+        "layout": {
+          "width": 501,
+          "height": 420.484,
+          "documentHeight": 14091
+        },
+        "timing": {
+          "cumulativeLayoutShift": 0,
+          "longTaskMs": 0
+        },
+        "lifecycle": {
+          "startEvents": 2,
+          "endEvents": 2,
+          "componentMounts": 2,
+          "cycleDurationsMs": [
+            9016,
+            9016
+          ],
+          "loopGapsMs": [
+            401
+          ]
+        }
+      },
+      "offscreen": {
+        "label": "offscreen_final",
+        "pageMotionStages": 9,
+        "heroLandometerComponents": 1,
+        "logoStages": 1,
+        "inlineFullLogoComponents": 1,
+        "inlineLogoComponents": 1,
+        "dialogLogoComponents": 0,
+        "documentLogoComponents": 1,
+        "inlineLandometerComponents": 6,
+        "inlineIjjiMotifSlots": 2,
+        "totalDomElements": 915,
+        "logoStageChildren": 2,
+        "logoShadowElements": 16,
+        "runtimeScriptElements": 1,
+        "resourceCount": 49,
+        "logoRuntimeRequests": 1,
+        "motifModuleRequests": 1,
+        "logoLayerRequests": 12,
+        "uniqueLogoLayerUrls": 12,
+        "logoLayerTransferBytes": 0,
+        "motionState": "final",
+        "manual": true,
+        "loop": false,
+        "notagline": false,
+        "surface": "brand-blue",
+        "duration": 9,
+        "currentTime": 9,
+        "playing": false,
+        "layout": {
+          "width": 501,
+          "height": 420.484,
+          "documentHeight": 14091
+        },
+        "timing": {
+          "cumulativeLayoutShift": 0,
+          "longTaskMs": 0
+        },
+        "lifecycle": {
+          "startEvents": 2,
+          "endEvents": 2,
+          "componentMounts": 3,
+          "cycleDurationsMs": [
+            9016,
+            9016
+          ],
+          "loopGapsMs": [
+            401
+          ]
+        }
+      },
+      "resumed": {
+        "label": "onscreen_resumed",
+        "pageMotionStages": 9,
+        "heroLandometerComponents": 1,
+        "logoStages": 1,
+        "inlineFullLogoComponents": 1,
+        "inlineLogoComponents": 1,
+        "dialogLogoComponents": 0,
+        "documentLogoComponents": 1,
+        "inlineLandometerComponents": 6,
+        "inlineIjjiMotifSlots": 2,
+        "totalDomElements": 915,
+        "logoStageChildren": 2,
+        "logoShadowElements": 16,
+        "runtimeScriptElements": 1,
+        "resourceCount": 49,
+        "logoRuntimeRequests": 1,
+        "motifModuleRequests": 1,
+        "logoLayerRequests": 12,
+        "uniqueLogoLayerUrls": 12,
+        "logoLayerTransferBytes": 0,
+        "motionState": "running",
+        "manual": true,
+        "loop": true,
+        "notagline": false,
+        "surface": "brand-blue",
+        "duration": 9,
+        "currentTime": 0.007,
+        "playing": true,
+        "layout": {
+          "width": 501,
+          "height": 420.484,
+          "documentHeight": 14091
+        },
+        "timing": {
+          "cumulativeLayoutShift": 0,
+          "longTaskMs": 0
+        },
+        "lifecycle": {
+          "startEvents": 3,
+          "endEvents": 2,
+          "componentMounts": 4,
+          "cycleDurationsMs": [
+            9016,
+            9016
+          ],
+          "loopGapsMs": [
+            401,
+            1357
+          ]
+        }
+      },
+      "staleTimerRace": {
+        "starts": 2,
+        "ends": 1,
+        "resumeDelayMs": 8,
+        "activeWasRemounted": true,
+        "activeComponents": 1,
+        "playing": true,
+        "loop": true,
+        "currentTime": 0.54
+      },
+      "final": {
+        "label": "final_offscreen",
+        "pageMotionStages": 9,
+        "heroLandometerComponents": 1,
+        "logoStages": 1,
+        "inlineFullLogoComponents": 1,
+        "inlineLogoComponents": 1,
+        "dialogLogoComponents": 0,
+        "documentLogoComponents": 1,
+        "inlineLandometerComponents": 6,
+        "inlineIjjiMotifSlots": 2,
+        "totalDomElements": 915,
+        "logoStageChildren": 2,
+        "logoShadowElements": 16,
+        "runtimeScriptElements": 1,
+        "resourceCount": 49,
+        "logoRuntimeRequests": 1,
+        "motifModuleRequests": 1,
+        "logoLayerRequests": 12,
+        "uniqueLogoLayerUrls": 12,
+        "logoLayerTransferBytes": 0,
+        "motionState": "final",
+        "manual": true,
+        "loop": false,
+        "notagline": false,
+        "surface": "brand-blue",
+        "duration": 9,
+        "currentTime": 9,
+        "playing": false,
+        "layout": {
+          "width": 501,
+          "height": 420.484,
+          "documentHeight": 14091
+        },
+        "timing": {
+          "cumulativeLayoutShift": 0,
+          "longTaskMs": 0
+        },
+        "lifecycle": {
+          "startEvents": 5,
+          "endEvents": 3,
+          "componentMounts": 7,
+          "cycleDurationsMs": [
+            9016,
+            9016,
+            26
+          ],
+          "loopGapsMs": [
+            401,
+            1357,
+            1373,
+            8
+          ]
+        }
+      }
     },
     "landometerDialog": {
       "open": true,
@@ -27,22 +335,25 @@
       "fullInk": "blue",
       "fullInlineWedge": "",
       "dialogLocalCount": 2,
-      "documentCount": 3
+      "documentCount": 8
     },
     "ijjiFullDialog": {
       "open": true,
       "duration": 9,
-      "currentTime": 0.014999999976158165,
+      "currentTime": 0,
       "manual": true,
       "loop": true,
       "notagline": false,
       "surface": "brand-blue",
       "dialogLocalCount": 1,
-      "documentCount": 1
+      "inlineCount": 1,
+      "documentCount": 2
     },
     "afterFullClose": {
       "dialogOpen": false,
-      "logoComponents": 0
+      "dialogLogoComponents": 0,
+      "inlineLogoComponents": 1,
+      "logoComponents": 1
     },
     "ijjiMarkDialog": {
       "open": true,
@@ -53,52 +364,60 @@
       "notagline": true,
       "surface": null,
       "dialogLocalCount": 1,
-      "documentCount": 1
+      "inlineCount": 1,
+      "documentCount": 2
     },
     "afterAllClose": {
       "dialogOpen": false,
-      "logoComponents": 0,
-      "landometerComponents": 1,
+      "dialogLogoComponents": 0,
+      "inlineLogoComponents": 1,
+      "logoComponents": 1,
+      "landometerComponents": 6,
       "logoRuntimeRequests": 1,
-      "uniqueLogoLayerRequests": 11
+      "motifModuleRequests": 1,
+      "uniqueLogoLayerRequests": 12
     }
   },
   "cold": {
     "label": "cold_visit",
     "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
-    "requestCount": 38,
-    "resourceCount": 37,
-    "transferBytes": 701267,
-    "decodedBodyBytes": 689867,
-    "cacheEligibleResourceCount": 37,
+    "requestCount": 50,
+    "resourceCount": 49,
+    "ijjiLogoRuntimeRequests": 1,
+    "ijjiMotifModuleRequests": 1,
+    "transferBytes": 1187999,
+    "decodedBodyBytes": 1172999,
+    "cacheEligibleResourceCount": 49,
     "zeroTransferResourceCount": 0,
     "duplicateUrls": [],
     "timing": {
-      "responseEndMs": 6,
-      "domContentLoadedMs": 86,
-      "loadMs": 114,
-      "firstContentfulPaintMs": 108,
-      "largestContentfulPaintMs": 108,
-      "cumulativeLayoutShift": 0.0268,
-      "longTaskMs": 0
+      "responseEndMs": 5,
+      "domContentLoadedMs": 19,
+      "loadMs": 107,
+      "firstContentfulPaintMs": 124,
+      "largestContentfulPaintMs": 124,
+      "cumulativeLayoutShift": 0.003,
+      "longTaskMs": 62
     }
   },
   "repeat": {
     "label": "repeat_visit",
     "profile": "local system Chrome, 1440x900, loopback HTTP, no network throttling",
-    "requestCount": 38,
-    "resourceCount": 37,
-    "transferBytes": 65554,
-    "decodedBodyBytes": 689867,
-    "cacheEligibleResourceCount": 37,
-    "zeroTransferResourceCount": 37,
+    "requestCount": 50,
+    "resourceCount": 49,
+    "ijjiLogoRuntimeRequests": 1,
+    "ijjiMotifModuleRequests": 1,
+    "transferBytes": 66586,
+    "decodedBodyBytes": 1172999,
+    "cacheEligibleResourceCount": 49,
+    "zeroTransferResourceCount": 49,
     "duplicateUrls": [],
     "timing": {
-      "responseEndMs": 2,
-      "domContentLoadedMs": 17,
-      "loadMs": 28,
-      "firstContentfulPaintMs": 44,
-      "largestContentfulPaintMs": 44,
+      "responseEndMs": 1,
+      "domContentLoadedMs": 12,
+      "loadMs": 21,
+      "firstContentfulPaintMs": 40,
+      "largestContentfulPaintMs": 40,
       "cumulativeLayoutShift": 0,
       "longTaskMs": 0
     }
@@ -120,19 +439,36 @@
       "detail": []
     },
     {
-      "name": "local CLS at or below 0.1",
+      "name": "each navigation requests the ijji identity runtime and motif module exactly once",
       "passed": true,
-      "detail": 0.0268
+      "detail": {
+        "cold": {
+          "logoRuntime": 1,
+          "motifModule": 1
+        },
+        "repeat": {
+          "logoRuntime": 1,
+          "motifModule": 1
+        }
+      }
+    },
+    {
+      "name": "local CLS stays at or below 0.1 through inline replay and scroll lifecycle",
+      "passed": true,
+      "detail": {
+        "cold": 0.003,
+        "lifecycleFinal": 0
+      }
     },
     {
       "name": "local LCP observer returned a value",
       "passed": true,
-      "detail": 108
+      "detail": 124
     },
     {
       "name": "repeat visit reuses at least one cache-eligible response",
       "passed": true,
-      "detail": 37
+      "detail": 49
     },
     {
       "name": "Landometer logo inspection uses the 3400 ms settle and 6000 ms replay contract",
@@ -146,7 +482,7 @@
           "fullInk": "blue",
           "fullInlineWedge": "",
           "dialogLocalCount": 2,
-          "documentCount": 3
+          "documentCount": 8
         }
       }
     },
@@ -158,13 +494,14 @@
         "full": {
           "open": true,
           "duration": 9,
-          "currentTime": 0.014999999976158165,
+          "currentTime": 0,
           "manual": true,
           "loop": true,
           "notagline": false,
           "surface": "brand-blue",
           "dialogLocalCount": 1,
-          "documentCount": 1
+          "inlineCount": 1,
+          "documentCount": 2
         },
         "mark": {
           "open": true,
@@ -175,15 +512,677 @@
           "notagline": true,
           "surface": null,
           "dialogLocalCount": 1,
-          "documentCount": 1
+          "inlineCount": 1,
+          "documentCount": 2
         }
       }
     },
     {
-      "name": "logo replay is an explicit dialog-only inspection aid with visibility, reduced-motion, close, and pagehide bounds",
+      "name": "nine scoped page-motion stages start with one complete inline ijji full logo fallback",
       "passed": true,
       "detail": {
-        "sourceBounded": true,
+        "label": "initial_offscreen",
+        "pageMotionStages": 9,
+        "heroLandometerComponents": 1,
+        "logoStages": 1,
+        "inlineFullLogoComponents": 1,
+        "inlineLogoComponents": 1,
+        "dialogLogoComponents": 0,
+        "documentLogoComponents": 1,
+        "inlineLandometerComponents": 6,
+        "inlineIjjiMotifSlots": 2,
+        "totalDomElements": 915,
+        "logoStageChildren": 2,
+        "logoShadowElements": 16,
+        "runtimeScriptElements": 1,
+        "resourceCount": 49,
+        "logoRuntimeRequests": 1,
+        "motifModuleRequests": 1,
+        "logoLayerRequests": 12,
+        "uniqueLogoLayerUrls": 12,
+        "logoLayerTransferBytes": 0,
+        "motionState": "final",
+        "manual": true,
+        "loop": false,
+        "notagline": false,
+        "surface": "brand-blue",
+        "duration": 9,
+        "currentTime": 9,
+        "playing": false,
+        "layout": {
+          "width": 501,
+          "height": 420.484,
+          "documentHeight": 14091
+        },
+        "timing": {
+          "cumulativeLayoutShift": 0,
+          "longTaskMs": 0
+        },
+        "lifecycle": {
+          "startEvents": 0,
+          "endEvents": 0,
+          "componentMounts": 1,
+          "cycleDurationsMs": [],
+          "loopGapsMs": []
+        }
+      }
+    },
+    {
+      "name": "inline ijji full logo completes two exact-runtime cycles before scroll suspension and resume",
+      "passed": true,
+      "detail": {
+        "sourceExact": true,
+        "observedFullCycleDurations": [
+          9016,
+          9016
+        ],
+        "observedLoopGap": 401,
+        "lifecycle": {
+          "initial": {
+            "label": "initial_offscreen",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "final",
+            "manual": true,
+            "loop": false,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 9,
+            "playing": false,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 0,
+              "endEvents": 0,
+              "componentMounts": 1,
+              "cycleDurationsMs": [],
+              "loopGapsMs": []
+            }
+          },
+          "activeStart": {
+            "label": "first_cycle_running",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "running",
+            "manual": true,
+            "loop": true,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 0.031,
+            "playing": true,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 1,
+              "endEvents": 0,
+              "componentMounts": 2,
+              "cycleDurationsMs": [],
+              "loopGapsMs": []
+            }
+          },
+          "afterTwoCycles": {
+            "label": "after_two_complete_cycles",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "running",
+            "manual": true,
+            "loop": true,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 9,
+            "playing": false,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 2,
+              "endEvents": 2,
+              "componentMounts": 2,
+              "cycleDurationsMs": [
+                9016,
+                9016
+              ],
+              "loopGapsMs": [
+                401
+              ]
+            }
+          },
+          "offscreen": {
+            "label": "offscreen_final",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "final",
+            "manual": true,
+            "loop": false,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 9,
+            "playing": false,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 2,
+              "endEvents": 2,
+              "componentMounts": 3,
+              "cycleDurationsMs": [
+                9016,
+                9016
+              ],
+              "loopGapsMs": [
+                401
+              ]
+            }
+          },
+          "resumed": {
+            "label": "onscreen_resumed",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "running",
+            "manual": true,
+            "loop": true,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 0.007,
+            "playing": true,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 3,
+              "endEvents": 2,
+              "componentMounts": 4,
+              "cycleDurationsMs": [
+                9016,
+                9016
+              ],
+              "loopGapsMs": [
+                401,
+                1357
+              ]
+            }
+          },
+          "staleTimerRace": {
+            "starts": 2,
+            "ends": 1,
+            "resumeDelayMs": 8,
+            "activeWasRemounted": true,
+            "activeComponents": 1,
+            "playing": true,
+            "loop": true,
+            "currentTime": 0.54
+          },
+          "final": {
+            "label": "final_offscreen",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "final",
+            "manual": true,
+            "loop": false,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 9,
+            "playing": false,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 5,
+              "endEvents": 3,
+              "componentMounts": 7,
+              "cycleDurationsMs": [
+                9016,
+                9016,
+                26
+              ],
+              "loopGapsMs": [
+                401,
+                1357,
+                1373,
+                8
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "inline ijji pause-to-resume remount defeats the stale 400 ms runtime callback",
+      "passed": true,
+      "detail": {
+        "sourceRemountBounded": true,
+        "race": {
+          "starts": 2,
+          "ends": 1,
+          "resumeDelayMs": 8,
+          "activeWasRemounted": true,
+          "activeComponents": 1,
+          "playing": true,
+          "loop": true,
+          "currentTime": 0.54
+        }
+      }
+    },
+    {
+      "name": "inline replay and remount lifecycle keep DOM, runtime requests, transfer, and layout geometry stable",
+      "passed": true,
+      "detail": {
+        "countsAndRequestsStable": true,
+        "layoutStable": true,
+        "remountLifecycleObserved": true,
+        "lifecycleLongTaskDeltaMs": 0,
+        "baseline": {
+          "label": "first_cycle_running",
+          "pageMotionStages": 9,
+          "heroLandometerComponents": 1,
+          "logoStages": 1,
+          "inlineFullLogoComponents": 1,
+          "inlineLogoComponents": 1,
+          "dialogLogoComponents": 0,
+          "documentLogoComponents": 1,
+          "inlineLandometerComponents": 6,
+          "inlineIjjiMotifSlots": 2,
+          "totalDomElements": 915,
+          "logoStageChildren": 2,
+          "logoShadowElements": 16,
+          "runtimeScriptElements": 1,
+          "resourceCount": 49,
+          "logoRuntimeRequests": 1,
+          "motifModuleRequests": 1,
+          "logoLayerRequests": 12,
+          "uniqueLogoLayerUrls": 12,
+          "logoLayerTransferBytes": 0,
+          "motionState": "running",
+          "manual": true,
+          "loop": true,
+          "notagline": false,
+          "surface": "brand-blue",
+          "duration": 9,
+          "currentTime": 0.031,
+          "playing": true,
+          "layout": {
+            "width": 501,
+            "height": 420.484,
+            "documentHeight": 14091
+          },
+          "timing": {
+            "cumulativeLayoutShift": 0,
+            "longTaskMs": 0
+          },
+          "lifecycle": {
+            "startEvents": 1,
+            "endEvents": 0,
+            "componentMounts": 2,
+            "cycleDurationsMs": [],
+            "loopGapsMs": []
+          }
+        },
+        "snapshots": [
+          {
+            "label": "after_two_complete_cycles",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "running",
+            "manual": true,
+            "loop": true,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 9,
+            "playing": false,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 2,
+              "endEvents": 2,
+              "componentMounts": 2,
+              "cycleDurationsMs": [
+                9016,
+                9016
+              ],
+              "loopGapsMs": [
+                401
+              ]
+            }
+          },
+          {
+            "label": "offscreen_final",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "final",
+            "manual": true,
+            "loop": false,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 9,
+            "playing": false,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 2,
+              "endEvents": 2,
+              "componentMounts": 3,
+              "cycleDurationsMs": [
+                9016,
+                9016
+              ],
+              "loopGapsMs": [
+                401
+              ]
+            }
+          },
+          {
+            "label": "onscreen_resumed",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "running",
+            "manual": true,
+            "loop": true,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 0.007,
+            "playing": true,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 3,
+              "endEvents": 2,
+              "componentMounts": 4,
+              "cycleDurationsMs": [
+                9016,
+                9016
+              ],
+              "loopGapsMs": [
+                401,
+                1357
+              ]
+            }
+          },
+          {
+            "label": "final_offscreen",
+            "pageMotionStages": 9,
+            "heroLandometerComponents": 1,
+            "logoStages": 1,
+            "inlineFullLogoComponents": 1,
+            "inlineLogoComponents": 1,
+            "dialogLogoComponents": 0,
+            "documentLogoComponents": 1,
+            "inlineLandometerComponents": 6,
+            "inlineIjjiMotifSlots": 2,
+            "totalDomElements": 915,
+            "logoStageChildren": 2,
+            "logoShadowElements": 16,
+            "runtimeScriptElements": 1,
+            "resourceCount": 49,
+            "logoRuntimeRequests": 1,
+            "motifModuleRequests": 1,
+            "logoLayerRequests": 12,
+            "uniqueLogoLayerUrls": 12,
+            "logoLayerTransferBytes": 0,
+            "motionState": "final",
+            "manual": true,
+            "loop": false,
+            "notagline": false,
+            "surface": "brand-blue",
+            "duration": 9,
+            "currentTime": 9,
+            "playing": false,
+            "layout": {
+              "width": 501,
+              "height": 420.484,
+              "documentHeight": 14091
+            },
+            "timing": {
+              "cumulativeLayoutShift": 0,
+              "longTaskMs": 0
+            },
+            "lifecycle": {
+              "startEvents": 5,
+              "endEvents": 3,
+              "componentMounts": 7,
+              "cycleDurationsMs": [
+                9016,
+                9016,
+                26
+              ],
+              "loopGapsMs": [
+                401,
+                1357,
+                1373,
+                8
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "inline and dialog replay retain scoped visibility, reduced-motion, close, and pagehide bounds",
+      "passed": true,
+      "detail": {
+        "inlineSourceBounded": true,
+        "dialogSourceBounded": true,
+        "remountSourceBounded": true,
         "inspection": {
           "timingContract": {
             "landometerLogoSettleMs": 3400,
@@ -192,10 +1191,318 @@
             "ijjiMarkDurationMs": 6400,
             "ijjiRuntimeHoldThenLoopGapMs": 400
           },
-          "lazyBefore": {
-            "logoComponents": 0,
-            "landometerComponents": 1,
-            "logoRuntimeRequests": 0
+          "inlineLifecycle": {
+            "initial": {
+              "label": "initial_offscreen",
+              "pageMotionStages": 9,
+              "heroLandometerComponents": 1,
+              "logoStages": 1,
+              "inlineFullLogoComponents": 1,
+              "inlineLogoComponents": 1,
+              "dialogLogoComponents": 0,
+              "documentLogoComponents": 1,
+              "inlineLandometerComponents": 6,
+              "inlineIjjiMotifSlots": 2,
+              "totalDomElements": 915,
+              "logoStageChildren": 2,
+              "logoShadowElements": 16,
+              "runtimeScriptElements": 1,
+              "resourceCount": 49,
+              "logoRuntimeRequests": 1,
+              "motifModuleRequests": 1,
+              "logoLayerRequests": 12,
+              "uniqueLogoLayerUrls": 12,
+              "logoLayerTransferBytes": 0,
+              "motionState": "final",
+              "manual": true,
+              "loop": false,
+              "notagline": false,
+              "surface": "brand-blue",
+              "duration": 9,
+              "currentTime": 9,
+              "playing": false,
+              "layout": {
+                "width": 501,
+                "height": 420.484,
+                "documentHeight": 14091
+              },
+              "timing": {
+                "cumulativeLayoutShift": 0,
+                "longTaskMs": 0
+              },
+              "lifecycle": {
+                "startEvents": 0,
+                "endEvents": 0,
+                "componentMounts": 1,
+                "cycleDurationsMs": [],
+                "loopGapsMs": []
+              }
+            },
+            "activeStart": {
+              "label": "first_cycle_running",
+              "pageMotionStages": 9,
+              "heroLandometerComponents": 1,
+              "logoStages": 1,
+              "inlineFullLogoComponents": 1,
+              "inlineLogoComponents": 1,
+              "dialogLogoComponents": 0,
+              "documentLogoComponents": 1,
+              "inlineLandometerComponents": 6,
+              "inlineIjjiMotifSlots": 2,
+              "totalDomElements": 915,
+              "logoStageChildren": 2,
+              "logoShadowElements": 16,
+              "runtimeScriptElements": 1,
+              "resourceCount": 49,
+              "logoRuntimeRequests": 1,
+              "motifModuleRequests": 1,
+              "logoLayerRequests": 12,
+              "uniqueLogoLayerUrls": 12,
+              "logoLayerTransferBytes": 0,
+              "motionState": "running",
+              "manual": true,
+              "loop": true,
+              "notagline": false,
+              "surface": "brand-blue",
+              "duration": 9,
+              "currentTime": 0.031,
+              "playing": true,
+              "layout": {
+                "width": 501,
+                "height": 420.484,
+                "documentHeight": 14091
+              },
+              "timing": {
+                "cumulativeLayoutShift": 0,
+                "longTaskMs": 0
+              },
+              "lifecycle": {
+                "startEvents": 1,
+                "endEvents": 0,
+                "componentMounts": 2,
+                "cycleDurationsMs": [],
+                "loopGapsMs": []
+              }
+            },
+            "afterTwoCycles": {
+              "label": "after_two_complete_cycles",
+              "pageMotionStages": 9,
+              "heroLandometerComponents": 1,
+              "logoStages": 1,
+              "inlineFullLogoComponents": 1,
+              "inlineLogoComponents": 1,
+              "dialogLogoComponents": 0,
+              "documentLogoComponents": 1,
+              "inlineLandometerComponents": 6,
+              "inlineIjjiMotifSlots": 2,
+              "totalDomElements": 915,
+              "logoStageChildren": 2,
+              "logoShadowElements": 16,
+              "runtimeScriptElements": 1,
+              "resourceCount": 49,
+              "logoRuntimeRequests": 1,
+              "motifModuleRequests": 1,
+              "logoLayerRequests": 12,
+              "uniqueLogoLayerUrls": 12,
+              "logoLayerTransferBytes": 0,
+              "motionState": "running",
+              "manual": true,
+              "loop": true,
+              "notagline": false,
+              "surface": "brand-blue",
+              "duration": 9,
+              "currentTime": 9,
+              "playing": false,
+              "layout": {
+                "width": 501,
+                "height": 420.484,
+                "documentHeight": 14091
+              },
+              "timing": {
+                "cumulativeLayoutShift": 0,
+                "longTaskMs": 0
+              },
+              "lifecycle": {
+                "startEvents": 2,
+                "endEvents": 2,
+                "componentMounts": 2,
+                "cycleDurationsMs": [
+                  9016,
+                  9016
+                ],
+                "loopGapsMs": [
+                  401
+                ]
+              }
+            },
+            "offscreen": {
+              "label": "offscreen_final",
+              "pageMotionStages": 9,
+              "heroLandometerComponents": 1,
+              "logoStages": 1,
+              "inlineFullLogoComponents": 1,
+              "inlineLogoComponents": 1,
+              "dialogLogoComponents": 0,
+              "documentLogoComponents": 1,
+              "inlineLandometerComponents": 6,
+              "inlineIjjiMotifSlots": 2,
+              "totalDomElements": 915,
+              "logoStageChildren": 2,
+              "logoShadowElements": 16,
+              "runtimeScriptElements": 1,
+              "resourceCount": 49,
+              "logoRuntimeRequests": 1,
+              "motifModuleRequests": 1,
+              "logoLayerRequests": 12,
+              "uniqueLogoLayerUrls": 12,
+              "logoLayerTransferBytes": 0,
+              "motionState": "final",
+              "manual": true,
+              "loop": false,
+              "notagline": false,
+              "surface": "brand-blue",
+              "duration": 9,
+              "currentTime": 9,
+              "playing": false,
+              "layout": {
+                "width": 501,
+                "height": 420.484,
+                "documentHeight": 14091
+              },
+              "timing": {
+                "cumulativeLayoutShift": 0,
+                "longTaskMs": 0
+              },
+              "lifecycle": {
+                "startEvents": 2,
+                "endEvents": 2,
+                "componentMounts": 3,
+                "cycleDurationsMs": [
+                  9016,
+                  9016
+                ],
+                "loopGapsMs": [
+                  401
+                ]
+              }
+            },
+            "resumed": {
+              "label": "onscreen_resumed",
+              "pageMotionStages": 9,
+              "heroLandometerComponents": 1,
+              "logoStages": 1,
+              "inlineFullLogoComponents": 1,
+              "inlineLogoComponents": 1,
+              "dialogLogoComponents": 0,
+              "documentLogoComponents": 1,
+              "inlineLandometerComponents": 6,
+              "inlineIjjiMotifSlots": 2,
+              "totalDomElements": 915,
+              "logoStageChildren": 2,
+              "logoShadowElements": 16,
+              "runtimeScriptElements": 1,
+              "resourceCount": 49,
+              "logoRuntimeRequests": 1,
+              "motifModuleRequests": 1,
+              "logoLayerRequests": 12,
+              "uniqueLogoLayerUrls": 12,
+              "logoLayerTransferBytes": 0,
+              "motionState": "running",
+              "manual": true,
+              "loop": true,
+              "notagline": false,
+              "surface": "brand-blue",
+              "duration": 9,
+              "currentTime": 0.007,
+              "playing": true,
+              "layout": {
+                "width": 501,
+                "height": 420.484,
+                "documentHeight": 14091
+              },
+              "timing": {
+                "cumulativeLayoutShift": 0,
+                "longTaskMs": 0
+              },
+              "lifecycle": {
+                "startEvents": 3,
+                "endEvents": 2,
+                "componentMounts": 4,
+                "cycleDurationsMs": [
+                  9016,
+                  9016
+                ],
+                "loopGapsMs": [
+                  401,
+                  1357
+                ]
+              }
+            },
+            "staleTimerRace": {
+              "starts": 2,
+              "ends": 1,
+              "resumeDelayMs": 8,
+              "activeWasRemounted": true,
+              "activeComponents": 1,
+              "playing": true,
+              "loop": true,
+              "currentTime": 0.54
+            },
+            "final": {
+              "label": "final_offscreen",
+              "pageMotionStages": 9,
+              "heroLandometerComponents": 1,
+              "logoStages": 1,
+              "inlineFullLogoComponents": 1,
+              "inlineLogoComponents": 1,
+              "dialogLogoComponents": 0,
+              "documentLogoComponents": 1,
+              "inlineLandometerComponents": 6,
+              "inlineIjjiMotifSlots": 2,
+              "totalDomElements": 915,
+              "logoStageChildren": 2,
+              "logoShadowElements": 16,
+              "runtimeScriptElements": 1,
+              "resourceCount": 49,
+              "logoRuntimeRequests": 1,
+              "motifModuleRequests": 1,
+              "logoLayerRequests": 12,
+              "uniqueLogoLayerUrls": 12,
+              "logoLayerTransferBytes": 0,
+              "motionState": "final",
+              "manual": true,
+              "loop": false,
+              "notagline": false,
+              "surface": "brand-blue",
+              "duration": 9,
+              "currentTime": 9,
+              "playing": false,
+              "layout": {
+                "width": 501,
+                "height": 420.484,
+                "documentHeight": 14091
+              },
+              "timing": {
+                "cumulativeLayoutShift": 0,
+                "longTaskMs": 0
+              },
+              "lifecycle": {
+                "startEvents": 5,
+                "endEvents": 3,
+                "componentMounts": 7,
+                "cycleDurationsMs": [
+                  9016,
+                  9016,
+                  26
+                ],
+                "loopGapsMs": [
+                  401,
+                  1357,
+                  1373,
+                  8
+                ]
+              }
+            }
           },
           "landometerDialog": {
             "open": true,
@@ -204,22 +1511,25 @@
             "fullInk": "blue",
             "fullInlineWedge": "",
             "dialogLocalCount": 2,
-            "documentCount": 3
+            "documentCount": 8
           },
           "ijjiFullDialog": {
             "open": true,
             "duration": 9,
-            "currentTime": 0.014999999976158165,
+            "currentTime": 0,
             "manual": true,
             "loop": true,
             "notagline": false,
             "surface": "brand-blue",
             "dialogLocalCount": 1,
-            "documentCount": 1
+            "inlineCount": 1,
+            "documentCount": 2
           },
           "afterFullClose": {
             "dialogOpen": false,
-            "logoComponents": 0
+            "dialogLogoComponents": 0,
+            "inlineLogoComponents": 1,
+            "logoComponents": 1
           },
           "ijjiMarkDialog": {
             "open": true,
@@ -230,75 +1540,19 @@
             "notagline": true,
             "surface": null,
             "dialogLocalCount": 1,
-            "documentCount": 1
+            "inlineCount": 1,
+            "documentCount": 2
           },
           "afterAllClose": {
             "dialogOpen": false,
-            "logoComponents": 0,
-            "landometerComponents": 1,
+            "dialogLogoComponents": 0,
+            "inlineLogoComponents": 1,
+            "logoComponents": 1,
+            "landometerComponents": 6,
             "logoRuntimeRequests": 1,
-            "uniqueLogoLayerRequests": 11
+            "motifModuleRequests": 1,
+            "uniqueLogoLayerRequests": 12
           }
-        }
-      }
-    },
-    {
-      "name": "ijji identity runtime is lazy, loaded once, and never leaves a playing component after dialog close",
-      "passed": true,
-      "detail": {
-        "timingContract": {
-          "landometerLogoSettleMs": 3400,
-          "landometerLogoReplayMs": 6000,
-          "ijjiFullDurationMs": 9000,
-          "ijjiMarkDurationMs": 6400,
-          "ijjiRuntimeHoldThenLoopGapMs": 400
-        },
-        "lazyBefore": {
-          "logoComponents": 0,
-          "landometerComponents": 1,
-          "logoRuntimeRequests": 0
-        },
-        "landometerDialog": {
-          "open": true,
-          "motifCount": 2,
-          "playingCount": 2,
-          "fullInk": "blue",
-          "fullInlineWedge": "",
-          "dialogLocalCount": 2,
-          "documentCount": 3
-        },
-        "ijjiFullDialog": {
-          "open": true,
-          "duration": 9,
-          "currentTime": 0.014999999976158165,
-          "manual": true,
-          "loop": true,
-          "notagline": false,
-          "surface": "brand-blue",
-          "dialogLocalCount": 1,
-          "documentCount": 1
-        },
-        "afterFullClose": {
-          "dialogOpen": false,
-          "logoComponents": 0
-        },
-        "ijjiMarkDialog": {
-          "open": true,
-          "duration": 6.4,
-          "currentTime": 0,
-          "manual": true,
-          "loop": true,
-          "notagline": true,
-          "surface": null,
-          "dialogLocalCount": 1,
-          "documentCount": 1
-        },
-        "afterAllClose": {
-          "dialogOpen": false,
-          "logoComponents": 0,
-          "landometerComponents": 1,
-          "logoRuntimeRequests": 1,
-          "uniqueLogoLayerRequests": 11
         }
       }
     }

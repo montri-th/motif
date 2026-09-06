@@ -3,7 +3,7 @@
 Canonical site: https://montri-th.github.io/motif/
 English route: https://montri-th.github.io/motif/en/
 Repository: https://github.com/montri-th/motif
-Artifact release: 1.2.0
+Artifact release: 1.2.1
 Asset manifest: https://montri-th.github.io/motif/assets/motif-library.json
 Owner approval: https://montri-th.github.io/motif/governance/owner-approval.json
 Audience parity: https://montri-th.github.io/motif/governance/audience-animation-parity.json
@@ -12,7 +12,7 @@ Checksums: https://montri-th.github.io/motif/governance/SHA256SUMS.txt
 Human guide: https://montri-th.github.io/motif/docs/usage-guide.md
 Claude + ChatGPT sync: https://montri-th.github.io/motif/docs/ai-sync.md
 Google Drive root: https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh
-Immutable Drive release 1.2.0: https://drive.google.com/drive/folders/1mcsME-10TL_6qpPDk1-RsMqXLNEnatg5
+Immutable Drive release 1.2.1: https://drive.google.com/drive/folders/15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B
 
 Purpose: exact Landometer motifs, ijji animated identity, and ijji pending-state motifs for dev, designer, product, sales, and authorized AI/agent workflows.
 
@@ -25,7 +25,7 @@ Agent rules:
 6. Landometer production motion is finite once. Logo full/quiet end at 2870/3360 ms; never use the old 2050 ms cutoff with v3.
 7. ijji animated identity uses only the exact superset runtime and layer PNGs; full is 9s, mark-only is 6.4s. Production plays once and holds final.
 8. ijji selected motifs are pending-state only and stop on success, failure, cancel, or timeout.
-9. The library Preview auto-replays for audience inspection. Do not copy that loop into production.
+9. This library webpage auto-replays the hero, both full brand logos, six INTENT → AHA → NEXT ACTION motifs, and Preview; portable snippets keep their declared finite-once or state-bound lifecycle.
 10. Verify the final rendered/exported output and report every unverified gate.
 11. For Drive retrieval, resolve release-index.json and verify the immutable release manifest/checksum.
 

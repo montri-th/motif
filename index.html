@@ -31,11 +31,11 @@
       document.documentElement.dataset.theme = savedTheme || (dark ? "dark" : "light");
     } catch (_) {}
   </script>
-  <link rel="stylesheet" href="site.css?v=1.2.0">
-  <link rel="stylesheet" href="assets/landometer/landometer-motifs.css?v=1.2.0">
+  <link rel="stylesheet" href="site.css?v=1.2.1">
+  <link rel="stylesheet" href="assets/landometer/landometer-motifs.css?v=1.2.1">
   <link rel="stylesheet" href="assets/ijji/ijji-motion.css">
-  <script src="assets/landometer/landometer-motifs.js?v=1.2.0" defer></script>
-  <script src="site.js?v=1.2.0" defer></script>
+  <script src="assets/landometer/landometer-motifs.js?v=1.2.1" defer></script>
+  <script src="site.js?v=1.2.1" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,7 +46,7 @@
     "isAccessibleForFree": true,
     "description": "A governed learning guide and asset library for Landometer shared motifs and ijji product-specific motifs.",
     "creator": { "@type": "Organization", "name": "Landometer" },
-    "version": "1.2.0",
+    "version": "1.2.1",
     "dateModified": "2026-09-06"
   }
   </script>
@@ -69,6 +69,7 @@
       </nav>
       <div class="header-actions">
         <a class="language-link" href="en/" lang="en" hreflang="en" aria-label="Read in English">EN</a>
+        <button class="icon-button" type="button" data-motion-toggle aria-label="หยุด animation" title="หยุด animation">Ⅱ</button>
         <button class="icon-button" type="button" data-theme-toggle aria-label="เปลี่ยนธีมสี" title="เปลี่ยนธีมสี">◐</button>
         <details class="mobile-nav">
           <summary aria-label="เปิดเมนู">☰</summary>
@@ -97,12 +98,12 @@
           <div class="cluster">
             <a class="button button-primary" href="#library">เลือก Asset</a>
             <button class="button" type="button" data-copy-template="#agent-prompt">คัดลอก Agent Brief</button>
-            <a class="button button-ghost" href="assets/downloads/motif-library-v1.2.0.zip" download>ดาวน์โหลดทั้งชุด</a>
+            <a class="button button-ghost" href="assets/downloads/motif-library-v1.2.1.zip" download>ดาวน์โหลดทั้งชุด</a>
           </div>
         </div>
-        <div class="hero-visual" aria-label="ตัวอย่าง Landometer dial motif ที่เคลื่อนไหวหนึ่งครั้ง">
+        <div class="hero-visual" aria-label="ตัวอย่าง Landometer dial motif ที่เล่นซ้ำอัตโนมัติ">
           <div class="hero-card">
-            <div class="hero-stage" data-lm-live data-kind="dial" data-static="assets/landometer/svg/dial-full.svg">
+            <div class="hero-stage" data-lm-live data-kind="dial" data-ink="blue" data-loop="3000" data-static="assets/landometer/svg/dial-full.svg">
               <img src="assets/landometer/svg/dial-full.svg" alt="Dial motif: หน้าปัดสี่จังหวะของ Landometer">
             </div>
             <div class="hero-note">
@@ -119,7 +120,7 @@
         <div class="trust-item"><b>Owner-approved</b><span>เจ้าของอนุมัติไฟล์และการเผยแพร่</span></div>
         <div class="trust-item"><b>Exact bytes</b><span>มี path, version และ SHA-256 ตรวจย้อนหลัง</span></div>
         <div class="trust-item"><b>Two clear layers</b><span>Landometer shared · ijji product-specific</span></div>
-        <div class="trust-item"><b>Static first</b><span>มีภาพนิ่งรองรับ no-JS, print และ reduced motion</span></div>
+        <div class="trust-item"><b>Motion on</b><span>เล่นซ้ำอัตโนมัติบนเว็บ พร้อม final fallback ที่ครบถ้วน</span></div>
       </div>
     </section>
 
@@ -157,11 +158,14 @@
               <span class="badge badge-overlay">Owner-approved overlay</span>
               <span class="badge">Landometer shared</span>
             </div>
+            <div class="lane-brand-motion lane-brand-motion-landometer" data-lm-live data-kind="logo" data-ink="blue" data-loop="6000">
+              <img src="assets/landometer/svg/logo-full.svg?v=1.2.1" alt="Landometer logo full">
+            </div>
             <h3>Landometer</h3>
             <p class="subtle">ลายชั้นร่วมสำหรับจัดจังหวะ เปิดเรื่อง เปลี่ยนผ่าน และปิดเรื่อง โดยไม่ผูกกับสมมติฐานของผลิตภัณฑ์ เมือง หรืออุตสาหกรรมใดอุตสาหกรรมหนึ่ง</p>
             <ul class="lane-list">
               <li>ใช้ประกอบเนื้อหา ไม่แทนหลักฐานหรือกราฟ</li>
-              <li>motion แบบ finite และมีภาพนิ่งสุดท้าย</li>
+              <li>animated logo full เล่นและวนอัตโนมัติในหน้าเว็บนี้</li>
               <li>อ้าง token จาก LDS 0.9.1 แต่เป็น asset overlay แยก</li>
             </ul>
           </article>
@@ -171,11 +175,14 @@
               <span class="badge badge-overlay">ijji product-specific</span>
               <span class="badge badge-warning">ไม่อยู่ใน canonical Add-on 0.5.3</span>
             </div>
+            <div class="lane-brand-motion lane-brand-motion-ijji" data-ijji-logo-live>
+              <img src="assets/ijji/logo-sting/layers/ijji-logo-still.png?v=1.2.1" alt="ijji — Your business buddy around the corner">
+            </div>
             <h3>ijji</h3>
             <p class="subtle">ลายสี่หน่วยของ ijji สำหรับบริบทของ ijji เท่านั้น ทั้ง asset, ความหมาย และการใช้เป็นสถานะ ห้ามเหมารวมไปเป็น capability หรือข้อเท็จจริงของ Landometer</p>
             <ul class="lane-list">
               <li>ใช้ selected 3: graph-b, rings-c, rotate-b</li>
-              <li>ถ้าเคลื่อนไหว ต้องผูกกับงานที่กำลังรอจริง</li>
+              <li>animated logo full เล่นซ้ำได้; pending motif ยังสื่อสถานะของ ijji</li>
               <li>ห้ามใช้เป็นโลโก้ ตัวเลขยอดขาย หรือ data cue</li>
             </ul>
           </article>
@@ -199,7 +206,7 @@
           <article class="decision-step"><b>01 · LAYER</b><h3>ของใคร?</h3><p>Landometer shared หรือ ijji product-specific</p></article>
           <article class="decision-step"><b>02 · JOB</b><h3>ช่วยอะไร?</h3><p>orientation, transition, closure หรือ real pending state</p></article>
           <article class="decision-step"><b>03 · FORMAT</b><h3>ส่งที่ไหน?</h3><p>web, deck, 1080 social, document/PDF หรือ owner extension</p></article>
-          <article class="decision-step"><b>04 · MODE</b><h3>ต้องขยับไหม?</h3><p>ถ้าภาพนิ่งสื่อครบ ให้ใช้ภาพนิ่ง; ถ้าขยับต้องมี fallback</p></article>
+          <article class="decision-step"><b>04 · MODE</b><h3>ขยับอย่างไร?</h3><p>หน้าเว็บนี้เล่นซ้ำอัตโนมัติ และคง final fallback ให้ทุกชิ้น</p></article>
         </div>
       </div>
     </section>
@@ -218,7 +225,9 @@
             <div class="case-visual">
               <div class="mini-web">
                 <div><span class="badge">Section intro</span><div class="fake-line"></div><div class="fake-line"></div><div class="fake-line short"></div></div>
-                <img src="assets/landometer/svg/rings-full.svg" alt="Rings motif วางข้างเนื้อหาส่วนเปิดเรื่อง">
+                <span class="inline-motif-stage" data-lm-live data-kind="rings" data-ink="blue" data-loop="3000">
+                  <img src="assets/landometer/svg/rings-full.svg" alt="Rings motif วางข้างเนื้อหาส่วนเปิดเรื่อง">
+                </span>
               </div>
             </div>
             <div class="case-copy">
@@ -231,15 +240,15 @@
           <article class="case-card" id="formats">
             <div class="case-visual">
               <div class="format-triptych" aria-label="ตัวอย่าง motif ในสไลด์ โซเชียล และวิดีโอ">
-                <div class="format-frame slide" data-label="16:9 DECK"><img src="assets/landometer/svg/layers-quiet.svg" alt="Layers quiet motif ในสไลด์"></div>
-                <div class="format-frame social" data-label="1080 SOCIAL"><img src="assets/landometer/svg/rings-quiet.svg" alt="Rings quiet motif ในโพสต์สี่เหลี่ยม"></div>
-                <div class="format-frame video" data-label="VIDEO EXT."><img src="assets/landometer/svg/cultivate-quiet.svg" alt="Cultivate quiet motif ในเฟรมวิดีโอ"></div>
+                <div class="format-frame slide" data-label="16:9 DECK"><span class="inline-motif-stage" data-lm-live data-kind="layers" data-quiet="true" data-loop="3000"><img src="assets/landometer/svg/layers-quiet.svg" alt="Layers quiet motif ในสไลด์"></span></div>
+                <div class="format-frame social" data-label="1080 SOCIAL"><span class="inline-motif-stage" data-lm-live data-kind="rings" data-quiet="true" data-loop="3000"><img src="assets/landometer/svg/rings-quiet.svg" alt="Rings quiet motif ในโพสต์สี่เหลี่ยม"></span></div>
+                <div class="format-frame video" data-label="VIDEO EXT."><span class="inline-motif-stage" data-lm-live data-kind="cultivate" data-quiet="true" data-loop="3000"><img src="assets/landometer/svg/cultivate-quiet.svg" alt="Cultivate quiet motif ในเฟรมวิดีโอ"></span></div>
               </div>
             </div>
             <div class="case-copy">
-              <div class="badge-row"><span class="badge badge-approved">02 · ใช้ได้</span><span class="badge">Static first</span></div>
+              <div class="badge-row"><span class="badge badge-approved">02 · ใช้ได้</span><span class="badge">Auto replay</span></div>
               <h3>เล่าเรื่องเดียวข้ามสื่อ</h3>
-              <p class="subtle">ใช้ภาพนิ่งเพื่อรักษาจังหวะเดียวกันใน deck, PDF และ social ส่วน video เป็น owner-approved extension ที่ยังไม่มี LDS 0.9.1 format-conformance claim ข้อความและแหล่งอ้างอิงยังเป็นผู้แบก claim เสมอ</p>
+              <p class="subtle">ดู motion ของ motif ชุดเดียวกันในสัดส่วน deck, social และ video โดยคง geometry สี และจังหวะต้นฉบับไว้ครบ</p>
             </div>
           </article>
 
@@ -247,10 +256,10 @@
             <div class="case-visual">
               <div class="working-demo">
                 <div class="working-row">
-                  <img src="assets/ijji/svg/ijji-rotate-b-transparent-mint.svg" alt="ijji rotate-b motif สำหรับตัวอย่างสถานะกำลังทำงาน">
-                  <div><p><strong>ijji กำลังเตรียมคำตอบ</strong></p><p class="small" style="color:rgba(255,255,255,.8)">ตัวอย่างสถานะ · ยังไม่ได้เริ่ม</p></div>
+                  <span class="inline-motif-stage" data-ijji-motif-live data-kind="rotate-b" data-surface="transparent-mint"><img src="assets/ijji/svg/ijji-rotate-b-transparent-mint.svg" alt="ijji rotate-b motif สำหรับตัวอย่างสถานะกำลังทำงาน"></span>
+                  <div><p><strong>ijji กำลังเตรียมคำตอบ</strong></p><p class="small" style="color:rgba(255,255,255,.8)">Live motion · auto replay</p></div>
                 </div>
-                <button class="button button-small" type="button" data-preview-brand="ijji" data-preview-id="rotate-b" data-duration="4">ลองสถานะ 4 วินาที</button>
+                <button class="button button-small" type="button" data-preview-brand="ijji" data-preview-id="rotate-b" data-duration="4">เปิดตัวอย่างพร้อม controls</button>
               </div>
             </div>
             <div class="case-copy">
@@ -263,7 +272,7 @@
           <article class="case-card case-card-rejected">
             <div class="case-visual">
               <div class="bad-proof">
-                <div class="bad-proof-head"><div><span class="badge badge-rejected">Rejected</span><p class="small">ยอดขายเติบโต</p><strong>+42%</strong></div><img src="assets/ijji/svg/ijji-graph-b-transparent-mint.svg" alt="ตัวอย่างที่ไม่ผ่าน: graph-b ถูกใช้แทนหลักฐานยอดขาย"></div>
+                <div class="bad-proof-head"><div><span class="badge badge-rejected">Rejected</span><p class="small">ยอดขายเติบโต</p><strong>+42%</strong></div><span class="inline-motif-stage" data-ijji-motif-live data-kind="graph-b" data-surface="transparent-mint"><img src="assets/ijji/svg/ijji-graph-b-transparent-mint.svg" alt="ตัวอย่างที่ไม่ผ่าน: graph-b ถูกใช้แทนหลักฐานยอดขาย"></span></div>
                 <p class="strike-note">Motif ไม่ได้พิสูจน์ตัวเลขนี้</p>
               </div>
             </div>
@@ -361,9 +370,9 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
 
         <div class="family-head" data-family="landometer">
           <div><p class="eyebrow">Landometer · shared layer</p><h3>6 kinds · full + quiet</h3></div>
-          <div class="cluster"><span class="badge badge-approved">Owner-approved overlay</span><a class="button button-small" href="assets/downloads/landometer-motifs-v3.zip" download>ดาวน์โหลด Landometer kit</a></div>
+          <div class="cluster"><span class="badge badge-approved">Owner-approved overlay</span><a class="button button-small" href="assets/downloads/landometer-motifs-v3.zip?v=1.2.1" download>ดาวน์โหลด Landometer kit</a></div>
         </div>
-        <div class="showcase-callout" data-family="landometer"><p><strong>โหมดดู animation:</strong> เปิด Preview แล้ว full + quiet เล่นทันที โดย motif ทั่วไปวนทุก 3 วินาที ส่วน Logo assembly v3 เล่นครบทั้งคู่ภายใน 3.36 วินาที ค้างท่าสุดท้าย แล้ววนใหม่ทุก 6 วินาที จังหวะ สี และท่าสุดท้ายอ้างอิง HTML ตัวอย่างชุด 3; การวนซ้ำมีไว้ inspect ในคลัง ส่วน code สำหรับงานจริงเริ่มจาก finite once</p></div>
+        <div class="showcase-callout" data-family="landometer"><p><strong>โหมดดู animation:</strong> เปิด Preview แล้ว full + quiet เล่นทันที โดย motif ทั่วไปวนทุก 3 วินาที ส่วน Logo assembly v3 เล่นครบทั้งคู่ภายใน 3.36 วินาที ค้างท่าสุดท้าย แล้ววนใหม่ทุก 6 วินาที ทุก cycle ใช้จังหวะ สี geometry และท่าสุดท้ายจาก HTML ตัวอย่างชุด 3</p></div>
         <div class="asset-grid" data-family-grid="landometer">
           <article class="asset-card" id="landometer-dial" data-brand="landometer" data-search="dial orientation opening web video social deck หน้าปัด เปิดเรื่อง">
             <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/dial-full.svg" alt="Landometer dial full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/dial-quiet.svg" alt="Landometer dial quiet"><span>quiet</span></div></div>
@@ -391,30 +400,30 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
           </article>
 
           <article class="asset-card" id="landometer-logo-assembly" data-brand="landometer" data-search="logo assembly exception one time identity mark ประกอบร่างโลโก้ ข้อยกเว้น">
-            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/logo-full.svg?v=1.2.0" alt="Landometer logo-assembly motif full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/logo-quiet.svg?v=1.2.0" alt="Landometer logo-assembly motif quiet"><span>quiet</span></div></div>
-            <div class="asset-body"><h3>Logo assembly · จังหวะประกอบร่าง</h3><p class="asset-id">motifId: landometer.logo<br>assetIds: landometer.logo.full / landometer.logo.quiet</p><p class="asset-summary">เวอร์ชัน 3 ประกอบหมุด ชั้นสี และ quiet outline ตามลำดับใหม่ พร้อมจังหวะชิ้นสีฟ้าก้าวออกมาแล้วกลับสู่ภาพสมบูรณ์</p><dl class="asset-meta"><div><dt>Job</dt><dd>Animated brand opening</dd></div><div><dt>Mode</dt><dd>Finite once / showcase loop</dd></div><div><dt>Final</dt><dd>Exact v3 authored state</dd></div><div><dt>Scope</dt><dd>Landometer overlay</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="logo">ดู full + quiet</button><a class="button button-small" href="assets/landometer/svg/logo-full.svg?v=1.2.0" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/logo-full.svg?v=1.2.0" data-filename="landometer-logo-assembly.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="logo">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>ใช้ runtime และสีจากไฟล์ชุด 3 โดยไม่แก้ timing/geometry; navbar, favicon และงาน co-branding ยังใช้ไฟล์ official identity แยกต่างหาก</p><a href="assets/landometer/svg/logo-quiet.svg?v=1.2.0" download>ดาวน์โหลด quiet SVG</a></div></details></div>
+            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/logo-full.svg?v=1.2.1" alt="Landometer logo-assembly motif full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/logo-quiet.svg?v=1.2.1" alt="Landometer logo-assembly motif quiet"><span>quiet</span></div></div>
+            <div class="asset-body"><h3>Logo assembly · จังหวะประกอบร่าง</h3><p class="asset-id">motifId: landometer.logo<br>assetIds: landometer.logo.full / landometer.logo.quiet</p><p class="asset-summary">เวอร์ชัน 3 ประกอบหมุด ชั้นสี และ quiet outline ตามลำดับใหม่ พร้อมจังหวะชิ้นสีฟ้าก้าวออกมาแล้วกลับสู่ภาพสมบูรณ์</p><dl class="asset-meta"><div><dt>Job</dt><dd>Animated brand opening</dd></div><div><dt>Mode</dt><dd>Finite once / showcase loop</dd></div><div><dt>Final</dt><dd>Exact v3 authored state</dd></div><div><dt>Scope</dt><dd>Landometer overlay</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="logo">ดู full + quiet</button><a class="button button-small" href="assets/landometer/svg/logo-full.svg?v=1.2.1" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/logo-full.svg?v=1.2.1" data-filename="landometer-logo-assembly.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="logo">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>ใช้ runtime และสีจากไฟล์ชุด 3 โดยไม่แก้ timing/geometry; navbar, favicon และงาน co-branding ยังใช้ไฟล์ official identity แยกต่างหาก</p><a href="assets/landometer/svg/logo-quiet.svg?v=1.2.1" download>ดาวน์โหลด quiet SVG</a></div></details></div>
           </article>
         </div>
 
         <div class="family-head" data-family="ijji-logo">
           <div><p class="eyebrow">ijji · animated identity</p><h3>Full + tagline · mark only</h3></div>
-          <div class="cluster"><span class="badge badge-approved">Owner-approved artifact overlay</span><a class="button button-small" href="assets/downloads/ijji-animated-logo-r3.zip" download>ดาวน์โหลด animated logo kit</a></div>
+          <div class="cluster"><span class="badge badge-approved">Owner-approved artifact overlay</span><a class="button button-small" href="assets/downloads/ijji-animated-logo-r3.zip?v=1.2.1" download>ดาวน์โหลด animated logo kit</a></div>
         </div>
-        <div class="showcase-callout" data-family="ijji-logo"><p><strong>สิ่งที่ผู้ชมเห็น:</strong> Full ใช้จังหวะ 9 วินาที—หัวกระโดด ตัวอักษรลงรับ คำโปรยปรากฏ แล้วทักทาย; mark-only ใช้ 6.4 วินาทีและตัดช่วงคำโปรยออก Preview เล่นทันทีและวนใหม่หลังค้างภาพจบ โดยแต่ละรอบใช้ runtime, layer, timing และ surface เดียวกับ HTML ตัวอย่าง ส่วน snippet สำหรับงานจริงเล่นหนึ่งครั้งและค้างโลโก้ครบ</p></div>
+        <div class="showcase-callout" data-family="ijji-logo"><p><strong>สิ่งที่ผู้ชมเห็น:</strong> Full ใช้จังหวะ 9 วินาที—หัวกระโดด ตัวอักษรลงรับ คำโปรยปรากฏ แล้วทักทาย; mark-only ใช้ 6.4 วินาทีและตัดช่วงคำโปรยออก Preview เล่นทันทีและวนใหม่หลังค้างภาพจบ โดยทุก cycle ใช้ runtime, layer, timing และ surface เดียวกับ HTML ตัวอย่าง</p></div>
         <div class="asset-grid" data-family-grid="ijji-logo">
           <article class="asset-card" id="ijji-animated-logo-tagline" data-brand="ijji" data-search="ijji animated identity logo sting tagline business buddy โลโก้เคลื่อนไหว คำโปรย">
             <div class="asset-preview logo-sting single"><img src="assets/ijji/logo-sting/layers/ijji-logo-still.png" alt="ijji — Your business buddy around the corner"></div>
-            <div class="asset-body"><h3>Animated logo · พร้อมคำโปรย</h3><p class="asset-id">assetId: ijji.logo-sting.tagline<br>runtime: ijji.logo-sting.runtime.r3</p><p class="asset-summary">หัวสี่จุดกระโดดขึ้น ตัวอักษรหย่อนลงมารับ คำโปรยปรากฏทีละคำ และจบด้วย hello wave ก่อนค้างโลโก้ครบ</p><dl class="asset-meta"><div><dt>Duration</dt><dd>9.0 s</dd></div><div><dt>Surface</dt><dd>Brand Blue</dd></div><div><dt>Min width</dt><dd>320 px</dd></div><div><dt>Scope</dt><dd>ijji identity overlay</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="ijji-logo" data-preview-id="tagline" data-duration="9">ดู animation</button><a class="button button-small" href="assets/ijji/logo-sting/layers/ijji-logo-still.png" download>PNG final</a><a class="button button-small" href="assets/downloads/ijji-animated-logo-r3.zip" download>Source kit</a><button class="button button-small" type="button" data-copy-code data-brand="ijji-logo" data-id="tagline">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และขอบเขต</summary><div class="detail-box"><p>เป็น animated identity ของ ijji โดยเฉพาะ ไม่ใช่ Landometer shared motif และไม่แก้ ijji DS/Add-on เดิมย้อนหลัง ใช้ไฟล์ layer จริงทั้งหมดและห้าม redraw หรือ recolor</p></div></details></div>
+            <div class="asset-body"><h3>Animated logo · พร้อมคำโปรย</h3><p class="asset-id">assetId: ijji.logo-sting.tagline<br>runtime: ijji.logo-sting.runtime.r3</p><p class="asset-summary">หัวสี่จุดกระโดดขึ้น ตัวอักษรหย่อนลงมารับ คำโปรยปรากฏทีละคำ และจบด้วย hello wave ก่อนค้างโลโก้ครบ</p><dl class="asset-meta"><div><dt>Duration</dt><dd>9.0 s</dd></div><div><dt>Surface</dt><dd>Brand Blue</dd></div><div><dt>Min width</dt><dd>320 px</dd></div><div><dt>Scope</dt><dd>ijji identity overlay</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="ijji-logo" data-preview-id="tagline" data-duration="9">ดู animation</button><a class="button button-small" href="assets/ijji/logo-sting/layers/ijji-logo-still.png" download>PNG final</a><a class="button button-small" href="assets/downloads/ijji-animated-logo-r3.zip?v=1.2.1" download>Source kit</a><button class="button button-small" type="button" data-copy-code data-brand="ijji-logo" data-id="tagline">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และขอบเขต</summary><div class="detail-box"><p>เป็น animated identity ของ ijji โดยเฉพาะ ไม่ใช่ Landometer shared motif และไม่แก้ ijji DS/Add-on เดิมย้อนหลัง ใช้ไฟล์ layer จริงทั้งหมดและห้าม redraw หรือ recolor</p></div></details></div>
           </article>
           <article class="asset-card" id="ijji-animated-logo-mark" data-brand="ijji" data-search="ijji animated identity mark notagline logo sting โลโก้ มาร์ก ไม่มีคำโปรย">
             <div class="asset-preview logo-sting mark single"><img src="assets/ijji/logo-sting/layers/ijji-mark-still.png" alt="ijji"></div>
-            <div class="asset-body"><h3>Animated mark · ไม่มีคำโปรย</h3><p class="asset-id">assetId: ijji.logo-sting.mark<br>runtime: ijji.logo-sting.runtime.r3</p><p class="asset-summary">ใช้ช่วง hop, bodies และ hello เดียวกับตัวเต็มในเฟรมที่กระชับขึ้น เหมาะเมื่อพื้นที่ไม่รองรับคำโปรย</p><dl class="asset-meta"><div><dt>Duration</dt><dd>6.4 s</dd></div><div><dt>Surface</dt><dd>Brand Blue / Dark</dd></div><div><dt>Min width</dt><dd>160 px</dd></div><div><dt>Scope</dt><dd>ijji identity overlay</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="ijji-logo" data-preview-id="mark" data-duration="6.4">ดู animation</button><a class="button button-small" href="assets/ijji/logo-sting/layers/ijji-mark-still.png" download>PNG final</a><a class="button button-small" href="assets/downloads/ijji-animated-logo-r3.zip" download>Source kit</a><button class="button button-small" type="button" data-copy-code data-brand="ijji-logo" data-id="mark">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และขอบเขต</summary><div class="detail-box"><p>ใช้ <code>notagline</code> กับ runtime ชุดเดียวกัน ตัว component โปร่งใสจึงต้องวางบน Brand Blue หรือ Dark และ reduced motion ต้องเห็น final mark ทันที</p></div></details></div>
+            <div class="asset-body"><h3>Animated mark · ไม่มีคำโปรย</h3><p class="asset-id">assetId: ijji.logo-sting.mark<br>runtime: ijji.logo-sting.runtime.r3</p><p class="asset-summary">ใช้ช่วง hop, bodies และ hello เดียวกับตัวเต็มในเฟรมที่กระชับขึ้น เหมาะเมื่อพื้นที่ไม่รองรับคำโปรย</p><dl class="asset-meta"><div><dt>Duration</dt><dd>6.4 s</dd></div><div><dt>Surface</dt><dd>Brand Blue / Dark</dd></div><div><dt>Min width</dt><dd>160 px</dd></div><div><dt>Scope</dt><dd>ijji identity overlay</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="ijji-logo" data-preview-id="mark" data-duration="6.4">ดู animation</button><a class="button button-small" href="assets/ijji/logo-sting/layers/ijji-mark-still.png" download>PNG final</a><a class="button button-small" href="assets/downloads/ijji-animated-logo-r3.zip?v=1.2.1" download>Source kit</a><button class="button button-small" type="button" data-copy-code data-brand="ijji-logo" data-id="mark">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และขอบเขต</summary><div class="detail-box"><p>ใช้ <code>notagline</code> กับ runtime ชุดเดียวกัน ตัว component โปร่งใสจึงต้องวางบน Brand Blue หรือ Dark และ reduced motion ต้องเห็น final mark ทันที</p></div></details></div>
           </article>
         </div>
 
         <div class="family-head" data-family="ijji">
           <div><p class="eyebrow">ijji · product-specific</p><h3>Selected 3 · 6 surfaces each</h3></div>
-          <div class="cluster"><span class="badge badge-approved">Selected + owner-approved</span><a class="button button-small" href="assets/downloads/ijji-motifs-selected-r3.zip" download>ดาวน์โหลด ijji kit</a></div>
+          <div class="cluster"><span class="badge badge-approved">Selected + owner-approved</span><a class="button button-small" href="assets/downloads/ijji-motifs-selected-r3.zip?v=1.2.1" download>ดาวน์โหลด ijji kit</a></div>
         </div>
         <div class="asset-grid" data-family-grid="ijji">
           <article class="asset-card" id="ijji-graph-b" data-brand="ijji" data-search="graph-b climb calculation trajectory ijji growth progress คำนวณ แนวโน้ม ไต่ขึ้น">
@@ -482,7 +491,7 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p><strong style="font-family:Arvo,Georgia,serif;color:var(--ink)">Landometer</strong> · Motif Library v1.2.0</p>
+      <p><strong style="font-family:Arvo,Georgia,serif;color:var(--ink)">Landometer</strong> · Motif Library v1.2.1</p>
       <p>Purposeful motion · exact assets · clear product boundaries</p>
     </div>
   </footer>
@@ -494,7 +503,8 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
     </div>
     <div class="dialog-body">
       <div class="dialog-stage" id="preview-stage"></div>
-      <p class="dialog-status" id="preview-status" role="status" aria-live="polite"><span data-preview-message></span><span class="dialog-timer" data-preview-timer aria-hidden="true"></span></p>
+      <p class="dialog-status" id="preview-status" aria-live="off"><span data-preview-message></span><span class="dialog-timer" data-preview-timer aria-hidden="true"></span></p>
+      <p class="visually-hidden" data-preview-announcer role="status" aria-live="polite"></p>
       <div class="cluster"><button class="button button-small" type="button" id="preview-replay">เล่นอีกครั้ง</button><button class="button button-small" type="button" id="preview-cancel">หยุด</button></div>
     </div>
   </dialog>

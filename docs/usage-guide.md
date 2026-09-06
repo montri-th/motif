@@ -1,6 +1,6 @@
 # Landometer + ijji Motif Usage Guide
 
-Version 1.2.0 · 6 September 2026
+Version 1.2.1 · 6 September 2026
 
 ## คำตอบสั้นที่สุด
 
@@ -56,8 +56,8 @@ motionExtension: none | finite_once | finite_once_logo_sting | state_bound_only
 ## Web: Landometer v3
 
 ```html
-<link rel="stylesheet" href="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.2.0">
-<script src="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.2.0" defer></script>
+<link rel="stylesheet" href="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.2.1">
+<script src="https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.2.1" defer></script>
 
 <lm-motif kind="dial"></lm-motif>
 <lm-motif kind="rings" quiet></lm-motif>
@@ -84,7 +84,7 @@ motionExtension: none | finite_once | finite_once_logo_sting | state_bound_only
 ### Full + tagline
 
 ```html
-<script src="https://montri-th.github.io/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0" defer></script>
+<script src="https://montri-th.github.io/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.1" defer></script>
 
 <ijji-logo-sting
   surface="brand-blue"
@@ -118,16 +118,19 @@ motionExtension: none | finite_once | finite_once_logo_sting | state_bound_only
 
 `graph-b`, `rings-c`, `rotate-b` เป็นคนละ family กับ animated identity. แสดงพร้อม visible status text และ cancel ที่ทำงานจริง เริ่มเมื่อ request เริ่ม และ remove เมื่อ success, failure, cancel หรือ timeout ห้ามใช้เป็น ambient spinner หรือ logo
 
-## Preview library เทียบกับ production
+## Motion ในหน้า library และ snippet แบบพกพา
 
-Preview เล่นทันทีและวนซ้ำเพื่อให้ผู้ชมตรวจครบ:
+หน้า library เล่นทันทีและวนซ้ำอัตโนมัติ:
 
+- Hero: Landometer dial วนทุก 3s.
+- ส่วนเลือก brand layer: Landometer full logo วนทุก 6s; ijji full logo + tagline วนตาม runtime 9s + gap 0.4s.
+- INTENT → AHA → NEXT ACTION: Landometer 4 ชิ้นและ ijji 2 ชิ้นวนอัตโนมัติ.
 - Landometer non-logo: full + quiet วนพร้อมกันทุก 3s.
 - Landometer logo: รอครบ 3.4s, ค้าง final, วนใหม่ที่ 6s.
 - ijji full logo: 9s + hold gap 0.4s.
 - ijji mark-only: 6.4s + hold gap 0.4s.
 
-กด **หยุด auto replay** แล้วต้องเห็น final ครบ; กด **เล่นซ้ำตอนนี้** เพื่อเริ่มใหม่ การปิด dialog, ซ่อนหน้า หรือ `pagehide` ต้องหยุด playback. `prefers-reduced-motion` ปิด replay และแสดง final. พฤติกรรม loop นี้เป็น instructional showcase ของคลัง ไม่ถูกใส่ใน code snippet สำหรับ production
+ปุ่มระดับหน้าหยุด/เล่นต่อ inline motion ทั้งหมด และหยุดแล้วต้องเห็น final ครบ; controls ใน Preview คุมตัวอย่างที่เปิดอยู่ การเลื่อนพ้นจอ ซ่อนหน้า หรือ `pagehide` หยุดงานเบื้องหลัง. `prefers-reduced-motion` แสดง final. พฤติกรรม loop นี้เป็น owner-selected behavior ของหน้า library; code snippet แบบพกพายังคง finite-once หรือ state-bound ตาม family
 
 ## Format routes
 
@@ -150,4 +153,4 @@ Preview เล่นทันทีและวนซ้ำเพื่อให
 
 ## English summary
 
-Select one exact record from the manifest, preserve its family and product scope, and verify the delivered output. Landometer v3 is product-neutral shared framing with finite-once production motion. `ijji.logo-sting.r3` is the explicit ijji animated-identity overlay, with exact 9-second full and 6.4-second mark-only routes. The three existing ijji motifs remain state-bound pending indicators. The library auto-replays for inspection; production snippets play once and hold the exact final fallback.
+Select one exact record from the manifest, preserve its family and product scope, and verify the delivered output. Landometer v3 is product-neutral shared framing. `ijji.logo-sting.r3` is the explicit ijji animated-identity overlay, with exact 9-second full and 6.4-second mark-only routes. The library webpage auto-replays its named inline and Preview surfaces; portable snippets remain finite-once for the two identity/motif runtimes and state-bound for the three ijji pending motifs.

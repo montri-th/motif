@@ -35,6 +35,7 @@ const common = [
   "governance/logo-preview-theme-color-decision.json",
   "governance/audience-animation-parity.json",
   "governance/animation-source-v3-decision.json",
+  "governance/inline-autoreplay-decision.json",
   "governance/owner-approval.json",
   "governance/showcase-motion-decision.json",
   "governance/source-ledger.json",
@@ -50,7 +51,7 @@ const kits = [
   { name: "landometer-motifs-v1.zip", files: landometerKitFiles },
   { name: "ijji-motifs-selected-r3.zip", files: [...common, ...ijji] },
   { name: "ijji-animated-logo-r3.zip", files: [...common, ...ijjiLogo] },
-  { name: "motif-library-v1.2.0.zip", files: fullKitFiles },
+  { name: "motif-library-v1.2.1.zip", files: fullKitFiles },
   { name: "motif-library-v1.zip", files: fullKitFiles },
 ];
 
@@ -72,7 +73,7 @@ async function assemble(files) {
     createFolders: false,
     unixPermissions: 0o100644,
   });
-  zip.comment = "Landometer Motif Library 1.2.0 · owner-approved artifact overlay · 2026-09-06";
+  zip.comment = "Landometer Motif Library 1.2.1 · owner-approved artifact overlay · 2026-09-06";
   return zip.generateAsync({
     type: "nodebuffer",
     platform: "UNIX",

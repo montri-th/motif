@@ -13,7 +13,7 @@
       downloadReady: "สร้างไฟล์ PNG แล้ว",
       downloadFailed: "สร้างไฟล์ PNG ไม่สำเร็จ",
       result: (count) => `พบ ${count} assets`,
-      lmStatus: "ตัวอย่าง full + quiet เล่นทันทีและวนซ้ำขณะเปิด · งานจริงยังเล่นแบบ finite once",
+      lmStatus: "ตัวอย่าง full + quiet เล่นทันทีและวนซ้ำอัตโนมัติ",
       lmAssembling: "กำลังประกอบ full + quiet · เมื่อครบแล้วจะค้างท่าสุดท้ายให้ตรวจ",
       lmFinal: "ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป",
       lmPaused: "หยุด auto replay แล้ว · ภาพอยู่ที่สถานะสุดท้าย",
@@ -33,6 +33,8 @@
       unavailable: "ไม่พบ asset ที่เลือก",
       replay: "เล่นอีกครั้ง",
       stop: "หยุด",
+      pausePageMotion: "หยุด animation",
+      resumePageMotion: "เล่น animation ต่อ",
       light: "เปลี่ยนเป็นธีมสว่าง",
       dark: "เปลี่ยนเป็นธีมมืด",
     },
@@ -42,7 +44,7 @@
       downloadReady: "PNG created",
       downloadFailed: "Could not create the PNG",
       result: (count) => `${count} assets shown`,
-      lmStatus: "Full + quiet play immediately and auto-replay while open · production use remains finite once",
+      lmStatus: "Full + quiet play immediately and auto-replay continuously",
       lmAssembling: "Assembling full + quiet · the complete final state will hold for inspection",
       lmFinal: "Assembly complete · holding the exact final state before the next replay",
       lmPaused: "Auto-replay paused · both motifs are at their final state",
@@ -62,6 +64,8 @@
       unavailable: "The selected asset is unavailable",
       replay: "Play again",
       stop: "Stop",
+      pausePageMotion: "Pause animation",
+      resumePageMotion: "Resume animation",
       light: "Switch to light theme",
       dark: "Switch to dark theme",
     },
@@ -109,16 +113,33 @@
     if (!customElements.get("lm-motif")) return;
 
     document.querySelectorAll("[data-lm-live]").forEach((stage) => {
+      if (stage.querySelector(":scope > lm-motif")) return;
       const motif = document.createElement("lm-motif");
       motif.setAttribute("kind", stage.dataset.kind || "dial");
+      motif.setAttribute("autoplay", "false");
       if (stage.dataset.quiet === "true") motif.setAttribute("quiet", "");
+      if (stage.dataset.ink) motif.setAttribute("ink", stage.dataset.ink);
       stage.append(motif);
       requestAnimationFrame(() => {
         if (motif.querySelector("svg")) stage.classList.add("is-enhanced");
       });
+
+      const replayMs = Math.max(0, Number(stage.dataset.loop || 0));
+      let replayTimer = 0;
+      const play = () => {
+        motif.removeAttribute("data-play");
+        void motif.offsetWidth;
+        motif.setAttribute("data-play", "");
+        clearTimeout(replayTimer);
+        if (replayMs) replayTimer = window.setTimeout(play, replayMs);
+      };
+      registerInlineMotion(stage, play, () => {
+        clearTimeout(replayTimer);
+        replayTimer = 0;
+        motif.removeAttribute("data-play");
+      });
     });
   }
-  enhanceLandometerStages();
 
   async function writeClipboard(text) {
     if (navigator.clipboard && window.isSecureContext) {
@@ -158,13 +179,13 @@
         const isQuiet = button.dataset.quiet === "true";
         const quiet = isQuiet ? " quiet" : "";
         const logoPalette = id === "logo" && !isQuiet ? ' ink="blue"' : "";
-        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.2.0">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.2.0" defer><\/script>\n<lm-motif kind="${id}"${quiet}${logoPalette}></lm-motif>`;
+        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.2.1">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.2.1" defer><\/script>\n<lm-motif kind="${id}"${quiet}${logoPalette}></lm-motif>`;
       } else if (brand === "ijji-logo") {
         const markOnly = id === "mark";
         const attributes = markOnly ? ' notagline bounce="extra"' : ' surface="brand-blue" bounce="playful"';
         const still = markOnly ? "ijji-mark-still.png" : "ijji-logo-still.png";
         const alt = markOnly ? "ijji" : "ijji — Your business buddy around the corner";
-        snippet = `<script src="${origin}/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0" defer><\/script>\n<ijji-logo-sting${attributes} assets="${origin}/assets/ijji/logo-sting/layers/">\n  <img src="${origin}/assets/ijji/logo-sting/layers/${still}" alt="${alt}">\n</ijji-logo-sting>`;
+        snippet = `<script src="${origin}/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.1" defer><\/script>\n<ijji-logo-sting${attributes} assets="${origin}/assets/ijji/logo-sting/layers/">\n  <img src="${origin}/assets/ijji/logo-sting/layers/${still}" alt="${alt}">\n</ijji-logo-sting>`;
       } else {
         snippet = `<img src="${origin}/assets/ijji/svg/ijji-${id}-transparent-ink.svg" width="120" height="120" alt="" aria-hidden="true">`;
       }
@@ -216,6 +237,7 @@
   const dialogStatus = document.querySelector("#preview-status");
   const dialogMessage = document.querySelector("[data-preview-message]");
   const dialogTimer = document.querySelector("[data-preview-timer]");
+  const dialogAnnouncer = document.querySelector("[data-preview-announcer]");
   const replayButton = document.querySelector("#preview-replay");
   const cancelButton = document.querySelector("#preview-cancel");
   let previewConfig = null;
@@ -224,6 +246,8 @@
   let landometerSettleTimeout = 0;
   let ijjiModulePromise = null;
   let ijjiLogoRuntimePromise = null;
+  let ijjiLogoLayersPromise = null;
+  let ijjiLogoLayersReady = false;
   let previewRenderGeneration = 0;
   let landometerPreviewPaused = false;
   let landometerReplayGeneration = 0;
@@ -232,6 +256,65 @@
   const landometerDefaultReplayMs = 3000;
   const landometerLogoReplayMs = 6000;
   const landometerLogoSettleMs = 3400;
+  const inlineMotionControllers = [];
+  let inlineMotionPaused = false;
+  const inlineMotionObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const controller = inlineMotionControllers.find((item) => item.stage === entry.target);
+        if (!controller) return;
+        controller.inView = entry.isIntersecting && entry.intersectionRatio >= 0.14;
+      });
+      syncInlineMotion();
+    }, { threshold: 0.14, rootMargin: "0px 0px -12% 0px" })
+    : null;
+
+  function registerInlineMotion(stage, start, stop) {
+    const controller = {
+      stage,
+      start,
+      stop,
+      inView: !inlineMotionObserver,
+      running: null,
+    };
+    inlineMotionControllers.push(controller);
+    inlineMotionObserver?.observe(stage);
+    if (!inlineMotionObserver) syncInlineMotion();
+    return controller;
+  }
+
+  function syncInlineMotion() {
+    inlineMotionControllers.forEach((controller) => {
+      const shouldRun = controller.inView
+        && document.visibilityState === "visible"
+        && !reducedMotionPreference?.matches
+        && !inlineMotionPaused;
+      controller.stage.dataset.motionState = shouldRun ? "running" : "final";
+      if (shouldRun === controller.running) return;
+      controller.running = shouldRun;
+      if (shouldRun) controller.start();
+      else controller.stop();
+    });
+  }
+
+  const motionToggle = document.querySelector("[data-motion-toggle]");
+  function syncMotionToggle() {
+    if (!motionToggle) return;
+    const isReduced = Boolean(reducedMotionPreference?.matches);
+    motionToggle.hidden = isReduced;
+    motionToggle.disabled = isReduced;
+    motionToggle.textContent = inlineMotionPaused ? "▶" : "Ⅱ";
+    motionToggle.removeAttribute("aria-pressed");
+    const label = inlineMotionPaused ? copy.resumePageMotion : copy.pausePageMotion;
+    motionToggle.setAttribute("aria-label", label);
+    motionToggle.title = label;
+  }
+  motionToggle?.addEventListener("click", () => {
+    inlineMotionPaused = !inlineMotionPaused;
+    syncMotionToggle();
+    syncInlineMotion();
+  });
+  syncMotionToggle();
 
   function clearPreviewTimers() {
     clearInterval(previewInterval);
@@ -291,6 +374,14 @@
     if (dialogTimer) dialogTimer.textContent = elapsed === null ? "" : ` · ${copy.ijjiElapsed(elapsed)}`;
   }
 
+  function announcePreviewAction(message) {
+    if (!dialogAnnouncer) return;
+    dialogAnnouncer.textContent = "";
+    requestAnimationFrame(() => {
+      if (dialog?.open) dialogAnnouncer.textContent = message;
+    });
+  }
+
   function finishIjjiPreview(reason = "done") {
     clearPreviewTimers();
     if (!previewConfig || previewConfig.brand !== "ijji") return;
@@ -308,7 +399,7 @@
     if (ijjiLogoRuntimePromise) return ijjiLogoRuntimePromise;
     ijjiLogoRuntimePromise = new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = new URL(`${base}/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0`, document.baseURI).href;
+      script.src = new URL(`${base}/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.1`, document.baseURI).href;
       script.onload = () => customElements.whenDefined("ijji-logo-sting").then(resolve, reject);
       script.onerror = reject;
       document.head.append(script);
@@ -316,28 +407,205 @@
     return ijjiLogoRuntimePromise;
   }
 
+  function preloadIjjiLogoLayers() {
+    if (ijjiLogoLayersPromise) return ijjiLogoLayersPromise;
+    const files = [
+      "i-1.png", "jj.png", "i-2.png",
+      "tag-1-1.png", "tag-1-2.png", "tag-1-3.png",
+      "tag-2-1.png", "tag-2-2.png", "tag-2-3.png",
+    ];
+    ijjiLogoLayersPromise = Promise.all(files.map((file) => new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = resolve;
+      image.onerror = reject;
+      image.src = new URL(`${base}/assets/ijji/logo-sting/layers/${file}`, document.baseURI).href;
+    }))).then((images) => {
+      ijjiLogoLayersReady = true;
+      return images;
+    });
+    return ijjiLogoLayersPromise;
+  }
+
+  async function enhanceIjjiLogoStages() {
+    const stages = [...document.querySelectorAll("[data-ijji-logo-live]")];
+    if (!stages.length) return;
+    try {
+      await Promise.all([loadIjjiLogoRuntime(), preloadIjjiLogoLayers()]);
+      stages.forEach((stage) => {
+        let logo = null;
+        const dispose = () => {
+          const previous = logo;
+          if (!previous) return;
+          previous.removeAttribute("loop");
+          previous.pause?.();
+          previous.remove();
+          if (logo === previous) logo = null;
+        };
+        const mount = () => {
+          dispose();
+          logo = document.createElement("ijji-logo-sting");
+          logo.setAttribute("manual", "");
+          logo.setAttribute("surface", "brand-blue");
+          logo.setAttribute("bounce", "playful");
+          logo.setAttribute("assets", new URL(`${base}/assets/ijji/logo-sting/layers/`, document.baseURI).href);
+          stage.append(logo);
+          requestAnimationFrame(() => {
+            if (logo?.shadowRoot) stage.classList.add("is-enhanced");
+          });
+          return logo;
+        };
+        const stop = () => {
+          dispose();
+          mount();
+        };
+        mount();
+        registerInlineMotion(stage, () => {
+          const current = mount();
+          current.setAttribute("loop", "");
+          current.replay?.();
+        }, stop);
+      });
+    } catch (_) {
+      // The complete source-image fallback stays visible if the exact runtime fails.
+    }
+  }
+
+  async function enhanceIjjiMotifStages() {
+    const stages = [...document.querySelectorAll("[data-ijji-motif-live]")];
+    if (!stages.length) return;
+    try {
+      const moduleUrl = new URL(`${base}/assets/ijji/ijji-motifs.js?v=1.2.1`, document.baseURI).href;
+      ijjiModulePromise ||= import(moduleUrl);
+      const module = await ijjiModulePromise;
+      stages.forEach((stage) => {
+        const key = `${stage.dataset.kind}-${stage.dataset.surface || "transparent-mint"}`;
+        const markup = module.IJJI_MOTIFS?.[key];
+        if (!markup) return;
+        const slot = document.createElement("span");
+        slot.className = "ijji-slot";
+        slot.innerHTML = markup;
+        const svg = slot.querySelector(".ijji-motif");
+        svg?.setAttribute("aria-hidden", "true");
+        svg?.removeAttribute("role");
+        svg?.removeAttribute("aria-label");
+        stage.append(slot);
+        if (!svg) return slot.remove();
+        stage.classList.add("is-enhanced");
+        registerInlineMotion(stage, () => {
+          stage.classList.remove("is-motion-final");
+          stage.classList.remove("is-motion-running");
+          void stage.offsetWidth;
+          stage.classList.add("is-motion-running");
+        }, () => {
+          stage.classList.remove("is-motion-running");
+          stage.classList.add("is-motion-final");
+        });
+      });
+    } catch (_) {
+      // The exact static SVG remains visible if the module cannot be loaded.
+    }
+  }
+
+  enhanceLandometerStages();
+  enhanceIjjiLogoStages();
+  enhanceIjjiMotifStages();
+
   function ijjiLogoElement() {
     return dialogStage?.querySelector("ijji-logo-sting") || null;
   }
 
-  function stopIjjiLogoAutoreplay({ finish = true } = {}) {
-    const logo = ijjiLogoElement();
-    if (!logo) return;
-    logo.removeAttribute("loop");
-    if (finish) logo.finish?.();
-    else logo.pause?.();
+  function createIjjiLogoFallback(config) {
+    const markOnly = config?.id === "mark";
+    const fallback = document.createElement("img");
+    fallback.src = `${base}/assets/ijji/logo-sting/layers/${markOnly ? "ijji-mark-still.png" : "ijji-logo-still.png"}`;
+    fallback.alt = markOnly ? "ijji" : "ijji — Your business buddy around the corner";
+    fallback.style.cssText = "display:block;width:100%;height:auto";
+    return fallback;
   }
 
-  function startIjjiLogoAutoreplay() {
-    const logo = ijjiLogoElement();
+  function createIjjiLogoPreview(config) {
+    if (!config || config.brand !== "ijji-logo") return null;
+    const markOnly = config.id === "mark";
+    const logo = document.createElement("ijji-logo-sting");
+    logo.setAttribute("manual", "");
+    logo.setAttribute("assets", new URL(`${base}/assets/ijji/logo-sting/layers/`, document.baseURI).href);
+    logo.setAttribute("bounce", markOnly ? "extra" : "playful");
+    if (markOnly) logo.setAttribute("notagline", "");
+    else logo.setAttribute("surface", "brand-blue");
+    logo.append(createIjjiLogoFallback(config));
+    logo.addEventListener("ijji-sting-start", () => {
+      if (ijjiLogoElement() !== logo) return;
+      clearInterval(previewInterval);
+      setPreviewStatus(copy.ijjiLogoPlaying, 0);
+      previewInterval = window.setInterval(() => {
+        if (ijjiLogoElement() !== logo) {
+          clearInterval(previewInterval);
+          previewInterval = 0;
+          return;
+        }
+        if (dialogTimer) dialogTimer.textContent = ` · ${copy.ijjiElapsed(logo.currentTime)}`;
+      }, 100);
+    });
+    logo.addEventListener("ijji-sting-end", () => {
+      if (ijjiLogoElement() !== logo) return;
+      clearInterval(previewInterval);
+      previewInterval = 0;
+      setPreviewStatus(copy.ijjiLogoFinal, logo.duration);
+    });
+    return logo;
+  }
+
+  function disposeIjjiLogoPreview() {
+    const previous = ijjiLogoElement();
+    if (!previous) return;
+    previous.removeAttribute("loop");
+    previous.pause?.();
+    previous.remove();
+  }
+
+  function mountIjjiLogoPreview(config = previewConfig) {
+    if (!dialogStage) return null;
+    disposeIjjiLogoPreview();
+    const logo = createIjjiLogoPreview(config);
+    if (!logo) return null;
+    dialogStage.replaceChildren(logo);
+    return logo;
+  }
+
+  function stopIjjiLogoAutoreplay({ finish = true } = {}) {
+    clearInterval(previewInterval);
+    previewInterval = 0;
+    disposeIjjiLogoPreview();
+    if (finish && dialog?.open && previewConfig?.brand === "ijji-logo") {
+      if (customElements.get("ijji-logo-sting") && ijjiLogoLayersReady) mountIjjiLogoPreview(previewConfig);
+      else if (dialogStage) dialogStage.replaceChildren(createIjjiLogoFallback(previewConfig));
+    }
+  }
+
+  async function startIjjiLogoAutoreplay() {
+    const config = previewConfig ? { ...previewConfig } : null;
     if (
-      !logo
-      || ijjiLogoPreviewPaused
-      || previewConfig?.brand !== "ijji-logo"
+      ijjiLogoPreviewPaused
+      || config?.brand !== "ijji-logo"
       || !dialog?.open
       || document.visibilityState !== "visible"
       || reducedMotionPreference?.matches
     ) return;
+    try {
+      await Promise.all([loadIjjiLogoRuntime(), preloadIjjiLogoLayers()]);
+    } catch (_) {
+      return;
+    }
+    if (
+      ijjiLogoPreviewPaused
+      || previewConfig?.brand !== config.brand
+      || previewConfig?.id !== config.id
+      || !dialog?.open
+      || document.visibilityState !== "visible"
+      || reducedMotionPreference?.matches
+    ) return;
+    const logo = mountIjjiLogoPreview(config);
+    if (!logo) return;
     logo.setAttribute("loop", "");
     logo.replay?.();
   }
@@ -392,6 +660,7 @@
     }
 
     if (config.brand === "ijji-logo") {
+      dialogStage.replaceChildren(createIjjiLogoFallback(config));
       if (replayButton) {
         replayButton.hidden = Boolean(reducedMotionPreference?.matches);
         replayButton.disabled = false;
@@ -403,41 +672,21 @@
         cancelButton.textContent = copy.pauseAutoplay;
       }
       try {
-        await loadIjjiLogoRuntime();
+        await Promise.all([loadIjjiLogoRuntime(), preloadIjjiLogoLayers()]);
         if (
           generation !== previewRenderGeneration
           || !dialog?.open
           || previewConfig?.brand !== config.brand
           || previewConfig?.id !== config.id
         ) return;
-        const markOnly = config.id === "mark";
-        const logo = document.createElement("ijji-logo-sting");
-        logo.setAttribute("manual", "");
-        logo.setAttribute("assets", new URL(`${base}/assets/ijji/logo-sting/layers/`, document.baseURI).href);
-        logo.setAttribute("bounce", markOnly ? "extra" : "playful");
-        if (markOnly) logo.setAttribute("notagline", "");
-        else logo.setAttribute("surface", "brand-blue");
-        const fallback = document.createElement("img");
-        fallback.src = `${base}/assets/ijji/logo-sting/layers/${markOnly ? "ijji-mark-still.png" : "ijji-logo-still.png"}`;
-        fallback.alt = markOnly ? "ijji" : "ijji — Your business buddy around the corner";
-        fallback.style.cssText = "display:block;width:100%;height:auto";
-        logo.append(fallback);
-        logo.addEventListener("ijji-sting-start", () => {
-          clearInterval(previewInterval);
-          setPreviewStatus(copy.ijjiLogoPlaying, 0);
-          previewInterval = window.setInterval(() => {
-            if (dialogTimer) dialogTimer.textContent = ` · ${copy.ijjiElapsed(logo.currentTime)}`;
-          }, 100);
-        });
-        logo.addEventListener("ijji-sting-end", () => {
-          clearInterval(previewInterval);
-          previewInterval = 0;
-          setPreviewStatus(copy.ijjiLogoFinal, logo.duration);
-        });
-        dialogStage.append(logo);
-        ijjiLogoPreviewPaused = false;
-        if (reducedMotionPreference?.matches) setPreviewStatus(copy.ijjiLogoReduced);
-        else requestAnimationFrame(startIjjiLogoAutoreplay);
+        if (reducedMotionPreference?.matches) {
+          mountIjjiLogoPreview(config);
+          setPreviewStatus(copy.ijjiLogoReduced);
+        } else if (ijjiLogoPreviewPaused) {
+          mountIjjiLogoPreview(config);
+          if (cancelButton) cancelButton.disabled = true;
+          setPreviewStatus(copy.ijjiLogoPaused);
+        } else startIjjiLogoAutoreplay();
       } catch (_) {
         if (generation === previewRenderGeneration && dialog?.open) setPreviewStatus(copy.unavailable);
       }
@@ -456,7 +705,7 @@
     }
 
     try {
-      const moduleUrl = new URL(`${base}/assets/ijji/ijji-motifs.js?v=1.2.0`, document.baseURI).href;
+      const moduleUrl = new URL(`${base}/assets/ijji/ijji-motifs.js?v=1.2.1`, document.baseURI).href;
       ijjiModulePromise ||= import(moduleUrl);
       const module = await ijjiModulePromise;
       if (
@@ -497,6 +746,7 @@
         id: button.dataset.previewId,
         duration: Number(button.dataset.duration || 4),
       };
+      if (previewConfig.brand === "ijji-logo") ijjiLogoPreviewPaused = false;
       if (dialogTitle) {
         const brandLabel = previewConfig.brand === "landometer" ? "Landometer" : "ijji";
         const suffix = previewConfig.brand === "landometer" ? " · full + quiet" : previewConfig.brand === "ijji-logo" ? " · animated identity" : "";
@@ -513,23 +763,30 @@
       ijjiLogoPreviewPaused = false;
       if (cancelButton) cancelButton.disabled = false;
       startIjjiLogoAutoreplay();
-    } else renderPreview();
+      announcePreviewAction(copy.ijjiLogoPlaying);
+    } else {
+      renderPreview();
+      announcePreviewAction(previewConfig?.brand === "landometer" ? copy.lmAssembling : copy.ijjiWorking);
+    }
   });
   cancelButton?.addEventListener("click", () => {
     if (previewConfig?.brand === "ijji") {
       previewRenderGeneration += 1;
       finishIjjiPreview("stopped");
+      announcePreviewAction(copy.stopped);
     }
     else if (previewConfig?.brand === "ijji-logo") {
       ijjiLogoPreviewPaused = true;
       stopIjjiLogoAutoreplay();
       if (cancelButton) cancelButton.disabled = true;
       setPreviewStatus(copy.ijjiLogoPaused);
+      announcePreviewAction(copy.ijjiLogoPaused);
     } else {
       landometerPreviewPaused = true;
       stopLandometerAutoreplay();
       if (cancelButton) cancelButton.disabled = true;
       setPreviewStatus(copy.lmPaused);
+      announcePreviewAction(copy.lmPaused);
     }
   });
   document.querySelector("[data-dialog-close]")?.addEventListener("click", () => dialog?.close());
@@ -540,6 +797,7 @@
     landometerPreviewPaused = false;
     ijjiLogoPreviewPaused = false;
     dialogStage?.replaceChildren();
+    if (dialogAnnouncer) dialogAnnouncer.textContent = "";
     previewConfig = null;
   });
   dialog?.addEventListener("click", (event) => {
@@ -547,6 +805,7 @@
   });
 
   document.addEventListener("visibilitychange", () => {
+    syncInlineMotion();
     if (!dialog?.open) return;
     if (previewConfig?.brand === "landometer") {
       if (document.visibilityState === "visible") playLandometerPreviewCycle();
@@ -554,17 +813,21 @@
     } else if (previewConfig?.brand === "ijji-logo") {
       if (document.visibilityState === "visible") startIjjiLogoAutoreplay();
       else stopIjjiLogoAutoreplay();
+    } else if (previewConfig?.brand === "ijji" && document.visibilityState !== "visible") {
+      previewRenderGeneration += 1;
+      finishIjjiPreview("stopped");
     }
   });
 
   reducedMotionPreference?.addEventListener?.("change", () => {
+    syncMotionToggle();
+    syncInlineMotion();
     if (!dialog?.open || !["landometer", "ijji-logo"].includes(previewConfig?.brand)) return;
     if (previewConfig?.brand === "landometer") stopLandometerAutoreplay();
     else {
       // The owner-supplied ijji runtime snapshots the media query when the
       // element connects. Recreate it so a live preference change is honoured
       // in both directions without modifying the exact source runtime bytes.
-      stopIjjiLogoAutoreplay();
       renderPreview();
       return;
     }
@@ -582,6 +845,11 @@
   });
 
   window.addEventListener("pagehide", () => {
+    inlineMotionControllers.forEach((controller) => {
+      controller.running = false;
+      controller.stage.dataset.motionState = "final";
+      controller.stop();
+    });
     previewRenderGeneration += 1;
     if (previewConfig?.brand === "ijji" && dialog?.open) finishIjjiPreview("stopped");
     else if (previewConfig?.brand === "ijji-logo") stopIjjiLogoAutoreplay();
@@ -589,7 +857,9 @@
     clearPreviewTimers();
   });
   window.addEventListener("pageshow", (event) => {
-    if (!event.persisted || !dialog?.open) return;
+    if (!event.persisted) return;
+    syncInlineMotion();
+    if (!dialog?.open) return;
     if (previewConfig?.brand === "landometer") playLandometerPreviewCycle();
     if (previewConfig?.brand === "ijji-logo") startIjjiLogoAutoreplay();
   });

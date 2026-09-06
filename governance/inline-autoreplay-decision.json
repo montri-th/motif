@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "motif-library-inline-autoreplay-decision/1.0",
+  "decisionId": "motif-library-inline-autoreplay-v1",
+  "artifactId": "landometer-motif-library-web-v1",
+  "artifactRelease": "1.2.1",
+  "status": "owner_selected_for_named_artifact",
+  "recordedOn": "2026-09-06",
+  "authority": {
+    "source": "current user request",
+    "scope": "named inline surfaces in the Thai and English routes of this motif-library webpage",
+    "intent": "Show the complete Landometer and ijji motion directly in context and keep replaying it without requiring a reveal action."
+  },
+  "classification": "owner_selected_component_local_artifact_behavior_not_normative_design_system_change",
+  "surfacesPerLocaleRoute": {
+    "total": 9,
+    "hero": ["landometer.dial.full"],
+    "brandLayer": ["landometer.logo.full", "ijji.logo-sting.tagline"],
+    "intentAhaNextAction": [
+      "landometer.rings.full",
+      "landometer.layers.quiet",
+      "landometer.rings.quiet",
+      "landometer.cultivate.quiet",
+      "ijji.rotate-b-transparent-mint",
+      "ijji.graph-b-transparent-mint"
+    ]
+  },
+  "playback": {
+    "initialPlayback": "immediate_when_visible",
+    "replay": "continuous_while_eligible",
+    "eligibility": [
+      "surface_is_at_least_14_percent_visible",
+      "document_is_visible",
+      "prefers_reduced_motion_is_not_reduce",
+      "page_motion_control_is_not_paused"
+    ],
+    "landometerDefaultReplayIntervalMs": 3000,
+    "landometerLogo": {
+      "fullAuthoredEndMs": 2870,
+      "quietAuthoredEndMs": 3360,
+      "replayIntervalMs": 6000,
+      "hostInk": "blue",
+      "reference": "owner-supplied set-3 example HTML"
+    },
+    "ijjiAnimatedIdentity": {
+      "variant": "full_with_tagline",
+      "durationMs": 9000,
+      "loopGapMs": 400,
+      "surface": "brand-blue",
+      "bounce": "playful",
+      "reference": "owner-supplied ijji example HTML"
+    },
+    "ijjiSelectedMotifs": {
+      "source": "exact markup strings and exact CSS from assets/ijji/ijji-motifs.js and assets/ijji/ijji-motion.css",
+      "note": "Inline replay is an owner-selected library specimen; the portable agent contract remains state-bound."
+    }
+  },
+  "viewerControl": {
+    "control": "one page-level pause/resume button",
+    "pauseResult": "every named inline surface stops work and shows its complete final fallback",
+    "resumeResult": "only eligible visible surfaces restart"
+  },
+  "fallbacks": {
+    "noJavaScript": "exact complete final source assets remain in HTML",
+    "reducedMotion": "exact complete final state without replay",
+    "print": "exact complete final source assets",
+    "runtimeFailure": "exact complete final source assets"
+  },
+  "lifecycle": [
+    "stop_work_when_offscreen",
+    "stop_work_when_document_hidden",
+    "stop_work_on_pagehide",
+    "resume_eligible_visible_surfaces_on_pageshow"
+  ],
+  "productionBoundary": {
+    "portableLandometerSnippet": "finite_once_then_hold_final",
+    "portableIjjiAnimatedIdentitySnippet": "finite_once_on_visibility_then_hold_final",
+    "portableIjjiSelectedMotifSnippet": "state_bound_only",
+    "exactSourceRuntimeBytesEdited": false,
+    "normativeDesignSystemChange": false
+  },
+  "historicalDialogDecision": "governance/showcase-motion-decision.json"
+}

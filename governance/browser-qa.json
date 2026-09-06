@@ -1,9 +1,87 @@
 {
   "schemaVersion": "motif-library-browser-qa/1.0",
-  "executedAt": "2026-09-05T18:37:01.598Z",
-  "artifactRelease": "1.2.0",
+  "executedAt": "2026-09-06T01:50:46.730Z",
+  "artifactRelease": "1.2.1",
   "artifactRoot": ".",
   "target": "local_loopback",
+  "targetBaseUrl": "http://127.0.0.1:64197/motif",
+  "exactByteAttestation": {
+    "source": "local_filesystem",
+    "checks": [
+      {
+        "path": "assets/landometer/landometer-motifs.css",
+        "expectedSha256": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+        "actualSha256": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 11190
+      },
+      {
+        "path": "assets/landometer/landometer-motifs.js",
+        "expectedSha256": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+        "actualSha256": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 17845
+      },
+      {
+        "path": "assets/ijji/logo-sting/ijji-logo-sting.js",
+        "expectedSha256": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e",
+        "actualSha256": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 12656
+      },
+      {
+        "path": "assets/ijji/ijji-motifs.js",
+        "expectedSha256": "4f341f6bc0c7acd3d6ce44aad6d798e3f03b26c712a29610ae4985cbe11271a4",
+        "actualSha256": "4f341f6bc0c7acd3d6ce44aad6d798e3f03b26c712a29610ae4985cbe11271a4",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 15288
+      },
+      {
+        "path": "assets/ijji/ijji-motion.css",
+        "expectedSha256": "195a53a793d0fd693e0d9e6ec941a687ca3fbb55a7af262d85d0905c6ddf2bf4",
+        "actualSha256": "195a53a793d0fd693e0d9e6ec941a687ca3fbb55a7af262d85d0905c6ddf2bf4",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 3636
+      },
+      {
+        "path": "assets/landometer/svg/logo-full.svg",
+        "expectedSha256": "90e9543f2f86a18f891331c13be25038b4334ca7dbe55b194650bc441e3558e1",
+        "actualSha256": "90e9543f2f86a18f891331c13be25038b4334ca7dbe55b194650bc441e3558e1",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 1252
+      },
+      {
+        "path": "assets/landometer/svg/logo-quiet.svg",
+        "expectedSha256": "5b6798cdb6c3ada246286e6ce3386644f383c4f987a267e5c5db392809403e14",
+        "actualSha256": "5b6798cdb6c3ada246286e6ce3386644f383c4f987a267e5c5db392809403e14",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 1979
+      },
+      {
+        "path": "assets/ijji/logo-sting/layers/ijji-logo-still.png",
+        "expectedSha256": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+        "actualSha256": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 222927
+      },
+      {
+        "path": "assets/ijji/logo-sting/layers/ijji-mark-still.png",
+        "expectedSha256": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630",
+        "actualSha256": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630",
+        "passed": true,
+        "source": "local_filesystem",
+        "bytes": 110298
+      }
+    ]
+  },
   "routes": [
     "/motif/",
     "/motif/en/"
@@ -69,26 +147,35 @@
     "immediate autoplay",
     "three-second default auto-replay",
     "Landometer v3 logo exact-final settle at 3.4 seconds and replay at 6.0 seconds",
-    "390x844 dark Landometer v3 palette lock",
+    "390x844 dark Landometer v3 palette and fallback parity lock",
     "pause",
     "replay now",
     "Escape focus restoration",
     "stale async-preview isolation",
-    "dynamic reduced motion",
+    "one-hero plus two-logo plus six-example page-motion inventory",
+    "inline 1.2.1 cache contract",
+    "continuous inline replay",
+    "page-level action-button pause and resume",
+    "inline and dialog ijji stale-400-ms replay regression",
+    "inline offscreen gating",
+    "inline dynamic reduced motion",
+    "inline initial reduced motion",
+    "inline print fallbacks",
+    "inline mobile containment and maximum-available ijji width",
     "synthetic document visibility lifecycle",
     "synthetic pagehide/pageshow lifecycle",
     "filter",
     "search",
     "copy",
-    "Landometer 1.2.0 copy contract",
+    "Landometer 1.2.1 copy contract",
     "PNG export",
     "ijji bounded timeout",
     "ijji cancel",
     "ijji full+tagline immediate play and loop",
     "ijji mark-only immediate play",
     "ijji exact attributes, viewBoxes, layers, and fallbacks",
-    "ijji finite-once 1.2.0 copy contracts",
-    "ijji identity mobile widths",
+    "ijji finite-once 1.2.1 copy contracts",
+    "ijji identity responsive widths",
     "reduced motion final states",
     "no JavaScript",
     "Thai 130% text",
@@ -115,8 +202,8 @@
     "visualReview": "inspected at intrinsic size; title, motif, safe area, and thumbnail composition passed"
   },
   "totals": {
-    "checks": 406,
-    "passed": 406,
+    "checks": 465,
+    "passed": 465,
     "failed": 0
   },
   "status": "candidate_ready_for_release_handoff",
@@ -128,29 +215,49 @@
   ],
   "checks": [
     {
-      "name": "Exact authored source bytes: assets/landometer/landometer-motifs.css",
+      "name": "Local exact authored bytes: assets/landometer/landometer-motifs.css",
       "status": "passed",
-      "detail": "7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e"
+      "detail": "{\"path\":\"assets/landometer/landometer-motifs.css\",\"expectedSha256\":\"7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e\",\"actualSha256\":\"7cc2deb475a8d6e4af331407b2b4b741716c458a8ce885e2fb2859374b93912e\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":11190}"
     },
     {
-      "name": "Exact authored source bytes: assets/landometer/landometer-motifs.js",
+      "name": "Local exact authored bytes: assets/landometer/landometer-motifs.js",
       "status": "passed",
-      "detail": "3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2"
+      "detail": "{\"path\":\"assets/landometer/landometer-motifs.js\",\"expectedSha256\":\"3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2\",\"actualSha256\":\"3a5caef7918a85885b61dd53e049ea8bf2b0a3cea508f587bb14970bfe6deaf2\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":17845}"
     },
     {
-      "name": "Exact authored source bytes: assets/ijji/logo-sting/ijji-logo-sting.js",
+      "name": "Local exact authored bytes: assets/ijji/logo-sting/ijji-logo-sting.js",
       "status": "passed",
-      "detail": "1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e"
+      "detail": "{\"path\":\"assets/ijji/logo-sting/ijji-logo-sting.js\",\"expectedSha256\":\"1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e\",\"actualSha256\":\"1a1d1bc247b5deb92aa19e4d84524ac1f823454a9401b6ce53acf8716010433e\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":12656}"
     },
     {
-      "name": "Exact authored source bytes: assets/ijji/logo-sting/layers/ijji-logo-still.png",
+      "name": "Local exact authored bytes: assets/ijji/ijji-motifs.js",
       "status": "passed",
-      "detail": "bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac"
+      "detail": "{\"path\":\"assets/ijji/ijji-motifs.js\",\"expectedSha256\":\"4f341f6bc0c7acd3d6ce44aad6d798e3f03b26c712a29610ae4985cbe11271a4\",\"actualSha256\":\"4f341f6bc0c7acd3d6ce44aad6d798e3f03b26c712a29610ae4985cbe11271a4\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":15288}"
     },
     {
-      "name": "Exact authored source bytes: assets/ijji/logo-sting/layers/ijji-mark-still.png",
+      "name": "Local exact authored bytes: assets/ijji/ijji-motion.css",
       "status": "passed",
-      "detail": "acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630"
+      "detail": "{\"path\":\"assets/ijji/ijji-motion.css\",\"expectedSha256\":\"195a53a793d0fd693e0d9e6ec941a687ca3fbb55a7af262d85d0905c6ddf2bf4\",\"actualSha256\":\"195a53a793d0fd693e0d9e6ec941a687ca3fbb55a7af262d85d0905c6ddf2bf4\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":3636}"
+    },
+    {
+      "name": "Local exact authored bytes: assets/landometer/svg/logo-full.svg",
+      "status": "passed",
+      "detail": "{\"path\":\"assets/landometer/svg/logo-full.svg\",\"expectedSha256\":\"90e9543f2f86a18f891331c13be25038b4334ca7dbe55b194650bc441e3558e1\",\"actualSha256\":\"90e9543f2f86a18f891331c13be25038b4334ca7dbe55b194650bc441e3558e1\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":1252}"
+    },
+    {
+      "name": "Local exact authored bytes: assets/landometer/svg/logo-quiet.svg",
+      "status": "passed",
+      "detail": "{\"path\":\"assets/landometer/svg/logo-quiet.svg\",\"expectedSha256\":\"5b6798cdb6c3ada246286e6ce3386644f383c4f987a267e5c5db392809403e14\",\"actualSha256\":\"5b6798cdb6c3ada246286e6ce3386644f383c4f987a267e5c5db392809403e14\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":1979}"
+    },
+    {
+      "name": "Local exact authored bytes: assets/ijji/logo-sting/layers/ijji-logo-still.png",
+      "status": "passed",
+      "detail": "{\"path\":\"assets/ijji/logo-sting/layers/ijji-logo-still.png\",\"expectedSha256\":\"bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac\",\"actualSha256\":\"bb1bc80e0c79a10dedb1b48c39efd187e97fe429adec4917975e265f610ccaac\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":222927}"
+    },
+    {
+      "name": "Local exact authored bytes: assets/ijji/logo-sting/layers/ijji-mark-still.png",
+      "status": "passed",
+      "detail": "{\"path\":\"assets/ijji/logo-sting/layers/ijji-mark-still.png\",\"expectedSha256\":\"acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630\",\"actualSha256\":\"acac2c65b1a17c1956686c3fdbb2a0a6dc3c547c35be1ca128675d28b0ffc630\",\"passed\":true,\"source\":\"local_filesystem\",\"bytes\":110298}"
     },
     {
       "name": "th 320x800 route returns 200",
@@ -1809,6 +1916,244 @@
       "detail": "none"
     },
     {
+      "name": "th inline has exactly one hero, two brand logos, and six Intent-to-Next-Action stages with complete direct fallbacks",
+      "status": "passed",
+      "detail": "{\"counts\":{\"hero\":1,\"choose\":2,\"examples\":6,\"total\":9,\"directFallbacks\":9},\"enhanced\":9,\"fallbacks\":[{\"file\":\"dial-full.svg\",\"alt\":\"Dial motif: หน้าปัดสี่จังหวะของ Landometer\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"logo-full.svg\",\"alt\":\"Landometer logo full\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"ijji-logo-still.png\",\"alt\":\"ijji — Your business buddy around the corner\",\"complete\":true,\"naturalWidth\":891},{\"file\":\"rings-full.svg\",\"alt\":\"Rings motif วางข้างเนื้อหาส่วนเปิดเรื่อง\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"layers-quiet.svg\",\"alt\":\"Layers quiet motif ในสไลด์\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"rings-quiet.svg\",\"alt\":\"Rings quiet motif ในโพสต์สี่เหลี่ยม\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"cultivate-quiet.svg\",\"alt\":\"Cultivate quiet motif ในเฟรมวิดีโอ\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"ijji-rotate-b-transparent-mint.svg\",\"alt\":\"ijji rotate-b motif สำหรับตัวอย่างสถานะกำลังทำงาน\",\"complete\":true,\"naturalWidth\":240},{\"file\":\"ijji-graph-b-transparent-mint.svg\",\"alt\":\"ตัวอย่างที่ไม่ผ่าน: graph-b ถูกใช้แทนหลักฐานยอดขาย\",\"complete\":true,\"naturalWidth\":240}]}"
+    },
+    {
+      "name": "th inline Landometer hero, logo, and four examples preserve exact enhanced attributes and replay intervals",
+      "status": "passed",
+      "detail": "[{\"kind\":\"dial\",\"quiet\":false,\"ink\":\"blue\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"logo\",\"quiet\":false,\"ink\":\"blue\",\"autoplay\":\"false\",\"loop\":\"6000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"rings\",\"quiet\":false,\"ink\":\"blue\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"layers\",\"quiet\":true,\"ink\":\"\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"rings\",\"quiet\":true,\"ink\":\"\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"cultivate\",\"quiet\":true,\"ink\":\"\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1}]"
+    },
+    {
+      "name": "th inline full ijji logo uses the exact full+tagline runtime attributes and authored layers",
+      "status": "passed",
+      "detail": "{\"childCount\":1,\"manual\":true,\"notagline\":false,\"surface\":\"brand-blue\",\"bounce\":\"playful\",\"assets\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/\",\"duration\":9,\"viewBox\":\"556 433.1 890.7 1086.9\",\"ariaLabel\":\"ijji — Your business buddy around the corner\",\"rectFill\":\"#1D4497\",\"circles\":4,\"images\":[\"i-1.png\",\"jj.png\",\"i-2.png\",\"tag-1-1.png\",\"tag-1-2.png\",\"tag-1-3.png\",\"tag-2-1.png\",\"tag-2-2.png\",\"tag-2-3.png\"],\"stageWidth\":481,\"deliveredWidth\":320}"
+    },
+    {
+      "name": "th inline desktop Choose card delivers the full ijji identity at its 320 px audience minimum",
+      "status": "passed",
+      "detail": "{\"stageWidth\":481,\"deliveredWidth\":320}"
+    },
+    {
+      "name": "th inline ijji examples preserve exact product-specific kinds, surfaces, and decorative semantics",
+      "status": "passed",
+      "detail": "[{\"kind\":\"rotate-b\",\"surface\":\"transparent-mint\",\"slotCount\":1,\"className\":\"ijji-motif ijji-rotate-b\",\"ariaHidden\":\"true\",\"role\":null,\"ariaLabel\":null},{\"kind\":\"graph-b\",\"surface\":\"transparent-mint\",\"slotCount\":1,\"className\":\"ijji-motif ijji-graph-b\",\"ariaHidden\":\"true\",\"role\":null,\"ariaLabel\":null}]"
+    },
+    {
+      "name": "th inline enhancement resources use one exact 1.2.1 cache-keyed runtime each",
+      "status": "passed",
+      "detail": "{\"landometerCss\":1,\"landometerJs\":1,\"siteJs\":1,\"ijjiLogoJs\":1,\"ijjiMotifModule\":1}"
+    },
+    {
+      "name": "en inline has exactly one hero, two brand logos, and six Intent-to-Next-Action stages with complete direct fallbacks",
+      "status": "passed",
+      "detail": "{\"counts\":{\"hero\":1,\"choose\":2,\"examples\":6,\"total\":9,\"directFallbacks\":9},\"enhanced\":9,\"fallbacks\":[{\"file\":\"dial-full.svg\",\"alt\":\"The Landometer dial motif, a four-beat measuring form\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"logo-full.svg\",\"alt\":\"Landometer logo full\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"ijji-logo-still.png\",\"alt\":\"ijji — Your business buddy around the corner\",\"complete\":true,\"naturalWidth\":891},{\"file\":\"rings-full.svg\",\"alt\":\"Rings motif beside a section introduction\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"layers-quiet.svg\",\"alt\":\"Quiet layers motif in a slide\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"rings-quiet.svg\",\"alt\":\"Quiet rings motif in a square post\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"cultivate-quiet.svg\",\"alt\":\"Quiet cultivate motif in a video frame\",\"complete\":true,\"naturalWidth\":300},{\"file\":\"ijji-rotate-b-transparent-mint.svg\",\"alt\":\"ijji rotate-b motif in a pending-state example\",\"complete\":true,\"naturalWidth\":240},{\"file\":\"ijji-graph-b-transparent-mint.svg\",\"alt\":\"Rejected example: graph-b used as sales proof\",\"complete\":true,\"naturalWidth\":240}]}"
+    },
+    {
+      "name": "en inline Landometer hero, logo, and four examples preserve exact enhanced attributes and replay intervals",
+      "status": "passed",
+      "detail": "[{\"kind\":\"dial\",\"quiet\":false,\"ink\":\"blue\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"logo\",\"quiet\":false,\"ink\":\"blue\",\"autoplay\":\"false\",\"loop\":\"6000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"rings\",\"quiet\":false,\"ink\":\"blue\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"layers\",\"quiet\":true,\"ink\":\"\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"rings\",\"quiet\":true,\"ink\":\"\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1},{\"kind\":\"cultivate\",\"quiet\":true,\"ink\":\"\",\"autoplay\":\"false\",\"loop\":\"3000\",\"ariaHidden\":\"true\",\"svgCount\":1}]"
+    },
+    {
+      "name": "en inline full ijji logo uses the exact full+tagline runtime attributes and authored layers",
+      "status": "passed",
+      "detail": "{\"childCount\":1,\"manual\":true,\"notagline\":false,\"surface\":\"brand-blue\",\"bounce\":\"playful\",\"assets\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/\",\"duration\":9,\"viewBox\":\"556 433.1 890.7 1086.9\",\"ariaLabel\":\"ijji — Your business buddy around the corner\",\"rectFill\":\"#1D4497\",\"circles\":4,\"images\":[\"i-1.png\",\"jj.png\",\"i-2.png\",\"tag-1-1.png\",\"tag-1-2.png\",\"tag-1-3.png\",\"tag-2-1.png\",\"tag-2-2.png\",\"tag-2-3.png\"],\"stageWidth\":481,\"deliveredWidth\":320}"
+    },
+    {
+      "name": "en inline desktop Choose card delivers the full ijji identity at its 320 px audience minimum",
+      "status": "passed",
+      "detail": "{\"stageWidth\":481,\"deliveredWidth\":320}"
+    },
+    {
+      "name": "en inline ijji examples preserve exact product-specific kinds, surfaces, and decorative semantics",
+      "status": "passed",
+      "detail": "[{\"kind\":\"rotate-b\",\"surface\":\"transparent-mint\",\"slotCount\":1,\"className\":\"ijji-motif ijji-rotate-b\",\"ariaHidden\":\"true\",\"role\":null,\"ariaLabel\":null},{\"kind\":\"graph-b\",\"surface\":\"transparent-mint\",\"slotCount\":1,\"className\":\"ijji-motif ijji-graph-b\",\"ariaHidden\":\"true\",\"role\":null,\"ariaLabel\":null}]"
+    },
+    {
+      "name": "en inline enhancement resources use one exact 1.2.1 cache-keyed runtime each",
+      "status": "passed",
+      "detail": "{\"landometerCss\":1,\"landometerJs\":1,\"siteJs\":1,\"ijjiLogoJs\":1,\"ijjiMotifModule\":1}"
+    },
+    {
+      "name": "Cold ijji identity loading keeps the complete fallback visible when Pause is chosen before layers are ready",
+      "status": "passed",
+      "detail": "{\"components\":0,\"fallbackVisible\":true,\"fallbackFile\":\"ijji-logo-still.png\",\"pausedStatus\":true}"
+    },
+    {
+      "name": "A pre-load ijji Pause survives layer readiness and reduced-motion on/off remounts",
+      "status": "passed",
+      "detail": "{\"settledPause\":{\"currentTime\":9,\"duration\":9,\"playing\":false,\"loop\":false,\"cancelDisabled\":true},\"restoredPause\":{\"currentTime\":9,\"duration\":9,\"playing\":false,\"loop\":false,\"cancelDisabled\":true}}"
+    },
+    {
+      "name": "th inline motion does not animate a merely sliver-visible hero below the 14-percent eligibility threshold",
+      "status": "passed",
+      "detail": "{\"ratio\":0.10096174957666545,\"state\":\"final\",\"playing\":false}"
+    },
+    {
+      "name": "th inline motion Landometer full logo visibly restarts at its six-second inline interval",
+      "status": "passed",
+      "detail": "{\"mutations\":2,\"state\":\"running\",\"playing\":true}"
+    },
+    {
+      "name": "th inline motion ijji full+tagline logo reaches its final frame and continuously restarts",
+      "status": "passed",
+      "detail": "{\"state\":\"running\",\"starts\":2,\"ends\":1,\"currentTime\":0.21330000002384167,\"playing\":true,\"loop\":true}"
+    },
+    {
+      "name": "th inline motion ijji remount blocks a stale 400 ms callback from duplicating pause-to-resume playback",
+      "status": "passed",
+      "detail": "{\"starts\":2,\"ends\":1,\"mounts\":3,\"resumeDelayMs\":24.800000071525574,\"activeWasRemounted\":true,\"activeCount\":1,\"activePlaying\":true,\"activeLoop\":true,\"activeCurrentTime\":0.5398999999523166}"
+    },
+    {
+      "name": "th inline motion starts all four Landometer examples and restarts the three-second cycle",
+      "status": "passed",
+      "detail": "{\"starts\":[{\"kind\":\"rings\",\"quiet\":false,\"state\":\"running\",\"playing\":true},{\"kind\":\"layers\",\"quiet\":true,\"state\":\"running\",\"playing\":true},{\"kind\":\"rings\",\"quiet\":true,\"state\":\"running\",\"playing\":true},{\"kind\":\"cultivate\",\"quiet\":true,\"state\":\"running\",\"playing\":true}],\"replay\":{\"mutations\":2,\"playing\":true}}"
+    },
+    {
+      "name": "th inline motion runs both ijji examples with authored infinite CSS cycles",
+      "status": "passed",
+      "detail": "[{\"kind\":\"rotate-b\",\"state\":\"running\",\"runningClass\":true,\"animationName\":\"iro-march\",\"animationDuration\":\"4s\",\"iterationCount\":\"infinite\",\"playState\":\"running\",\"currentTime\":0,\"afterTime\":116.68199993092543},{\"kind\":\"graph-b\",\"state\":\"running\",\"runningClass\":true,\"animationName\":\"igb-c0\",\"animationDuration\":\"4.4s\",\"iterationCount\":\"infinite\",\"playState\":\"running\",\"currentTime\":150.08199993092575,\"afterTime\":249.9819999309256}]"
+    },
+    {
+      "name": "th inline motion page control pauses every inline family at a complete final state",
+      "status": "passed",
+      "detail": "{\"pressed\":null,\"label\":\"เล่น animation ต่อ\",\"glyph\":\"▶\",\"hidden\":false,\"disabled\":false,\"states\":[\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\"],\"landometerPlaying\":0,\"identityPlaying\":false,\"identityLoop\":false,\"identityAtFinal\":true,\"ijjiRunning\":0,\"ijjiFinal\":2,\"ijjiAnimationNames\":[\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\"]}"
+    },
+    {
+      "name": "th inline motion page control resumes the eligible in-view animation",
+      "status": "passed",
+      "detail": "{\"pressed\":null,\"label\":\"หยุด animation\",\"glyph\":\"Ⅱ\",\"hidden\":false,\"disabled\":false}"
+    },
+    {
+      "name": "th inline motion offscreen gating stops both ijji examples at stable final frames",
+      "status": "passed",
+      "detail": "{\"states\":[\"final\",\"final\"],\"running\":0,\"final\":2}"
+    },
+    {
+      "name": "th inline motion visibility lifecycle stops all inline work and restarts only the in-view stage",
+      "status": "passed",
+      "detail": "{\"hiddenRunning\":0,\"visibleRunning\":true}"
+    },
+    {
+      "name": "th inline motion pagehide/pageshow lifecycle restores only eligible inline motion",
+      "status": "passed",
+      "detail": "{\"pagehideRunning\":0,\"pageshowRunning\":true}"
+    },
+    {
+      "name": "th inline motion live reduced-motion changes finish every family and restart only when allowed",
+      "status": "passed",
+      "detail": "{\"reduced\":{\"states\":[\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\"],\"landometerPlaying\":0,\"identityPlaying\":false,\"identityLoop\":false,\"identityAtFinal\":true,\"ijjiRunning\":0,\"ijjiAnimationNames\":[\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\"],\"motionToggle\":{\"hidden\":true,\"disabled\":true,\"pressed\":null}},\"restored\":{\"running\":true,\"motionToggle\":{\"hidden\":false,\"disabled\":false,\"pressed\":null}}}"
+    },
+    {
+      "name": "en inline motion does not animate a merely sliver-visible hero below the 14-percent eligibility threshold",
+      "status": "passed",
+      "detail": "{\"ratio\":0.10096174957666545,\"state\":\"final\",\"playing\":false}"
+    },
+    {
+      "name": "en inline motion Landometer full logo visibly restarts at its six-second inline interval",
+      "status": "passed",
+      "detail": "{\"mutations\":2,\"state\":\"running\",\"playing\":true}"
+    },
+    {
+      "name": "en inline motion ijji full+tagline logo reaches its final frame and continuously restarts",
+      "status": "passed",
+      "detail": "{\"state\":\"running\",\"starts\":2,\"ends\":1,\"currentTime\":0.21430000004768407,\"playing\":true,\"loop\":true}"
+    },
+    {
+      "name": "en inline motion ijji remount blocks a stale 400 ms callback from duplicating pause-to-resume playback",
+      "status": "passed",
+      "detail": "{\"starts\":2,\"ends\":1,\"mounts\":3,\"resumeDelayMs\":16.300000071525574,\"activeWasRemounted\":true,\"activeCount\":1,\"activePlaying\":true,\"activeLoop\":true,\"activeCurrentTime\":0.5657000000000008}"
+    },
+    {
+      "name": "en inline motion starts all four Landometer examples and restarts the three-second cycle",
+      "status": "passed",
+      "detail": "{\"starts\":[{\"kind\":\"rings\",\"quiet\":false,\"state\":\"running\",\"playing\":true},{\"kind\":\"layers\",\"quiet\":true,\"state\":\"running\",\"playing\":true},{\"kind\":\"rings\",\"quiet\":true,\"state\":\"running\",\"playing\":true},{\"kind\":\"cultivate\",\"quiet\":true,\"state\":\"running\",\"playing\":true}],\"replay\":{\"mutations\":2,\"playing\":true}}"
+    },
+    {
+      "name": "en inline motion runs both ijji examples with authored infinite CSS cycles",
+      "status": "passed",
+      "detail": "[{\"kind\":\"rotate-b\",\"state\":\"running\",\"runningClass\":true,\"animationName\":\"iro-march\",\"animationDuration\":\"4s\",\"iterationCount\":\"infinite\",\"playState\":\"running\",\"currentTime\":16.64299994967955,\"afterTime\":116.6429999496792},{\"kind\":\"graph-b\",\"state\":\"running\",\"runningClass\":true,\"animationName\":\"igb-c0\",\"animationDuration\":\"4.4s\",\"iterationCount\":\"infinite\",\"playState\":\"running\",\"currentTime\":150.0429999496795,\"afterTime\":249.9429999496794}]"
+    },
+    {
+      "name": "en inline motion page control pauses every inline family at a complete final state",
+      "status": "passed",
+      "detail": "{\"pressed\":null,\"label\":\"Resume animation\",\"glyph\":\"▶\",\"hidden\":false,\"disabled\":false,\"states\":[\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\"],\"landometerPlaying\":0,\"identityPlaying\":false,\"identityLoop\":false,\"identityAtFinal\":true,\"ijjiRunning\":0,\"ijjiFinal\":2,\"ijjiAnimationNames\":[\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\"]}"
+    },
+    {
+      "name": "en inline motion page control resumes the eligible in-view animation",
+      "status": "passed",
+      "detail": "{\"pressed\":null,\"label\":\"Pause animation\",\"glyph\":\"Ⅱ\",\"hidden\":false,\"disabled\":false}"
+    },
+    {
+      "name": "en inline motion offscreen gating stops both ijji examples at stable final frames",
+      "status": "passed",
+      "detail": "{\"states\":[\"final\",\"final\"],\"running\":0,\"final\":2}"
+    },
+    {
+      "name": "en inline motion visibility lifecycle stops all inline work and restarts only the in-view stage",
+      "status": "passed",
+      "detail": "{\"hiddenRunning\":0,\"visibleRunning\":true}"
+    },
+    {
+      "name": "en inline motion pagehide/pageshow lifecycle restores only eligible inline motion",
+      "status": "passed",
+      "detail": "{\"pagehideRunning\":0,\"pageshowRunning\":true}"
+    },
+    {
+      "name": "en inline motion live reduced-motion changes finish every family and restart only when allowed",
+      "status": "passed",
+      "detail": "{\"reduced\":{\"states\":[\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\"],\"landometerPlaying\":0,\"identityPlaying\":false,\"identityLoop\":false,\"identityAtFinal\":true,\"ijjiRunning\":0,\"ijjiAnimationNames\":[\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\"],\"motionToggle\":{\"hidden\":true,\"disabled\":true,\"pressed\":null}},\"restored\":{\"running\":true,\"motionToggle\":{\"hidden\":false,\"disabled\":false,\"pressed\":null}}}"
+    },
+    {
+      "name": "th initial reduced-motion render exposes complete static inline states",
+      "status": "passed",
+      "detail": "{\"targetCount\":9,\"states\":[\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\"],\"landometerPlaying\":0,\"identityPlaying\":false,\"identityLoop\":false,\"identityAtFinal\":true,\"ijjiAnimationNames\":[\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\"],\"containment\":[{\"fullBleedIdentity\":false,\"width\":251.78305053710938,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":238,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":true,\"width\":320,\"stageOverflow\":0,\"withinContainer\":false,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":202,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":224,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":224,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":130.515625,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":70,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":88,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true}],\"pageOverflow\":0,\"identitySizing\":{\"stageWidth\":320,\"deliveredWidth\":320,\"availableWidth\":320,\"maximumAllowedWidth\":320},\"motionToggle\":{\"hidden\":true,\"disabled\":true,\"pressed\":null}}"
+    },
+    {
+      "name": "th mobile inline stages stay within their cards and viewport at 320px",
+      "status": "passed",
+      "detail": "{\"overflow\":0,\"containment\":[{\"fullBleedIdentity\":false,\"width\":251.78305053710938,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":238,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":true,\"width\":320,\"stageOverflow\":0,\"withinContainer\":false,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":202,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":224,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":224,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":130.515625,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":70,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":88,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true}]}"
+    },
+    {
+      "name": "th mobile Choose card gives the full ijji identity the maximum available width up to its 320 px cap",
+      "status": "passed",
+      "detail": "{\"stageWidth\":320,\"deliveredWidth\":320,\"availableWidth\":320,\"maximumAllowedWidth\":320}"
+    },
+    {
+      "name": "th inline motion can start after an initial reduced-motion preference is removed",
+      "status": "passed"
+    },
+    {
+      "name": "th print rendering swaps all inline and hero motion for exact static fallbacks",
+      "status": "passed",
+      "detail": "{\"stageCount\":9,\"fallbackCount\":9,\"fallbacksReady\":true,\"generatedCount\":9,\"generatedHidden\":true}"
+    },
+    {
+      "name": "en initial reduced-motion render exposes complete static inline states",
+      "status": "passed",
+      "detail": "{\"targetCount\":9,\"states\":[\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\",\"final\"],\"landometerPlaying\":0,\"identityPlaying\":false,\"identityLoop\":false,\"identityAtFinal\":true,\"ijjiAnimationNames\":[\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\",\"none\"],\"containment\":[{\"fullBleedIdentity\":false,\"width\":321.74041748046875,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":308,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":true,\"width\":320,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":272,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":238,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":238,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":138,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":70,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":88,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true}],\"pageOverflow\":0,\"identitySizing\":{\"stageWidth\":320,\"deliveredWidth\":320,\"availableWidth\":320,\"maximumAllowedWidth\":320},\"motionToggle\":{\"hidden\":true,\"disabled\":true,\"pressed\":null}}"
+    },
+    {
+      "name": "en mobile inline stages stay within their cards and viewport at 390px",
+      "status": "passed",
+      "detail": "{\"overflow\":0,\"containment\":[{\"fullBleedIdentity\":false,\"width\":321.74041748046875,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":308,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":true,\"width\":320,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":272,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":238,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":238,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":138,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":70,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true},{\"fullBleedIdentity\":false,\"width\":88,\"stageOverflow\":0,\"withinContainer\":true,\"withinViewport\":true}]}"
+    },
+    {
+      "name": "en mobile Choose card gives the full ijji identity the maximum available width up to its 320 px cap",
+      "status": "passed",
+      "detail": "{\"stageWidth\":320,\"deliveredWidth\":320,\"availableWidth\":320,\"maximumAllowedWidth\":320}"
+    },
+    {
+      "name": "en inline motion can start after an initial reduced-motion preference is removed",
+      "status": "passed"
+    },
+    {
+      "name": "en print rendering swaps all inline and hero motion for exact static fallbacks",
+      "status": "passed",
+      "detail": "{\"stageCount\":9,\"fallbackCount\":9,\"fallbacksReady\":true,\"generatedCount\":9,\"generatedHidden\":true}"
+    },
+    {
       "name": "Keyboard focus starts on skip link",
       "status": "passed"
     },
@@ -1930,37 +2275,42 @@
     {
       "name": "ijji full+tagline preview loads the exact runtime once and immediately plays with the supplied attributes",
       "status": "passed",
-      "detail": "{\"count\":1,\"runtimeScripts\":[\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0\"],\"defined\":true,\"manual\":true,\"loop\":true,\"notagline\":false,\"surface\":\"brand-blue\",\"bounce\":\"playful\",\"assets\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/\",\"duration\":9,\"currentTime\":0.015600000023841858,\"playing\":true,\"viewBox\":\"556 433.1 890.7 1086.9\",\"ariaLabel\":\"ijji — Your business buddy around the corner\",\"rectFill\":\"#1D4497\",\"circles\":4,\"images\":[\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/i-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/jj.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/i-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-3.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-3.png\"],\"fallback\":{\"src\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\",\"alt\":\"ijji — Your business buddy around the corner\",\"complete\":true,\"naturalWidth\":891}}"
+      "detail": "{\"count\":1,\"runtimeScripts\":[\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.1\"],\"defined\":true,\"manual\":true,\"loop\":true,\"notagline\":false,\"surface\":\"brand-blue\",\"bounce\":\"playful\",\"assets\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/\",\"duration\":9,\"currentTime\":0.010200000023842222,\"playing\":true,\"viewBox\":\"556 433.1 890.7 1086.9\",\"ariaLabel\":\"ijji — Your business buddy around the corner\",\"rectFill\":\"#1D4497\",\"circles\":4,\"images\":[\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/i-1.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/jj.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/i-2.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-1-1.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-1-2.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-1-3.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-2-1.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-2-2.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-2-3.png\"],\"fallback\":{\"src\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\",\"alt\":\"ijji — Your business buddy around the corner\",\"complete\":true,\"naturalWidth\":891}}"
     },
     {
       "name": "ijji full+tagline audience frame uses the source viewBox, Brand Blue surface, four heads, and all nine authored image layers",
       "status": "passed",
-      "detail": "{\"viewBox\":\"556 433.1 890.7 1086.9\",\"ariaLabel\":\"ijji — Your business buddy around the corner\",\"rectFill\":\"#1D4497\",\"circles\":4,\"images\":[\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/i-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/jj.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/i-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-1-3.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-1.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-2.png\",\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/tag-2-3.png\"]}"
+      "detail": "{\"viewBox\":\"556 433.1 890.7 1086.9\",\"ariaLabel\":\"ijji — Your business buddy around the corner\",\"rectFill\":\"#1D4497\",\"circles\":4,\"images\":[\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/i-1.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/jj.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/i-2.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-1-1.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-1-2.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-1-3.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-2-1.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-2-2.png\",\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/tag-2-3.png\"]}"
     },
     {
       "name": "ijji full+tagline component carries the exact accessible final-frame fallback",
       "status": "passed",
-      "detail": "{\"src\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\",\"alt\":\"ijji — Your business buddy around the corner\",\"complete\":true,\"naturalWidth\":891}"
+      "detail": "{\"src\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\",\"alt\":\"ijji — Your business buddy around the corner\",\"complete\":true,\"naturalWidth\":891}"
     },
     {
       "name": "ijji full+tagline preview auto-replays 400 ms after the authored 9-second final frame",
       "status": "passed",
-      "detail": "{\"starts\":2,\"ends\":1,\"currentTime\":0.21390000000000145,\"playing\":true,\"loop\":true}"
+      "detail": "{\"starts\":2,\"ends\":1,\"currentTime\":0.21339999997615813,\"playing\":true,\"loop\":true,\"automaticAnnouncements\":0,\"visualStatusLive\":\"off\",\"announcerLive\":\"polite\"}"
+    },
+    {
+      "name": "ijji dialog remount blocks a stale 400 ms callback from duplicating pause-to-resume playback",
+      "status": "passed",
+      "detail": "{\"starts\":2,\"ends\":1,\"mounts\":3,\"resumeDelayMs\":72.19999992847443,\"activeWasRemounted\":true,\"activeCount\":1,\"activePlaying\":true,\"activeLoop\":true,\"activeCurrentTime\":0.5593000000476841}"
     },
     {
       "name": "Pausing ijji full+tagline removes the loop and lands on the complete authored final logo",
       "status": "passed",
-      "detail": "{\"currentTime\":9,\"duration\":9,\"playing\":false,\"loop\":false,\"pieceOpacity\":[\"1\",\"1\",\"1\"],\"wordOpacity\":[\"1\",\"1\",\"1\",\"1\",\"1\",\"1\"],\"cancelDisabled\":true,\"status\":\"หยุด auto replay แล้ว · แสดงโลโก้ที่ประกอบครบ\"}"
+      "detail": "{\"currentTime\":9,\"duration\":9,\"playing\":false,\"loop\":false,\"pieceOpacity\":[\"1\",\"1\",\"1\"],\"wordOpacity\":[\"1\",\"1\",\"1\",\"1\",\"1\",\"1\"],\"cancelDisabled\":true,\"status\":\"หยุด auto replay แล้ว · แสดงโลโก้ที่ประกอบครบ\",\"announcement\":\"หยุด auto replay แล้ว · แสดงโลโก้ที่ประกอบครบ\"}"
     },
     {
       "name": "ijji mark-only preview reuses the single runtime and immediately plays the compact supplied sequence",
       "status": "passed",
-      "detail": "{\"runtimeScriptCount\":1,\"manual\":true,\"loop\":true,\"notagline\":true,\"surface\":null,\"bounce\":\"extra\",\"assets\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/\",\"duration\":6.4,\"currentTime\":0.015600000047685171,\"playing\":true,\"viewBox\":\"598 433.1 848.7 839.9\",\"ariaLabel\":\"ijji\",\"rectFill\":\"none\",\"circles\":4,\"hiddenWords\":6,\"fallback\":{\"src\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\",\"alt\":\"ijji\",\"complete\":true,\"naturalWidth\":849}}"
+      "detail": "{\"runtimeScriptCount\":1,\"manual\":true,\"loop\":true,\"notagline\":true,\"surface\":null,\"bounce\":\"extra\",\"assets\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/\",\"duration\":6.4,\"currentTime\":0.011,\"playing\":true,\"viewBox\":\"598 433.1 848.7 839.9\",\"ariaLabel\":\"ijji\",\"rectFill\":\"none\",\"circles\":4,\"hiddenWords\":6,\"fallback\":{\"src\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\",\"alt\":\"ijji\",\"complete\":true,\"naturalWidth\":849}}"
     },
     {
       "name": "ijji mark-only audience frame uses the compact source viewBox, hides all tagline layers, and carries its final fallback",
       "status": "passed",
-      "detail": "{\"runtimeScriptCount\":1,\"manual\":true,\"loop\":true,\"notagline\":true,\"surface\":null,\"bounce\":\"extra\",\"assets\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/\",\"duration\":6.4,\"currentTime\":0.015600000047685171,\"playing\":true,\"viewBox\":\"598 433.1 848.7 839.9\",\"ariaLabel\":\"ijji\",\"rectFill\":\"none\",\"circles\":4,\"hiddenWords\":6,\"fallback\":{\"src\":\"http://127.0.0.1:61842/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\",\"alt\":\"ijji\",\"complete\":true,\"naturalWidth\":849}}"
+      "detail": "{\"runtimeScriptCount\":1,\"manual\":true,\"loop\":true,\"notagline\":true,\"surface\":null,\"bounce\":\"extra\",\"assets\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/\",\"duration\":6.4,\"currentTime\":0.011,\"playing\":true,\"viewBox\":\"598 433.1 848.7 839.9\",\"ariaLabel\":\"ijji\",\"rectFill\":\"none\",\"circles\":4,\"hiddenWords\":6,\"fallback\":{\"src\":\"http://127.0.0.1:64197/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\",\"alt\":\"ijji\",\"complete\":true,\"naturalWidth\":849}}"
     },
     {
       "name": "Pausing ijji mark-only removes the loop and lands on the complete authored mark",
@@ -1974,17 +2324,17 @@
     {
       "name": "Logo copy-code action preserves the authored v3 blue-ink contract without a legacy wedge override",
       "status": "passed",
-      "detail": "<link rel=\"stylesheet\" href=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.2.0\">\n<script src=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.2.0\" defer></script>\n<lm-motif kind=\"logo\" ink=\"blue\"></lm-motif>"
+      "detail": "<link rel=\"stylesheet\" href=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.css?v=1.2.1\">\n<script src=\"https://montri-th.github.io/motif/assets/landometer/landometer-motifs.js?v=1.2.1\" defer></script>\n<lm-motif kind=\"logo\" ink=\"blue\"></lm-motif>"
     },
     {
       "name": "ijji full+tagline copy snippet preserves exact source settings and finite-once production playback",
       "status": "passed",
-      "detail": "<script src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0\" defer></script>\n<ijji-logo-sting surface=\"brand-blue\" bounce=\"playful\" assets=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/\">\n  <img src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\" alt=\"ijji — Your business buddy around the corner\">\n</ijji-logo-sting>"
+      "detail": "<script src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.1\" defer></script>\n<ijji-logo-sting surface=\"brand-blue\" bounce=\"playful\" assets=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/\">\n  <img src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/ijji-logo-still.png\" alt=\"ijji — Your business buddy around the corner\">\n</ijji-logo-sting>"
     },
     {
       "name": "ijji mark-only copy snippet preserves exact compact settings and finite-once production playback",
       "status": "passed",
-      "detail": "<script src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.0\" defer></script>\n<ijji-logo-sting notagline bounce=\"extra\" assets=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/\">\n  <img src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\" alt=\"ijji\">\n</ijji-logo-sting>"
+      "detail": "<script src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/ijji-logo-sting.js?v=1.2.1\" defer></script>\n<ijji-logo-sting notagline bounce=\"extra\" assets=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/\">\n  <img src=\"https://montri-th.github.io/motif/assets/ijji/logo-sting/layers/ijji-mark-still.png\" alt=\"ijji\">\n</ijji-logo-sting>"
     },
     {
       "name": "PNG export keeps deterministic filename",
@@ -1999,7 +2349,7 @@
     {
       "name": "390x844 dark-mode logo preview reaches the complete held final state",
       "status": "passed",
-      "detail": "{\"theme\":\"dark\",\"status\":\"ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป\",\"playingCount\":0,\"fullInk\":\"blue\",\"fullInlineWedgeProperty\":\"\",\"fullWedgeProperty\":\"color-mix(in lch, #59D2FE 48%, #1D4497)\",\"fullPathCount\":10,\"quietPathCount\":14,\"pin\":[29,68,151,255],\"innerStrokes\":[[210,86,106,255],[210,164,55,255],[14,185,155,255],[77,182,233,255]],\"wedge\":[31,135,206,255],\"quietInk\":[89,210,254,255],\"raw\":{\"pin\":\"rgb(29, 68, 151)\",\"innerStrokes\":[\"color(srgb 0.822745 0.335686 0.416471)\",\"color(srgb 0.822745 0.643137 0.215686)\",\"color(srgb 0.0541176 0.724706 0.607843)\",\"color(srgb 0.301961 0.712157 0.915294)\"],\"wedge\":\"lch(53.4545 46.5873 258.5)\",\"quietInk\":\"rgb(89, 210, 254)\"}}"
+      "detail": "{\"theme\":\"dark\",\"status\":\"ประกอบครบแล้ว · ค้างท่าสุดท้ายก่อนวนรอบถัดไป\",\"playingCount\":0,\"fullInk\":\"blue\",\"fullInlineWedgeProperty\":\"\",\"fullWedgeProperty\":\"color-mix(in lch, #59D2FE 48%, #1D4497)\",\"fullPathCount\":10,\"quietPathCount\":14,\"pin\":[29,68,151,255],\"innerStrokes\":[[210,86,106,255],[210,164,55,255],[14,185,155,255],[77,182,233,255]],\"outerStrokes\":[[255,90,95,255],[255,188,31,255],[10,214,156,255],[89,210,254,255]],\"wedge\":[31,135,206,255],\"quietInk\":[89,210,254,255],\"inlineFallback\":{\"src\":\"http://127.0.0.1:64197/motif/assets/landometer/svg/logo-full.svg?v=1.2.1\",\"path\":\"/motif/assets/landometer/svg/logo-full.svg\",\"complete\":true,\"naturalWidth\":300,\"staticPathCount\":10,\"staticPalette\":[\"#0AD69C\",\"#0EB99B\",\"#1D4497\",\"#1F87CE\",\"#4DB6E9\",\"#59D2FE\",\"#D2566A\",\"#D2A437\",\"#FF5A5F\",\"#FFBC1F\"],\"enhancedInk\":\"blue\",\"enhancedPathCount\":10},\"raw\":{\"pin\":\"rgb(29, 68, 151)\",\"innerStrokes\":[\"color(srgb 0.822745 0.335686 0.416471)\",\"color(srgb 0.822745 0.643137 0.215686)\",\"color(srgb 0.0541176 0.724706 0.607843)\",\"color(srgb 0.301961 0.712157 0.915294)\"],\"outerStrokes\":[\"rgb(255, 90, 95)\",\"rgb(255, 188, 31)\",\"rgb(10, 214, 156)\",\"rgb(89, 210, 254)\"],\"wedge\":\"lch(53.4545 46.5873 258.5)\",\"quietInk\":\"rgb(89, 210, 254)\"}}"
     },
     {
       "name": "390x844 dark-mode full logo uses v3 blue ink and the authored derived wedge without a legacy override",
@@ -2027,9 +2377,19 @@
       "detail": "{\"rgba\":[[210,86,106,255],[210,164,55,255],[14,185,155,255],[77,182,233,255]],\"raw\":[\"color(srgb 0.822745 0.335686 0.416471)\",\"color(srgb 0.822745 0.643137 0.215686)\",\"color(srgb 0.0541176 0.724706 0.607843)\",\"color(srgb 0.301961 0.712157 0.915294)\"]}"
     },
     {
+      "name": "390x844 dark-mode full logo outer strokes compute to the four approved energy colors",
+      "status": "passed",
+      "detail": "{\"rgba\":[[255,90,95,255],[255,188,31,255],[10,214,156,255],[89,210,254,255]],\"raw\":[\"rgb(255, 90, 95)\",\"rgb(255, 188, 31)\",\"rgb(10, 214, 156)\",\"rgb(89, 210, 254)\"]}"
+    },
+    {
       "name": "390x844 dark-mode quiet logo remains Energy Sky rgb(89, 210, 254)",
       "status": "passed",
       "detail": "{\"rgba\":[89,210,254,255],\"raw\":\"rgb(89, 210, 254)\"}"
+    },
+    {
+      "name": "390x844 dark-mode Choose card keeps exact full-logo fallback and enhanced palette/path parity",
+      "status": "passed",
+      "detail": "{\"src\":\"http://127.0.0.1:64197/motif/assets/landometer/svg/logo-full.svg?v=1.2.1\",\"path\":\"/motif/assets/landometer/svg/logo-full.svg\",\"complete\":true,\"naturalWidth\":300,\"staticPathCount\":10,\"staticPalette\":[\"#0AD69C\",\"#0EB99B\",\"#1D4497\",\"#1F87CE\",\"#4DB6E9\",\"#59D2FE\",\"#D2566A\",\"#D2A437\",\"#FF5A5F\",\"#FFBC1F\"],\"enhancedInk\":\"blue\",\"enhancedPathCount\":10}"
     },
     {
       "name": "A stale delayed ijji import cannot overwrite a newer paired Landometer preview",
@@ -2052,6 +2412,11 @@
       "detail": "{\"pagehidePlayingCount\":0,\"pageshowPlayingCount\":2}"
     },
     {
+      "name": "Document visibility stops a state-bound ijji preview and does not restart work after its simulated state ended",
+      "status": "passed",
+      "detail": "{\"hiddenIjjiState\":{\"movingMotifs\":0,\"finalFallbacks\":1,\"status\":\"หยุดตัวอย่างแล้ว\"},\"restoredIjjiStateMotion\":0}"
+    },
+    {
       "name": "th paired modal 320x800 has no horizontal overflow",
       "status": "passed",
       "detail": "{\"open\":true,\"motifCount\":2,\"quietCount\":1,\"overflows\":[{\"className\":\"preview-dialog\",\"delta\":0},{\"className\":\"dialog-body\",\"delta\":0},{\"className\":\"dialog-stage\",\"delta\":0},{\"className\":\"dialog-motif-pair\",\"delta\":0}],\"withinViewport\":true,\"pageOverflow\":0}"
@@ -2062,14 +2427,19 @@
       "detail": "{\"open\":true,\"motifCount\":2,\"quietCount\":1,\"overflows\":[{\"className\":\"preview-dialog\",\"delta\":0},{\"className\":\"dialog-body\",\"delta\":0},{\"className\":\"dialog-stage\",\"delta\":0},{\"className\":\"dialog-motif-pair\",\"delta\":0}],\"withinViewport\":true,\"pageOverflow\":0}"
     },
     {
-      "name": "ijji tagline preview at 320px preserves its audience width, fallback, and horizontal containment",
+      "name": "ijji tagline preview at 900px preserves its minimum audience width, fallback, and horizontal containment",
       "status": "passed",
-      "detail": "{\"open\":true,\"dialogWithinViewport\":true,\"logoWidth\":320,\"pageOverflow\":0,\"overflows\":[{\"name\":\"preview-dialog\",\"delta\":0},{\"name\":\"div\",\"delta\":0},{\"name\":\"preview-stage\",\"delta\":0},{\"name\":\"ijji-logo-sting\",\"delta\":0}],\"fallbackLoaded\":true}"
+      "detail": "{\"open\":true,\"dialogWithinViewport\":true,\"logoWidth\":560,\"availableWidth\":680,\"pageOverflow\":0,\"overflows\":[{\"name\":\"preview-dialog\",\"delta\":0},{\"name\":\"div\",\"delta\":0},{\"name\":\"preview-stage\",\"delta\":0},{\"name\":\"ijji-logo-sting\",\"delta\":0}],\"fallbackLoaded\":true,\"widthPolicy\":\"minimum\",\"minimumWidth\":320}"
     },
     {
-      "name": "ijji mark preview at 360px preserves its audience width, fallback, and horizontal containment",
+      "name": "ijji tagline preview at 320px preserves its maximum available width, fallback, and horizontal containment",
       "status": "passed",
-      "detail": "{\"open\":true,\"dialogWithinViewport\":true,\"logoWidth\":296,\"pageOverflow\":0,\"overflows\":[{\"name\":\"preview-dialog\",\"delta\":0},{\"name\":\"div\",\"delta\":0},{\"name\":\"preview-stage\",\"delta\":0},{\"name\":\"ijji-logo-sting\",\"delta\":0}],\"fallbackLoaded\":true}"
+      "detail": "{\"open\":true,\"dialogWithinViewport\":true,\"logoWidth\":320,\"availableWidth\":320,\"pageOverflow\":0,\"overflows\":[{\"name\":\"preview-dialog\",\"delta\":0},{\"name\":\"div\",\"delta\":0},{\"name\":\"preview-stage\",\"delta\":0},{\"name\":\"ijji-logo-sting\",\"delta\":0}],\"fallbackLoaded\":true,\"widthPolicy\":\"available\",\"minimumWidth\":320}"
+    },
+    {
+      "name": "ijji mark preview at 360px preserves its minimum audience width, fallback, and horizontal containment",
+      "status": "passed",
+      "detail": "{\"open\":true,\"dialogWithinViewport\":true,\"logoWidth\":296,\"availableWidth\":296,\"pageOverflow\":0,\"overflows\":[{\"name\":\"preview-dialog\",\"delta\":0},{\"name\":\"div\",\"delta\":0},{\"name\":\"preview-stage\",\"delta\":0},{\"name\":\"ijji-logo-sting\",\"delta\":0}],\"fallbackLoaded\":true,\"widthPolicy\":\"minimum\",\"minimumWidth\":160}"
     },
     {
       "name": "ijji preview stops automatically at state timeout",
@@ -2100,12 +2470,22 @@
       "detail": "{\"currentTime\":6.4,\"duration\":6.4,\"playing\":false,\"loop\":false,\"pieceOpacity\":[\"1\",\"1\",\"1\"],\"wordOpacity\":[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\"],\"hiddenWords\":6,\"replayHidden\":true,\"pauseHidden\":true,\"status\":\"แสดงโลโก้ที่ประกอบครบ · ปิด animation ตามการตั้งค่า reduced motion\"}"
     },
     {
-      "name": "No-JS baseline keeps learning content and direct downloads without dead enhancement controls",
+      "name": "th no-JS baseline keeps all static learning, inline fallback, and download contracts without dead controls",
       "status": "passed",
-      "detail": "{\"h1\":1,\"cards\":11,\"downloads\":23,\"hero\":true,\"overflow\":0,\"visibleEnhancedControls\":0,\"notice\":true,\"noticeBackground\":\"rgb(255, 241, 209)\",\"noticeColor\":\"rgb(166, 74, 0)\"}"
+      "detail": "{\"h1\":1,\"cards\":11,\"downloads\":23,\"hero\":true,\"targetCount\":9,\"fallbackCount\":9,\"fallbackReady\":true,\"generatedCount\":0,\"overflow\":0,\"visibleEnhancedControls\":0,\"notice\":true,\"noticeBackground\":\"rgb(255, 241, 209)\",\"noticeColor\":\"rgb(166, 74, 0)\"}"
     },
     {
-      "name": "No-JS mobile baseline has no horizontal overflow",
+      "name": "th no-JS mobile baseline has no horizontal overflow",
+      "status": "passed",
+      "detail": "0"
+    },
+    {
+      "name": "en no-JS baseline keeps all static learning, inline fallback, and download contracts without dead controls",
+      "status": "passed",
+      "detail": "{\"h1\":1,\"cards\":11,\"downloads\":23,\"hero\":true,\"targetCount\":9,\"fallbackCount\":9,\"fallbackReady\":true,\"generatedCount\":0,\"overflow\":0,\"visibleEnhancedControls\":0,\"notice\":true,\"noticeBackground\":\"rgb(255, 241, 209)\",\"noticeColor\":\"rgb(166, 74, 0)\"}"
+    },
+    {
+      "name": "en no-JS mobile baseline has no horizontal overflow",
       "status": "passed",
       "detail": "0"
     },
