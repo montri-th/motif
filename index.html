@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Landometer Motif Library — เลือก ใช้ และส่งต่อ Brand Motif</title>
-  <meta name="description" content="คู่มือและคลัง asset สำหรับใช้ Landometer และ ijji brand motif บนเว็บ วิดีโอ โซเชียล สไลด์ และงานของ AI/agents พร้อมไฟล์ ตัวอย่าง และขอบเขตการใช้งาน">
+  <title>Landometer Motif Studio — เลือก ใช้ และส่งต่อ Brand Motif</title>
+  <meta name="description" content="คู่มือและคลัง asset สำหรับใช้ Landometer, ijji และ CityChat brand motif บนเว็บ วิดีโอ โซเชียล สไลด์ และงานของ AI/agents พร้อมไฟล์ ตัวอย่าง และขอบเขตการใช้งาน">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://montri-th.github.io/motif/">
   <link rel="alternate" hreflang="th" href="https://montri-th.github.io/motif/">
@@ -31,11 +31,11 @@
       document.documentElement.dataset.theme = savedTheme || (dark ? "dark" : "light");
     } catch (_) {}
   </script>
-  <link rel="stylesheet" href="site.css?v=1.2.1">
+  <link rel="stylesheet" href="site.css?v=1.3.0">
   <link rel="stylesheet" href="assets/landometer/landometer-motifs.css?v=1.2.1">
   <link rel="stylesheet" href="assets/ijji/ijji-motion.css">
   <script src="assets/landometer/landometer-motifs.js?v=1.2.1" defer></script>
-  <script src="site.js?v=1.2.1" defer></script>
+  <script src="site.js?v=1.3.0" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,12 +44,18 @@
     "url": "https://montri-th.github.io/motif/",
     "inLanguage": ["th", "en"],
     "isAccessibleForFree": true,
-    "description": "A governed learning guide and asset library for Landometer shared motifs and ijji product-specific motifs.",
+    "description": "An interactive motif studio for Landometer, ijji and CityChat with previews, carrier comparisons and original asset downloads.",
     "creator": { "@type": "Organization", "name": "Landometer" },
-    "version": "1.2.1",
-    "dateModified": "2026-09-06"
+    "version": "1.3.0",
+    "dateModified": "2026-09-11"
   }
   </script>
+  <link rel="stylesheet" href="studio.css?v=1.3.0">
+  <script src="studio.js?v=1.3.0" defer></script>
+<link rel="stylesheet" href="citychat.css?v=1.3.0">
+<script src="citychat.js?v=1.3.0" defer></script>
+<link rel="stylesheet" href="contrast-lab.css?v=1.3.0">
+<script src="contrast-lab.js?v=1.3.0" defer></script>
 </head>
 <body data-base="." data-locale="th">
   <a class="skip-link" href="#main">ข้ามไปเนื้อหาหลัก</a>
@@ -57,30 +63,17 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="identity" href="#top" aria-label="Landometer Motif Library หน้าแรก">
-        <strong>Landometer</strong>
+        <img class="nav-symbol" src="assets/identity/landometer-favicon-64-v1.png" width="32" height="32" alt=""><strong>Landometer</strong>
         <span>Motif Library</span>
       </a>
-      <nav class="desktop-nav" aria-label="เมนูหลัก">
-        <a href="#choose">เลือกให้ถูก</a>
-        <a href="#examples">ดูตัวอย่าง</a>
-        <a href="#library">คลัง Asset</a>
-        <a href="#workflows">วิธีใช้</a>
-        <a href="#verify">เช็กก่อนส่ง</a>
-      </nav>
+      <nav class="desktop-nav" aria-label="เมนูหลัก"><a href="#playground">ลองเลือกตามงาน</a><a href="#library">คลังไฟล์</a><a href="#contrast-lab">ทดลองพื้นสี</a><a href="#downloads">นำไปใช้</a></nav>
       <div class="header-actions">
         <a class="language-link" href="en/" lang="en" hreflang="en" aria-label="Read in English">EN</a>
         <button class="icon-button" type="button" data-motion-toggle aria-label="หยุด animation" title="หยุด animation">Ⅱ</button>
         <button class="icon-button" type="button" data-theme-toggle aria-label="เปลี่ยนธีมสี" title="เปลี่ยนธีมสี">◐</button>
         <details class="mobile-nav">
           <summary aria-label="เปิดเมนู">☰</summary>
-          <nav class="mobile-nav-panel" aria-label="เมนูมือถือ">
-            <a href="#choose">เลือกให้ถูก</a>
-            <a href="#examples">ดูตัวอย่าง</a>
-            <a href="#library">คลัง Asset</a>
-            <a href="#workflows">วิธีใช้</a>
-            <a href="#verify">เช็กก่อนส่ง</a>
-            <a href="#source">ที่มาและเวอร์ชัน</a>
-          </nav>
+          <nav class="mobile-nav-panel" aria-label="เมนูมือถือ"><a href="#playground">ลองเลือกตามงาน</a><a href="#library">คลังไฟล์</a><a href="#contrast-lab">ทดลองพื้นสี</a><a href="#downloads">นำไปใช้</a></nav>
         </details>
       </div>
     </div>
@@ -92,13 +85,13 @@
     <section class="hero" id="top">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Brand motif · manual + AI-ready</p>
-          <h1>เห็นบทบาท เลือกให้ถูก ใช้ได้ทันที</h1>
-          <p class="hero-lede">ที่เดียวสำหรับเรียนรู้ ทดลอง ดาวน์โหลด และส่งต่อ Landometer กับ ijji motif ให้ทีม dev, designer, product และ sales ใช้ภาษาภาพเดียวกัน—โดยไม่ทำให้ลายกลายเป็นโลโก้ ข้อมูล หรือคำกล่าวอ้าง</p>
+          <p class="eyebrow">THE MOTIF STUDIO · EXPLORE / PLAY / CREATE</p>
+          <h1>ให้ภาพเล่าเรื่อง<br><em>ชวนคนลงมือ</em></h1>
+          <p class="hero-lede">เติมจังหวะให้เรื่องที่คุณอยากเล่า ลองเล่นกับ Landometer, ijji และ CityChat แล้วหยิบลายที่ใช่ไปใช้ในงานต่อได้เลย</p>
           <div class="cluster">
-            <a class="button button-primary" href="#library">เลือก Asset</a>
-            <button class="button" type="button" data-copy-template="#agent-prompt">คัดลอก Agent Brief</button>
-            <a class="button button-ghost" href="assets/downloads/motif-library-v1.2.1.zip" download>ดาวน์โหลดทั้งชุด</a>
+            <a class="button button-primary" href="#playground">มาลองกัน →</a>
+            <button class="button" type="button" data-copy-template="#studio-brief">คัดลอก Agent Brief</button>
+            <a class="button button-ghost" href="#downloads">เลือกชุดดาวน์โหลด</a>
           </div>
         </div>
         <div class="hero-visual" aria-label="ตัวอย่าง Landometer dial motif ที่เล่นซ้ำอัตโนมัติ">
@@ -107,8 +100,8 @@
               <img src="assets/landometer/svg/dial-full.svg" alt="Dial motif: หน้าปัดสี่จังหวะของ Landometer">
             </div>
             <div class="hero-note">
-              <strong>Motif ช่วยจัดจังหวะ</strong>
-              <span>ไม่ใช่ข้อมูล · ไม่ใช่โลโก้</span>
+              <strong>เรื่องเดียวกัน เล่าได้หลายจังหวะ</strong>
+              <span>เริ่มจากสิ่งที่อยากให้คนทำต่อ</span>
             </div>
           </div>
         </div>
@@ -116,14 +109,18 @@
     </section>
 
     <section class="trust-strip" aria-label="สถานะของคลัง">
-      <div class="wrap trust-grid">
-        <div class="trust-item"><b>Owner-approved</b><span>เจ้าของอนุมัติไฟล์และการเผยแพร่</span></div>
-        <div class="trust-item"><b>Exact bytes</b><span>มี path, version และ SHA-256 ตรวจย้อนหลัง</span></div>
-        <div class="trust-item"><b>Two clear layers</b><span>Landometer shared · ijji product-specific</span></div>
-        <div class="trust-item"><b>Motion on</b><span>เล่นซ้ำอัตโนมัติบนเว็บ พร้อม final fallback ที่ครบถ้วน</span></div>
-      </div>
-    </section>
+      <div class="wrap trust-grid"><div class="trust-item"><b>3 creative voices</b><span>Landometer · ijji · CityChat</span></div><div class="trust-item"><b>Try it first</b><span>เลือกงาน เล่น motion ทดลองพื้นสี</span></div><div class="trust-item"><b>Make it yours</b><span>SVG · PNG · code · team brief</span></div><div class="trust-item"><b>One shared studio</b><span>เรียนรู้ ทดลอง และส่งต่อในที่เดียว</span></div></div></section>
 
+<section class="section playground" id="playground" aria-labelledby="playground-title">
+ <div class="wrap"><div class="section-head"><div><p class="eyebrow">01 / FIND YOUR RHYTHM</p><h2 id="playground-title">วันนี้ อยากให้ภาพช่วยอะไร?</h2></div><p class="subtle">เลือกสักงาน แล้วดูว่าลายกับข้อความช่วยกันเล่าเรื่องอย่างไร</p></div>
+ <div class="playground-grid"><div class="job-picker" role="group" aria-label="เลือกงานที่จะลอง">
+ <button type="button" class="job-choice" data-job="intro" aria-pressed="true"><span>01</span>เปิดเรื่องให้น่าติดตาม<span aria-hidden="true">↗</span></button><button type="button" class="job-choice" data-job="layers" aria-pressed="false"><span>02</span>เชื่อมหลายมุมมอง<span aria-hidden="true">↗</span></button><button type="button" class="job-choice" data-job="action" aria-pressed="false"><span>03</span>ชวนให้ก้าวต่อ<span aria-hidden="true">↗</span></button><button type="button" class="job-choice" data-job="welcome" aria-pressed="false"><span>04</span>CityChat · ชวนมาคุย<span aria-hidden="true">↗</span></button><button type="button" class="job-choice" data-job="place" aria-pressed="false"><span>05</span>CityChat · เสียงมีที่อยู่<span aria-hidden="true">↗</span></button><button type="button" class="job-choice" data-job="calculate" aria-pressed="false"><span>06</span>ijji · รอผลคำนวณ<span aria-hidden="true">↗</span></button>
+ </div><article class="idea-panel"><div class="idea-topline"><span class="badge" data-idea-family>Landometer · shared</span><span>ตัวอย่างแนวคิด</span></div>
+ <div class="idea-scene"><div><span class="eyebrow" data-scene-kicker>มองเรื่องเดิม ในมุมใหม่</span><h3 data-scene-title>ทุกพื้นที่ มีเรื่องให้ค้นพบ</h3><p data-scene-copy>เริ่มจากบริบท แล้วค่อย ๆ เปิดมุมมองไปด้วยกัน</p><span class="scene-next" data-scene-next>เริ่มสำรวจ →</span></div><img data-idea-image src="assets/landometer/svg/dial-full.svg" width="400" height="200" alt="Landometer Dial"></div>
+ <div class="idea-controls" role="group" aria-label="เปรียบเทียบการใช้ motif"><button type="button" data-idea-view="plain" aria-pressed="false">ข้อความอย่างเดียว</button><button type="button" data-idea-view="motif" aria-pressed="true">เติมจังหวะด้วย motif</button></div>
+ <div class="idea-result" aria-live="polite"><strong data-idea-name>Dial · เริ่มด้วยความอยากรู้</strong><p data-idea-why>จังหวะเปิดที่ช่วยพาสายตาไปยังเรื่องใหม่ ข้อความยังเป็นผู้บอกว่าเรากำลังสำรวจอะไร</p></div>
+ <div class="cluster"><a class="button button-primary" data-idea-link href="#landometer-dial">หยิบลายนี้ไปใช้ →</a><button class="button" type="button" data-idea-preview>ลองเล่น motion</button></div></article></div>
+ <p class="playground-footnote">สลับดูได้เลย — ข้อความและความหมายยังเหมือนเดิม ลายช่วยเน้นจังหวะ ไม่ได้เพิ่มข้อมูลหรือผลลัพธ์</p></div></section>
     <section class="section" aria-labelledby="role-title">
       <div class="wrap">
         <div class="section-head">
@@ -147,7 +144,7 @@
         <div class="section-head">
           <div>
             <p class="eyebrow">Choose the brand layer</p>
-            <h2 id="choose-title">แยกสองชั้นก่อนเลือกลาย</h2>
+            <h2 id="choose-title">สามเสียงที่มีบุคลิกต่างกัน</h2>
           </div>
           <p class="subtle">Locale Insight ในชั้น portfolio, methodology และ product architecture ต้องเป็นกลางต่อผลิตภัณฑ์ ครอบคลุม Land, Location และ Living ส่วนตัวอย่างของ ijji อยู่เฉพาะในขอบเขต ijji เท่านั้น</p>
         </div>
@@ -187,7 +184,7 @@
             </ul>
           </article>
         </div>
-        <div class="boundary-callout">
+<article class="citychat-intro"><img src="assets/citychat/assets/3a-voice-home-light.svg" width="240" height="160" alt="CityChat · เสียงบ้านเรา"><div><p class="eyebrow">CITYCHAT / A PLACE FOR EVERY VOICE</p><h3>จากเสียงหนึ่ง สู่เรื่องของเรา</h3><p>เสียงบ้านเรา · น่าอยู่ น่าเที่ยว น่าค้าขาย · เสียงเราอยู่ตรงนี้ เลือกภาพชวนคุยให้เข้ากับเรื่องของ CityChat</p><a class="text-link" href="#citychat">ลองชุด CityChat →</a></div></article>        <div class="boundary-callout">
           <p><strong>กติกาข้ามชั้น:</strong> motif ไม่ข้ามผลิตภัณฑ์โดยอัตโนมัติ การนำ ijji ไปใช้เป็นลายกลางต้องมี owner decision, revision และ asset record ใหม่ แม้ไฟล์จะดาวน์โหลดได้จากที่เดียวกัน</p>
         </div>
       </div>
@@ -203,7 +200,7 @@
           <p class="subtle">อย่าเริ่มจาก “ลายไหนสวย” ให้เริ่มจากเจ้าของลาย งานที่ลายต้องทำ ช่องทาง และเหตุผลที่ motion จำเป็น</p>
         </div>
         <div class="decision-flow" aria-label="ลำดับเลือก motif สี่ขั้น">
-          <article class="decision-step"><b>01 · LAYER</b><h3>ของใคร?</h3><p>Landometer shared หรือ ijji product-specific</p></article>
+          <article class="decision-step"><b>01 · LAYER</b><h3>ของใคร?</h3><p>Landometer shared, ijji หรือ CityChat</p></article>
           <article class="decision-step"><b>02 · JOB</b><h3>ช่วยอะไร?</h3><p>orientation, transition, closure หรือ real pending state</p></article>
           <article class="decision-step"><b>03 · FORMAT</b><h3>ส่งที่ไหน?</h3><p>web, deck, 1080 social, document/PDF หรือ owner extension</p></article>
           <article class="decision-step"><b>04 · MODE</b><h3>ขยับอย่างไร?</h3><p>หน้าเว็บนี้เล่นซ้ำอัตโนมัติ และคง final fallback ให้ทุกชิ้น</p></article>
@@ -286,63 +283,63 @@
       </div>
     </section>
 
-    <section class="section" id="workflows" aria-labelledby="workflow-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">One contract · two workflows</p>
-            <h2 id="workflow-title">ทำเองหรือให้ agent ทำ ก็เริ่มจากไฟล์จริงชุดเดียวกัน</h2>
-          </div>
-          <p class="subtle">Screenshot และความจำของโมเดลใช้ยืนยัน geometry ไม่ได้ ให้ส่ง asset ID, path, revision และ hash ไปพร้อมโจทย์ทุกครั้ง</p>
-        </div>
-        <div class="workflow-grid">
-          <article class="workflow-card">
-            <div class="badge-row"><span class="badge badge-approved">Manual</span></div>
-            <h3>ทีมลงมือเอง</h3>
-            <ol>
-              <li><span><strong>Frame</strong> — ระบุ brand layer, งาน และ channel</span></li>
-              <li><span><strong>Choose</strong> — เลือก ID, variant และ surface จาก manifest</span></li>
-              <li><span><strong>Place</strong> — resize ตามสัดส่วน ไม่ recolor, crop หรือ stretch</span></li>
-              <li><span><strong>Pair</strong> — ใส่ข้อความ, fallback และ accessibility ที่แบกความหมายจริง</span></li>
-              <li><span><strong>Verify</strong> — เช็ก hash, responsive, reduced motion และไฟล์ส่งจริง</span></li>
-              <li><span><strong>Ship</strong> — ส่งพร้อม source/version และข้อจำกัดของ format</span></li>
-            </ol>
-            <a class="button" href="docs/usage-guide.md">เปิดคู่มือฉบับไฟล์</a>
-          </article>
-          <article class="workflow-card">
-            <div class="badge-row"><span class="badge badge-overlay">AI &amp; Agents</span></div>
-            <h3>ส่งสัญญาให้ agent ก่อนส่งภาพ</h3>
-            <p class="subtle">พรอมป์ด้านล่างบังคับให้ agent เลือกจาก manifest ไม่ redraw, ไม่ข้าม product boundary และรายงานสิ่งที่ยังไม่ได้ตรวจ</p>
-            <div class="prompt-box">
-              <pre id="agent-prompt">ใช้ไฟล์จาก Landometer Motif Library manifest เท่านั้น
 
-งาน: [ระบุสิ่งที่จะสร้าง]
-familyId: [landometer.motif.v3 | ijji.logo-sting.r3 | ijji.four-beat.selected-3.r3]
-productScope: [shared_landometer | ijji_product_specific]
-motif: [คัดลอกค่าจาก record]
-assetId: [คัดลอก exact ID จาก asset record]
-allowedJob: [คัดลอกหนึ่งค่าจาก allowedJobs]
-allowedFormat: [web_public | deck_16x9 | social_square_1080 | document_pdf | video_owner_extension]
-variant: [full | quiet | not_applicable]
-surface: [transparent | canvas | brand-blue | ground-mist | dark | transparent-mint | transparent-ink]
-motionMode: static [คัดลอกจาก baseline record]
-path + sha256 + staticFallback + approvalRef: [คัดลอกจาก record เดียวกัน]
-motionExtension: [none โดยปริยาย | finite_once | finite_once_logo_sting | state_bound_only]
-ถ้าใช้ motionExtension: allowedFormat ต้องเป็น web_public และต้องคัดลอก runtimeAssetIds + runtimeAllowedJob + runtimeAllowedFormat + lifecycle จาก agentContract.motionExtensions ที่ familyId ตรงกัน โดยใช้ path ของ baseline เป็น static fallback
 
-ห้าม redraw จาก screenshot/ความจำ ห้ามเปลี่ยนสีหรือสัดส่วน ห้ามใช้ motif แทน identity, data, evidence หรือ claim; ถ้าต้องใช้ animated logo ให้เลือกเฉพาะ ijji.logo-sting.r3 และห้ามนำ ijji ไปเหมารวมเป็น Landometer
-
-ก่อนส่ง ให้ยืนยัน familyId + assetId + path + SHA-256 จาก record เดียวกัน ใส่ static/reduced-motion fallback ตรวจ output จริง และรายงานทุกข้อที่ยังไม่ได้ตรวจ</pre>
-              <div class="cluster">
-                <button class="button button-small button-primary" type="button" data-copy-template="#agent-prompt">คัดลอกพรอมป์ AI</button>
-                <a class="button button-small" href="assets/motif-library.json">เปิด JSON Manifest</a>
-                <a class="button button-small" href="llms.txt">เปิด llms.txt</a>
-              </div>
-            </div>
-          </article>
+<section class="section cl-section" id="contrast-lab" aria-labelledby="contrast-title" data-contrast-lab>
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="eyebrow">Contrast playground · 20 × 20</p><h2 id="contrast-title">เปลี่ยนพื้น แล้วเห็นอีกมุม</h2></div>
+      <p class="cl-intro subtle">ลายเดิม พื้นใหม่ อารมณ์ก็เปลี่ยน ลองจับคู่ 20 ชิ้นกับ 20 พื้น แล้วพาคู่ที่ใช่ไปต่อในงานของคุณ</p>
+    </div>
+    <div class="cl-presets" role="group" aria-label="เริ่มจากไอเดียหนึ่ง" data-cl-enhanced hidden><button class="button button-small" type="button" data-cl-preset="lm.dial.quiet" data-cl-preset-carrier="dark.canvas">ให้ quiet เปล่งประกาย</button><button class="button button-small" type="button" data-cl-preset="lm.logo.full" data-cl-preset-carrier="brand.blue">ลองหาส่วนที่กลืนไป</button><button class="button button-small" type="button" data-cl-preset="cc.dark" data-cl-preset-carrier="dark.canvas">ชวน CityChat เข้าสู่ค่ำคืน</button></div>
+    <div class="cl-workbench">
+      <div class="cl-stage-column">
+        <div class="cl-stage" data-cl-preview><img src="assets/landometer/svg/dial-quiet.svg" alt="dial · quiet" width="200" height="100" style="width:200px" data-cl-image loading="lazy" decoding="async"></div>
+        <p class="cl-stage-caption"><strong data-cl-name>dial · quiet</strong><span data-cl-surface>surface.canvas · #F6F7F3</span></p>
+        <div class="cl-readout">
+          <dl class="cl-metrics"><div><dt>ตัวอย่างส่วนอ่อนสุด</dt><dd data-cl-min>1.23 : 1</dd></div><div><dt>ตัวอย่างส่วนเด่นสุด</dt><dd data-cl-max>1.62 : 1</dd></div></dl>
+          <p class="cl-verdict" data-cl-verdict data-state="low">บางส่วนยังเบาอยู่</p>
+          <p class="cl-note" data-cl-meta>ตัวอย่างสีที่คำนวณ: #59D2FE / Alpha จากไฟล์ต้นฉบับ: 0.4–1</p>
+          <p class="cl-note" style="margin-top:12px">เป็นช่วงค่าของสีและ alpha ที่ระบุในชุดส่งต่อ ไม่ใช่ทุกพิกเซลหรือผลรับรอง accessibility ของทั้งชิ้น</p>
         </div>
       </div>
-    </section>
+      <div class="cl-controls" data-cl-enhanced hidden>
+        <label for="cl-asset">1 · เลือกลายที่อยากเล่า</label><select id="cl-asset" data-cl-asset></select>
+        <label for="cl-carrier">2 · ลองเปลี่ยนพื้น</label><select id="cl-carrier" data-cl-carrier></select>
+        <div data-cl-swatches></div>
+        <p class="cl-note cl-carrier-note" data-cl-carrier-note>ตัวอย่างพื้นสีทึบ ตรวจซ้ำที่ขนาดและตำแหน่งใช้งานจริง</p>
+        <div class="cl-threshold"><label for="cl-threshold">3 · ขยับเส้นอ้างอิง <output for="cl-threshold" data-cl-threshold-value>3.0 : 1</output></label><input id="cl-threshold" type="range" min="1.3" max="4.5" step="0.1" value="3" aria-describedby="cl-threshold-note" data-cl-threshold><p class="cl-note" id="cl-threshold-note">ใช้เปรียบเทียบรายละเอียด 3:1 เป็นเพียงเส้นอ้างอิง ไม่ได้ทำให้ลายรับหน้าที่แทนข้อความหรือสถานะจริง</p></div>
+        <div class="cl-actions"><button class="button button-small" type="button" data-cl-sibling>ลอง dial · full</button></div>
+      </div>
+    </div>
+    <div class="cl-actions"><a class="button button-small" href="assets/landometer/svg/dial-quiet.svg" download data-cl-download>ดาวน์โหลดชิ้นนี้</a><button class="button button-small" type="button" data-cl-copy data-cl-enhanced hidden>คัดลอกผลทดลอง</button></div>
+    <p class="cl-copy-status" role="status" data-cl-copy-status></p>
+    <div class="cl-manual-copy" data-cl-manual-copy hidden><label for="cl-copy-result">ผลทดลองสำหรับคัดลอก</label><textarea id="cl-copy-result" readonly></textarea></div>
+    <div class="cl-recommendations" data-cl-enhanced hidden><p data-cl-suggestion-note>ลองพื้นเหล่านี้</p><div class="cl-suggestions" data-cl-suggestions></div></div>
+    <p class="visually-hidden" role="status" aria-live="polite" data-cl-status></p>
+    <noscript><p class="cl-note">ตอนนี้แสดงคู่ตัวอย่างและไฟล์ดาวน์โหลด เปิด JavaScript เพื่อทดลองเปลี่ยน 400 คู่ด้วยตัวเอง</p></noscript>
+    <details class="cl-method"><summary>ตัวเลขนี้บอกอะไร และยังไม่ได้บอกอะไร</summary><p>เราผสมสีตัวอย่างกับพื้นตาม alpha ที่ระบุ แล้วคำนวณอัตราส่วน luminance จากสี sRGB แสดงทั้งค่าน้อยสุดและมากสุดของชุดตัวอย่าง ไม่สรุปว่าทั้งภาพผ่านจากส่วนที่ชัดที่สุด โลโก้สีและ CityChat มีสีอื่นนอกเหนือจากตัวอย่างนี้ ขอบที่มี anti-alias และภาพซ้อนจริงยังไม่ได้วัด</p><p>พื้น gradient แสดงเป็น stop สีทึบหนึ่งจุด จึงต้องตรวจทุก stop และตำแหน่งใช้งานจริง ส่วน overlay.glass เป็นค่าประมาณที่ขึ้นกับพื้นด้านหลัง ขนาดที่ขยายช่วยให้สังเกตได้ แต่ไม่เปลี่ยน contrast ratio ลายตกแต่งควรมี alt=&quot;&quot; ส่วนข้อมูลสำคัญต้องมีข้อความและตรวจองค์ประกอบที่สื่อความหมายแยกต่างหาก</p></details>
+    <div class="cl-ladder" id="quiet">
+      <p class="eyebrow">Five small moves</p><h3>ถ้ายังไม่ลงตัว ลองทีละก้าว</h3><p class="cl-ladder-intro subtle">ให้พื้น พื้นที่ว่าง และการเลือกไฟล์ช่วยเล่าเรื่อง โดยเก็บลายต้นฉบับไว้ครบ</p>
+      <ol class="cl-ladder-list"><li><b>L1</b><h4>วัดกับงานจริง</h4><p>ดูทั้งส่วนเด่นและส่วนอ่อน บนพื้นและขนาดที่จะส่ง ตรวจทุก stop เมื่อใช้ gradient</p></li><li><b>L2</b><h4>ลองพื้นอีกแบบ</h4><p>เลือกพื้นในชุดที่เหมาะกับบริบท แล้ววัดอีกครั้ง ไม่เติมแผ่นรองหรือสีใหม่เพื่อกลบปัญหา</p></li><li><b>L3</b><h4>สลับไฟล์ที่มีให้</h4><p>ลอง full / quiet, ijji ink / mint หรือ CityChat light / dark โลโก้เลือก rendition โดยคงสีต้นฉบับ</p></li><li><b>L4</b><h4>ให้พื้นที่กับลาย</h4><p>ขยายตามความเหมาะสม แยกจากคอลัมน์ข้อความ หรือเพิ่มพื้นที่ว่าง ขนาดไม่ทำให้ค่า contrast สูงขึ้น</p></li><li><b>L5</b><h4>เว้นลาย ก็เล่าได้</h4><p>ถอดลายออกได้เสมอ ข้อความ ปุ่ม และสถานะจริงยังต้องเล่าเรื่องได้ครบด้วยตัวเอง</p></li></ol>
+      <p class="cl-source-note">แนวทางจากชุดส่งต่อ: ใช้ช่วยตัดสินใจเรื่องการวาง ไม่ใช่การประกาศกติกา Design System ใหม่ ตรวจไฟล์จริงและบริบทปลายทางทุกครั้ง · <a href="motif-quiet-fallback.json" download>อ่านไฟล์อ้างอิงต้นฉบับ</a></p>
+    </div>
+    <div class="cl-identity" id="identity" aria-labelledby="identity-title" data-identity-selector>
+      <p class="eyebrow">Official identity · 12 original files</p><h3 id="identity-title">โลโก้ที่ใช่ บนพื้นของคุณ</h3><p class="subtle">เลือกจากไฟล์ identity ทั้ง 12 แบบ ลองพื้นสว่างและมืดก่อนหยิบไปใช้ใน navigation, co-branding หรือเอกสาร</p>
+      <div class="cl-identity-grid">
+        <figure class="cl-identity-figure"><div class="cl-identity-preview" data-id-preview><img src="assets/identity/logo/landometer-symbol-color.png" alt="Landometer · Symbol color" width="180" height="180" data-id-image loading="lazy" decoding="async"></div><figcaption><strong data-id-caption>Symbol · color · 1601 × 1601 px</strong><span data-id-surface>canvas · #F6F7F3</span></figcaption></figure>
+        <div class="cl-identity-controls">
+          <div data-cl-enhanced hidden><label for="cl-identity-file">เลือกไฟล์ identity</label><select id="cl-identity-file" data-id-file></select><fieldset class="cl-identity-bg"><legend>ลองพื้นสำหรับโลโก้</legend><div><button type="button" data-id-bg="canvas" aria-pressed="true">Canvas</button><button type="button" data-id-bg="brand.blue" aria-pressed="false">Brand Blue</button><button type="button" data-id-bg="dark.canvas" aria-pressed="false">Dark</button><button type="button" data-id-bg="brand.beige" aria-pressed="false">Beige</button></div></fieldset></div>
+          <p class="cl-note" data-id-guidance>เริ่มที่พื้นสว่าง ฐานสีน้ำเงินอาจกลืนกับ Brand Blue คงทุกสีตามไฟล์เดิม</p>
+          <div class="cl-actions"><a class="button button-small" href="assets/identity/logo/landometer-symbol-color.png" download data-id-download>ดาวน์โหลด PNG นี้</a><button class="button button-small" type="button" data-id-match data-cl-enhanced hidden>ลองพื้นที่เหมาะกับรุ่นนี้</button></div>
+          <p class="visually-hidden" role="status" aria-live="polite" data-id-status></p>
+        </div>
+      </div>
+      <details class="cl-download-all"><summary>เปิดไฟล์ identity ทั้ง 12 แบบ</summary><ul><li><a href="assets/identity/logo/landometer-symbol-color.png" download>Symbol · color</a></li><li><a href="assets/identity/logo/landometer-symbol-white.png" download>Symbol · white</a></li><li><a href="assets/identity/logo/landometer-symbol-cream.png" download>Symbol · cream</a></li><li><a href="assets/identity/logo/landometer-symbol-gray.png" download>Symbol · gray</a></li><li><a href="assets/identity/logo/landometer-symbol-mono.png" download>Symbol · mono</a></li><li><a href="assets/identity/logo/landometer-symbol-outline-white.png" download>Symbol · outline white</a></li><li><a href="assets/identity/logo/landometer-symbol-outline-cream.png" download>Symbol · outline cream</a></li><li><a href="assets/identity/logo/landometer-symbol-white-square.png" download>Symbol · white square</a></li><li><a href="assets/identity/logo/landometer-symbol-192.png" download>Symbol · 192 px</a></li><li><a href="assets/identity/logo/landometer-lockup-banner.png" download>Lockup · banner</a></li><li><a href="assets/identity/logo/landometer-lockup-color.png" download>Lockup · color master</a></li><li><a href="assets/identity/logo/Landometer-Logo-TransparentBG.png" download>Logo · transparent master</a></li></ul></details>
+      <p class="cl-source-note">ทุกไฟล์คงไบต์เดิมจากชุดแนบ รุ่น cream ยังเป็น #EFEFD0 และรุ่น gray ไม่ได้ชัดบนทุกพื้น เปลี่ยน rendition หรือพื้นที่แวดล้อมตามงานจริง</p>
+    </div>
+  </div>
+</section>
 
     <section class="section section-alt" id="library" aria-labelledby="library-title">
       <div class="wrap">
@@ -351,7 +348,7 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
             <p class="eyebrow">Verified asset paths</p>
             <h2 id="library-title">คลัง Asset พร้อม preview, code และไฟล์ภาพนิ่ง</h2>
           </div>
-          <p class="subtle">Landometer และ ijji แยกกลุ่มอย่างชัดเจน ทุกการ์ดมี deep link และปุ่มสร้าง PNG จาก SVG ใน browser โดยไม่อัปโหลดไฟล์ออกจากเครื่อง</p>
+          <p class="subtle">เลือกแบรนด์หรือพิมพ์งานที่อยากทำ เปิดดู motion แล้วดาวน์โหลด SVG, PNG หรือคัดลอกโค้ดได้ทันที ไฟล์ PNG สร้างในเครื่องคุณ</p>
         </div>
 
         <div class="boundary-callout"><p><strong>สิทธิ์การใช้:</strong> ทุกคนเปิดดูและดาวน์โหลดไฟล์ได้ การนำ asset ไปใช้ต่อสงวนสำหรับทีม ผู้ร่วมงาน และ AI/agent workflows ที่ได้รับอนุญาตจากเจ้าของ เว้นแต่มี license หรือ owner decision แยกต่างหาก</p></div>
@@ -362,6 +359,7 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
               <button class="filter-button" type="button" data-filter="all" aria-pressed="true">ทั้งหมด</button>
               <button class="filter-button" type="button" data-filter="landometer" aria-pressed="false">Landometer</button>
               <button class="filter-button" type="button" data-filter="ijji" aria-pressed="false">ijji</button>
+<button class="filter-button" type="button" data-filter="citychat" aria-pressed="false">CityChat</button>
             </div>
             <label class="search-wrap"><span class="visually-hidden">ค้นหา asset</span><input type="search" data-asset-search placeholder="ค้นหา ID, งาน หรือ channel…" autocomplete="off"></label>
           </div>
@@ -375,32 +373,32 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
         <div class="showcase-callout" data-family="landometer"><p><strong>โหมดดู animation:</strong> เปิด Preview แล้ว full + quiet เล่นทันที โดย motif ทั่วไปวนทุก 3 วินาที ส่วน Logo assembly v3 เล่นครบทั้งคู่ภายใน 3.36 วินาที ค้างท่าสุดท้าย แล้ววนใหม่ทุก 6 วินาที ทุก cycle ใช้จังหวะ สี geometry และท่าสุดท้ายจาก HTML ตัวอย่างชุด 3</p></div>
         <div class="asset-grid" data-family-grid="landometer">
           <article class="asset-card" id="landometer-dial" data-brand="landometer" data-search="dial orientation opening web video social deck หน้าปัด เปิดเรื่อง">
-            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/dial-full.svg" alt="Landometer dial full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/dial-quiet.svg" alt="Landometer dial quiet"><span>quiet</span></div></div>
+            <div class="asset-preview"><div class="variant"><div class="inline-motif-stage library-motion full" data-lm-live data-kind="dial" data-loop="3000" data-ink="blue"><img src="assets/landometer/svg/dial-full.svg" alt="Landometer dial full"></div><span>full</span></div><div class="variant"><div class="inline-motif-stage library-motion quiet" data-lm-live data-kind="dial" data-loop="3000" data-quiet="true"><img src="assets/landometer/svg/dial-quiet.svg" alt="Landometer dial quiet"></div><span>quiet</span></div></div>
             <div class="asset-body"><h3>Dial · หน้าปัด</h3><p class="asset-id">motifId: landometer.dial<br>assetIds: landometer.dial.full / landometer.dial.quiet</p><p class="asset-summary">จังหวะเปิดและ orientation เมื่อคนต้องเห็นว่าเรื่องนี้กำลัง “วัดและอ่าน” โดยไม่ใช้แทนค่าที่วัด</p><dl class="asset-meta"><div><dt>Job</dt><dd>Orientation</dd></div><div><dt>Mode</dt><dd>Finite once / static</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="dial">ดู full + quiet</button><a class="button button-small" href="assets/landometer/svg/dial-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/dial-full.svg" data-filename="landometer-dial-full.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="dial">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>วางข้างเนื้อหา ไม่ทับ copy, CTA, photo หรือ evidence; quiet ใช้เป็นจังหวะรอง และภาพนิ่งใช้กับ deck/PDF/social ได้</p><a href="assets/landometer/svg/dial-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
           </article>
 
           <article class="asset-card" id="landometer-rings" data-brand="landometer" data-search="rings spatial transition location web map ring วง เปลี่ยนผ่าน พื้นที่">
-            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/rings-full.svg" alt="Landometer rings full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/rings-quiet.svg" alt="Landometer rings quiet"><span>quiet</span></div></div>
+            <div class="asset-preview"><div class="variant"><div class="inline-motif-stage library-motion full" data-lm-live data-kind="rings" data-loop="3000" data-ink="blue"><img src="assets/landometer/svg/rings-full.svg" alt="Landometer rings full"></div><span>full</span></div><div class="variant"><div class="inline-motif-stage library-motion quiet" data-lm-live data-kind="rings" data-loop="3000" data-quiet="true"><img src="assets/landometer/svg/rings-quiet.svg" alt="Landometer rings quiet"></div><span>quiet</span></div></div>
             <div class="asset-body"><h3>Rings · วงพื้นที่</h3><p class="asset-id">motifId: landometer.rings<br>assetIds: landometer.rings.full / landometer.rings.quiet</p><p class="asset-summary">ใช้เปลี่ยนผ่านเข้าสู่ความสัมพันธ์เชิงพื้นที่หรือหลายระยะ โดยไม่ทำหน้าที่เป็นแผนที่ legend หรือค่ารัศมีจริง</p><dl class="asset-meta"><div><dt>Job</dt><dd>Spatial transition</dd></div><div><dt>Mode</dt><dd>Finite once / static</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="rings">ดู full + quiet</button><a class="button button-small" href="assets/landometer/svg/rings-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/rings-full.svg" data-filename="landometer-rings-full.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="rings">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>เหมาะกับ section intro และจังหวะข้าม scale; ห้ามอ่านวงเป็นระยะทาง, catchment หรือความครอบคลุมที่วัดได้</p><a href="assets/landometer/svg/rings-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
           </article>
 
           <article class="asset-card" id="landometer-layers" data-brand="landometer" data-search="layers multi layer divider section quiet web slide ชั้น ซ้อน คั่นหัวข้อ">
-            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/layers-full.svg" alt="Landometer layers full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/layers-quiet.svg" alt="Landometer layers quiet"><span>quiet</span></div></div>
+            <div class="asset-preview"><div class="variant"><div class="inline-motif-stage library-motion full" data-lm-live data-kind="layers" data-loop="3000" data-ink="blue"><img src="assets/landometer/svg/layers-full.svg" alt="Landometer layers full"></div><span>full</span></div><div class="variant"><div class="inline-motif-stage library-motion quiet" data-lm-live data-kind="layers" data-loop="3000" data-quiet="true"><img src="assets/landometer/svg/layers-quiet.svg" alt="Landometer layers quiet"></div><span>quiet</span></div></div>
             <div class="asset-body"><h3>Layers · ชั้นซ้อน</h3><p class="asset-id">motifId: landometer.layers<br>assetIds: landometer.layers.full / landometer.layers.quiet</p><p class="asset-summary">บอกว่ามีหลายมุมหรือหลายชั้นของเรื่องเดียวกัน เหมาะเป็น divider ที่เบากว่า motif แบบเต็ม</p><dl class="asset-meta"><div><dt>Job</dt><dd>Layering / divider</dd></div><div><dt>Mode</dt><dd>Quiet preferred</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="layers">ดู full + quiet</button><a class="button button-small" href="assets/landometer/svg/layers-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/layers-quiet.svg" data-filename="landometer-layers-quiet.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="layers" data-quiet="true">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>ลายสื่อ “หลายชั้น” ในเชิง editorial เท่านั้น ไม่ใช่จำนวน data layers หรือระดับคุณภาพของข้อมูล</p><a href="assets/landometer/svg/layers-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
           </article>
 
           <article class="asset-card" id="landometer-slice" data-brand="landometer" data-search="slice action next priority closure pie progress ชิ้น ก้าวถัดไป ปิดเรื่อง">
-            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/slice-full.svg" alt="Landometer slice full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/slice-quiet.svg" alt="Landometer slice quiet"><span>quiet</span></div></div>
+            <div class="asset-preview"><div class="variant"><div class="inline-motif-stage library-motion full" data-lm-live data-kind="slice" data-loop="3000" data-ink="blue"><img src="assets/landometer/svg/slice-full.svg" alt="Landometer slice full"></div><span>full</span></div><div class="variant"><div class="inline-motif-stage library-motion quiet" data-lm-live data-kind="slice" data-loop="3000" data-quiet="true"><img src="assets/landometer/svg/slice-quiet.svg" alt="Landometer slice quiet"></div><span>quiet</span></div></div>
             <div class="asset-body"><h3>Slice · ชิ้นที่ก้าวออกมา</h3><p class="asset-id">motifId: landometer.slice<br>assetIds: landometer.slice.full / landometer.slice.quiet</p><p class="asset-summary">จังหวะปิดฝั่ง action: ช่วยชี้ว่ามีขั้นถัดไป โดยปุ่มหรือข้อความยังเป็นผู้บอก action จริง</p><dl class="asset-meta"><div><dt>Job</dt><dd>Action closure</dd></div><div><dt>Mode</dt><dd>Finite once / static</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="slice">ดู full + quiet</button><a class="button button-small" href="assets/landometer/svg/slice-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/slice-full.svg" data-filename="landometer-slice-full.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="slice">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>ห้ามใช้เหมือน pie chart, progress ring หรือเปอร์เซ็นต์ที่ไม่มีข้อมูลจริง; อย่าวางแทน CTA</p><a href="assets/landometer/svg/slice-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
           </article>
 
           <article class="asset-card" id="landometer-cultivate" data-brand="landometer" data-search="cultivate culture closure community growth sprout ปลูก เติบโต วัฒนธรรม ปิดเรื่อง">
-            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/cultivate-full.svg" alt="Landometer cultivate full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/cultivate-quiet.svg" alt="Landometer cultivate quiet"><span>quiet</span></div></div>
+            <div class="asset-preview"><div class="variant"><div class="inline-motif-stage library-motion full" data-lm-live data-kind="cultivate" data-loop="3000" data-ink="blue"><img src="assets/landometer/svg/cultivate-full.svg" alt="Landometer cultivate full"></div><span>full</span></div><div class="variant"><div class="inline-motif-stage library-motion quiet" data-lm-live data-kind="cultivate" data-loop="3000" data-quiet="true"><img src="assets/landometer/svg/cultivate-quiet.svg" alt="Landometer cultivate quiet"></div><span>quiet</span></div></div>
             <div class="asset-body"><h3>Cultivate · เพาะให้เติบโต</h3><p class="asset-id">motifId: landometer.cultivate<br>assetIds: landometer.cultivate.full / landometer.cultivate.quiet</p><p class="asset-summary">ปิดเรื่องฝั่งวัฒนธรรม การลงมือร่วมกัน หรือ handoff ที่มี next action ชัดเจน</p><dl class="asset-meta"><div><dt>Job</dt><dd>Cultural closure</dd></div><div><dt>Mode</dt><dd>Finite once / static</dd></div><div><dt>Min width</dt><dd>160 / 96 px</dd></div><div><dt>Scope</dt><dd>Landometer shared</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="cultivate">ดู full + quiet</button><a class="button button-small" href="assets/landometer/svg/cultivate-full.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/cultivate-full.svg" data-filename="landometer-cultivate-full.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="cultivate">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>เป็น metaphor ของการร่วมลงมือ ไม่ใช่หลักฐานว่า KPI, รายได้ หรือพื้นที่ “เติบโต” แล้ว</p><a href="assets/landometer/svg/cultivate-quiet.svg" download>ดาวน์โหลด quiet SVG</a></div></details></div>
           </article>
 
           <article class="asset-card" id="landometer-logo-assembly" data-brand="landometer" data-search="logo assembly exception one time identity mark ประกอบร่างโลโก้ ข้อยกเว้น">
-            <div class="asset-preview"><div class="variant"><img src="assets/landometer/svg/logo-full.svg?v=1.2.1" alt="Landometer logo-assembly motif full"><span>full</span></div><div class="variant"><img src="assets/landometer/svg/logo-quiet.svg?v=1.2.1" alt="Landometer logo-assembly motif quiet"><span>quiet</span></div></div>
+            <div class="asset-preview"><div class="variant"><div class="inline-motif-stage library-motion full" data-lm-live data-kind="logo" data-loop="6000" data-ink="blue"><img src="assets/landometer/svg/logo-full.svg?v=1.2.1" alt="Landometer logo-assembly motif full"></div><span>full</span></div><div class="variant"><div class="inline-motif-stage library-motion quiet" data-lm-live data-kind="logo" data-loop="6000" data-quiet="true"><img src="assets/landometer/svg/logo-quiet.svg?v=1.2.1" alt="Landometer logo-assembly motif quiet"></div><span>quiet</span></div></div>
             <div class="asset-body"><h3>Logo assembly · จังหวะประกอบร่าง</h3><p class="asset-id">motifId: landometer.logo<br>assetIds: landometer.logo.full / landometer.logo.quiet</p><p class="asset-summary">เวอร์ชัน 3 ประกอบหมุด ชั้นสี และ quiet outline ตามลำดับใหม่ พร้อมจังหวะชิ้นสีฟ้าก้าวออกมาแล้วกลับสู่ภาพสมบูรณ์</p><dl class="asset-meta"><div><dt>Job</dt><dd>Animated brand opening</dd></div><div><dt>Mode</dt><dd>Finite once / showcase loop</dd></div><div><dt>Final</dt><dd>Exact v3 authored state</dd></div><div><dt>Scope</dt><dd>Landometer overlay</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="landometer" data-preview-id="logo">ดู full + quiet</button><a class="button button-small" href="assets/landometer/svg/logo-full.svg?v=1.2.1" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/landometer/svg/logo-full.svg?v=1.2.1" data-filename="landometer-logo-assembly.png" data-width="1200" data-height="600">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="landometer" data-id="logo">คัดลอกโค้ด</button></div><details class="asset-more"><summary>การใช้และข้อห้าม</summary><div class="detail-box"><p>ใช้ runtime และสีจากไฟล์ชุด 3 โดยไม่แก้ timing/geometry; navbar, favicon และงาน co-branding ยังใช้ไฟล์ official identity แยกต่างหาก</p><a href="assets/landometer/svg/logo-quiet.svg?v=1.2.1" download>ดาวน์โหลด quiet SVG</a></div></details></div>
           </article>
         </div>
@@ -441,6 +439,131 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
             <div class="asset-body"><h3>Rotate B · เดินหน้า</h3><p class="asset-id">motifId: ijji.rotate-b<br>shown assetIds: ijji.rotate-b-transparent-ink / ijji.rotate-b-transparent-mint</p><p class="asset-summary">เหมาะกับงานคิดหรือประมวลผลหลายรอบของ ijji โดยต้องเริ่มและหยุดตาม lifecycle ของ request จริง</p><dl class="asset-meta"><div><dt>Job</dt><dd>Real iterative state</dd></div><div><dt>Motion</dt><dd>State-bound · 4 s</dd></div><div><dt>Min size</dt><dd>24 px</dd></div><div><dt>Scope</dt><dd>ijji only</dd></div></dl><div class="asset-actions"><button class="button button-small" type="button" data-preview-brand="ijji" data-preview-id="rotate-b" data-duration="4">Preview state</button><a class="button button-small" href="assets/ijji/svg/ijji-rotate-b-transparent-ink.svg" download>SVG</a><button class="button button-small" type="button" data-download-png data-svg-url="assets/ijji/svg/ijji-rotate-b-brand-blue.svg" data-filename="ijji-rotate-b-brand-blue.png" data-width="1080" data-height="1080">PNG</button><button class="button button-small" type="button" data-copy-code data-brand="ijji" data-id="rotate-b">คัดลอกโค้ด</button></div><details class="asset-more"><summary>พื้นและข้อห้าม</summary><div class="detail-box"><p>ไม่ใช้เป็น ambient spinner ใน header/hero และไม่ปล่อยให้หมุนหลัง success, failure, cancel หรือ timeout</p><a href="assets/motif-library.json">ดู 6 surfaces ใน manifest</a></div></details></div>
           </article>
         </div>
+      <div class="family-head cc-family-head" id="citychat" data-family="citychat">
+  <div><p class="eyebrow">CityChat · conversation &amp; community</p><h3>ให้เมืองเริ่มคุย</h3></div>
+  <a class="button button-small" href="downloads/landometer-citychat-motif-kit-1.2.1.zip" download>ดาวน์โหลดชุด CityChat</a>
+</div>
+<div class="cc-intro" data-family="citychat">
+  <p>เริ่มจากเรื่องที่อยากชวนคุย แล้วเลือกตัวช่วยเล่าเรื่องหนึ่งชิ้น ลองพื้น ลองจังหวะ และหยิบไปใช้ได้ทันที<br><strong>3 เรื่องเล่า + 1 บทสนทนาต้นฉบับ</strong></p>
+  <ol class="cc-steps"><li>เลือกความหมายที่ตรงกับงาน</li><li>ลองพื้นสว่างหรือมืด แล้วเปิดดูจังหวะ</li><li>ส่งออกภาพนิ่ง หรือคัดลอกโค้ดพร้อม motion</li></ol>
+</div>
+<div class="asset-grid cc-grid" data-family-grid="citychat">
+<article class="asset-card cc-card" id="citychat-voice-home" data-brand="citychat" data-cc-card="a" data-search="citychat welcome home community story บ้าน ชุมชน คนใหม่">
+  <div class="cc-preview" data-cc-surface="light"><div class="cc-art" data-cc-art><img data-cc-still src="assets/citychat/assets/3a-voice-home-light.svg" alt="3a · เสียงบ้านเรา" width="180" height="180" loading="lazy"></div><span data-cc-rendition>light · #F6F7F3</span></div>
+  <div class="asset-body"><h3>3a · เสียงบ้านเรา</h3><p class="asset-id">citychat.voice-home</p><p class="asset-summary">ชวนคนใหม่มาร่วมวง แล้วให้เรื่องเล่าจากบ้านเริ่มต้น</p>
+  <div class="cc-surface" role="group" aria-label="เลือกพื้นสำหรับ 3a · เสียงบ้านเรา"><span>พื้นภาพ</span><button type="button" data-cc-card-surface="light" aria-pressed="true">สว่าง</button><button type="button" data-cc-card-surface="dark" aria-pressed="false">มืด</button></div>
+  <dl class="asset-meta"><div><dt>เหมาะกับ</dt><dd>Welcome · โพสต์ชวนคุย · บอร์ดชุมชน</dd></div><div><dt>จังหวะใน preview</dt><dd>2.8 s / รอบ</dd></div><div><dt>เริ่มเห็นรอยยิ้ม</dt><dd>≥ 88 px</dd></div><div><dt>ขนาด motion</dt><dd>≥ 120 px</dd></div></dl>
+  <div class="asset-actions"><button class="button button-small" type="button" data-cc-preview="a">ลองให้มีชีวิต</button><a class="button button-small" data-cc-svg href="assets/citychat/assets/3a-voice-home-light.svg" download>SVG</a><button class="button button-small" type="button" data-cc-png="a">PNG · 2048</button><button class="button button-small" type="button" data-cc-code="a">คัดลอกโค้ด</button></div>
+  <details class="asset-more"><summary>จังหวะและวิธีใช้</summary><div class="detail-box"><p>กระโดด ยืดตัว พยักหน้า — ใบเหลืองแอบโผล่มาทัก</p><p>หนึ่งฉาก หนึ่ง motif เว้นรอบภาพอย่างน้อย 10% และวางข้อความสำคัญไว้นอกภาพ</p><a href="#citychat-voice-home">ลิงก์ตรงถึงชิ้นนี้</a></div></details>
+  <p class="cc-export-note">SVG เป็นภาพนิ่ง · PNG พื้นตามที่เลือก · โค้ดเล่นหนึ่งครั้งเมื่อเข้าจอ</p>
+  </div>
+</article>
+<article class="asset-card cc-card" id="citychat-live-visit-trade" data-brand="citychat" data-cc-card="b" data-search="citychat cityscan live visit trade home camera shop อยู่ เที่ยว ค้าขาย">
+  <div class="cc-preview" data-cc-surface="light"><div class="cc-art" data-cc-art><img data-cc-still src="assets/citychat/assets/3b-live-visit-trade-light.svg" alt="3b · น่าอยู่ น่าเที่ยว น่าค้าขาย" width="180" height="180" loading="lazy"></div><span data-cc-rendition>light · #F6F7F3</span></div>
+  <div class="asset-body"><h3>3b · น่าอยู่ น่าเที่ยว น่าค้าขาย</h3><p class="asset-id">citychat.live-visit-trade</p><p class="asset-summary">บ้าน กล้อง ร้าน — สามมุมชวนมองละแวกเดียวกัน</p>
+  <div class="cc-surface" role="group" aria-label="เลือกพื้นสำหรับ 3b · น่าอยู่ น่าเที่ยว น่าค้าขาย"><span>พื้นภาพ</span><button type="button" data-cc-card-surface="light" aria-pressed="true">สว่าง</button><button type="button" data-cc-card-surface="dark" aria-pressed="false">มืด</button></div>
+  <dl class="asset-meta"><div><dt>เหมาะกับ</dt><dd>CityScan hero · roll-up · สไลด์สามคำถาม</dd></div><div><dt>จังหวะใน preview</dt><dd>3.4 s / รอบ</dd></div><div><dt>เริ่มเห็นรอยยิ้ม</dt><dd>≥ 88 px</dd></div><div><dt>ขนาด motion</dt><dd>≥ 120 px</dd></div></dl>
+  <div class="asset-actions"><button class="button button-small" type="button" data-cc-preview="b">ลองให้มีชีวิต</button><a class="button button-small" data-cc-svg href="assets/citychat/assets/3b-live-visit-trade-light.svg" download>SVG</a><button class="button button-small" type="button" data-cc-png="b">PNG · 2048</button><button class="button button-small" type="button" data-cc-code="b">คัดลอกโค้ด</button></div>
+  <details class="asset-more"><summary>จังหวะและวิธีใช้</summary><div class="detail-box"><p>หมุน 2 / 3 / 1 รอบ แล้วค่อย ๆ หยุดให้เห็นภาพข้างใน</p><p>หนึ่งฉาก หนึ่ง motif เว้นรอบภาพอย่างน้อย 10% และวางข้อความสำคัญไว้นอกภาพ</p><a href="#citychat-live-visit-trade">ลิงก์ตรงถึงชิ้นนี้</a></div></details>
+  <p class="cc-export-note">SVG เป็นภาพนิ่ง · PNG พื้นตามที่เลือก · โค้ดเล่นหนึ่งครั้งเมื่อเข้าจอ</p>
+  </div>
+</article>
+<article class="asset-card cc-card" id="citychat-our-voice-here" data-brand="citychat" data-cc-card="c" data-search="citychat map pin voice location empty state แผนที่ ปักเรื่อง เสียง">
+  <div class="cc-preview" data-cc-surface="light"><div class="cc-art" data-cc-art><img data-cc-still src="assets/citychat/assets/3c-our-voice-here-light.svg" alt="3c · เสียงเราอยู่ตรงนี้" width="180" height="180" loading="lazy"></div><span data-cc-rendition>light · #F6F7F3</span></div>
+  <div class="asset-body"><h3>3c · เสียงเราอยู่ตรงนี้</h3><p class="asset-id">citychat.our-voice-here</p><p class="asset-summary">ชวนปักเรื่องเล่า ณ จุดที่มีความหมาย ท่ามกลางเสียงเพื่อนบ้าน</p>
+  <div class="cc-surface" role="group" aria-label="เลือกพื้นสำหรับ 3c · เสียงเราอยู่ตรงนี้"><span>พื้นภาพ</span><button type="button" data-cc-card-surface="light" aria-pressed="true">สว่าง</button><button type="button" data-cc-card-surface="dark" aria-pressed="false">มืด</button></div>
+  <dl class="asset-meta"><div><dt>เหมาะกับ</dt><dd>หน้าปักเรื่อง · empty state · สไลด์เรื่องสถานที่</dd></div><div><dt>จังหวะใน preview</dt><dd>3.0 s / รอบ</dd></div><div><dt>เริ่มเห็นรอยยิ้ม</dt><dd>≥ 88 px</dd></div><div><dt>ขนาด motion</dt><dd>≥ 120 px</dd></div></dl>
+  <div class="asset-actions"><button class="button button-small" type="button" data-cc-preview="c">ลองให้มีชีวิต</button><a class="button button-small" data-cc-svg href="assets/citychat/assets/3c-our-voice-here-light.svg" download>SVG</a><button class="button button-small" type="button" data-cc-png="c">PNG · 2048</button><button class="button button-small" type="button" data-cc-code="c">คัดลอกโค้ด</button></div>
+  <details class="asset-more"><summary>จังหวะและวิธีใช้</summary><div class="detail-box"><p>เพื่อนบ้านค่อย ๆ โผล่ ใบหลักงอกจากแผนที่ และวงแหวนกระเพื่อม</p><p>หนึ่งฉาก หนึ่ง motif เว้นรอบภาพอย่างน้อย 10% และวางข้อความสำคัญไว้นอกภาพ</p><a href="#citychat-our-voice-here">ลิงก์ตรงถึงชิ้นนี้</a></div></details>
+  <p class="cc-export-note">SVG เป็นภาพนิ่ง · PNG พื้นตามที่เลือก · โค้ดเล่นหนึ่งครั้งเมื่อเข้าจอ</p>
+  </div>
+</article>
+<article class="asset-card cc-card" id="citychat-conversation" data-brand="citychat" data-cc-card="motif" data-search="citychat conversation original welcome invitation success ต้นฉบับ คุย ทักทาย">
+  <div class="cc-preview" data-cc-surface="light"><div class="cc-art" data-cc-art><img data-cc-still src="assets/citychat/assets/conversation-motif-original.svg" alt="ConversationMotif · ต้นฉบับ" width="180" height="180" loading="lazy"></div><span data-cc-rendition>ต้นฉบับ · พื้นสว่าง</span></div>
+  <div class="asset-body"><h3>ConversationMotif · ต้นฉบับ</h3><p class="asset-id">citychat.conversation</p><p class="asset-summary">สองเสียงเอนเข้าหากัน แค่นี้เมืองก็เริ่มคุย</p>
+  <div class="cc-surface" role="group" aria-label="เลือกพื้นสำหรับ ConversationMotif · ต้นฉบับ"><span>ต้นฉบับ · พื้นสว่าง</span></div>
+  <dl class="asset-meta"><div><dt>เหมาะกับ</dt><dd>Welcome · คำชวน · empty · success</dd></div><div><dt>จังหวะใน preview</dt><dd>2.6 s / รอบ</dd></div><div><dt>เริ่มเห็นรอยยิ้ม</dt><dd>≥ 88 px</dd></div><div><dt>ขนาด motion</dt><dd>≥ 120 px</dd></div></dl>
+  <div class="asset-actions"><button class="button button-small" type="button" data-cc-preview="motif">ลองให้มีชีวิต</button><a class="button button-small" data-cc-svg href="assets/citychat/assets/conversation-motif-original.svg" download>SVG</a><button class="button button-small" type="button" data-cc-png="motif">PNG · 2048</button><button class="button button-small" type="button" data-cc-code="motif">คัดลอกโค้ด</button></div>
+  <details class="asset-more"><summary>จังหวะและวิธีใช้</summary><div class="detail-box"><p>สองใบโผล่ แล้วเอนเข้าหากันสลับจังหวะ</p><p>หนึ่งฉาก หนึ่ง motif เว้นรอบภาพอย่างน้อย 10% และวางข้อความสำคัญไว้นอกภาพ</p><p>ภาพนิ่งเป็นไฟล์ต้นฉบับจากเจ้าของ ส่วน preview ใช้ motion ที่ส่งมาคู่กัน ต้นฉบับมี rendition เดียว จึงแสดงบนพื้นสว่าง</p><a href="#citychat-conversation">ลิงก์ตรงถึงชิ้นนี้</a></div></details>
+  <p class="cc-export-note">SVG เป็นภาพนิ่ง · PNG พื้นตามที่เลือก · โค้ดเล่นหนึ่งครั้งเมื่อเข้าจอ</p>
+  </div>
+</article>
+</div>
+<details class="cc-rules" data-family="citychat"><summary>เลือกพื้นให้ถูก แล้วปล่อยให้รอยยิ้มทำงาน</summary>
+<div class="cc-rules-grid"><div><h4>ดูพื้นที่วางจริง</h4><p>พื้นสว่างใช้ light พื้นเข้มใช้ dark ชื่อธีมของหน้าไม่ใช่ตัวตัดสิน และไม่ย้อมสีภาพให้เข้ากับพื้น</p></div><div><h4>ให้ภาพมีที่หายใจ</h4><p>ภาพนิ่ง ≥24 px เห็นรอยยิ้ม ≥88 px motion ≥120 px ไม่ครอป ยืด กลับด้าน หรือใส่ข้อความลงในภาพ</p></div><div><h4>บอกเรื่องจริงด้วยข้อความ</h4><p>ใช้เป็นคำชวนหรือจังหวะของเรื่อง ไม่ใช้แทนปุ่ม สถานะ หลักฐาน หรือจุดข้อมูลบนแผนที่</p></div></div>
+<p class="cc-proposal"><strong>3d · แนวทาง lockup ในเอกสารแนบ</strong> — ไฟล์แนบมีข้อเสนอปรับบอลลูนบนโลโก้ให้เข้าชุด ที่นี่แสดงชุด motif โดยยังใช้โลโก้เดิม การออกไฟล์โลโก้ใหม่และปรับ Design System เป็นงานแยก</p>
+</details>
+<p class="visually-hidden" id="cc-feedback" role="status" aria-live="polite"></p>
+<dialog id="cc-dialog" aria-labelledby="cc-dialog-title">
+  <div class="dialog-head"><h2 id="cc-dialog-title">CityChat</h2><button type="button" class="dialog-close" data-cc-close aria-label="ปิดตัวอย่าง CityChat">×</button></div>
+  <div class="dialog-body">
+    <div class="cc-surface" data-cc-dialog-surfaces role="group" aria-label="เลือกพื้นตัวอย่าง"><span>พื้นภาพ</span><button type="button" data-cc-dialog-surface="light" aria-pressed="true">สว่าง</button><button type="button" data-cc-dialog-surface="dark" aria-pressed="false">มืด</button></div>
+    <div class="cc-stage" data-cc-stage data-cc-surface="light"></div>
+    <div class="cc-controls"><button class="button button-small" type="button" data-cc-replay>เล่นอีกครั้ง</button><button class="button button-small" type="button" data-cc-pause aria-pressed="false">พัก motion</button><label><input type="checkbox" data-cc-loop checked> วนดูจังหวะ</label></div>
+    <p class="cc-status" data-cc-status aria-live="polite"></p>
+    <p class="cc-export-note">การวนเป็นโหมดทดลองของคลังนี้ โค้ดที่คัดลอกจะเล่นหนึ่งครั้ง และกลับเป็นภาพนิ่งเมื่อพักหรือเปิด reduced motion</p>
+  </div>
+</dialog>
+
+
+</div>
+    </section>
+
+    <section class="section" id="workflows" aria-labelledby="workflow-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">One contract · two workflows</p>
+            <h2 id="workflow-title">ทำเองหรือให้ agent ทำ ก็เริ่มจากไฟล์จริงชุดเดียวกัน</h2>
+          </div>
+          <p class="subtle">Screenshot และความจำของโมเดลใช้ยืนยัน geometry ไม่ได้ ให้ส่ง asset ID, path, revision และ hash ไปพร้อมโจทย์ทุกครั้ง</p>
+        </div>
+        <div class="workflow-grid">
+          <article class="workflow-card">
+            <div class="badge-row"><span class="badge badge-approved">Manual</span></div>
+            <h3>ทีมลงมือเอง</h3>
+            <ol>
+              <li><span><strong>Frame</strong> — ระบุ brand layer, งาน และ channel</span></li>
+              <li><span><strong>Choose</strong> — เลือก ID, variant และ surface จาก manifest</span></li>
+              <li><span><strong>Place</strong> — resize ตามสัดส่วน ไม่ recolor, crop หรือ stretch</span></li>
+              <li><span><strong>Pair</strong> — ใส่ข้อความ, fallback และ accessibility ที่แบกความหมายจริง</span></li>
+              <li><span><strong>Verify</strong> — เช็ก hash, responsive, reduced motion และไฟล์ส่งจริง</span></li>
+              <li><span><strong>Ship</strong> — ส่งพร้อม source/version และข้อจำกัดของ format</span></li>
+            </ol>
+            <a class="button" href="docs/usage-guide.md">เปิดคู่มือฉบับไฟล์</a>
+          </article>
+          <article class="workflow-card">
+            <div class="badge-row"><span class="badge badge-overlay">AI &amp; Agents</span></div>
+            <h3>Brief เทคนิค · Landometer + ijji</h3>
+            <p class="subtle">ส่วนนี้คงสัญญา asset รุ่น 1.2.1 สำหรับ Landometer และ ijji หากรวม CityChat ให้ใช้ brief รวมด้านล่างและ manifest ของ Studio</p>
+            <div class="prompt-box">
+              <pre id="agent-prompt">ใช้ไฟล์จาก Landometer Motif Library manifest เท่านั้น
+
+งาน: [ระบุสิ่งที่จะสร้าง]
+familyId: [landometer.motif.v3 | ijji.logo-sting.r3 | ijji.four-beat.selected-3.r3]
+productScope: [shared_landometer | ijji_product_specific]
+motif: [คัดลอกค่าจาก record]
+assetId: [คัดลอก exact ID จาก asset record]
+allowedJob: [คัดลอกหนึ่งค่าจาก allowedJobs]
+allowedFormat: [web_public | deck_16x9 | social_square_1080 | document_pdf | video_owner_extension]
+variant: [full | quiet | not_applicable]
+surface: [transparent | canvas | brand-blue | ground-mist | dark | transparent-mint | transparent-ink]
+motionMode: static [คัดลอกจาก baseline record]
+path + sha256 + staticFallback + approvalRef: [คัดลอกจาก record เดียวกัน]
+motionExtension: [none โดยปริยาย | finite_once | finite_once_logo_sting | state_bound_only]
+ถ้าใช้ motionExtension: allowedFormat ต้องเป็น web_public และต้องคัดลอก runtimeAssetIds + runtimeAllowedJob + runtimeAllowedFormat + lifecycle จาก agentContract.motionExtensions ที่ familyId ตรงกัน โดยใช้ path ของ baseline เป็น static fallback
+
+ห้าม redraw จาก screenshot/ความจำ ห้ามเปลี่ยนสีหรือสัดส่วน ห้ามใช้ motif แทน identity, data, evidence หรือ claim; ถ้าต้องใช้ animated logo ให้เลือกเฉพาะ ijji.logo-sting.r3 และห้ามนำ ijji ไปเหมารวมเป็น Landometer
+
+ก่อนส่ง ให้ยืนยัน familyId + assetId + path + SHA-256 จาก record เดียวกัน ใส่ static/reduced-motion fallback ตรวจ output จริง และรายงานทุกข้อที่ยังไม่ได้ตรวจ</pre>
+              <div class="cluster">
+                <button class="button button-small button-primary" type="button" data-copy-template="#agent-prompt">คัดลอกพรอมป์ AI</button>
+                <a class="button button-small" href="assets/motif-library.json">เปิด JSON Manifest</a>
+                <a class="button button-small" href="llms.txt">เปิด llms.txt</a>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -454,7 +577,7 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
           <p class="subtle">Owner approval ทำให้ใช้ asset ได้ แต่แต่ละชิ้นงานยังต้องพิสูจน์ว่าบริบท ขนาด contrast fallback และ claim ถูกต้องใน output ที่ส่งจริง</p>
         </div>
         <div class="check-grid">
-          <article class="check-card"><h3>1 · Boundary</h3><ul><li>เลือก Landometer หรือ ijji ถูกชั้น</li><li>ไม่เหมารวม F&amp;B, retail, municipality หรือ CityWiki</li><li>ข้ามเมือง/ผลิตภัณฑ์ใช้ schema/release เดียวกันหรือบอก incompatibility</li></ul></article>
+          <article class="check-card"><h3>1 · Boundary</h3><ul><li>เลือก Landometer, ijji หรือ CityChat ถูกชั้น</li><li>ไม่เหมารวม F&amp;B, retail, municipality หรือ CityWiki</li><li>ข้ามเมือง/ผลิตภัณฑ์ใช้ schema/release เดียวกันหรือบอก incompatibility</li></ul></article>
           <article class="check-card"><h3>2 · Meaning</h3><ul><li>motif ไม่ใช้แทน identity; animated logo ใช้ได้เฉพาะ family ที่ระบุชัด</li><li>สถานะจริงต้องมีข้อความที่มองเห็นได้ ไม่ใช้ motif แบกความหมาย</li><li>claim มี source, date และข้อจำกัด; ลบ motif แล้วความจริงไม่เปลี่ยน</li></ul></article>
           <article class="check-card"><h3>3 · Asset</h3><ul><li>path, revision และ SHA-256 ตรง manifest</li><li>ไม่ redraw, recolor, crop หรือยืดสัดส่วน</li><li>ใช้ selected ไม่ใช้ explorations</li></ul></article>
           <article class="check-card"><h3>4 · Access</h3><ul><li>decorative mark ใช้ alt="" / aria-hidden</li><li>meaningful preview มี text alternative</li><li>pending state มีข้อความ เวลา และ cancel</li></ul></article>
@@ -464,21 +587,36 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
       </div>
     </section>
 
+<section class="section section-alt" id="downloads" aria-labelledby="downloads-title"><div class="wrap"><div class="section-head"><div><p class="eyebrow">04 / TAKE IT INTO YOUR WORK</p><h2 id="downloads-title">ไอเดียมาแล้ว ส่งต่อให้พร้อม</h2></div><p class="subtle">เลือกชุดที่ตรงงาน หรือส่งทั้งสตูดิโอให้ทีม พร้อมไฟล์และที่มาของแต่ละชุด</p></div>
+ <div class="download-grid"><article class="download-feature"><span class="badge">STUDIO 1.3.0</span><h3>ทุกเสียง ในชุดเดียว</h3><p>เว็บสองภาษา + Landometer + ijji + CityChat + Contrast Lab + identity พร้อมคู่มือการใช้</p><a class="button button-primary" href="assets/downloads/motif-studio-v1.3.0.zip" download>ดาวน์โหลด Studio ทั้งชุด ↓</a></article>
+ <div class="download-list"><a href="downloads/landometer-motif-kit-1.2.1.zip" download><strong>Landometer</strong><span>ชุดต้นฉบับจากไฟล์แนบ ↓</span></a><a href="downloads/landometer-ijji-motif-kit-1.2.1.zip" download><strong>Landometer + ijji</strong><span>ชุดต้นฉบับจากไฟล์แนบ ↓</span></a><a href="downloads/landometer-citychat-motif-kit-1.2.1.zip" download><strong>Landometer + CityChat</strong><span>ชุดต้นฉบับ · ดูสถานะไฟล์ก่อนใช้ ↓</span></a></div></div>
+ <details class="source-details"><summary>เวอร์ชันและสถานะในชุดดาวน์โหลด</summary><p>Studio 1.3.0 เป็นการรวมเครื่องมือและหน้าเว็บใหม่ ไฟล์ Landometer/ijji ยังคงรุ่นต้นฉบับ 1.2.1 ส่วน CityChat คงชื่อชุด 1.0.1-proposal และบันทึกต้นทางไว้ การเผยแพร่นี้ไม่เปลี่ยนรุ่น Design System</p><a href="docs/integration-1.3.0.md">อ่านบันทึกการรวมไฟล์</a></details>
+ <div class="handoff-check"><h3>ก่อนส่งต่อ เช็กให้ครบสามเรื่อง</h3><div class="check-options"><label><input type="checkbox" data-handoff-check> เลือกแบรนด์และหน้าที่ของลายแล้ว</label><label><input type="checkbox" data-handoff-check> ตรวจพื้นสีและขนาดในงานจริงแล้ว</label><label><input type="checkbox" data-handoff-check> แนบไฟล์ เวอร์ชัน และภาพนิ่งสำรองแล้ว</label></div><p data-check-progress aria-live="polite">0 / 3 · เริ่มจากงานที่ลายต้องช่วย</p><button class="button" data-copy-template="#studio-brief" type="button">คัดลอก brief ส่งให้ทีม / AI</button><details><summary>ดู brief ก่อนคัดลอก</summary><pre id="studio-brief">ใช้ Motif Studio 1.3.0 เพื่อเลือกไฟล์ต้นฉบับ
+งาน: [ระบุงานและผู้ใช้]
+แบรนด์และบทบาท: [Landometer / ijji / CityChat]
+ไฟล์ path + SHA-256: [เลือกจาก record เดียวกันใน manifest]
+Asset ID: [Landometer/ijji เลือกจาก manifest 1.2.1; CityChat ระบุไฟล์และ rendition]
+ช่องทาง / ขนาด / พื้นสี: [ระบุ]
+ภาพนิ่งสำรอง: [ระบุไฟล์ให้ตรง variant]
+Motion: [finite once / state-bound ตามต้นฉบับ]
+ผลตรวจพื้นสี: [ทั้งส่วนที่ชัดและจาง; ไม่สรุปทั้งภาพจากค่าสูงสุด]
+คงรูปทรง สี และสัดส่วนของต้นฉบับ ตรวจชิ้นงานส่งจริงและรายงานสิ่งที่ยังไม่ได้ตรวจ
+Manifest: https://montri-th.github.io/motif/assets/motif-studio-library.json</pre></details></div></div></section>
     <section class="section section-blue" id="source" aria-labelledby="source-title">
       <div class="wrap">
         <div class="section-head">
           <div>
             <p class="eyebrow" style="color:#59D2FE">Provenance &amp; versions</p>
-            <h2 id="source-title">ทุกไฟล์มีที่มา ทุกข้อยกเว้นมีขอบเขต</h2>
+            <h2 id="source-title">ทุกไฟล์มีที่มา ทุกข้อยกเว้นมีขอบเขต</h2><p class="source-integration-note"><strong>Studio 1.3.0 · 11 ก.ย. 2026</strong> รวม CityChat, Contrast Lab และเครื่องมือส่งต่อจากไฟล์แนบ บันทึกอนุมัติและผลตรวจรุ่น 1.2.1 ด้านล่างอ้างถึง Landometer/ijji เดิม ส่วนสถานะ CityChat คงตามต้นทาง การปรับเว็บนี้ไม่เปลี่ยน Design System <a href="assets/motif-studio-library.json">Studio manifest</a> · <a href="governance/integration-source-record.json">Integration sources</a></p>
           </div>
-          <p style="color:rgba(255,255,255,.82)">เจ้าของยืนยันว่าเป็นผู้สร้าง ถือสิทธิ์เต็ม และอนุมัติการเผยแพร่กับดาวน์โหลดต่อสาธารณะเมื่อ 5 ก.ย. 2026 การนำไปใช้ต่อสงวนสำหรับทีม ผู้ร่วมงาน และ AI/agent workflows ที่ได้รับอนุญาต การอนุมัตินี้ไม่แก้ release เดิมย้อนหลังและไม่ใช่ open-source license สำหรับบุคคลภายนอก</p>
+          <p style="color:rgba(255,255,255,.82)">สำหรับชุด Landometer/ijji รุ่นเดิม: เจ้าของยืนยันสิทธิ์และอนุมัติการเผยแพร่กับดาวน์โหลดต่อสาธารณะเมื่อ 5 ก.ย. 2026 การนำไปใช้ต่อสงวนสำหรับทีม ผู้ร่วมงาน และ AI/agent workflows ที่ได้รับอนุญาต การอนุมัตินี้ไม่แก้ release เดิมย้อนหลังและไม่ใช่ open-source license สำหรับบุคคลภายนอก</p>
         </div>
         <div class="source-panel">
           <div class="source-row"><strong>Design authority</strong><span>LDS 0.9.1 · 0.9.1-r8 · v0.9.1-mp7</span><span>Verified: 5,394 checks + 103 package hashes</span></div>
           <div class="source-row"><strong>Landometer motif</strong><span>Owner-approved overlay · v3 · 6 Sep 2026</span><span>Owner-source runtime SHA-256 <code>3a5caef7…af2</code> + CSS <code>7cc2deb4…12e</code> แบบ byte-exact; animation และ final state เทียบกับ HTML ชุด 3</span></div>
           <div class="source-row"><strong>ijji</strong><span>Animated logo r3 + Selected motifs r3</span><span>Animated identity เป็น owner-approved artifact overlay แยกจาก state-bound motifs และไม่แก้ ijji Add-on 0.5.3 ย้อนหลัง</span></div>
           <div class="source-row"><strong>Format boundary</strong><span>Web 360–1600 · deck 16:9 · social 1080 square · A4 document/PDF</span><span>Video and other ratios are owner extensions without LDS 0.9.1 conformance claim</span></div>
-          <div class="source-row"><strong>Machine access</strong><span><a href="assets/motif-library.json">motif-library.json</a> · <a href="governance/owner-approval.json">owner-approval.json</a></span><span><a href="docs/ai-sync.md">Claude/ChatGPT sync</a> · <a href="https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh">Google Drive</a> · <a href="governance/SHA256SUMS.txt">SHA256</a></span></div>
+          <div class="source-row"><strong>Machine access</strong><span><a href="assets/motif-library.json">motif-library.json</a> · <a href="governance/owner-approval.json">owner-approval.json</a></span><span><a href="docs/ai-sync.md">Claude/ChatGPT sync</a> · <a href="https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh">Google Drive</a> · <a href="governance/SHA256SUMS.txt">1.2.1 SHA256</a></span></div>
         </div>
         <div class="cluster" style="margin-top:24px">
           <a class="button" href="https://github.com/montri-th/motif">เปิด GitHub repository</a>
@@ -491,7 +629,7 @@ motionExtension: [none โดยปริยาย | finite_once | finite_once_l
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p><strong style="font-family:Arvo,Georgia,serif;color:var(--ink)">Landometer</strong> · Motif Library v1.2.1</p>
+      <p><strong style="font-family:Arvo,Georgia,serif;color:var(--ink)">Landometer</strong> · Motif Studio v1.3.0</p>
       <p>Purposeful motion · exact assets · clear product boundaries</p>
     </div>
   </footer>

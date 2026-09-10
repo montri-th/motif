@@ -1,0 +1,631 @@
+{
+  "schemaVersion": "motif-quiet-contrast-evidence/1.0",
+  "measuredOn": "2026-09-10",
+  "method": "WCAG 2.1 relative luminance ratio, sRGB, computed from the exact copied asset bytes and LDS v0.9.1 token values (lds-tokens.css). Alpha rows composite the ink over the carrier at the opacity authored in the asset.",
+  "thresholds": {
+    "meaningfulGraphicMin": 3,
+    "perceptibleMin": 1.3,
+    "note": "WCAG 1.4.11 sets 3:1 for non-text content that conveys meaning. A decorative motif has no minimum, but must stay below adjacent body-text contrast and above 1.3:1 if it is meant to be seen at all."
+  },
+  "quietInk": {
+    "hex": "#59D2FE",
+    "token": "--energy-sky",
+    "appliesTo": "every landometer.*.quiet variant is drawn in this one ink"
+  },
+  "carriers": [
+    {
+      "id": "surface.canvas",
+      "token": "--surface-canvas",
+      "hex": "#F6F7F3",
+      "kind": "light",
+      "r100": 1.62,
+      "r56": 1.33,
+      "r40": 1.23,
+      "r24": 1.13
+    },
+    {
+      "id": "surface.card",
+      "token": "--surface-card",
+      "hex": "#FCFCFA",
+      "kind": "light",
+      "r100": 1.69,
+      "r56": 1.36,
+      "r40": 1.25,
+      "r24": 1.14
+    },
+    {
+      "id": "surface.alt",
+      "token": "--surface-alt",
+      "hex": "#EEF1EE",
+      "kind": "light",
+      "r100": 1.53,
+      "r56": 1.28,
+      "r40": 1.2,
+      "r24": 1.11
+    },
+    {
+      "id": "surface.soft",
+      "token": "--surface-soft",
+      "hex": "#E5E9E6",
+      "kind": "light",
+      "r100": 1.42,
+      "r56": 1.24,
+      "r40": 1.17,
+      "r24": 1.1
+    },
+    {
+      "id": "surface.blueTint",
+      "token": "--surface-blue-tint",
+      "hex": "#E2E9ED",
+      "kind": "light",
+      "r100": 1.42,
+      "r56": 1.23,
+      "r40": 1.16,
+      "r24": 1.1
+    },
+    {
+      "id": "brand.beige",
+      "token": "--brand-beige",
+      "hex": "#F2F1DF",
+      "kind": "light",
+      "r100": 1.53,
+      "r56": 1.29,
+      "r40": 1.2,
+      "r24": 1.12
+    },
+    {
+      "id": "semantic.info.fill",
+      "token": "--semantic-info-fill",
+      "hex": "#E8EEF0",
+      "kind": "light",
+      "r100": 1.48,
+      "r56": 1.27,
+      "r40": 1.18,
+      "r24": 1.11
+    },
+    {
+      "id": "ground.mist.start",
+      "token": "--atmosphere-ground-mist",
+      "hex": "#C4E0EE",
+      "kind": "light",
+      "r100": 1.26,
+      "r56": 1.15,
+      "r40": 1.11,
+      "r24": 1.06
+    },
+    {
+      "id": "ground.mist.mid",
+      "token": "--atmosphere-ground-mist",
+      "hex": "#B2E2E2",
+      "kind": "light",
+      "r100": 1.23,
+      "r56": 1.13,
+      "r40": 1.09,
+      "r24": 1.06
+    },
+    {
+      "id": "ground.mist.end",
+      "token": "--atmosphere-ground-mist",
+      "hex": "#CCE6D0",
+      "kind": "light",
+      "r100": 1.31,
+      "r56": 1.18,
+      "r40": 1.13,
+      "r24": 1.08
+    },
+    {
+      "id": "brand.blue",
+      "token": "--brand-blue",
+      "hex": "#1D4497",
+      "kind": "deep",
+      "r100": 5.19,
+      "r56": 2.74,
+      "r40": 2.08,
+      "r24": 1.56
+    },
+    {
+      "id": "measure.deep.mid",
+      "token": "--atmosphere-measure-deep",
+      "hex": "#176B82",
+      "kind": "deep",
+      "r100": 3.49,
+      "r56": 2.14,
+      "r40": 1.74,
+      "r24": 1.41
+    },
+    {
+      "id": "measure.deep.end",
+      "token": "--atmosphere-measure-deep",
+      "hex": "#08756F",
+      "kind": "deep",
+      "r100": 3.19,
+      "r56": 2,
+      "r40": 1.66,
+      "r24": 1.36
+    },
+    {
+      "id": "ground.current.start",
+      "token": "--atmosphere-ground-current",
+      "hex": "#0F5773",
+      "kind": "deep",
+      "r100": 4.59,
+      "r56": 2.54,
+      "r40": 1.98,
+      "r24": 1.53
+    },
+    {
+      "id": "ground.current.mid",
+      "token": "--atmosphere-ground-current",
+      "hex": "#006A6A",
+      "kind": "deep",
+      "r100": 3.69,
+      "r56": 2.2,
+      "r40": 1.79,
+      "r24": 1.43
+    },
+    {
+      "id": "ground.current.end",
+      "token": "--atmosphere-ground-current",
+      "hex": "#1F744F",
+      "kind": "deep",
+      "r100": 3.29,
+      "r56": 2.05,
+      "r40": 1.69,
+      "r24": 1.38
+    },
+    {
+      "id": "dark.canvas",
+      "token": "--surface-canvas (dark)",
+      "hex": "#11191D",
+      "kind": "deep",
+      "r100": 10.23,
+      "r56": 4.05,
+      "r40": 2.68,
+      "r24": 1.73
+    },
+    {
+      "id": "dark.alt",
+      "token": "--surface-alt (dark)",
+      "hex": "#172126",
+      "kind": "deep",
+      "r100": 9.42,
+      "r56": 3.9,
+      "r40": 2.65,
+      "r24": 1.75
+    },
+    {
+      "id": "dark.card",
+      "token": "--surface-card (dark)",
+      "hex": "#20292D",
+      "kind": "deep",
+      "r100": 8.52,
+      "r56": 3.71,
+      "r40": 2.59,
+      "r24": 1.76
+    },
+    {
+      "id": "dark.raised",
+      "token": "--surface-raised (dark)",
+      "hex": "#293337",
+      "kind": "deep",
+      "r100": 7.44,
+      "r56": 3.42,
+      "r40": 2.46,
+      "r24": 1.71
+    },
+    {
+      "id": "dark.blueTint",
+      "token": "--surface-blue-tint (dark)",
+      "hex": "#18333E",
+      "kind": "deep",
+      "r100": 7.63,
+      "r56": 3.49,
+      "r40": 2.5,
+      "r24": 1.73
+    },
+    {
+      "id": "overlay.glass",
+      "token": "--overlay-glass over dark",
+      "hex": "#111A1E",
+      "kind": "deep",
+      "r100": 10.14,
+      "r56": 4.02,
+      "r40": 2.7,
+      "r24": 1.74
+    }
+  ],
+  "fullMotifWeakestInk": {
+    "cultivate-full": {
+      "surface.canvas": 1.57,
+      "surface.card": 1.64,
+      "surface.alt": 1.48,
+      "surface.soft": 1.37,
+      "surface.blueTint": 1.37,
+      "brand.beige": 1.48,
+      "semantic.info.fill": 1.44,
+      "ground.mist.start": 1.22,
+      "ground.mist.mid": 1.19,
+      "ground.mist.end": 1.27,
+      "brand.blue": 1,
+      "measure.deep.mid": 1.49,
+      "measure.deep.end": 1.63,
+      "ground.current.start": 1.13,
+      "ground.current.mid": 1.41,
+      "ground.current.end": 1.58,
+      "dark.canvas": 1.97,
+      "dark.alt": 1.81,
+      "dark.card": 1.64,
+      "dark.raised": 1.43,
+      "dark.blueTint": 1.47,
+      "overlay.glass": 1.95
+    },
+    "dial-full": {
+      "surface.canvas": 1.57,
+      "surface.card": 1.64,
+      "surface.alt": 1.48,
+      "surface.soft": 1.37,
+      "surface.blueTint": 1.37,
+      "brand.beige": 1.48,
+      "semantic.info.fill": 1.44,
+      "ground.mist.start": 1.22,
+      "ground.mist.mid": 1.19,
+      "ground.mist.end": 1.27,
+      "brand.blue": 1,
+      "measure.deep.mid": 1.49,
+      "measure.deep.end": 1.63,
+      "ground.current.start": 1.13,
+      "ground.current.mid": 1.41,
+      "ground.current.end": 1.58,
+      "dark.canvas": 1.97,
+      "dark.alt": 1.81,
+      "dark.card": 1.64,
+      "dark.raised": 1.43,
+      "dark.blueTint": 1.47,
+      "overlay.glass": 1.95
+    },
+    "layers-full": {
+      "surface.canvas": 1.57,
+      "surface.card": 1.64,
+      "surface.alt": 1.48,
+      "surface.soft": 1.37,
+      "surface.blueTint": 1.37,
+      "brand.beige": 1.48,
+      "semantic.info.fill": 1.44,
+      "ground.mist.start": 1.22,
+      "ground.mist.mid": 1.19,
+      "ground.mist.end": 1.27,
+      "brand.blue": 1,
+      "measure.deep.mid": 1.49,
+      "measure.deep.end": 1.63,
+      "ground.current.start": 1.13,
+      "ground.current.mid": 1.41,
+      "ground.current.end": 1.58,
+      "dark.canvas": 1.97,
+      "dark.alt": 1.81,
+      "dark.card": 1.64,
+      "dark.raised": 1.43,
+      "dark.blueTint": 1.47,
+      "overlay.glass": 1.95
+    },
+    "logo-full": {
+      "surface.canvas": 1.57,
+      "surface.card": 1.64,
+      "surface.alt": 1.48,
+      "surface.soft": 1.37,
+      "surface.blueTint": 1.37,
+      "brand.beige": 1.48,
+      "semantic.info.fill": 1.44,
+      "ground.mist.start": 1.22,
+      "ground.mist.mid": 1.19,
+      "ground.mist.end": 1.27,
+      "brand.blue": 1,
+      "measure.deep.mid": 1.49,
+      "measure.deep.end": 1.4,
+      "ground.current.start": 1.13,
+      "ground.current.mid": 1.41,
+      "ground.current.end": 1.44,
+      "dark.canvas": 1.97,
+      "dark.alt": 1.81,
+      "dark.card": 1.64,
+      "dark.raised": 1.43,
+      "dark.blueTint": 1.47,
+      "overlay.glass": 1.95
+    },
+    "rings-full": {
+      "surface.canvas": 1.57,
+      "surface.card": 1.64,
+      "surface.alt": 1.48,
+      "surface.soft": 1.37,
+      "surface.blueTint": 1.37,
+      "brand.beige": 1.48,
+      "semantic.info.fill": 1.44,
+      "ground.mist.start": 1.22,
+      "ground.mist.mid": 1.19,
+      "ground.mist.end": 1.27,
+      "brand.blue": 1,
+      "measure.deep.mid": 1.49,
+      "measure.deep.end": 1.63,
+      "ground.current.start": 1.13,
+      "ground.current.mid": 1.41,
+      "ground.current.end": 1.58,
+      "dark.canvas": 1.97,
+      "dark.alt": 1.81,
+      "dark.card": 1.64,
+      "dark.raised": 1.43,
+      "dark.blueTint": 1.47,
+      "overlay.glass": 1.95
+    },
+    "slice-full": {
+      "surface.canvas": 1.62,
+      "surface.card": 1.69,
+      "surface.alt": 1.53,
+      "surface.soft": 1.42,
+      "surface.blueTint": 1.42,
+      "brand.beige": 1.53,
+      "semantic.info.fill": 1.48,
+      "ground.mist.start": 1.26,
+      "ground.mist.mid": 1.23,
+      "ground.mist.end": 1.31,
+      "brand.blue": 1,
+      "measure.deep.mid": 1.49,
+      "measure.deep.end": 1.63,
+      "ground.current.start": 1.13,
+      "ground.current.mid": 1.41,
+      "ground.current.end": 1.58,
+      "dark.canvas": 1.97,
+      "dark.alt": 1.81,
+      "dark.card": 1.64,
+      "dark.raised": 1.43,
+      "dark.blueTint": 1.47,
+      "overlay.glass": 1.95
+    }
+  },
+  "inkSets": {
+    "cultivate-full": [
+      "#1D4497",
+      "#FF5A5F",
+      "#FFBC1F",
+      "#0AD69C",
+      "#59D2FE"
+    ],
+    "cultivate-quiet": [
+      "#59D2FE"
+    ],
+    "dial-full": [
+      "#FF5A5F",
+      "#FFBC1F",
+      "#0AD69C",
+      "#59D2FE",
+      "#1D4497"
+    ],
+    "dial-quiet": [
+      "#59D2FE"
+    ],
+    "layers-full": [
+      "#1D4497",
+      "#FF5A5F",
+      "#FFBC1F",
+      "#0AD69C",
+      "#59D2FE"
+    ],
+    "layers-quiet": [
+      "#59D2FE"
+    ],
+    "logo-full": [
+      "#1D4497",
+      "#D2566A",
+      "#D2A437",
+      "#0EB99B",
+      "#4DB6E9",
+      "#FF5A5F",
+      "#FFBC1F",
+      "#0AD69C",
+      "#59D2FE",
+      "#1F87CE"
+    ],
+    "logo-quiet": [
+      "#59D2FE"
+    ],
+    "rings-full": [
+      "#59D2FE",
+      "#0AD69C",
+      "#FFBC1F",
+      "#FF5A5F",
+      "#1D4497"
+    ],
+    "rings-quiet": [
+      "#59D2FE"
+    ],
+    "slice-full": [
+      "#1D4497",
+      "#59D2FE"
+    ],
+    "slice-quiet": [
+      "#59D2FE"
+    ],
+    "ijji-graph-b-brand-blue": [
+      "#1D4497",
+      "#0AD69C"
+    ],
+    "ijji-graph-b-canvas": [
+      "#FCFCFA",
+      "#C9D0CB",
+      "#0AD69C"
+    ],
+    "ijji-graph-b-dark": [
+      "#20292D",
+      "#46524F",
+      "#0AD69C"
+    ],
+    "ijji-graph-b-ground-mist": [
+      "#C4E0EE",
+      "#B2E2E2",
+      "#CCE6D0",
+      "#182327"
+    ],
+    "ijji-graph-b-transparent-ink": [
+      "#182327"
+    ],
+    "ijji-graph-b-transparent-mint": [
+      "#0AD69C"
+    ],
+    "ijji-rings-c-brand-blue": [
+      "#1D4497",
+      "#0AD69C"
+    ],
+    "ijji-rings-c-canvas": [
+      "#FCFCFA",
+      "#C9D0CB",
+      "#0AD69C"
+    ],
+    "ijji-rings-c-dark": [
+      "#20292D",
+      "#46524F",
+      "#0AD69C"
+    ],
+    "ijji-rings-c-ground-mist": [
+      "#C4E0EE",
+      "#B2E2E2",
+      "#CCE6D0",
+      "#182327"
+    ],
+    "ijji-rings-c-transparent-ink": [
+      "#182327"
+    ],
+    "ijji-rings-c-transparent-mint": [
+      "#0AD69C"
+    ],
+    "ijji-rotate-b-brand-blue": [
+      "#1D4497",
+      "#0AD69C"
+    ],
+    "ijji-rotate-b-canvas": [
+      "#FCFCFA",
+      "#C9D0CB",
+      "#0AD69C"
+    ],
+    "ijji-rotate-b-dark": [
+      "#20292D",
+      "#46524F",
+      "#0AD69C"
+    ],
+    "ijji-rotate-b-ground-mist": [
+      "#C4E0EE",
+      "#B2E2E2",
+      "#CCE6D0",
+      "#182327"
+    ],
+    "ijji-rotate-b-transparent-ink": [
+      "#182327"
+    ],
+    "ijji-rotate-b-transparent-mint": [
+      "#0AD69C"
+    ]
+  },
+  "identityRenditions": {
+    "method": "Modal opaque pixel sampled from the copied PNG at 200px width; color renditions report their dominant field ink, not every ring color.",
+    "inks": {
+      "symbol-color": {
+        "ink": "#1D4497",
+        "ratios": {
+          "surface.canvas": 8.39,
+          "surface.card": 8.79,
+          "surface.alt": 7.93,
+          "surface.soft": 7.36,
+          "surface.blueTint": 7.36,
+          "brand.beige": 7.92,
+          "ground.mist.start": 6.55,
+          "ground.mist.mid": 6.39,
+          "ground.mist.end": 6.79,
+          "brand.blue": 1,
+          "measure.deep.mid": 1.49,
+          "measure.deep.end": 1.63,
+          "ground.current.start": 1.13,
+          "ground.current.mid": 1.41,
+          "ground.current.end": 1.58,
+          "dark.canvas": 1.97,
+          "dark.alt": 1.81,
+          "dark.card": 1.64,
+          "dark.raised": 1.43,
+          "dark.blueTint": 1.47
+        }
+      },
+      "symbol-white / mono / outline-white": {
+        "ink": "#FFFFFF",
+        "ratios": {
+          "surface.canvas": 1.08,
+          "surface.card": 1.03,
+          "surface.alt": 1.14,
+          "surface.soft": 1.23,
+          "surface.blueTint": 1.23,
+          "brand.beige": 1.14,
+          "ground.mist.start": 1.38,
+          "ground.mist.mid": 1.41,
+          "ground.mist.end": 1.33,
+          "brand.blue": 9.03,
+          "measure.deep.mid": 6.07,
+          "measure.deep.end": 5.55,
+          "ground.current.start": 7.98,
+          "ground.current.mid": 6.42,
+          "ground.current.end": 5.72,
+          "dark.canvas": 17.79,
+          "dark.alt": 16.38,
+          "dark.card": 14.83,
+          "dark.raised": 12.94,
+          "dark.blueTint": 13.27
+        }
+      },
+      "symbol-cream / outline-cream": {
+        "ink": "#EFEFD0",
+        "ratios": {
+          "surface.canvas": 1.09,
+          "surface.card": 1.14,
+          "surface.alt": 1.03,
+          "surface.soft": 1.05,
+          "surface.blueTint": 1.05,
+          "brand.beige": 1.03,
+          "ground.mist.start": 1.18,
+          "ground.mist.mid": 1.21,
+          "ground.mist.end": 1.13,
+          "brand.blue": 7.71,
+          "measure.deep.mid": 5.18,
+          "measure.deep.end": 4.74,
+          "ground.current.start": 6.81,
+          "ground.current.mid": 5.48,
+          "ground.current.end": 4.89,
+          "dark.canvas": 15.18,
+          "dark.alt": 13.98,
+          "dark.card": 12.66,
+          "dark.raised": 11.05,
+          "dark.blueTint": 11.33
+        }
+      },
+      "symbol-gray": {
+        "ink": "#757575",
+        "ratios": {
+          "surface.canvas": 4.28,
+          "surface.card": 4.49,
+          "surface.alt": 4.05,
+          "surface.soft": 3.76,
+          "surface.blueTint": 3.75,
+          "brand.beige": 4.04,
+          "ground.mist.start": 3.34,
+          "ground.mist.mid": 3.26,
+          "ground.mist.end": 3.47,
+          "brand.blue": 1.96,
+          "measure.deep.mid": 1.32,
+          "measure.deep.end": 1.2,
+          "ground.current.start": 1.73,
+          "ground.current.mid": 1.39,
+          "ground.current.end": 1.24,
+          "dark.canvas": 3.86,
+          "dark.alt": 3.56,
+          "dark.card": 3.22,
+          "dark.raised": 2.81,
+          "dark.blueTint": 2.88
+        }
+      }
+    },
+    "pendingApproval": "landometer-symbol-cream / outline-cream are drawn in #EFEFD0 (Design System v0.6.2 era). On --brand-beige #F2F1DF they measure 1.03:1 — a visible seam, not a placement. Re-export at #F2F1DF is a named pending approval held by the identity owner."
+  }
+}

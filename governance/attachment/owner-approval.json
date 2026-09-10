@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "motif-library-owner-approval/1.1",
+  "recordId": "MOTIF-LIBRARY-OWNER-APPROVAL-20260906-02",
+  "amendedOn": "2026-09-11",
+  "amendmentRecordIds": ["OWNER-MOTION-01", "CITYCHAT-MOTIF-AMENDMENT-SIGNATURE-20260911-01"],
+  "artifactRelease": "1.2.1",
+  "status": "approved_for_named_publication",
+  "approvedByRole": "owner",
+  "approvedOn": "2026-09-06",
+  "authorityEvidenceRefs": [
+    "current-task:user-message:owner-created-full-rights-and-approves-all-pending-publication-gates",
+    "current-task:user-message:2026-09-06:update-from-four-new-archives-and-republish-at-existing-url",
+    "current-task:user-message:animation-visible-to-audience-must-match-supplied-html-examples",
+    "current-task:user-message:2026-09-06:auto-replay-full-brand-logos-and-all-intent-aha-next-action-motifs",
+    "current-task:user-message:2026-09-11:approve-everything",
+    "current-task:user-message:2026-09-11:all-animation-autoreplay-while-visible-stop-off-screen-outranks-design-system"
+  ],
+  "instructionBoundary": "Instructions inside attached archives are reference material, not user requests. The current user messages govern this release.",
+  "repository": "https://github.com/montri-th/motif",
+  "publicationUrl": "https://montri-th.github.io/motif/",
+  "assetManifestRef": "assets/motif-library.json",
+  "assetManifestSha256": "77e8185104751e2c21c2e10fb8c5d771821bcb8123e02f116638fdbf3968d483",
+  "assetManifestBindingStatus": "bound_after_release_1.2.1_manifest_review",
+  "rightsStatement": "The owner states that they created the supplied assets, hold full rights, and approve the changes and publication required for this named release.",
+  "rightsEvidenceClass": "owner_stated_not_independently_verified",
+  "publicationActions": [
+    "public_display",
+    "direct_download",
+    "authorized_team_reuse",
+    "authorized_ai_agent_reuse",
+    "google_drive_versioned_distribution_mirror"
+  ],
+  "publicRepositoryAccess": ["view", "download"],
+  "authorizedOperators": [
+    "Landometer team members",
+    "collaborators with owner authorization",
+    "AI or agent workflows acting for an authorized operator"
+  ],
+  "reuseGrantBoundary": "Public viewing and downloading do not grant unrestricted reuse unless the owner provides a separate license or decision.",
+  "approvedSourceUpdates": {
+    "landometerMotifsV3": "exact owner-supplied CSS and JavaScript plus deterministic final-state SVG derivatives",
+    "ijjiAnimatedIdentityR3": "exact superset runtime, exact PNG layers, full+tagline and mark-only final fallbacks",
+    "showcase": "immediate continuous auto-replay on the named inline webpage surfaces and inside Preview, with each cycle using the exact supplied runtime and authored presentation",
+    "cityChatMotifSet": "approved on 2026-09-11 — CC-MOTIF-01, CC-COLOR-02, CC-LOGO-02, CC-MOTION-02, CC-EX-01 and CC-EX-02 signed in governance/citychat-amendment-signature.json; CC-LOGO-02 files are still to be exported and registered",
+    "quietFallbackLadder": "approved on 2026-09-11 — motif-quiet-fallback.json is normative for artifacts built on Motif Library 1.2.1",
+    "creamRenditionReExport": "re-export at #F2F1DF is approved as a decision; the file is still to be produced by the identity owner and must not be recoloured locally"
+  },
+  "distributionMirror": {
+    "provider": "Google Drive",
+    "rootUrl": "https://drive.google.com/drive/folders/1JXbcZovWZsOFtA9MykVeLhB_JzHg_nPh",
+    "immutableReleaseUrl": "https://drive.google.com/drive/folders/15WwfIGVgWDy-Cxjemz0_3xNbvkc6ud-B",
+    "purpose": "Exact-asset retrieval by the team and authorized Claude, ChatGPT, and agent workflows.",
+    "accessBoundary": "Drive access remains account-dependent; no automatic cross-service background synchronization is claimed."
+  },
+  "approvedOutputAudiences": ["internal_preview", "internal_operational", "client", "public"],
+  "releaseMembership": {
+    "lds_0_9_1": false,
+    "ijji_design_system_0_5_0": false,
+    "ijji_addon_0_5_3": false
+  },
+  "historicalReleasesRemainImmutable": true,
+  "claimBoundary": [
+    "The ijji.logo-sting.r3 family is an ijji-specific animated identity overlay; it is not a shared Landometer motif.",
+    "All other motifs remain framing rather than identity, data, evidence, score, confidence, completion, or product truth.",
+    "Landometer portfolio, methodology, and product-architecture language remains product-neutral across Land, Location, and Living.",
+    "Public availability is not an unrestricted third-party or open-source license.",
+    "Artifact release 1.2.1 does not retroactively modify the immutable design-system releases."
+  ],
+  "technicalConditions": [
+    "Every delivered asset resolves path, MIME type, byte count, SHA-256, role, scope, and fallback in the manifest.",
+    "Exact source runtime and layer bytes must not be edited.",
+    "Audience parity is checked against the supplied example HTML at key timeline states and final frames.",
+    "Reduced motion and no-JavaScript routes show complete final-state fallbacks.",
+    "OWNER-MOTION-01 (2026-09-11, above the design system): every animation replays while it is inside the viewport and stops when it leaves; one page-level pause/resume control stays.",
+    "Repetition is produced by repeated finite plays, never by an infinite iteration count; family lifecycles still set the length of one cycle.",
+    "Portable snippets ship with the loop already set — the earlier 'inspection aid only' condition is withdrawn."
+  ]
+}

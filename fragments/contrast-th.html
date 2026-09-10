@@ -1,0 +1,55 @@
+<section class="section cl-section" id="contrast-lab" aria-labelledby="contrast-title" data-contrast-lab>
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="eyebrow">Contrast playground · 20 × 20</p><h2 id="contrast-title">เปลี่ยนพื้น แล้วเห็นอีกมุม</h2></div>
+      <p class="cl-intro subtle">ลายเดิม พื้นใหม่ อารมณ์ก็เปลี่ยน ลองจับคู่ 20 ชิ้นกับ 20 พื้น แล้วพาคู่ที่ใช่ไปต่อในงานของคุณ</p>
+    </div>
+    <div class="cl-presets" role="group" aria-label="เริ่มจากไอเดียหนึ่ง" data-cl-enhanced hidden><button class="button button-small" type="button" data-cl-preset="lm.dial.quiet" data-cl-preset-carrier="dark.canvas">ให้ quiet เปล่งประกาย</button><button class="button button-small" type="button" data-cl-preset="lm.logo.full" data-cl-preset-carrier="brand.blue">ลองหาส่วนที่กลืนไป</button><button class="button button-small" type="button" data-cl-preset="cc.dark" data-cl-preset-carrier="dark.canvas">ชวน CityChat เข้าสู่ค่ำคืน</button></div>
+    <div class="cl-workbench">
+      <div class="cl-stage-column">
+        <div class="cl-stage" data-cl-preview><img src="assets/landometer/svg/dial-quiet.svg" alt="dial · quiet" width="200" height="100" style="width:200px" data-cl-image loading="lazy" decoding="async"></div>
+        <p class="cl-stage-caption"><strong data-cl-name>dial · quiet</strong><span data-cl-surface>surface.canvas · #F6F7F3</span></p>
+        <div class="cl-readout">
+          <dl class="cl-metrics"><div><dt>ตัวอย่างส่วนอ่อนสุด</dt><dd data-cl-min>1.23 : 1</dd></div><div><dt>ตัวอย่างส่วนเด่นสุด</dt><dd data-cl-max>1.62 : 1</dd></div></dl>
+          <p class="cl-verdict" data-cl-verdict data-state="low">บางส่วนยังเบาอยู่</p>
+          <p class="cl-note" data-cl-meta>ตัวอย่างสีที่คำนวณ: #59D2FE / Alpha จากไฟล์ต้นฉบับ: 0.4–1</p>
+          <p class="cl-note" style="margin-top:12px">เป็นช่วงค่าของสีและ alpha ที่ระบุในชุดส่งต่อ ไม่ใช่ทุกพิกเซลหรือผลรับรอง accessibility ของทั้งชิ้น</p>
+        </div>
+      </div>
+      <div class="cl-controls" data-cl-enhanced hidden>
+        <label for="cl-asset">1 · เลือกลายที่อยากเล่า</label><select id="cl-asset" data-cl-asset></select>
+        <label for="cl-carrier">2 · ลองเปลี่ยนพื้น</label><select id="cl-carrier" data-cl-carrier></select>
+        <div data-cl-swatches></div>
+        <p class="cl-note cl-carrier-note" data-cl-carrier-note>ตัวอย่างพื้นสีทึบ ตรวจซ้ำที่ขนาดและตำแหน่งใช้งานจริง</p>
+        <div class="cl-threshold"><label for="cl-threshold">3 · ขยับเส้นอ้างอิง <output for="cl-threshold" data-cl-threshold-value>3.0 : 1</output></label><input id="cl-threshold" type="range" min="1.3" max="4.5" step="0.1" value="3" aria-describedby="cl-threshold-note" data-cl-threshold><p class="cl-note" id="cl-threshold-note">ใช้เปรียบเทียบรายละเอียด 3:1 เป็นเพียงเส้นอ้างอิง ไม่ได้ทำให้ลายรับหน้าที่แทนข้อความหรือสถานะจริง</p></div>
+        <div class="cl-actions"><button class="button button-small" type="button" data-cl-sibling>ลอง dial · full</button></div>
+      </div>
+    </div>
+    <div class="cl-actions"><a class="button button-small" href="assets/landometer/svg/dial-quiet.svg" download data-cl-download>ดาวน์โหลดชิ้นนี้</a><button class="button button-small" type="button" data-cl-copy data-cl-enhanced hidden>คัดลอกผลทดลอง</button></div>
+    <p class="cl-copy-status" role="status" data-cl-copy-status></p>
+    <div class="cl-manual-copy" data-cl-manual-copy hidden><label for="cl-copy-result">ผลทดลองสำหรับคัดลอก</label><textarea id="cl-copy-result" readonly></textarea></div>
+    <div class="cl-recommendations" data-cl-enhanced hidden><p data-cl-suggestion-note>ลองพื้นเหล่านี้</p><div class="cl-suggestions" data-cl-suggestions></div></div>
+    <p class="visually-hidden" role="status" aria-live="polite" data-cl-status></p>
+    <noscript><p class="cl-note">ตอนนี้แสดงคู่ตัวอย่างและไฟล์ดาวน์โหลด เปิด JavaScript เพื่อทดลองเปลี่ยน 400 คู่ด้วยตัวเอง</p></noscript>
+    <details class="cl-method"><summary>ตัวเลขนี้บอกอะไร และยังไม่ได้บอกอะไร</summary><p>เราผสมสีตัวอย่างกับพื้นตาม alpha ที่ระบุ แล้วคำนวณอัตราส่วน luminance จากสี sRGB แสดงทั้งค่าน้อยสุดและมากสุดของชุดตัวอย่าง ไม่สรุปว่าทั้งภาพผ่านจากส่วนที่ชัดที่สุด โลโก้สีและ CityChat มีสีอื่นนอกเหนือจากตัวอย่างนี้ ขอบที่มี anti-alias และภาพซ้อนจริงยังไม่ได้วัด</p><p>พื้น gradient แสดงเป็น stop สีทึบหนึ่งจุด จึงต้องตรวจทุก stop และตำแหน่งใช้งานจริง ส่วน overlay.glass เป็นค่าประมาณที่ขึ้นกับพื้นด้านหลัง ขนาดที่ขยายช่วยให้สังเกตได้ แต่ไม่เปลี่ยน contrast ratio ลายตกแต่งควรมี alt=&quot;&quot; ส่วนข้อมูลสำคัญต้องมีข้อความและตรวจองค์ประกอบที่สื่อความหมายแยกต่างหาก</p></details>
+    <div class="cl-ladder" id="quiet">
+      <p class="eyebrow">Five small moves</p><h3>ถ้ายังไม่ลงตัว ลองทีละก้าว</h3><p class="cl-ladder-intro subtle">ให้พื้น พื้นที่ว่าง และการเลือกไฟล์ช่วยเล่าเรื่อง โดยเก็บลายต้นฉบับไว้ครบ</p>
+      <ol class="cl-ladder-list"><li><b>L1</b><h4>วัดกับงานจริง</h4><p>ดูทั้งส่วนเด่นและส่วนอ่อน บนพื้นและขนาดที่จะส่ง ตรวจทุก stop เมื่อใช้ gradient</p></li><li><b>L2</b><h4>ลองพื้นอีกแบบ</h4><p>เลือกพื้นในชุดที่เหมาะกับบริบท แล้ววัดอีกครั้ง ไม่เติมแผ่นรองหรือสีใหม่เพื่อกลบปัญหา</p></li><li><b>L3</b><h4>สลับไฟล์ที่มีให้</h4><p>ลอง full / quiet, ijji ink / mint หรือ CityChat light / dark โลโก้เลือก rendition โดยคงสีต้นฉบับ</p></li><li><b>L4</b><h4>ให้พื้นที่กับลาย</h4><p>ขยายตามความเหมาะสม แยกจากคอลัมน์ข้อความ หรือเพิ่มพื้นที่ว่าง ขนาดไม่ทำให้ค่า contrast สูงขึ้น</p></li><li><b>L5</b><h4>เว้นลาย ก็เล่าได้</h4><p>ถอดลายออกได้เสมอ ข้อความ ปุ่ม และสถานะจริงยังต้องเล่าเรื่องได้ครบด้วยตัวเอง</p></li></ol>
+      <p class="cl-source-note">แนวทางจากชุดส่งต่อ: ใช้ช่วยตัดสินใจเรื่องการวาง ไม่ใช่การประกาศกติกา Design System ใหม่ ตรวจไฟล์จริงและบริบทปลายทางทุกครั้ง · <a href="motif-quiet-fallback.json" download>อ่านไฟล์อ้างอิงต้นฉบับ</a></p>
+    </div>
+    <div class="cl-identity" id="identity" aria-labelledby="identity-title" data-identity-selector>
+      <p class="eyebrow">Official identity · 12 original files</p><h3 id="identity-title">โลโก้ที่ใช่ บนพื้นของคุณ</h3><p class="subtle">เลือกจากไฟล์ identity ทั้ง 12 แบบ ลองพื้นสว่างและมืดก่อนหยิบไปใช้ใน navigation, co-branding หรือเอกสาร</p>
+      <div class="cl-identity-grid">
+        <figure class="cl-identity-figure"><div class="cl-identity-preview" data-id-preview><img src="assets/identity/logo/landometer-symbol-color.png" alt="Landometer · Symbol color" width="180" height="180" data-id-image loading="lazy" decoding="async"></div><figcaption><strong data-id-caption>Symbol · color · 1601 × 1601 px</strong><span data-id-surface>canvas · #F6F7F3</span></figcaption></figure>
+        <div class="cl-identity-controls">
+          <div data-cl-enhanced hidden><label for="cl-identity-file">เลือกไฟล์ identity</label><select id="cl-identity-file" data-id-file></select><fieldset class="cl-identity-bg"><legend>ลองพื้นสำหรับโลโก้</legend><div><button type="button" data-id-bg="canvas" aria-pressed="true">Canvas</button><button type="button" data-id-bg="brand.blue" aria-pressed="false">Brand Blue</button><button type="button" data-id-bg="dark.canvas" aria-pressed="false">Dark</button><button type="button" data-id-bg="brand.beige" aria-pressed="false">Beige</button></div></fieldset></div>
+          <p class="cl-note" data-id-guidance>เริ่มที่พื้นสว่าง ฐานสีน้ำเงินอาจกลืนกับ Brand Blue คงทุกสีตามไฟล์เดิม</p>
+          <div class="cl-actions"><a class="button button-small" href="assets/identity/logo/landometer-symbol-color.png" download data-id-download>ดาวน์โหลด PNG นี้</a><button class="button button-small" type="button" data-id-match data-cl-enhanced hidden>ลองพื้นที่เหมาะกับรุ่นนี้</button></div>
+          <p class="visually-hidden" role="status" aria-live="polite" data-id-status></p>
+        </div>
+      </div>
+      <details class="cl-download-all"><summary>เปิดไฟล์ identity ทั้ง 12 แบบ</summary><ul><li><a href="assets/identity/logo/landometer-symbol-color.png" download>Symbol · color</a></li><li><a href="assets/identity/logo/landometer-symbol-white.png" download>Symbol · white</a></li><li><a href="assets/identity/logo/landometer-symbol-cream.png" download>Symbol · cream</a></li><li><a href="assets/identity/logo/landometer-symbol-gray.png" download>Symbol · gray</a></li><li><a href="assets/identity/logo/landometer-symbol-mono.png" download>Symbol · mono</a></li><li><a href="assets/identity/logo/landometer-symbol-outline-white.png" download>Symbol · outline white</a></li><li><a href="assets/identity/logo/landometer-symbol-outline-cream.png" download>Symbol · outline cream</a></li><li><a href="assets/identity/logo/landometer-symbol-white-square.png" download>Symbol · white square</a></li><li><a href="assets/identity/logo/landometer-symbol-192.png" download>Symbol · 192 px</a></li><li><a href="assets/identity/logo/landometer-lockup-banner.png" download>Lockup · banner</a></li><li><a href="assets/identity/logo/landometer-lockup-color.png" download>Lockup · color master</a></li><li><a href="assets/identity/logo/Landometer-Logo-TransparentBG.png" download>Logo · transparent master</a></li></ul></details>
+      <p class="cl-source-note">ทุกไฟล์คงไบต์เดิมจากชุดแนบ รุ่น cream ยังเป็น #EFEFD0 และรุ่น gray ไม่ได้ชัดบนทุกพื้น เปลี่ยน rendition หรือพื้นที่แวดล้อมตามงานจริง</p>
+    </div>
+  </div>
+</section>

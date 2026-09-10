@@ -179,7 +179,7 @@
         const isQuiet = button.dataset.quiet === "true";
         const quiet = isQuiet ? " quiet" : "";
         const logoPalette = id === "logo" && !isQuiet ? ' ink="blue"' : "";
-        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.2.1">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.2.1" defer><\/script>\n<lm-motif kind="${id}"${quiet}${logoPalette}></lm-motif>`;
+        snippet = `<link rel="stylesheet" href="${origin}/assets/landometer/landometer-motifs.css?v=1.2.1">\n<script src="${origin}/assets/landometer/landometer-motifs.js?v=1.2.1" defer><\/script>\n<lm-motif kind="${id}"${quiet}${logoPalette}><img src="${origin}/assets/landometer/svg/${id}-${isQuiet ? "quiet" : "full"}.svg" alt="" aria-hidden="true"></lm-motif>`;
       } else if (brand === "ijji-logo") {
         const markOnly = id === "mark";
         const attributes = markOnly ? ' notagline bounce="extra"' : ' surface="brand-blue" bounce="playful"';
@@ -218,7 +218,7 @@
       grid.hidden = !hasVisible;
       document.querySelectorAll(`[data-family="${family}"]`).forEach((head) => { head.hidden = !hasVisible; });
     });
-    if (filterStatus) filterStatus.textContent = copy.result(visible);
+    if (filterStatus) filterStatus.textContent = visible ? copy.result(visible) : (locale === "th" ? "ยังไม่พบลายนี้ ลองคำอื่นหรือเลือกทั้งหมด" : "No matches yet. Try another word or choose All.");
   }
 
   filterButtons.forEach((button) => {
@@ -313,6 +313,7 @@
     inlineMotionPaused = !inlineMotionPaused;
     syncMotionToggle();
     syncInlineMotion();
+    window.dispatchEvent(new CustomEvent("motif:motion", { detail: { paused: inlineMotionPaused } }));
   });
   syncMotionToggle();
 
@@ -446,7 +447,8 @@
           logo = document.createElement("ijji-logo-sting");
           logo.setAttribute("manual", "");
           logo.setAttribute("surface", "brand-blue");
-          logo.setAttribute("bounce", "playful");
+          logo.setAttribute("bounce", stage.dataset.markOnly === "true" ? "extra" : "playful");
+          if (stage.dataset.markOnly === "true") logo.setAttribute("notagline", "");
           logo.setAttribute("assets", new URL(`${base}/assets/ijji/logo-sting/layers/`, document.baseURI).href);
           stage.append(logo);
           requestAnimationFrame(() => {
@@ -886,7 +888,9 @@
         const context = canvas.getContext("2d");
         if (!context) throw new Error("Canvas unavailable");
         context.clearRect(0, 0, width, height);
-        context.drawImage(image, 0, 0, width, height);
+        const scale = Math.min(width / image.naturalWidth, height / image.naturalHeight);
+        const drawnWidth = image.naturalWidth * scale, drawnHeight = image.naturalHeight * scale;
+        context.drawImage(image, (width - drawnWidth) / 2, (height - drawnHeight) / 2, drawnWidth, drawnHeight);
         URL.revokeObjectURL(sourceUrl);
         const png = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
         if (!png) throw new Error("PNG encoding failed");

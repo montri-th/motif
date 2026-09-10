@@ -1,0 +1,55 @@
+<section class="section cl-section" id="contrast-lab" aria-labelledby="contrast-title" data-contrast-lab>
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="eyebrow">Contrast playground · 20 × 20</p><h2 id="contrast-title">Same motif. A whole new mood.</h2></div>
+      <p class="cl-intro subtle">A small change of surface can change the whole feeling. Mix 20 assets with 20 surfaces, explore the details, and take your best pairing into the next idea.</p>
+    </div>
+    <div class="cl-presets" role="group" aria-label="Start with a little experiment" data-cl-enhanced hidden><button class="button button-small" type="button" data-cl-preset="lm.dial.quiet" data-cl-preset-carrier="dark.canvas">Let quiet glow</button><button class="button button-small" type="button" data-cl-preset="lm.logo.full" data-cl-preset-carrier="brand.blue">Find the vanishing detail</button><button class="button button-small" type="button" data-cl-preset="cc.dark" data-cl-preset-carrier="dark.canvas">Meet CityChat after dark</button></div>
+    <div class="cl-workbench">
+      <div class="cl-stage-column">
+        <div class="cl-stage" data-cl-preview><img src="../assets/landometer/svg/dial-quiet.svg" alt="dial · quiet" width="200" height="100" style="width:200px" data-cl-image loading="lazy" decoding="async"></div>
+        <p class="cl-stage-caption"><strong data-cl-name>dial · quiet</strong><span data-cl-surface>surface.canvas · #F6F7F3</span></p>
+        <div class="cl-readout">
+          <dl class="cl-metrics"><div><dt>Weakest listed sample</dt><dd data-cl-min>1.23 : 1</dd></div><div><dt>Strongest listed sample</dt><dd data-cl-max>1.62 : 1</dd></div></dl>
+          <p class="cl-verdict" data-cl-verdict data-state="low">Some sampled parts stay subtle</p>
+          <p class="cl-note" data-cl-meta>Sampled inks: #59D2FE / Authored alpha: 0.4–1</p>
+          <p class="cl-note" style="margin-top:12px">A range for the inks and alpha samples listed in the handoff. It does not cover every pixel or certify the whole asset for accessibility.</p>
+        </div>
+      </div>
+      <div class="cl-controls" data-cl-enhanced hidden>
+        <label for="cl-asset">1 · Choose your motif</label><select id="cl-asset" data-cl-asset></select>
+        <label for="cl-carrier">2 · Give it a new surface</label><select id="cl-carrier" data-cl-carrier></select>
+        <div data-cl-swatches></div>
+        <p class="cl-note cl-carrier-note" data-cl-carrier-note>Solid carrier sample. Check at the final size and placement.</p>
+        <div class="cl-threshold"><label for="cl-threshold">3 · Move the reference line <output for="cl-threshold" data-cl-threshold-value>3.0 : 1</output></label><input id="cl-threshold" type="range" min="1.3" max="4.5" step="0.1" value="3" aria-describedby="cl-threshold-note" data-cl-threshold><p class="cl-note" id="cl-threshold-note">Compare the details. 3:1 is a reference, not permission for a motif to replace text or a real status.</p></div>
+        <div class="cl-actions"><button class="button button-small" type="button" data-cl-sibling>Try dial · full</button></div>
+      </div>
+    </div>
+    <div class="cl-actions"><a class="button button-small" href="../assets/landometer/svg/dial-quiet.svg" download data-cl-download>Download this asset</a><button class="button button-small" type="button" data-cl-copy data-cl-enhanced hidden>Copy experiment result</button></div>
+    <p class="cl-copy-status" role="status" data-cl-copy-status></p>
+    <div class="cl-manual-copy" data-cl-manual-copy hidden><label for="cl-copy-result">Experiment result to copy</label><textarea id="cl-copy-result" readonly></textarea></div>
+    <div class="cl-recommendations" data-cl-enhanced hidden><p data-cl-suggestion-note>Try these surfaces</p><div class="cl-suggestions" data-cl-suggestions></div></div>
+    <p class="visually-hidden" role="status" aria-live="polite" data-cl-status></p>
+    <noscript><p class="cl-note">This is a static pairing with working downloads. Enable JavaScript to explore all 400 combinations.</p></noscript>
+    <details class="cl-method"><summary>What these numbers tell you — and what they do not</summary><p>We composite the listed ink samples over the surface at the supplied alpha values, then calculate their sRGB luminance contrast. You see both the minimum and maximum of that sample set. A strong detail never certifies the whole image. The color logo and CityChat contain inks beyond these samples; anti-aliased edges and the final layered composition are not measured here.</p><p>Gradient entries show one stop as a solid color. Check every stop and the final position. The overlay.glass sample is approximate and depends on what sits behind it. A larger motif can be easier to notice, but size does not increase its contrast ratio. Use alt=&quot;&quot; for decoration, and check meaningful components and text alternatives separately.</p></details>
+    <div class="cl-ladder" id="quiet">
+      <p class="eyebrow">Five small moves</p><h3>Not quite there? Take the next small step.</h3><p class="cl-ladder-intro subtle">Let the surface, the spacing and the file choice do the work, while the original artwork stays intact.</p>
+      <ol class="cl-ladder-list"><li><b>L1</b><h4>Check the real output</h4><p>Inspect strong and soft details on the final surface and at the final size. Test every stop of a gradient.</p></li><li><b>L2</b><h4>Try another surface</h4><p>Choose a supplied surface that fits the context and measure again. Avoid adding a plate or inventing a color to mask the issue.</p></li><li><b>L3</b><h4>Choose another file</h4><p>Try full / quiet, ijji ink / mint, or CityChat light / dark. For logos, swap the rendition while keeping its original colors.</p></li><li><b>L4</b><h4>Give it some room</h4><p>Adjust its size, move it out of the text column, or add clear space. Size does not increase the contrast ratio.</p></li><li><b>L5</b><h4>Leave room for the story</h4><p>Remove the motif if needed. Text, buttons and real status components should still tell the complete story on their own.</p></li></ol>
+      <p class="cl-source-note">Handoff reference guidance: a placement aid, not a new Design System rule. Check the exact file and its final context each time. · <a href="../motif-quiet-fallback.json" download>Read the original reference file</a></p>
+    </div>
+    <div class="cl-identity" id="identity" aria-labelledby="identity-title" data-identity-selector>
+      <p class="eyebrow">Official identity · 12 original files</p><h3 id="identity-title">The right logo for your surface</h3><p class="subtle">Explore all 12 supplied identity files. Try a light and deep surface before using one in navigation, co-branding or a document.</p>
+      <div class="cl-identity-grid">
+        <figure class="cl-identity-figure"><div class="cl-identity-preview" data-id-preview><img src="../assets/identity/logo/landometer-symbol-color.png" alt="Landometer · Symbol color" width="180" height="180" data-id-image loading="lazy" decoding="async"></div><figcaption><strong data-id-caption>Symbol · color · 1601 × 1601 px</strong><span data-id-surface>canvas · #F6F7F3</span></figcaption></figure>
+        <div class="cl-identity-controls">
+          <div data-cl-enhanced hidden><label for="cl-identity-file">Choose an identity file</label><select id="cl-identity-file" data-id-file></select><fieldset class="cl-identity-bg"><legend>Try a logo surface</legend><div><button type="button" data-id-bg="canvas" aria-pressed="true">Canvas</button><button type="button" data-id-bg="brand.blue" aria-pressed="false">Brand Blue</button><button type="button" data-id-bg="dark.canvas" aria-pressed="false">Dark</button><button type="button" data-id-bg="brand.beige" aria-pressed="false">Beige</button></div></fieldset></div>
+          <p class="cl-note" data-id-guidance>Start on a light surface. The blue base can blend into Brand Blue. Keep all authored colors.</p>
+          <div class="cl-actions"><a class="button button-small" href="../assets/identity/logo/landometer-symbol-color.png" download data-id-download>Download this PNG</a><button class="button button-small" type="button" data-id-match data-cl-enhanced hidden>Try a matching surface</button></div>
+          <p class="visually-hidden" role="status" aria-live="polite" data-id-status></p>
+        </div>
+      </div>
+      <details class="cl-download-all"><summary>Browse all 12 identity downloads</summary><ul><li><a href="../assets/identity/logo/landometer-symbol-color.png" download>Symbol · color</a></li><li><a href="../assets/identity/logo/landometer-symbol-white.png" download>Symbol · white</a></li><li><a href="../assets/identity/logo/landometer-symbol-cream.png" download>Symbol · cream</a></li><li><a href="../assets/identity/logo/landometer-symbol-gray.png" download>Symbol · gray</a></li><li><a href="../assets/identity/logo/landometer-symbol-mono.png" download>Symbol · mono</a></li><li><a href="../assets/identity/logo/landometer-symbol-outline-white.png" download>Symbol · outline white</a></li><li><a href="../assets/identity/logo/landometer-symbol-outline-cream.png" download>Symbol · outline cream</a></li><li><a href="../assets/identity/logo/landometer-symbol-white-square.png" download>Symbol · white square</a></li><li><a href="../assets/identity/logo/landometer-symbol-192.png" download>Symbol · 192 px</a></li><li><a href="../assets/identity/logo/landometer-lockup-banner.png" download>Lockup · banner</a></li><li><a href="../assets/identity/logo/landometer-lockup-color.png" download>Lockup · color master</a></li><li><a href="../assets/identity/logo/Landometer-Logo-TransparentBG.png" download>Logo · transparent master</a></li></ul></details>
+      <p class="cl-source-note">All files retain the exact attachment bytes. Cream still uses legacy #EFEFD0, and gray is not clear on every background. Choose the rendition and surrounding surface for your actual output.</p>
+    </div>
+  </div>
+</section>

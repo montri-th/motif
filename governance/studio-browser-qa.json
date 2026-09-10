@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "motif-studio-browser-review/1.0",
+  "webRelease": "1.3.0",
+  "status": "passed_scoped_review",
+  "testedOrigin": "http://127.0.0.1:4173",
+  "browser": "Codex in-app browser",
+  "reviewedAt": "2026-09-10T18:55:32.147988+00:00",
+  "sourceSha256": {
+    "index.html": "11591dd82d218ade7027424ae660daca54704797dbe74dfc28c2f36453d7aca9",
+    "en/index.html": "df060c8a38d41cffde7f7cad80ca02f0a27625450f27995af9c9c396eee1343e",
+    "site.js": "19a3166bb36a9646d02a503b4a00f4aa291b2d4913d4d8431c3052e1d1471036",
+    "studio.js": "5ddaefdab0949e22edea5faf887ce9c8ad1bc9182078edaa2dd7f22cf00739ab",
+    "studio.css": "6a354fc1e407b3ab4b421f0cc878a47886b5639e033fae0f93d9fe2529f1f219",
+    "citychat.js": "942f09bd9aabf53ef1b9160f0ffcd374cad318eea63e02b9b5d51716795142ea",
+    "citychat.css": "803e159b22853f5aca12bded0a44c778d9ef27fde74f57f0ed988d2d603bde11",
+    "contrast-lab.js": "0f83e900f4d2de9a8c5cdb25105a1f79d5f38cdc554c942a6e35178a032655c4",
+    "contrast-lab.css": "d7fd582021305daff7a34e310939da0482b117857f6c44ed74cbe9e7b7de46c3"
+  },
+  "checks": [
+    {
+      "name": "TH + EN routes",
+      "result": "passed",
+      "details": "15 searchable cards; 6 work scenarios; 20 contrast assets, 20 surfaces, 12 identity choices; no broken images."
+    },
+    {
+      "name": "Responsive containment",
+      "result": "passed",
+      "details": "320, 360, 390 and 1280 CSS-pixel widths; light/dark surfaces sampled; no horizontal overflow."
+    },
+    {
+      "name": "Large text",
+      "result": "passed_fixture",
+      "details": "Thai root font 200% at 390/1280; English 130% at 320. No overflow. This is text-size testing, not physical-device zoom attestation."
+    },
+    {
+      "name": "Landometer preview",
+      "result": "passed",
+      "details": "All six kinds opened full + quiet. Original v3 runtime and static assets unchanged."
+    },
+    {
+      "name": "ijji preview",
+      "result": "passed",
+      "details": "Both animated identities mounted and paused to final state. Three pending-state motifs mounted and stopped."
+    },
+    {
+      "name": "CityChat preview",
+      "result": "passed",
+      "details": "All four scenes opened; light/dark switching and pause-to-still tested. Original conversation remains light."
+    },
+    {
+      "name": "Inline motion",
+      "result": "passed",
+      "details": "3c played on entry, three offscreen cards remained static. Page pause made all four static and stopped Landometer play attributes."
+    },
+    {
+      "name": "Contrast",
+      "result": "passed",
+      "details": "Logo-full on Brand Blue: weakest 1.00, strongest 5.36, partial-visibility wording. Identity choice updated exact PNG URL."
+    },
+    {
+      "name": "Search/comparison",
+      "result": "passed",
+      "details": "CityChat filter: 4 cards. English voice query: 3. Zero matches has recovery text. Text-only comparison changes only motif visibility."
+    },
+    {
+      "name": "Clipboard",
+      "result": "passed",
+      "details": "CityChat snippet and contrast result read back with real newlines and correct asset/rendition."
+    },
+    {
+      "name": "PNG export",
+      "result": "passed",
+      "details": "citychat-3a-voice-home-dark-2048.png decoded 2048x2048 and visually inspected complete, correct dark surface."
+    },
+    {
+      "name": "Scripts unavailable",
+      "result": "passed_fixture",
+      "details": "Source fixture with scripts removed: 15 cards, 38 images, zero broken images; copy controls hidden. Fixture excluded from package."
+    },
+    {
+      "name": "Reduced-motion controller",
+      "result": "passed_fixture",
+      "details": "JS media-query override fixture: page motion control hidden, zero playing lm-motif and CityChat static. Native OS setting not toggled."
+    },
+    {
+      "name": "Fresh-route console",
+      "result": "passed",
+      "details": "Fresh English route had no error/warning logs after interactions. Earlier mixed-version development error resolved with current CityChat markup."
+    }
+  ],
+  "coverageLimits": [
+    "Native iPhone not tested.",
+    "No blanket WCAG certification.",
+    "Fallback fixtures do not attest browser-level scripting-disabled or native OS reduced-motion mode."
+  ],
+  "publication": "pending; provider and live byte checks recorded separately"
+}

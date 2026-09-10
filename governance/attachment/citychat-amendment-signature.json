@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "landometer-owner-decision/1.0",
+  "recordId": "CITYCHAT-MOTIF-AMENDMENT-SIGNATURE-20260911-01",
+  "amendmentRef": "assets/citychat/AMENDMENT.md",
+  "amendmentSetId": "citychat-motif-set 1.0.1-proposal",
+  "signedOn": "2026-09-11",
+  "signedByRole": "owner",
+  "approvedItems": [
+    "CC-MOTIF-01",
+    "CC-COLOR-02",
+    "CC-LOGO-02",
+    "CC-MOTION-02",
+    "CC-EX-01",
+    "CC-EX-02"
+  ],
+  "status": "approved",
+  "byteIntegrityNote": "AMENDMENT.md keeps its registered bytes, so its printed signature line is still blank. This record is the signature. Do not edit the amendment file to sign it — that would break the SHA-256 in assets/citychat/asset-register.json.",
+  "conditionsCarriedForward": [
+    "CC-LOGO-02 is approved as a decision, but no new lockup file exists yet: production keeps citychat-lockup*.png until the new files are exported from source and registered with their hashes.",
+    "CC-MOTION-02 keeps its cycle lengths (≤1.8 s, 3b ≤2.4 s) but no longer plays once — OWNER-MOTION-01 requires repetition while visible.",
+    "The set id in the register stays 1.0.1-proposal until the register is reissued; the approval is carried by this record."
+  ],
+  "evidenceRefs": [
+    "current-task:user-message:2026-09-11:approve-everything"
+  ]
+}

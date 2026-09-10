@@ -1,0 +1,135 @@
+{
+  "package": "citychat-motif-set",
+  "version": "1.0.1-proposal",
+  "date": "2026-09-08",
+  "lds": {
+    "release": "0.9.1",
+    "authoring": "0.9.1-r8",
+    "machine": "v0.9.1-mp7",
+    "colorSet": "color-srgb-05"
+  },
+  "addon": "CityChat DS Add-on v0.9.1 + AMENDMENT.md (this package)",
+  "status": "candidate — owner sign-off pending",
+  "palette": {
+    "light": {
+      "main": "#007A58",
+      "mainInk": "#FFFFFF",
+      "second": "#0AD69C",
+      "secondInk": "#182327"
+    },
+    "dark": {
+      "main": "#3BD19B",
+      "mainInk": "#182327",
+      "second": "#007E79",
+      "secondInk": "#FFFFFF"
+    },
+    "newcomer": {
+      "fill": "#FFBC1F",
+      "ink": "#182327"
+    },
+    "lines": {
+      "light": {
+        "ground": "#C9D0CB",
+        "grid": "#DCE1DD",
+        "paper": "#FCFCFA"
+      },
+      "dark": {
+        "ground": "#46524F",
+        "grid": "#33403D",
+        "paper": "#20292D"
+      }
+    },
+    "logoSmallBubble": {
+      "light": {
+        "fill": "#1D4497",
+        "dots": "#FFFFFF",
+        "contrastOnHero": "4.6–4.9:1"
+      },
+      "dark": {
+        "fill": "#F2F1DF",
+        "dots": "#182327",
+        "contrastOnHero": "4.3–4.7:1"
+      }
+    }
+  },
+  "files": [
+    {
+      "file": "assets/3a-voice-home-light.svg",
+      "role": "3a เสียงบ้านเรา · light",
+      "bytes": 11143,
+      "sha256": "c175caf8dd9fb0b045af720693aa45aef588b026e4eeaa5b88754cfffa8a06eb"
+    },
+    {
+      "file": "assets/3a-voice-home-dark.svg",
+      "role": "3a เสียงบ้านเรา · dark",
+      "bytes": 11143,
+      "sha256": "9717b6f70a9442e437e2ee069c335db44c8820aba6653d0aac385d1338f315d8"
+    },
+    {
+      "file": "assets/3b-live-visit-trade-light.svg",
+      "role": "3b น่าอยู่·น่าเที่ยว·น่าค้าขาย · light",
+      "bytes": 10504,
+      "sha256": "3727a85d22e666c26ee6b0e150c6faa9200de2eca049947ee95a94f400c9d157"
+    },
+    {
+      "file": "assets/3b-live-visit-trade-dark.svg",
+      "role": "3b น่าอยู่·น่าเที่ยว·น่าค้าขาย · dark",
+      "bytes": 10504,
+      "sha256": "6f3a43b046b8c4a24b6f1c52b7d6a0e091ec08eb959f3cfecbe4e4140fc271a5"
+    },
+    {
+      "file": "assets/3c-our-voice-here-light.svg",
+      "role": "3c เสียงเราอยู่ตรงนี้ · light",
+      "bytes": 12662,
+      "sha256": "4d13de02f25e82f0d919f5a51f18b72e5424798cfd83cdb2ff67e65e5458f1cd"
+    },
+    {
+      "file": "assets/3c-our-voice-here-dark.svg",
+      "role": "3c เสียงเราอยู่ตรงนี้ · dark",
+      "bytes": 12662,
+      "sha256": "350fadd34a5472ebac6effe2118e9fc4f3922b7dfd6e0d0faa9c6793bdaeba3d"
+    },
+    {
+      "file": "assets/logo-bubbles-proposal-light.svg",
+      "role": "3d บอลลูนโลโก้ (ข้อเสนอ) · light overlay",
+      "bytes": 9249,
+      "sha256": "3154e91f107df269b783337bbb4f868037449dd4dd349aca1215069c1818e8e1"
+    },
+    {
+      "file": "assets/logo-bubbles-proposal-dark.svg",
+      "role": "3d บอลลูนโลโก้ (ข้อเสนอ) · dark overlay",
+      "bytes": 9249,
+      "sha256": "cfd191927a2d1b425bb1ca60744f6c98e832e8ea47d8f569dcb3da7fc5c2efbb"
+    },
+    {
+      "file": "assets/lockup-without-bubbles-light.png",
+      "role": "wordmark + หมุด ไม่มีบอลลูน · light (ไฟล์ทำงาน)",
+      "bytes": 17608,
+      "sha256": "df00f1c02f2c2c453dbd6a21746d015fff8079880de863b2643c9fc7c2449583"
+    },
+    {
+      "file": "assets/lockup-without-bubbles-dark.png",
+      "role": "wordmark + หมุด ไม่มีบอลลูน · dark (ไฟล์ทำงาน)",
+      "bytes": 17483,
+      "sha256": "37af6d9675ee4c1eac934e60c6e481727c0ddb0aff0ad0db87000a6b1923990a"
+    },
+    {
+      "file": "assets/conversation-motif-original.svg",
+      "role": "ConversationMotif ต้นฉบับจากเจ้าของ (ไม่แก้)",
+      "bytes": 11610,
+      "sha256": "fa67237428dc510cb4e7bc15e86e3764e9911db8a5e26787cb7d40291a284ca4"
+    },
+    {
+      "file": "motion/citychat-motif-motion.css",
+      "role": "CSS motion: คลาส + keyframes",
+      "bytes": 6779,
+      "sha256": "67c4f2638ef76b7ecf355edd53a7c4f2c55cc51cafe7291f28dbf9cd4e00e91d"
+    },
+    {
+      "file": "motion/citychat-motif-motion.js",
+      "role": "ES module: SVG แบบเคลื่อนไหว 5 ชิ้น + css",
+      "bytes": 43005,
+      "sha256": "cbcf4b541dfe784cdd8894770fbbd6a6495d7e8de82fc5cae4beb8257871b012"
+    }
+  ]
+}

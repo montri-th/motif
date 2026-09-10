@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "landometer-owner-decision/1.0",
+  "recordId": "OWNER-MOTION-01",
+  "title": "Visible motion replays; off-screen motion stops",
+  "decidedOn": "2026-09-11",
+  "decidedByRole": "owner",
+  "authorityRank": "above_design_system_all_versions",
+  "authorityNote": "This decision outranks the Landometer Design System in every version, and any product add-on rule that conflicts with it. Where LDS 0.9.1 [MOTION] requires a play-once entrance reveal or forbids looping ambience, this decision governs.",
+  "decision": "Every animation replays automatically for as long as it is inside the viewport, and stops as soon as it leaves the viewport.",
+  "verbatimInstruction": "ปรับให้ ทุก animation autoreplay ตลอดเวลาที่มองเห็นอยู่ เมื่อเลื่อนผ่านไปมองไม่เห็นให้ viewport แล้วค่อยหยุด · กฎนี้ให้ใหญ่กว่า Design System เสมอ",
+  "scope": [
+    "web pages and product UI",
+    "showcases, previews and library surfaces",
+    "decks and documents rendered in a browser",
+    "every portable snippet handed to a team or agent"
+  ],
+  "supersedes": [
+    "LDS 0.9.1 [MOTION] motion-riddim-approach-02 once-only reveal contract, for repetition only",
+    "LDS 0.9.1 prohibition on looping ambience and infinite attention animation",
+    "motif-library 1.2.1 condition that library auto-replay is an inspection aid and must not be copied into portable snippets",
+    "CityChat AMENDMENT CC-MOTION-02 clause 'play once', for repetition only"
+  ],
+  "stillBinding": [
+    "prefers-reduced-motion: reduce is a user-device kill switch, not a design-system rule — reduced motion holds the final state and starts no cycle",
+    "no-JavaScript and print routes render the final state",
+    "no layout shift, no obscured action, no scroll-jacking, no hue cycling",
+    "motion never carries evidence, contrast, meaning or comprehension",
+    "one cycle length still comes from the family lifecycle (finite_once, finite_once_logo_sting, state_bound_only); the owner rule governs repetition, not duration",
+    "state-bound motifs still appear only while the real state is running"
+  ],
+  "implementationContract": {
+    "trigger": "IntersectionObserver, threshold 0.14, rootMargin '0px 0px -8% 0px'",
+    "onEnter": "play immediately, then repeat every cycle length",
+    "onExit": "clear the timer and hold the final state",
+    "minimumCycleMs": 2000,
+    "technique": "repeated finite plays — never animation-iteration-count: infinite, so the CityChat 'no infinite' check still passes",
+    "pageControl": "one page-level pause/resume control, carried over from the 1.2.1 showcase decision",
+    "failOpen": "a runtime that never loads leaves the approved still image in place"
+  },
+  "appliedIn": [
+    {
+      "surface": "Motif Handoff Kit.dc.html",
+      "how": "hero dial, six Landometer full/quiet tiles (lm-motif loop), four CityChat motifs (inline runtime SVG re-armed), two ijji logo stings (replay cadence)"
+    }
+  ],
+  "evidenceRefs": [
+    "current-task:user-message:2026-09-11:approve-everything-and-autoreplay-all-animation-while-visible",
+    "current-task:user-message:2026-09-11:this-rule-always-outranks-the-design-system"
+  ]
+}

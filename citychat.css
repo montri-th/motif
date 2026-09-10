@@ -1,0 +1,41 @@
+/* CityChat library presentation. Registered artwork and motion are loaded unchanged. */
+.cc-family-head { scroll-margin-top: 140px; }
+.cc-intro { display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px; padding: clamp(20px, 4vw, 36px); margin-bottom: 22px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-soft); }
+.cc-intro p:last-child { margin-bottom: 0; }
+.cc-intro strong { color: var(--ink); }
+.cc-intro .cc-steps { margin: 0; padding-left: 24px; color: var(--ink-2); }
+.cc-steps li + li { margin-top: 10px; }
+.cc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cc-preview { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; min-height: 246px; padding: 24px; background: #F6F7F3; color: #182327; }
+.cc-preview[data-cc-surface="dark"], .cc-stage[data-cc-surface="dark"] { background: #11191D; color: #F6F7F3; }
+.cc-preview img { display: block; width: 180px; height: 180px; object-fit: contain; }
+.cc-preview > span { font-family: "JetBrains Mono", monospace; font-size: .7rem; }
+.cc-surface { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 16px; }
+.cc-surface > span { font-size: .8rem; margin-right: 6px; color: var(--meta); }
+.cc-surface button { min-height: 44px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font: inherit; font-size: .8rem; }
+.cc-surface button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--on-accent, #fff); }
+.cc-rules { margin: 24px 0 8px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-soft); }
+.cc-rules summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+.cc-rules-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-top: 16px; }
+.cc-rules h4 { margin: 0 0 8px; }
+.cc-rules p { color: var(--ink-2); margin-bottom: 0; }
+.cc-proposal { margin-top: 22px; padding-top: 18px; border-top: 1px dashed var(--line); font-size: .85rem; color: var(--meta); }
+#cc-dialog { width: min(820px, calc(100% - 24px)); }
+#cc-dialog .dialog-body { padding: clamp(16px, 3vw, 28px); }
+#cc-dialog .dialog-head h2 { font-size: clamp(1rem, 2.5vw, 1.35rem); }
+.cc-stage { min-height: 320px; display: grid; place-items: center; border-radius: var(--radius-md); padding: 32px; background: #F6F7F3; }
+.cc-stage > img, .cc-stage > svg { display: block; width: min(100%, 280px); height: 280px; object-fit: contain; overflow: visible; }
+.cc-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0 0; }
+.cc-controls label { display: flex; gap: 8px; align-items: center; min-height: 44px; font-size: .88rem; }
+.cc-controls input { width: 18px; height: 18px; accent-color: var(--accent); }
+.cc-status { min-height: 2.8em; margin: 16px 0 0; color: var(--ink-2); font-size: .88rem; }
+.cc-export-note { margin: 14px 0 0; font-size: .75rem; color: var(--meta); }
+.cc-code-panel { margin-top: 14px; padding: 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-soft); }
+.cc-code-panel textarea { display: block; width: 100%; min-height: 190px; margin: 10px 0; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: .72rem/1.6 "JetBrains Mono", monospace; resize: vertical; }
+@media (max-width: 760px) { .cc-intro, .cc-grid, .cc-rules-grid { grid-template-columns: 1fr; } .cc-stage { min-height: 260px; padding: 24px; } .cc-stage > img, .cc-stage > svg { height: 230px; } }
+@media (max-width: 360px) { #cc-dialog { width: calc(100% - 12px); } #cc-dialog .dialog-head { padding: 14px; } .cc-stage { padding: 18px; min-height: 230px; } .cc-stage > img, .cc-stage > svg { height: 210px; } }
+@media print { .cc-surface, .cc-code-panel, .cc-controls { display: none !important; } .cc-grid, .cc-intro, .cc-rules-grid { display: block; } .cc-card { margin-bottom: 18px; } }
+.cc-family-head > div { min-width: 0; }
+.cc-family-head .eyebrow { overflow-wrap: anywhere; }
+.cc-art { width: 180px; height: 180px; display: grid; place-items: center; }
+.cc-art > img, .cc-art > svg { display: block; width: 180px; height: 180px; object-fit: contain; overflow: visible; }

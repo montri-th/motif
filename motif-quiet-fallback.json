@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "landometer-quiet-fallback/1.0",
+  "extends": "motif-library-agent-contract/1.1",
+  "producedOn": "2026-09-10",
+  "producedFor": "cross-project handoff of the Landometer Motif Library 1.2.1",
+  "governanceStatus": "owner_approved_normative_for_motif_library_1_2_1",
+  "approval": { "decidedOn": "2026-09-11", "decidedByRole": "owner", "approvalRef": "governance/owner-approval.json", "boundary": "normative for artifacts built on Motif Library 1.2.1; it does not modify LDS 0.9.1 itself" },
+  "governanceNote": "This ladder is not part of the owner-approved artifact overlay 1.2.1 and not part of LDS 0.9.1. It is a placement rule derived from (a) the exact copied asset bytes, (b) LDS v0.9.1 token values in build-kit/lds-tokens.css, and (c) the existing LDS rule that a failing mark is fixed by changing the surrounding surface. The owner approved it on 11 September 2026: it is normative for artifacts built on Motif Library 1.2.1 and does not modify LDS 0.9.1 retroactively. Approval does not replace measurement — measure again whenever the carrier changes.",
+  "authority": {
+    "assetManifest": "assets/motif-library.json",
+    "approvalRef": "governance/owner-approval.json",
+    "designSystem": "LDS 0.9.1 / 0.9.1-r8 / v0.9.1-mp7",
+    "measurementEvidence": "governance/quiet-contrast-evidence.json"
+  },
+
+  "invariant": {
+    "prohibitedTransformations": ["redraw", "recolor", "crop_geometry", "distort", "trace_from_screenshot_or_memory"],
+    "consequence": "A contrast failure is never solved on the asset. It is solved by choosing a different governed carrier, a different governed record, a different size, or no motif at all.",
+    "alsoProhibited": [
+      "a white or tinted plate placed under the mark",
+      "a scrim laid over a governed gradient so page-global ink can be inherited",
+      "a new hue invented to make the mark readable",
+      "opacity used as the carrier of meaning",
+      "any of the prohibited hue families (violet/purple/lavender/plum/orchid/fuchsia/magenta/terracotta/brick/clay/rust/sienna/burnt orange/earth red/brown-orange)"
+    ]
+  },
+
+  "verdictBands": {
+    "meaningCapable": { "min": 3.0, "label": "รับงานที่สื่อความหมายได้", "basis": "WCAG 2.1 SC 1.4.11 non-text contrast" },
+    "decorativeOnly": { "min": 1.3, "max": 2.99, "label": "ตกแต่งได้ ห้ามแบกความหมาย", "basis": "perceivable as atmosphere; must stay below adjacent body-text contrast" },
+    "invisible": { "max": 1.29, "label": "มองไม่เห็น — เปลี่ยน carrier หรือถอดออก" },
+    "measurement": "Composite the asset's strongest authored element (ink at its authored alpha) over the carrier hex, then compute the WCAG luminance ratio. A gradient carrier is measured at its worst stop."
+  },
+
+  "quietInk": {
+    "hex": "#59D2FE",
+    "token": "--energy-sky",
+    "finding": "Every landometer.*.quiet variant is drawn in this one ink. Its readability is decided entirely by the carrier: 1.23–1.69:1 on every light LDS surface, 3.19–10.23:1 on the deep set."
+  },
+
+  "quietCarriers": {
+    "note": "The DS-legal surfaces a quiet mark may be moved onto. quietInkRatio is #59D2FE at full alpha; atAuthoredAlpha56 is the same ink at the .56 alpha several quiet variants use.",
+    "light": [
+      { "id": "surface.card", "token": "--surface-card", "hex": "#FCFCFA", "role": "card / tile ground", "quietInkRatio": 1.69, "atAuthoredAlpha56": 1.36 },
+      { "id": "surface.canvas", "token": "--surface-canvas", "hex": "#F6F7F3", "role": "page ground", "quietInkRatio": 1.62, "atAuthoredAlpha56": 1.33 },
+      { "id": "brand.beige", "token": "--brand-beige", "hex": "#F2F1DF", "role": "the quiet identity carrier", "quietInkRatio": 1.53, "atAuthoredAlpha56": 1.29 },
+      { "id": "surface.alt", "token": "--surface-alt", "hex": "#EEF1EE", "role": "caption / secondary band", "quietInkRatio": 1.53, "atAuthoredAlpha56": 1.28 },
+      { "id": "semantic.info.fill", "token": "--semantic-info-fill", "hex": "#E8EEF0", "role": "informational block only", "quietInkRatio": 1.48, "atAuthoredAlpha56": 1.27 },
+      { "id": "surface.soft", "token": "--surface-soft", "hex": "#E5E9E6", "role": "pressed / recessed", "quietInkRatio": 1.42, "atAuthoredAlpha56": 1.24 },
+      { "id": "surface.blueTint", "token": "--surface-blue-tint", "hex": "#E2E9ED", "role": "hover / selected ground", "quietInkRatio": 1.42, "atAuthoredAlpha56": 1.23 },
+      { "id": "ground.mist", "token": "--atmosphere-ground-mist", "hex": "#C4E0EE → #B2E2E2 → #CCE6D0", "role": "context atmosphere", "quietInkRatio": 1.23, "atAuthoredAlpha56": 1.13, "worstStop": "#B2E2E2" }
+    ],
+    "deep": [
+      { "id": "dark.canvas", "token": "--surface-canvas (dark)", "hex": "#11191D", "role": "dark page ground", "quietInkRatio": 10.23, "atAuthoredAlpha56": 4.05 },
+      { "id": "overlay.glass", "token": "--overlay-glass", "hex": "rgba(17,25,29,.88)", "role": "overlay / scrim ground", "quietInkRatio": 10.14, "atAuthoredAlpha56": 4.02 },
+      { "id": "dark.alt", "token": "--surface-alt (dark)", "hex": "#172126", "role": "dark secondary band", "quietInkRatio": 9.42, "atAuthoredAlpha56": 3.9 },
+      { "id": "dark.card", "token": "--surface-card (dark)", "hex": "#20292D", "role": "dark card", "quietInkRatio": 8.52, "atAuthoredAlpha56": 3.71 },
+      { "id": "dark.blueTint", "token": "--surface-blue-tint (dark)", "hex": "#18333E", "role": "dark hover / selected", "quietInkRatio": 7.63, "atAuthoredAlpha56": 3.49 },
+      { "id": "dark.raised", "token": "--surface-raised (dark)", "hex": "#293337", "role": "dark raised", "quietInkRatio": 7.44, "atAuthoredAlpha56": 3.42 },
+      { "id": "brand.blue", "token": "--brand-blue", "hex": "#1D4497", "role": "identity panel", "quietInkRatio": 5.19, "atAuthoredAlpha56": 2.74, "warning": "full variants contain #1D4497 — their base rule measures 1.00:1 here and disappears. Quiet only." },
+      { "id": "ground.current.start", "token": "--atmosphere-ground-current", "hex": "#0F5773", "role": "dark context atmosphere", "quietInkRatio": 4.59, "atAuthoredAlpha56": 2.54 },
+      { "id": "ground.current.mid", "token": "--atmosphere-ground-current", "hex": "#006A6A", "role": "dark context atmosphere", "quietInkRatio": 3.69, "atAuthoredAlpha56": 2.2 },
+      { "id": "measure.deep.mid", "token": "--atmosphere-measure-deep", "hex": "#176B82", "role": "entry / direction / closure", "quietInkRatio": 3.49, "atAuthoredAlpha56": 2.14 },
+      { "id": "ground.current.end", "token": "--atmosphere-ground-current", "hex": "#1F744F", "role": "dark context atmosphere", "quietInkRatio": 3.29, "atAuthoredAlpha56": 2.05 },
+      { "id": "measure.deep.end", "token": "--atmosphere-measure-deep", "hex": "#08756F", "role": "entry / direction / closure", "quietInkRatio": 3.19, "atAuthoredAlpha56": 2.0 }
+    ],
+    "notCarriers": [
+      "cultivate.glow and cultivate.mist — warm grounds put the sky ink at its weakest and compete with the motif's own energy inks",
+      "diversity.spectrum — rationed to one use per long route; never spend it as a motif backing",
+      "product.* gradients — only inside the owning product, never as shared atmosphere",
+      "any photograph — a photo ground has no single measurable value; use the record's boxed surface variant instead"
+    ]
+  },
+
+  "ladder": [
+    {
+      "rung": "L1",
+      "name": "Re-test, do not re-tint",
+      "action": "Measure the asset's strongest authored element against the actual carrier hex, at the actual delivered size. A gradient is measured at its worst stop.",
+      "output": "one of meaningCapable / decorativeOnly / invisible",
+      "stopIf": "the motif is decorative (aria-hidden, alt=\"\") and lands in decorativeOnly — that is the intended reading, ship it"
+    },
+    {
+      "rung": "L2",
+      "name": "Change the carrier, not the mark",
+      "action": "Move the mark onto another governed quiet carrier. Light ground too faint → the deep set. Deep ground too faint → the light set.",
+      "allowed": "any entry in quietCarriers, with its role respected",
+      "prohibited": "a plate, a scrim, a new tint, a gradient invented for the purpose"
+    },
+    {
+      "rung": "L3",
+      "name": "Change the record, not the color",
+      "action": "Select a different governed record. This is selection, which is permitted; recolor is not.",
+      "routes": {
+        "ijji.four-beat.selected-3.r3": "six surface records exist per motif — canvas, brand-blue, ground-mist, dark, transparent-ink, transparent-mint. Light ground → transparent-ink (#182327, 11.4–15.6:1). Deep ground → transparent-mint (#0AD69C, 3.0–9.4:1). Ground you do not control → the boxed variant that names it.",
+        "landometer.motif.v3": "swap variant. quiet on a busy, photographic or atmosphere ground; full on a plain light ground. Never a full variant on a Brand Blue panel.",
+        "citychat-motif-set": "each of 3a / 3b / 3c ships a light and a dark rendition. Choose by the measured lightness of the real ground, not by the theme name: light on #F6F7F3, white, brand.beige or the dark-theme CityChat gradient; dark on #11191D, #172126 or the light-theme CityChat gradient #007A58 → #007E79. The renditions carry their own ground and grid lines, so they are never placed on a photograph or on another Landometer gradient. Status: candidate — owner sign-off pending on AMENDMENT.md.",
+        "identity": "swap rendition — see identityRenditions."
+      }
+    },
+    {
+      "rung": "L4",
+      "name": "Change the presence, not the palette",
+      "action": "Raise the delivered size toward 1.5× the record's minimum, give the motif its own grid track instead of sharing the text column, or add two spacing steps of clear space.",
+      "note": "Size and separation buy perceptibility without touching a single hex. They do not buy meaning — a motif at any size is still framing."
+    },
+    {
+      "rung": "L5",
+      "name": "Remove it",
+      "action": "Delete the motif. Let text, a TrustBadge, a DecisionCard or a real component carry the meaning.",
+      "test": "Delete-the-motif test — if the truth on the page changes when the motif is removed, the motif was doing a job it is not allowed to do."
+    }
+  ],
+
+  "identityRenditions": {
+    "rule": "The logo is never placed on a plate of its own. Change the surrounding surface, or change the rendition — never the artwork.",
+    "measured": [
+      { "file": "assets/identity/logo/landometer-symbol-color.png", "ink": "#1D4497", "use": "light carriers only", "passes3to1": ["surface.canvas", "surface.card", "surface.alt", "surface.soft", "surface.blueTint", "brand.beige", "ground.mist.*"], "fails": ["brand.blue 1.00:1", "dark.canvas 1.97:1"] },
+      { "file": "assets/identity/logo/landometer-symbol-white.png · -mono · -outline-white", "ink": "#FFFFFF", "use": "deep carriers only", "passes3to1": ["brand.blue 9.03", "measure.deep.* 5.55–6.07", "ground.current.* 5.72–7.98", "dark.* 12.94–17.79"], "fails": ["every light carrier, 1.06–1.14:1"] },
+      { "file": "assets/identity/logo/landometer-symbol-cream.png · -outline-cream", "ink": "#EFEFD0", "use": "deep carriers only", "passes3to1": ["brand.blue 7.71", "measure.deep.* 4.74–5.18", "ground.current.* 4.89–6.81", "dark.* 11.05–15.18"], "hardStop": "on --brand-beige #F2F1DF it measures 1.03:1. This rendition is drawn in the superseded v0.6.2 cream; re-export at #F2F1DF is a named pending approval. Never recolour the PNG to close the gap." },
+      { "file": "assets/identity/logo/landometer-symbol-gray.png", "ink": "#757575", "use": "the quiet universal fallback — the only rendition that clears 3:1 on both the light canvas (4.28:1) and the dark canvas (3.86:1)", "fails": ["brand.blue 1.96:1", "measure.deep.*", "ground.current.*"], "when": "the surface is not under your control, or the design must survive a light/dark theme switch without swapping files" }
+    ],
+    "ijjiIdentity": {
+      "family": "ijji.logo-sting.r3",
+      "markOnly": "the mark still is transparent — its compatibleHostSurfaces are brand-blue #1D4497 and dark #11191D only. No other carrier is approved.",
+      "fallbackWhenNeither": "use ijji.logo-sting.tagline, whose still carries its own Brand Blue field, at 320 px or wider."
+    }
+  },
+
+  "agentFields": {
+    "note": "Add these to the standard motif brief. Every value is copied or measured, never estimated.",
+    "hostSurfaceToken": "the LDS token of the ground the asset actually sits on",
+    "hostSurfaceHex": "its resolved hex, or the worst stop of its gradient",
+    "measuredContrast": "computed ratio of the asset's strongest authored element over hostSurfaceHex",
+    "contrastVerdict": "meaningCapable | decorativeOnly | invisible",
+    "quietFallbackRung": "none | L2 | L3 | L4 | L5",
+    "fallbackAssetId": "the record actually shipped after the ladder resolved, if it changed"
+  }
+}
