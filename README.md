@@ -1,13 +1,15 @@
-# Landometer Motif Studio 1.3.0
+# Landometer Motif Studio 1.3.1
 
-Published target: https://montri-th.github.io/motif/ · Web experience update: 11 September 2026
+Published target: https://montri-th.github.io/motif/ · Documentation update: 1 October 2026
 
 A bilingual studio combining the original Landometer/ijji library and the supplied CityChat handoff. Choose from six work scenarios, compare text-only and motif views, search all 15 motif cards, preview and pause motion, test 20 assets on 20 carriers, inspect 12 identity files, and export SVG/PNG/code or a handoff brief.
 
 - Current combined file manifest: `assets/motif-studio-library.json`
 - Integration scope and source status: `docs/integration-1.3.0.md`
 - Exact baseline and imported source records: `governance/integration-source-record.json`
-- Complete current package: `assets/downloads/motif-studio-v1.3.0.zip`
+- Complete current package: `assets/downloads/motif-studio-v1.3.1.zip`
+- Current change notes: `docs/release-1.3.1.md`
+- Historical Studio 1.3.0 package preserved unchanged: `assets/downloads/motif-studio-v1.3.0.zip`
 
 Use a local HTTP server to preview this static site. No build dependencies are needed. After edits, run `node scripts/build-integration-kit.mjs` then `node scripts/verify-integration.mjs`. Source asset releases stay unchanged: Motif Library 1.2.1 and CityChat source 1.0.1-proposal. Original approval and QA files remain historical evidence; current browser and deployment checks are recorded separately.
 

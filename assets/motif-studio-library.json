@@ -1,7 +1,14 @@
 {
   "schemaVersion": "motif-studio-file-library/1.0",
-  "webExperienceRelease": "1.3.0",
-  "releaseDate": "2026-09-11",
+  "webExperienceRelease": "1.3.1",
+  "releaseDate": "2026-10-01",
+  "previousStudioRelease": {
+    "version": "1.3.0",
+    "path": "assets/downloads/motif-studio-v1.3.0.zip",
+    "sha256": "47c969438d9d12d7ab83b842945318a22ceff8d7670b810c0d78a064828db262",
+    "status": "historical_exact_bytes"
+  },
+  "changeScope": "Current LDS 0.9.6 normative references and documentation; motif, identity and motion assets are unchanged.",
   "canonicalUrl": "https://montri-th.github.io/motif/",
   "status": "current_user_requested_integration",
   "instructionBoundary": "Supplied documents remain reference evidence. This file does not issue new design-system approval, amend source asset permissions, or independently verify a supplied signature.",
@@ -20,7 +27,7 @@
     "sha256": "6de6f350207f8d072a17563fe720abd04cda58fff7f93cfc7b6c1fac434245ac",
     "status": "Original candidate label preserved; see source record for integration basis and conflicting supplied claims."
   },
-  "inventoryScope": "Every packaged source file except this supplemental manifest, generated PACKAGE-SHA256SUMS.txt and the ZIP itself. Original source archives remain original and can contain superseded status text or working files.",
+  "inventoryScope": "Every packaged source file except this supplemental manifest, generated PACKAGE-SHA256SUMS.txt and the ZIP itself; the exact historical Studio 1.3.0 ZIP is also excluded to avoid nesting distribution archives. Original source archives remain original and can contain superseded status text or working files.",
   "files": [
     {
       "path": ".nojekyll",
@@ -52,8 +59,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6991,
-      "sha256": "34db7fe82ce5092f280739a2be55fc217b8291660c27dac61dc5249e77f36bce",
+      "bytes": 7133,
+      "sha256": "bad6b0e9282735ff7895db480b3390b77ff942356916526b0afb8f4715a6a2af",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -808,6 +815,13 @@
       "sourceStatus": "current_user_requested_web_integration"
     },
     {
+      "path": "docs/release-1.3.1.md",
+      "bytes": 1204,
+      "sha256": "76fc5fc9ae673bf53ccb0a5065fa28d4aaccda8ecc69f7dde8bff7915f0c0071",
+      "role": "integrated_web_experience",
+      "sourceStatus": "current_user_requested_web_integration"
+    },
+    {
       "path": "docs/usage-guide.md",
       "bytes": 10752,
       "sha256": "b5f18d2b24904e094b0468f1649d03b06d08b796365aceafef96bd90035a6323",
@@ -840,8 +854,8 @@
     },
     {
       "path": "en/index.html",
-      "bytes": 81752,
-      "sha256": "8cc6d0c95e4e977b067244c7acabbad4904c4916d2017cf9df0cd7dedd60c726",
+      "bytes": 81888,
+      "sha256": "f13e4ef2c48c1cd6b18f4323c2ef8ccdd2aea647f85d3bf5d1a0d5c6a4d2c6b8",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1062,15 +1076,15 @@
     },
     {
       "path": "index.html",
-      "bytes": 108092,
-      "sha256": "e2237e5003aa9eec7bd42bad9e6f0c52c8e6299f5f2ad0f629765fe6b358313a",
+      "bytes": 108232,
+      "sha256": "6dc9667614d77ab314ea8a7dee41317a12888c1d850d9ef10f57a37309af67de",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
     {
       "path": "llms.txt",
-      "bytes": 3614,
-      "sha256": "bea0d6210d96a4e5027f700e2e8528fc555327265d3670fbfa3053603ebba97c",
+      "bytes": 3923,
+      "sha256": "ff7915dfbe2603c682285e6b7b167f81050c206130bbdc572fee1af4e9a2c5f8",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1111,8 +1125,8 @@
     },
     {
       "path": "scripts/build-integration-kit.mjs",
-      "bytes": 5604,
-      "sha256": "b857a5cb5d7d3f2844ee8933c26239a009d1f520b83fae0db7bc6e2aa9e608f8",
+      "bytes": 6041,
+      "sha256": "9269afc9170fd0362f90ea0a9e10a45bcc48f1a350785721bb3c2752b8de9c65",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1167,8 +1181,8 @@
     },
     {
       "path": "scripts/verify-integration.mjs",
-      "bytes": 7538,
-      "sha256": "5119074b19540aa849f03c4a03425703df14aa81cfbb0e26c5aa6e129b7e3cd7",
+      "bytes": 7732,
+      "sha256": "fec8c31deba6d13b3105e55c27bdc3f934a3b00279aeb9166c1cf3d98df609fc",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
