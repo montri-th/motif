@@ -61,6 +61,8 @@
 .cl-identity-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; margin-top: 24px; align-items: stretch; }
 .cl-identity-figure { margin: 0; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
 .cl-identity-preview { min-height: 280px; display: grid; place-items: center; padding: 32px; background: #F6F7F3; }
+.cl-identity [hidden] { display: none !important; }
+.cl-identity-rejection { max-width: 28ch; margin: 0; padding: 16px 20px; text-align: center; font-weight: 600; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
 .cl-identity-preview img { width: 180px; max-width: 100%; height: auto; max-height: 215px; object-fit: contain; }
 .cl-identity-figure figcaption { padding: 15px 20px; font-size: .8rem; }
 .cl-identity-figure figcaption span { display: block; color: var(--meta); margin-top: 3px; }

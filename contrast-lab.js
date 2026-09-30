@@ -220,10 +220,28 @@
   if (!identity) return;
   const i$ = selector => identity.querySelector(selector);
   const guidance = {
-    color: en ? "Start on a light surface. The blue base can blend into Brand Blue. Keep all authored colors." : "เริ่มที่พื้นสว่าง ฐานสีน้ำเงินอาจกลืนกับ Brand Blue คงทุกสีตามไฟล์เดิม",
+    color: en ? "This original PNG can be used on Canvas, Dark or Beige. Its blue pin blends into Brand Blue. The wordmark may be recolored." : "PNG ต้นฉบับนี้ใช้บน Canvas, Dark หรือ Beige ได้ หมุดสีน้ำเงินกลืนเฉพาะกับ Brand Blue ส่วน wordmark เปลี่ยนสีได้",
     white: en ? "Start on a deep surface. White details fade into a light canvas." : "เริ่มที่พื้นลึก รายละเอียดสีขาวจะจางบนพื้นสว่าง",
     cream: en ? "This supplied cream is the legacy #EFEFD0. Preview it on deep surfaces; a replacement export is still needed for the updated cream." : "ครีมในไฟล์นี้เป็นรุ่นเดิม #EFEFD0 ลองบนพื้นลึก ไฟล์ครีมที่อัปเดตยังต้องรอ export ใหม่",
     gray: en ? "Compare the actual background. Gray separates from both light and dark canvas, but is weaker on Brand Blue and several deep gradients." : "เทียบกับพื้นจริง สีเทาแยกจาก canvas ทั้งสว่างและมืดได้ แต่จางลงบน Brand Blue และ gradient ลึกบางชุด",
+  };
+  // Placement guard for these exact supplied files, not new role/surface approval.
+  // The color files share a #1E4497 pin, which blends into Brand Blue.
+  // Dark is available; do not turn the Brand Blue issue into a dark-surface ban.
+  // The two veiled PNGs carry an 80%-white canvas behind white details.
+  const identitySurfaces = {
+    color: ["canvas", "dark.canvas", "brand.beige"],
+    white: ["brand.blue", "dark.canvas"],
+    cream: ["brand.blue", "dark.canvas"],
+    gray: ["canvas", "dark.canvas", "brand.beige"],
+    veiled: [],
+  };
+  const identityRejection = {
+    color: en ? "The blue pin blends into Brand Blue. Use Canvas, Dark or Beige with this same file." : "หมุดสีน้ำเงินกลืนกับ Brand Blue ใช้ Canvas, Dark หรือ Beige กับไฟล์เดิมนี้",
+    white: en ? "White details disappear on this light surface. Use Brand Blue or Dark with this same file." : "รายละเอียดสีขาวหายไปบนพื้นสว่าง ใช้ Brand Blue หรือ Dark กับไฟล์เดิมนี้",
+    cream: en ? "Cream details disappear on this light surface. Use Brand Blue or Dark with this same file." : "รายละเอียดสีครีมหายไปบนพื้นสว่าง ใช้ Brand Blue หรือ Dark กับไฟล์เดิมนี้",
+    gray: en ? "The gray mark loses clarity on Brand Blue. Use Canvas, Beige or Dark with this same file." : "มาร์กสีเทาแยกจาก Brand Blue ได้ไม่ชัด ใช้ Canvas, Beige หรือ Dark กับไฟล์เดิมนี้",
+    veiled: en ? "No surface in this selector has a verified pairing for this file. Its translucent white canvas obscures the white details. Keep the original for reference; choose another supplied file for a preview." : "ยังไม่มีคู่พื้นที่ตรวจผ่านในตัวเลือกนี้ ไฟล์มีพื้นขาวโปร่งแสงซึ่งกลืนรายละเอียดสีขาว เก็บต้นฉบับไว้อ้างอิง และเลือกไฟล์อื่นในชุดเพื่อดูตัวอย่าง",
   };
   const identityFiles = [
     ["landometer-symbol-color.png", "Symbol · color", "color", 1601, 1601],
@@ -231,9 +249,9 @@
     ["landometer-symbol-cream.png", "Symbol · cream", "cream", 3457, 3661],
     ["landometer-symbol-gray.png", "Symbol · gray", "gray", 3457, 3661],
     ["landometer-symbol-mono.png", "Symbol · mono", "white", 6402, 6402],
-    ["landometer-symbol-outline-white.png", "Symbol · outline white", "white", 6402, 6402],
+    ["landometer-symbol-outline-white.png", "Symbol · outline white", "veiled", 6402, 6402],
     ["landometer-symbol-outline-cream.png", "Symbol · outline cream", "cream", 3457, 3661],
-    ["landometer-symbol-white-square.png", "Symbol · white square", "white", 6402, 6402],
+    ["landometer-symbol-white-square.png", "Symbol · white square", "veiled", 6402, 6402],
     ["landometer-symbol-192.png", "Symbol · 192 px", "color", 192, 192],
     ["landometer-lockup-banner.png", "Lockup · banner", "color", 3818, 1048],
     ["landometer-lockup-color.png", "Lockup · color master", "color", 23324, 6402],
@@ -251,21 +269,41 @@
     img.alt = `Landometer · ${file.label}`;
     img.style.width = file.width / file.height > 2 ? "min(100%, 420px)" : "min(100%, 180px)";
     i$("[data-id-preview]").style.backgroundColor = idSurface.hex;
-    i$("[data-id-guidance]").textContent = guidance[file.tone];
+    const supported = identitySurfaces[file.tone];
+    const suitable = supported.includes(idSurface.id);
+    const explanation = suitable ? guidance[file.tone] : identityRejection[file.tone];
+    identity.dataset.idState = suitable ? "preview" : "rejected";
+    img.hidden = !suitable;
+    const rejection = i$("[data-id-rejection]");
+    rejection.hidden = suitable;
+    rejection.textContent = en ? "Logo not shown on this surface" : "ไม่แสดงโลโก้บนพื้นนี้";
+    i$("[data-id-guidance]").textContent = `${suitable ? "" : en ? "Pairing rejected. " : "ใช้คู่นี้ไม่ได้ — "}${explanation}`;
+    const download = i$("[data-id-download]");
+    download.hidden = !suitable;
+    if (suitable) {
+      download.href = nextSource;
+      download.download = file.file;
+    } else {
+      download.removeAttribute("href");
+      download.removeAttribute("download");
+    }
+    const match = i$("[data-id-match]");
+    match.hidden = suitable || supported.length === 0;
+    match.textContent = en ? `Use ${supported[0] === "canvas" ? "Canvas" : "Brand Blue"} with this file` : `ใช้ ${supported[0] === "canvas" ? "Canvas" : "Brand Blue"} กับไฟล์นี้`;
     i$("[data-id-caption]").textContent = `${file.label} · ${file.width} × ${file.height} px`;
     i$("[data-id-surface]").textContent = `${idSurface.id} · ${idSurface.hex}`;
-    i$("[data-id-download]").href = url(`assets/identity/logo/${file.file}`);
-    i$("[data-id-download]").download = file.file;
     identity.querySelectorAll("[data-id-bg]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.idBg === idSurface.id)));
-    if (announce) i$("[data-id-status]").textContent = `${file.label}. ${words.backdrop}: ${idSurface.id}. ${guidance[file.tone]}`;
+    if (announce) i$("[data-id-status]").textContent = `${file.label}. ${words.backdrop}: ${idSurface.id}. ${i$("[data-id-guidance]").textContent}`;
   }
   idSelect.addEventListener("change", () => renderIdentity(true));
   identity.querySelectorAll("[data-id-bg]").forEach(button => button.addEventListener("click", () => { idSurface = idSurfaces.find(surface => surface.id === button.dataset.idBg); renderIdentity(true); }));
   i$("[data-id-match]").addEventListener("click", () => {
     const file = identityFiles.find(item => item.file === idSelect.value) || identityFiles[0];
-    idSurface = idSurfaces[file.tone === "white" || file.tone === "cream" ? 2 : 0];
+    const supported = identitySurfaces[file.tone];
+    if (!supported.length) return;
+    idSurface = idSurfaces.find(surface => surface.id === supported[0]);
     renderIdentity(true);
   });
-  renderIdentity();
   identity.querySelectorAll("[data-cl-enhanced]").forEach(element => { element.hidden = false; });
+  renderIdentity();
 })();

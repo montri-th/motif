@@ -781,15 +781,15 @@
     },
     {
       "path": "contrast-lab.css",
-      "bytes": 8582,
-      "sha256": "d7fd582021305daff7a34e310939da0482b117857f6c44ed74cbe9e7b7de46c3",
+      "bytes": 8846,
+      "sha256": "e0b8880f6af0413dfade3a50f46696fdf66f4bc40536bda745253372a94018b5",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
     {
       "path": "contrast-lab.js",
-      "bytes": 21693,
-      "sha256": "0f83e900f4d2de9a8c5cdb25105a1f79d5f38cdc554c942a6e35178a032655c4",
+      "bytes": 25283,
+      "sha256": "1b0c0a3c87b7bf2886be677a81dcf4e345c41f83f87d6577739a38b8df36e7c5",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -840,8 +840,8 @@
     },
     {
       "path": "en/index.html",
-      "bytes": 81217,
-      "sha256": "df060c8a38d41cffde7f7cad80ca02f0a27625450f27995af9c9c396eee1343e",
+      "bytes": 81752,
+      "sha256": "8cc6d0c95e4e977b067244c7acabbad4904c4916d2017cf9df0cd7dedd60c726",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1062,8 +1062,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 107061,
-      "sha256": "11591dd82d218ade7027424ae660daca54704797dbe74dfc28c2f36453d7aca9",
+      "bytes": 108092,
+      "sha256": "e2237e5003aa9eec7bd42bad9e6f0c52c8e6299f5f2ad0f629765fe6b358313a",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1155,6 +1155,13 @@
       "path": "scripts/social-card.html",
       "bytes": 2647,
       "sha256": "fb8303856f2cc0f289d958fd333d812a9360ae85f95059578b8a6731fdc3996a",
+      "role": "integrated_web_experience",
+      "sourceStatus": "current_user_requested_web_integration"
+    },
+    {
+      "path": "scripts/verify-identity-selector.mjs",
+      "bytes": 7516,
+      "sha256": "9a580a0074b0620c20a31f2ca7a480e63849e01210e56163ff36358ac303d9db",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
