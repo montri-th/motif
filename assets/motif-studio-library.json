@@ -831,8 +831,8 @@
     },
     {
       "path": "docs/release-1.3.2.md",
-      "bytes": 1048,
-      "sha256": "87550228ea4461574e7bc6b969d59a948625da48015fc1055fa115358cb57cda",
+      "bytes": 1310,
+      "sha256": "cd8c96b1ea012810a63107bf5338f20b66534a436240b57eb3c851b6e84ef637",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1217,8 +1217,8 @@
     },
     {
       "path": "site.css",
-      "bytes": 33982,
-      "sha256": "83b51130ed9453ebd9af7f896ec894ff578c2fc3051313e24fa9e9f8c3651348",
+      "bytes": 33849,
+      "sha256": "1e203173cca293800fc276d616694e08b2c13e19b3793671648a2b3fb84e6097",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1238,8 +1238,8 @@
     },
     {
       "path": "studio.css",
-      "bytes": 8130,
-      "sha256": "6a354fc1e407b3ab4b421f0cc878a47886b5639e033fae0f93d9fe2529f1f219",
+      "bytes": 8082,
+      "sha256": "dea86c65d90fe01e130ed43da1c5acd44354e69dc6ecc476da66fd92f867d123",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },

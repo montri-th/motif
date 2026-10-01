@@ -22,7 +22,7 @@ html[lang=th] h2,html[lang=th] h3 {line-height:1.4}
 .job-picker {display:grid;gap:10px}
 .job-choice {display:grid;grid-template-columns:28px 1fr 20px;gap:12px;align-items:center;text-align:left;min-height:70px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);cursor:pointer;font-weight:600}
 .job-choice>span:first-child {font:12px 'JetBrains Mono',monospace;color:var(--meta)}
-.job-choice[aria-pressed=true] {border-color:var(--accent);background:var(--surface-blue);box-shadow:inset 3px 0 var(--accent)}
+.job-choice[aria-pressed=true] {background:var(--surface-blue);font-weight:700}
 .job-choice:hover {border-color:var(--accent)}
 .idea-panel {padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:20px;min-width:0}
 .idea-topline {display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--meta)}
