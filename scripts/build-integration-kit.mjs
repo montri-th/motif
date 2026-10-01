@@ -50,7 +50,7 @@ const manifest = {
   releaseDate: '2026-10-01',
   previousStudioRelease: { version: '1.3.1', path: historicalZip, sha256: sha(read(historicalZip)), status: 'historical_exact_bytes' },
   historicalStudioReleases: [{ version: '1.3.0', path: earlierZip, sha256: sha(read(earlierZip)), status: 'historical_exact_bytes' }],
-  changeScope: 'Current LDS 0.9.7 normative references and documentation; motif, identity and motion assets are unchanged.',
+  changeScope: 'Current LDS 0.9.7 guidance and restrained callout/selection presentation; motif, identity and motion assets are unchanged.',
   canonicalUrl: 'https://montri-th.github.io/motif/',
   status: 'current_user_requested_integration',
   instructionBoundary: 'Supplied documents remain reference evidence. This file does not issue new design-system approval, amend source asset permissions, or independently verify a supplied signature.',

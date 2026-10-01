@@ -16,7 +16,7 @@
       "status": "historical_exact_bytes"
     }
   ],
-  "changeScope": "Current LDS 0.9.7 normative references and documentation; motif, identity and motion assets are unchanged.",
+  "changeScope": "Current LDS 0.9.7 guidance and restrained callout/selection presentation; motif, identity and motion assets are unchanged.",
   "canonicalUrl": "https://montri-th.github.io/motif/",
   "status": "current_user_requested_integration",
   "instructionBoundary": "Supplied documents remain reference evidence. This file does not issue new design-system approval, amend source asset permissions, or independently verify a supplied signature.",
@@ -1140,8 +1140,8 @@
     },
     {
       "path": "scripts/build-integration-kit.mjs",
-      "bytes": 6263,
-      "sha256": "d86b070a79cfd1e0925bbd9e971be391888133f52e1a547bf184069eea2c4c1a",
+      "bytes": 6279,
+      "sha256": "d2b0bc4c44b23366aa22dde7ca1afa4662e8780b0c85820f364985a22fab6396",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
