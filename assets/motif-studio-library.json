@@ -869,8 +869,8 @@
     },
     {
       "path": "en/index.html",
-      "bytes": 81888,
-      "sha256": "7af4ef12c447042cfb4f2d376fabe62b0898f070f90ee52a2a51f750bcfb0a5c",
+      "bytes": 81894,
+      "sha256": "62325f262f04a006910d449d39b5e6e7ba20150cf0baa23a43b2113daf92dfac",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1091,8 +1091,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 108232,
-      "sha256": "216351ea1e8c1a1d8db709f84ec0a9836c8b9f67585e23c82cff91a51cd1ecf8",
+      "bytes": 108238,
+      "sha256": "567195859c073e9ee70b512bf9ef905991dcaa79c20fcabaca794dde5eeeff47",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
