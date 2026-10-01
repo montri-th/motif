@@ -1,14 +1,22 @@
 {
   "schemaVersion": "motif-studio-file-library/1.0",
-  "webExperienceRelease": "1.3.1",
+  "webExperienceRelease": "1.3.2",
   "releaseDate": "2026-10-01",
   "previousStudioRelease": {
-    "version": "1.3.0",
-    "path": "assets/downloads/motif-studio-v1.3.0.zip",
-    "sha256": "47c969438d9d12d7ab83b842945318a22ceff8d7670b810c0d78a064828db262",
+    "version": "1.3.1",
+    "path": "assets/downloads/motif-studio-v1.3.1.zip",
+    "sha256": "ac3192cdc7574d63ce8bb49bcbc6e9a43186a45efeb4949d9eb3c77865f5067d",
     "status": "historical_exact_bytes"
   },
-  "changeScope": "Current LDS 0.9.6 normative references and documentation; motif, identity and motion assets are unchanged.",
+  "historicalStudioReleases": [
+    {
+      "version": "1.3.0",
+      "path": "assets/downloads/motif-studio-v1.3.0.zip",
+      "sha256": "47c969438d9d12d7ab83b842945318a22ceff8d7670b810c0d78a064828db262",
+      "status": "historical_exact_bytes"
+    }
+  ],
+  "changeScope": "Current LDS 0.9.7 normative references and documentation; motif, identity and motion assets are unchanged.",
   "canonicalUrl": "https://montri-th.github.io/motif/",
   "status": "current_user_requested_integration",
   "instructionBoundary": "Supplied documents remain reference evidence. This file does not issue new design-system approval, amend source asset permissions, or independently verify a supplied signature.",
@@ -27,7 +35,7 @@
     "sha256": "6de6f350207f8d072a17563fe720abd04cda58fff7f93cfc7b6c1fac434245ac",
     "status": "Original candidate label preserved; see source record for integration basis and conflicting supplied claims."
   },
-  "inventoryScope": "Every packaged source file except this supplemental manifest, generated PACKAGE-SHA256SUMS.txt and the ZIP itself; the exact historical Studio 1.3.0 ZIP is also excluded to avoid nesting distribution archives. Original source archives remain original and can contain superseded status text or working files.",
+  "inventoryScope": "Every packaged source file except this supplemental manifest, generated PACKAGE-SHA256SUMS.txt and the ZIP itself; the exact historical Studio 1.3.0 and 1.3.1 ZIPs are also excluded to avoid nesting distribution archives. Original source archives remain original and can contain superseded status text or working files.",
   "files": [
     {
       "path": ".nojekyll",
@@ -60,7 +68,7 @@
     {
       "path": "README.md",
       "bytes": 7133,
-      "sha256": "bad6b0e9282735ff7895db480b3390b77ff942356916526b0afb8f4715a6a2af",
+      "sha256": "8eb72bbba60d72c7ff6a30f9c8c25ed66b1f5eff767a640c9fcfcffaf2ab494b",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -822,6 +830,13 @@
       "sourceStatus": "current_user_requested_web_integration"
     },
     {
+      "path": "docs/release-1.3.2.md",
+      "bytes": 1048,
+      "sha256": "87550228ea4461574e7bc6b969d59a948625da48015fc1055fa115358cb57cda",
+      "role": "integrated_web_experience",
+      "sourceStatus": "current_user_requested_web_integration"
+    },
+    {
       "path": "docs/usage-guide.md",
       "bytes": 10752,
       "sha256": "b5f18d2b24904e094b0468f1649d03b06d08b796365aceafef96bd90035a6323",
@@ -855,7 +870,7 @@
     {
       "path": "en/index.html",
       "bytes": 81888,
-      "sha256": "f13e4ef2c48c1cd6b18f4323c2ef8ccdd2aea647f85d3bf5d1a0d5c6a4d2c6b8",
+      "sha256": "7af4ef12c447042cfb4f2d376fabe62b0898f070f90ee52a2a51f750bcfb0a5c",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1077,14 +1092,14 @@
     {
       "path": "index.html",
       "bytes": 108232,
-      "sha256": "6dc9667614d77ab314ea8a7dee41317a12888c1d850d9ef10f57a37309af67de",
+      "sha256": "216351ea1e8c1a1d8db709f84ec0a9836c8b9f67585e23c82cff91a51cd1ecf8",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
     {
       "path": "llms.txt",
       "bytes": 3923,
-      "sha256": "ff7915dfbe2603c682285e6b7b167f81050c206130bbdc572fee1af4e9a2c5f8",
+      "sha256": "2fec5ec7f7f68cc1aa06aa50951f59ceab445fd6179eafb5ae54be77e4f2d340",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1125,8 +1140,8 @@
     },
     {
       "path": "scripts/build-integration-kit.mjs",
-      "bytes": 6041,
-      "sha256": "9269afc9170fd0362f90ea0a9e10a45bcc48f1a350785721bb3c2752b8de9c65",
+      "bytes": 6263,
+      "sha256": "d86b070a79cfd1e0925bbd9e971be391888133f52e1a547bf184069eea2c4c1a",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },
@@ -1181,8 +1196,8 @@
     },
     {
       "path": "scripts/verify-integration.mjs",
-      "bytes": 7732,
-      "sha256": "fec8c31deba6d13b3105e55c27bdc3f934a3b00279aeb9166c1cf3d98df609fc",
+      "bytes": 7893,
+      "sha256": "981072ed003b592f2fb291317e4e8a43e5c83a38806bf92a2eff64a020f53ae7",
       "role": "integrated_web_experience",
       "sourceStatus": "current_user_requested_web_integration"
     },

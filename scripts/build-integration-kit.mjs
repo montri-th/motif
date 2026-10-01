@@ -6,15 +6,16 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const supplementalPath = 'assets/motif-studio-library.json';
-const outputPath = 'assets/downloads/motif-studio-v1.3.1.zip';
-const historicalZip = 'assets/downloads/motif-studio-v1.3.0.zip';
+const outputPath = 'assets/downloads/motif-studio-v1.3.2.zip';
+const historicalZip = 'assets/downloads/motif-studio-v1.3.1.zip';
+const earlierZip = 'assets/downloads/motif-studio-v1.3.0.zip';
 const sourceRecordPath = 'governance/integration-source-record.json';
 const sha = buffer => crypto.createHash('sha256').update(buffer).digest('hex');
 const read = relative => fs.readFileSync(path.join(root, relative));
 const source = JSON.parse(read(sourceRecordPath));
 const baseline = new Map(source.baseline.files.map(item => [item.path, item]));
 const imported = new Map(source.attachment.files.map(item => [item.path, item]));
-const skip = new Set([supplementalPath, outputPath, historicalZip, '.git', '.DS_Store']);
+const skip = new Set([supplementalPath, outputPath, historicalZip, earlierZip, '.git', '.DS_Store']);
 function walk(relative = '') {
   return fs.readdirSync(path.join(root, relative), { withFileTypes: true }).flatMap(entry => {
     const name = path.posix.join(relative, entry.name);
@@ -45,17 +46,18 @@ const entries = files.map(relative => {
 });
 const manifest = {
   schemaVersion: 'motif-studio-file-library/1.0',
-  webExperienceRelease: '1.3.1',
+  webExperienceRelease: '1.3.2',
   releaseDate: '2026-10-01',
-  previousStudioRelease: { version: '1.3.0', path: historicalZip, sha256: sha(read(historicalZip)), status: 'historical_exact_bytes' },
-  changeScope: 'Current LDS 0.9.6 normative references and documentation; motif, identity and motion assets are unchanged.',
+  previousStudioRelease: { version: '1.3.1', path: historicalZip, sha256: sha(read(historicalZip)), status: 'historical_exact_bytes' },
+  historicalStudioReleases: [{ version: '1.3.0', path: earlierZip, sha256: sha(read(earlierZip)), status: 'historical_exact_bytes' }],
+  changeScope: 'Current LDS 0.9.7 normative references and documentation; motif, identity and motion assets are unchanged.',
   canonicalUrl: 'https://montri-th.github.io/motif/',
   status: 'current_user_requested_integration',
   instructionBoundary: 'Supplied documents remain reference evidence. This file does not issue new design-system approval, amend source asset permissions, or independently verify a supplied signature.',
   baselineManifest: { path: 'assets/motif-library.json', artifactRelease: '1.2.1', sha256: sha(read('assets/motif-library.json')), relationship: 'Immutable baseline asset records; the web experience has a separate version.' },
   sourceRecord: { path: sourceRecordPath, sha256: sha(read(sourceRecordPath)) },
   citychatSourceRegister: { path: 'assets/citychat/asset-register.json', sha256: sha(read('assets/citychat/asset-register.json')), status: 'Original candidate label preserved; see source record for integration basis and conflicting supplied claims.' },
-  inventoryScope: 'Every packaged source file except this supplemental manifest, generated PACKAGE-SHA256SUMS.txt and the ZIP itself; the exact historical Studio 1.3.0 ZIP is also excluded to avoid nesting distribution archives. Original source archives remain original and can contain superseded status text or working files.',
+  inventoryScope: 'Every packaged source file except this supplemental manifest, generated PACKAGE-SHA256SUMS.txt and the ZIP itself; the exact historical Studio 1.3.0 and 1.3.1 ZIPs are also excluded to avoid nesting distribution archives. Original source archives remain original and can contain superseded status text or working files.',
   files: entries,
 };
 fs.writeFileSync(path.join(root, supplementalPath), `${JSON.stringify(manifest, null, 2)}\n`);
