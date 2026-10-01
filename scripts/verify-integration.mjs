@@ -82,22 +82,23 @@ for (const [route, page] of pages) {
 
 if (exists('assets/motif-studio-library.json')) {
   const manifest = JSON.parse(read('assets/motif-studio-library.json'));
-  check(manifest.webExperienceRelease === '1.3.1', 'Supplemental manifest version mismatch');
-  check(manifest.previousStudioRelease.version === '1.3.0' && manifest.previousStudioRelease.sha256 === hash(read(manifest.previousStudioRelease.path)), 'Historical Studio 1.3.0 ZIP changed');
+  check(manifest.webExperienceRelease === '1.3.2', 'Supplemental manifest version mismatch');
+  check(manifest.previousStudioRelease.version === '1.3.1' && manifest.previousStudioRelease.sha256 === hash(read(manifest.previousStudioRelease.path)), 'Historical Studio 1.3.1 ZIP changed');
+  for (const prior of manifest.historicalStudioReleases || []) check(prior.sha256 === hash(read(prior.path)), `Historical Studio ${prior.version} ZIP changed`);
   check(manifest.baselineManifest.path === 'assets/motif-library.json', 'Supplemental manifest must reference immutable baseline');
   check(manifest.baselineManifest.sha256 === hash(read('assets/motif-library.json')), 'Supplemental baseline manifest hash mismatch');
   const names = manifest.files.map(item => item.path);
   check(new Set(names).size === names.length, 'Supplemental file manifest contains duplicates');
   for (const entry of manifest.files) verifyFile(entry, 'Supplemental release inventory');
 } else check(false, 'Build the integration kit to generate assets/motif-studio-library.json');
-check(exists('assets/downloads/motif-studio-v1.3.1.zip'), 'Current v1.3.1 download kit is missing');
-if (exists('assets/downloads/motif-studio-v1.3.1.zip') && exists('assets/motif-studio-library.json')) {
+check(exists('assets/downloads/motif-studio-v1.3.2.zip'), 'Current v1.3.2 download kit is missing');
+if (exists('assets/downloads/motif-studio-v1.3.2.zip') && exists('assets/motif-studio-library.json')) {
   const verifyZip = String.raw`
 import sys,json,pathlib,zipfile,hashlib
 root=pathlib.Path(sys.argv[1]);manifest=json.loads((root/'assets/motif-studio-library.json').read_text())
 paths=[item['path'] for item in manifest['files']]+['assets/motif-studio-library.json']
 expected=sorted(paths+['PACKAGE-SHA256SUMS.txt']);errors=[]
-with zipfile.ZipFile(root/'assets/downloads/motif-studio-v1.3.1.zip') as z:
+with zipfile.ZipFile(root/'assets/downloads/motif-studio-v1.3.2.zip') as z:
  if sorted(z.namelist())!=expected: errors.append('ZIP file inventory differs from supplemental manifest')
  for name in paths:
   if name not in z.namelist() or z.read(name)!=(root/name).read_bytes(): errors.append('ZIP source bytes differ: '+name)

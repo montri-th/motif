@@ -495,16 +495,14 @@ html[lang="th"] h3 { line-height: 1.35; }
 .boundary-callout {
   margin-top: 22px;
   padding: 20px 24px;
-  border-left: 4px solid var(--energy-yellow);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   background: var(--surface-beige);
 }
 .boundary-callout p:last-child { margin-bottom: 0; }
 .showcase-callout {
   margin: -8px 0 22px;
   padding: 16px 20px;
-  border-left: 4px solid var(--energy-sky);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   background: var(--surface-blue);
   color: var(--ink-2);
 }
